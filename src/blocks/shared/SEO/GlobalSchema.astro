@@ -1,0 +1,68 @@
+---
+/**
+ * Organization + WebSite en cada página, enlazados por @id. Misma entidad que
+ * aurin.mx: ProfessionalService con dirección (subtipo de LocalBusiness para
+ * agencias) y `sameAs` hacia aurin.mx y los perfiles oficiales.
+ */
+import { SITE, ORG_ID } from '@/config/site';
+import { LOCALE, getLangFromUrl } from '@/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+
+const description =
+  lang === 'es'
+    ? 'Aurin es una agencia nearshore de diseño web, desarrollo web, diseño UX/UI y branding, fundada en 1998 en Cuernavaca, México. Trabaja a distancia con empresas de Estados Unidos, Canadá, España y Latinoamérica: un solo equipo investiga, diseña y desarrolla.'
+    : 'Aurin is a nearshore web design, web development, UX/UI design and branding agency founded in 1998 in Cuernavaca, Mexico. It works remotely with companies in the United States, Canada, Spain and Latin America: one team handles research, design and development.';
+
+const knowsAbout =
+  lang === 'es'
+    ? ['Diseño web', 'Desarrollo web', 'Diseño UX/UI', 'Branding', 'Diseño de productos digitales', 'Identidad de marca', 'SEO técnico', 'Diseño asistido por inteligencia artificial', 'Optimización para buscadores con IA']
+    : ['Web design', 'Web development', 'UX/UI design', 'Branding', 'Digital product design', 'Brand identity', 'Technical SEO', 'AI-assisted design', 'AI search optimization'];
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': ORG_ID,
+      name: SITE.name,
+      alternateName: SITE.alternateName,
+      url: SITE.url,
+      logo: { '@type': 'ImageObject', url: SITE.logoUrl, caption: SITE.name },
+      image: SITE.logoUrl,
+      description,
+      email: SITE.contactEmail,
+      foundingDate: SITE.foundingDate,
+      founder: SITE.founders.map(({ id, name, jobTitle, linkedin }) => ({
+        '@type': 'Person',
+        '@id': `${SITE.url}/#${id}`,
+        name,
+        jobTitle,
+        sameAs: [linkedin],
+        worksFor: { '@id': ORG_ID },
+      })),
+      knowsAbout,
+      areaServed: ['United States', 'Canada', 'Mexico', 'Spain'].map((name) => ({ '@type': 'Country', name })),
+      address: { '@type': 'PostalAddress', ...SITE.address },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: SITE.contactEmail,
+        contactType: 'customer service',
+        availableLanguage: ['English', 'Spanish'],
+      },
+      sameAs: SITE.sameAs,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.url}/#website`,
+      url: SITE.url,
+      name: SITE.name,
+      alternateName: SITE.alternateName,
+      inLanguage: LOCALE[lang].hreflang,
+      publisher: { '@id': ORG_ID },
+    },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />

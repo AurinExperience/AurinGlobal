@@ -1,0 +1,72 @@
+.section {
+  padding: 140px 0;
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 96px;
+  align-items: start;
+}
+
+/* El texto se queda a la vista mientras pasan los cuatro puntos */
+.intro {
+  position: sticky;
+  top: 120px;
+}
+
+.text {
+  margin-top: 28px;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-dark);
+}
+
+.note {
+  margin-top: var(--spacing-6);
+  padding-left: var(--spacing-4);
+  border-left: 3px solid var(--color-yellow);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--color-black);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--spacing-6);
+  padding: 32px 0;
+  border-top: 1px solid var(--color-black);
+}
+
+.num {
+  justify-self: start;
+  padding: 2px 8px;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  transition: background .3s ease, color .3s ease;
+}
+
+.item:hover .num {
+  background: var(--color-yellow);
+  color: var(--color-black);
+}
+
+.itemText {
+  margin-top: var(--spacing-3);
+  color: var(--color-text-dark);
+}
+
+@media (max-width: 900px) {
+  .section { padding: 100px 0; }
+  .grid { grid-template-columns: 1fr; gap: 48px; }
+  .intro { position: static; }
+}

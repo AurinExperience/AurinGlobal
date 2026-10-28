@@ -1,0 +1,19 @@
+---
+/**
+ * Landings por estado — español. URL: /<estado>/
+ *
+ * La lista es CERRADA (src/data/states): solo se generan los estados
+ * publicados y cualquier otra URL da 404 real. Así nadie puede crear URLs
+ * indexables nuevas, que es el patrón de doorway pages que Google castiga.
+ */
+import type { GetStaticPaths } from 'astro';
+import { publishedStates } from '@/data/states';
+import StatePage from '@/components/pages/StatePage.astro';
+
+export const getStaticPaths = (() =>
+  publishedStates().map((state) => ({ params: { estado: state.slug }, props: { state } }))) satisfies GetStaticPaths;
+
+const { state } = Astro.props;
+---
+
+<StatePage state={state} />

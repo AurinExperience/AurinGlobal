@@ -1,0 +1,22 @@
+---
+/** Preguntas de la landing (fondo oscuro). El FAQPage sale de los mismos items. */
+import type { StateCopy } from '@/data/states';
+import FaqList from '@/blocks/shared/FaqList/FaqList.astro';
+import styles from './FaqSection.module.css';
+
+interface Props {
+  faq: StateCopy['faq'];
+}
+
+const { faq } = Astro.props;
+---
+
+<section id="faq" class={styles.section} aria-labelledby="titulo-faq">
+  <div class:list={['wrap', styles.grid]}>
+    <div>
+      <p class="eyebrow">{faq.eyebrow}</p>
+      <h2 id="titulo-faq" class="h2">{faq.heading}</h2>
+    </div>
+    <FaqList items={faq.items} />
+  </div>
+</section>

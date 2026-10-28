@@ -1,0 +1,14 @@
+---
+/** Páginas de servicio — español. URL: /<servicio>/ y de industria (listas cerradas en src/data/services e industries). */
+import type { GetStaticPaths } from 'astro';
+import { SERVICES } from '@/data/services';
+import { INDUSTRY_PAGES } from '@/data/industries';
+import ServicePage from '@/components/pages/ServicePage.astro';
+
+export const getStaticPaths = (() =>
+  [...SERVICES, ...INDUSTRY_PAGES].map((service) => ({ params: { servicio: service.slug.es }, props: { service } }))) satisfies GetStaticPaths;
+
+const { service } = Astro.props;
+---
+
+<ServicePage service={service} />

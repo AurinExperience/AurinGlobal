@@ -1,0 +1,22 @@
+---
+/**
+ * CTA principal: el mismo de aurin.mx (ButtonIsland, texto + flecha). Allá va dentro de un
+ * Tilt de React; aquí no hay React (CLAUDE.md), así que sin inclinación.
+ */
+import ButtonIsland from './ButtonIsland.astro';
+
+interface Props {
+  text?: string;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: string;
+  disabled?: boolean;
+  class?: string;
+  href?: string;
+  /** Versión compacta del header. */
+  small?: boolean;
+}
+
+const props = Astro.props;
+---
+
+<ButtonIsland {...props} variant="primary" />

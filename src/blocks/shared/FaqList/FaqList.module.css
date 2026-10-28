@@ -1,0 +1,31 @@
+.list {
+  --faq-line: var(--color-gray-b);
+  --faq-text: var(--color-gray-a);
+  border-bottom: 1px solid var(--faq-line);
+}
+
+.light {
+  --faq-line: var(--color-black);
+  --faq-text: var(--color-text-dark);
+}
+
+.list details {
+  border-top: 1px solid var(--faq-line);
+  padding: 26px 0;
+}
+
+.list summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  font-size: 21px;
+}
+
+.list summary::-webkit-details-marker { display: none; }
+
+.list p {
+  margin-top: 14px;
+  font-size: 17px;
+  color: var(--faq-text);
+}

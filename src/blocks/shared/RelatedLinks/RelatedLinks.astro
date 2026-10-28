@@ -1,0 +1,28 @@
+---
+/**
+ * Enlaces a las páginas hermanas (otros estados, otros servicios). Existe por SEO, como
+ * NearbyLandings en aurin.mx: sin enlaces internos una página nueva queda huérfana, y el anchor
+ * text le dice a Google qué búsqueda cubre cada una. Va al final: primero la conversión.
+ */
+import styles from './RelatedLinks.module.css';
+
+interface Props {
+  heading: string;
+  description: string;
+  items: { href: string; label: string }[];
+}
+
+const { heading, description, items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <section class={styles.section} aria-labelledby="titulo-relacionados">
+    <div class="wrap">
+      <h2 id="titulo-relacionados" class="h3">{heading}</h2>
+      <p class:list={['muted', styles.text]}>{description}</p>
+      <ul class={styles.list}>
+        {items.map((item) => <li><a href={item.href}>{item.label} <span aria-hidden="true">→</span></a></li>)}
+      </ul>
+    </div>
+  </section>
+)}

@@ -1,0 +1,26 @@
+---
+import type { StateCopy } from '@/data/states';
+import styles from './ServicesIncluded.module.css';
+
+interface Props {
+  services: StateCopy['services'];
+}
+
+const { services } = Astro.props;
+---
+
+<section id="servicios" class={styles.section} aria-labelledby="titulo-servicios">
+  <div class="wrap">
+    <p class="eyebrow eyebrow-tag">{services.eyebrow}</p>
+    <h2 id="titulo-servicios" class:list={['h2', styles.heading]}>{services.heading}</h2>
+    <div class={styles.grid}>
+      {services.items.map((item, i) => (
+        <div class:list={['reveal', styles.item]}>
+          <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class:list={['h3', styles.title]}>{item.title}</h3>
+          <p class={styles.text}>{item.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

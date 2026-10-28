@@ -1,0 +1,39 @@
+---
+/**
+ * Hero de las landings por estado y de las páginas de servicio: H1 + argumentos clave a la
+ * izquierda, formulario arriba del pliegue a la derecha. Sin animaciones decorativas.
+ * Sin botón de "Agenda una llamada": el formulario de al lado ya es esa acción (y el header la repite).
+ */
+import type { StateCopy } from '@/data/states';
+import Grain from '@/components/ui/Grain.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import LeadForm from '../LeadForm/LeadForm.astro';
+import styles from './HeroState.module.css';
+
+interface Props {
+  hero: Omit<StateCopy['hero'], 'points'> & { points?: string[] };
+  source: string;
+}
+
+const { hero, source } = Astro.props;
+---
+
+<section class={styles.section} aria-labelledby="titulo-hero">
+  <Grain id="grain-state" />
+  <div class:list={['wrap', styles.grid]}>
+    <div>
+      <p class="eyebrow rise">{hero.eyebrow}</p>
+      <h1 id="titulo-hero" class:list={['h1 rise rise-2', styles.title]}>{hero.titleLead} <span class="accent">{hero.titleAccent}</span></h1>
+      <p class:list={['muted rise rise-2', styles.lead]}>{hero.description}</p>
+      {hero.points && (
+        <ul class:list={['rise rise-3', styles.points]}>
+          {hero.points.map((point) => <li>{point}</li>)}
+        </ul>
+      )}
+      <div class="actions rise rise-3">
+        <SecondaryButton href="#servicios" text={hero.ctaSecondary} />
+      </div>
+    </div>
+    <LeadForm source={source} />
+  </div>
+</section>

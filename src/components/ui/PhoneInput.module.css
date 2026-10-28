@@ -1,0 +1,54 @@
+.wrapper {
+  display: flex;
+  gap: var(--spacing-2);
+  width: 100%;
+}
+
+/* Contenedor de la lada: la etiqueta visible y, encima, el <select> invisible. */
+.lada {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+}
+
+/* Hereda el look del select del formulario anfitrión. Flecha propia con aire
+   a la derecha. Doble clase: gana a los `width: 100%` de los anfitriones. */
+.wrapper .ladaShown {
+  display: flex;
+  align-items: center;
+  width: auto;
+  white-space: nowrap;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A0A0A0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-3) center;
+  padding-right: calc(var(--spacing-3) * 2 + 12px);
+  color: var(--color-text);
+}
+
+/* El <select> real cubre la etiqueta: el clic y el teclado abren la lista nativa
+   (en celular, el selector del sistema). font-size base: iOS no hace zoom. */
+.ladaSelect {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font-size: var(--font-size-base);
+}
+
+/* La lista abierta muestra nombres: más ancha que la etiqueta "🇲🇽 +52". */
+.ladaSelect::picker(select) {
+  width: max-content;
+}
+
+.lada:has(.ladaSelect:focus-visible) .ladaShown {
+  border-color: var(--color-yellow);
+  outline: 2px solid var(--color-yellow);
+}
+
+.wrapper .number {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+}

@@ -1,0 +1,30 @@
+---
+/** Tres capas en perspectiva: investigación → estructura → pruebas. */
+import type { HomeCopy } from '@/data/home';
+import styles from './Research.module.css';
+
+interface Props {
+  research: HomeCopy['research'];
+}
+
+const { research } = Astro.props;
+const layers = [styles.layer1, styles.layer2, styles.layer3];
+---
+
+<section class={styles.section} aria-labelledby="titulo-investigacion">
+  <div class:list={['wrap', styles.grid]}>
+    <div>
+      <p class="eyebrow">{research.eyebrow}</p>
+      <h2 id="titulo-investigacion" class="h2">{research.heading}</h2>
+      <p class:list={['muted', styles.text]}>{research.text}</p>
+    </div>
+    <div class={styles.scene} aria-hidden="true">
+      {research.layers.map((layer, i) => (
+        <div class:list={[styles.layer, layers[i]]}>
+          <span class={styles.num}>{String(i + 1).padStart(2, '0')}</span>
+          <span class={styles.name}>{layer}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

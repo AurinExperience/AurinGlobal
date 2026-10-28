@@ -1,0 +1,73 @@
+---
+import '@/styles/global.css';
+import { LOCALE, UI, getLangFromUrl } from '@/i18n';
+import AdvancedSEO from '@/blocks/shared/SEO/AdvancedSEO.astro';
+import GlobalSchema from '@/blocks/shared/SEO/GlobalSchema.astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+import WhatsAppButton from '@/components/ui/WhatsAppButton.astro';
+import Analytics from '@/components/ui/Analytics.astro';
+import CookieConsent from '@/components/ui/CookieConsent.astro';
+import { ANALYTICS_ON } from '@/config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  ogType?: string;
+  /** JSON-LD propio de la página. Organization + WebSite los pone GlobalSchema. */
+  structuredData?: object[];
+  noindex?: boolean;
+}
+
+const props = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<!doctype html>
+<html lang={LOCALE[lang].html}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* Fuentes auto-hospedadas, como en aurin.mx: sin la cadena
+        fonts.googleapis.com → fonts.gstatic.com antes del primer texto. Se
+        precargan Clarity City (el cuerpo) y Titillium 300 (los h1, el texto grande del hero):
+        sin esperar a que el CSS las pida, el título no cambia de fuente al cargar. */}
+    <link rel="preload" href="/fonts/clarity-city-100-900-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/titillium-web-300-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <AdvancedSEO {...props} />
+    <GlobalSchema />
+    <Analytics />
+  </head>
+  <body>
+    <a class="sr-only skip-link" href="#main-content">{UI[lang].skip}</a>
+    <slot />
+    <WhatsAppButton />
+    {ANALYTICS_ON && <CookieConsent />}
+    <SpeedInsights />
+  </body>
+</html>
+
+<style is:global>
+  .skip-link:focus {
+    position: fixed;
+    left: 16px;
+    top: 16px;
+    z-index: 10;
+    width: auto;
+    height: auto;
+    clip-path: none;
+    padding: 10px 16px;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    font-weight: var(--font-weight-bold);
+  }
+</style>

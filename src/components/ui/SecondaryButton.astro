@@ -1,0 +1,18 @@
+---
+/** CTA secundario: el mismo de aurin.mx (ButtonIsland, variante oscura). */
+import ButtonIsland from './ButtonIsland.astro';
+
+interface Props {
+  text?: string;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: string;
+  disabled?: boolean;
+  class?: string;
+  href?: string;
+  newTab?: boolean;
+}
+
+const props = Astro.props;
+---
+
+<ButtonIsland {...props} variant="secondary" />

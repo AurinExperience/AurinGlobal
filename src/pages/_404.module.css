@@ -1,0 +1,6 @@
+.main { padding-block: 160px; }
+
+.en {
+  margin-top: var(--spacing-4);
+  font-size: 19px;
+}

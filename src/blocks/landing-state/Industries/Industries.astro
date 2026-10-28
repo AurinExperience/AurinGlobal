@@ -1,0 +1,19 @@
+---
+import type { StateCopy } from '@/data/states';
+import styles from './Industries.module.css';
+
+interface Props {
+  industries: StateCopy['industries'];
+}
+
+const { industries } = Astro.props;
+---
+
+<section class={styles.section} aria-labelledby="titulo-industrias">
+  <div class:list={['wrap', styles.inner]}>
+    <h2 id="titulo-industrias" class:list={['eyebrow', styles.heading]}>{industries.heading}</h2>
+    <ul class={styles.list}>
+      {industries.items.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+.section { padding: 140px 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 96px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .section { padding: 100px 0; }
+  .grid { grid-template-columns: 1fr; gap: 44px; }
+}

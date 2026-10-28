@@ -1,0 +1,157 @@
+/* Negro con una luz lima muy tenue arriba (la luz de la marca) y el logo gigante al fondo */
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(208, 223, 0, .07), transparent 70%),
+    var(--color-black);
+}
+
+
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Columnas ─────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.4fr) repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-12) var(--spacing-10);
+  padding: 64px 0;
+}
+
+.brand img {
+  height: 34px;
+  width: auto;
+}
+
+.brand p {
+  max-width: 280px;
+  margin: var(--spacing-5) 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-gray-a);
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+  margin: var(--spacing-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 50%;
+  color: var(--color-gray-a);
+  transition: color .3s ease, border-color .3s ease, background .3s ease;
+}
+
+.social a:hover {
+  color: var(--color-black);
+  border-color: var(--color-yellow);
+  background: var(--color-yellow);
+}
+
+.col {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-gray-a);
+}
+
+.col :global(.eyebrow) {
+  margin-bottom: var(--spacing-4);
+  color: var(--color-yellow);
+}
+
+.col ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.col address { font-style: normal; }
+
+.col p { margin: var(--spacing-3) 0 0; }
+
+.col a,
+.bottom a,
+.linkButton {
+  color: var(--color-gray-a);
+  text-decoration: none;
+  transition: color .3s ease;
+}
+
+/* "Preferencias de cookies": botón que se ve como los enlaces del pie */
+.linkButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.col a:hover,
+.bottom a:hover,
+.linkButton:hover { color: var(--color-white); }
+
+/* ── Barra final ──────────────────────────────────────────── */
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-3) var(--spacing-8);
+  padding: var(--spacing-6) 0 var(--spacing-8);
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  font-size: 13px;
+  color: var(--color-gray-c);
+}
+
+.bottom p { margin: 0; }
+
+.top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+/* El logo gigante: casi invisible, detrás de las columnas (no suma altura), se desvanece hacia
+   abajo y lo corta el borde */
+.wordmark {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(100%, 1400px);
+  height: auto;
+  translate: -50% 40%;
+  opacity: .06;
+  filter: grayscale(1) brightness(2);
+  mask-image: linear-gradient(to bottom, black 30%, transparent 85%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.minimal .wordmark { display: none; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; padding: 56px 0; }
+  .brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 520px) {
+  .grid { grid-template-columns: 1fr; }
+  .top { margin-left: 0; }
+}

@@ -1,0 +1,25 @@
+---
+/**
+ * 404 real (Astro la sirve con HTTP 404): es lo que le dice a Google que borre
+ * la URL. Nunca redirigir URLs rotas al home: Google lo lee como soft 404.
+ * Bilingüe porque una sola 404 atiende las rutas en español y bajo /en/.
+ */
+import Layout from '@/layouts/Layout.astro';
+import Footer from '@/components/layout/Footer.astro';
+import MainButton from '@/components/ui/MainButton.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import styles from './_404.module.css';
+---
+
+<Layout title="Página no encontrada · Page not found | Aurin" description="La página que buscas no existe. The page you are looking for does not exist." noindex>
+  <main id="main-content" class:list={['wrap', styles.main]}>
+    <p class="eyebrow">404</p>
+    <h1 class="h1">Esta página no existe.</h1>
+    <p class:list={['muted', styles.en]} lang="en">This page does not exist.</p>
+    <div class="actions">
+      <MainButton href="/" text="Ir al inicio" />
+      <SecondaryButton href="/en/" text="Go to home (English)" />
+    </div>
+  </main>
+  <Footer minimal />
+</Layout>

@@ -1,0 +1,22 @@
+/* ================================================================
+   AURIN · aurinux.com — GLOBAL DESIGN SYSTEM
+   Misma organización que aurin.mx: fonts + tokens (idénticos, con
+   extras marcados) + base + utilities. Lo propio de cada componente
+   va en su .module.css.
+   ================================================================ */
+
+@import './fonts.css';
+@import './tokens/typography.css';
+@import './tokens/colors.css';
+@import './tokens/spacing.css';
+
+@import './base.css';
+@import './utilities.css';
+
+@layer tokens, base, utilities;
+
+/* Scrollbar — igual que aurin.mx */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-yellow) var(--color-black);
+}

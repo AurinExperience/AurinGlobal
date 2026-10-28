@@ -1,0 +1,35 @@
+---
+/** Casos de estudio (src/data/cases.ts). Lo usan la home y las páginas de servicio. */
+import type { CaseCard } from '@/data/cases';
+import { serviceById } from '@/data/services';
+import { getLangFromUrl } from '@/i18n';
+import styles from './Cases.module.css';
+
+interface Props {
+  cases: { eyebrow: string; heading: string; link: string; items: CaseCard[] };
+}
+
+const { cases } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<section id="casos" class={styles.section} aria-labelledby="titulo-casos">
+  <div class="wrap">
+    <p class="eyebrow">{cases.eyebrow}</p>
+    <h2 id="titulo-casos" class:list={['h2', styles.heading]}>{cases.heading}</h2>
+    <ul class={styles.list}>
+      {cases.items.map((item) => (
+        <li>
+          <a class:list={['reveal', styles.case]} href={item.href}>
+            <span>
+              <span class={styles.name}>{item.name}</span>
+              <span class={styles.meta}>{item.industry} · {item.services.map((id) => serviceById(id).copy[lang].name).join(', ')}</span>
+            </span>
+            <span class:list={['muted', styles.text]}>{item.text}</span>
+            <span class={styles.link}>{cases.link} <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

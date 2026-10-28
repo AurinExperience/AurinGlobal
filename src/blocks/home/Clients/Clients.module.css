@@ -1,0 +1,58 @@
+.section {
+  /* Sin línea arriba: el hero se funde en negro con esta franja */
+  padding: var(--spacing-8) 0;
+  border-bottom: 1px solid var(--color-gray-b);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-10);
+}
+
+.heading {
+  flex-shrink: 0;
+  margin: 0;
+  color: var(--color-gray-a);
+}
+
+/* Bordes que se desvanecen, como en aurin.mx */
+.slider {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+  /* Se arrastra en horizontal; el scroll vertical de la página sigue funcionando en táctiles */
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+}
+
+.slider:active { cursor: grabbing; }
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 104px;
+  width: max-content;
+  margin: 0;
+  /* El gap también va al final: así la segunda mitad empieza justo donde -50% la deja */
+  padding: 0 104px 0 0;
+  list-style: none;
+  /* Lo mueve el script (translate): avanza solo y se arrastra */
+}
+
+/* Tamaño de cada logo: width/height de los datos (igualan su peso visual).
+   Grises sobre blanco: invertidos quedan claros sobre el negro */
+.track img {
+  display: block;
+  filter: invert(1);
+  opacity: .9;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .inner { flex-direction: column; align-items: stretch; gap: var(--spacing-5); }
+  .heading { text-align: center; }
+  .track { gap: 64px; padding-right: 64px; }
+}

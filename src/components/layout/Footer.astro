@@ -1,0 +1,109 @@
+---
+/**
+ * Pie del sitio. `minimal` en las landings (sin navegación, igual que en aurin.mx): solo marca,
+ * dirección y correo. El completo enlaza a los servicios y a todos los estados publicados (es lo
+ * que evita que una landing nueva quede huérfana desde la home). La dirección es la misma de
+ * Google Business Profile (SITE.address): el NAP visible e idéntico cuenta para el SEO local.
+ */
+import ArrowUp from 'lucide-astro/ArrowUp';
+import Instagram from 'lucide-astro/Instagram';
+import Linkedin from 'lucide-astro/Linkedin';
+import Facebook from 'lucide-astro/Facebook';
+import { UI, getLangFromUrl } from '@/i18n';
+import { ANALYTICS_ON, SITE } from '@/config/site';
+import { privacyPath } from '@/data/privacy';
+import { publishedStates, statePath } from '@/data/states';
+import { SERVICES, servicePath } from '@/data/services';
+import styles from './Footer.module.css';
+
+interface Props {
+  minimal?: boolean;
+}
+
+const { minimal = false } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = UI[lang];
+const home = lang === 'en' ? '/en/' : '/';
+const states = publishedStates();
+const year = new Date().getFullYear();
+const profile = (domain: string) => SITE.sameAs.find((url) => url.includes(domain))!;
+const social = [
+  { href: profile('instagram.com'), label: 'Instagram', Icon: Instagram },
+  { href: profile('linkedin.com'), label: 'LinkedIn', Icon: Linkedin },
+  { href: profile('facebook.com'), label: 'Facebook', Icon: Facebook },
+];
+---
+
+<footer class:list={[styles.footer, minimal && styles.minimal]}>
+  <div class:list={['wrap', styles.inner]}>
+    <div class={styles.grid}>
+      <div class={styles.brand}>
+        <img src="/img/aurin.svg" alt="Aurin" width="134" height="40" loading="lazy" />
+        <p>{t.footer.tagline}</p>
+        {!minimal && (
+          <ul class={styles.social} aria-label={t.footer.follow}>
+            {social.map(({ href, label, Icon }) => (
+              <li>
+                <a href={href} aria-label={label} target="_blank" rel="noopener me">
+                  <Icon size={18} aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {!minimal && (
+        <nav class={styles.col} aria-label={t.footer.services}>
+          <p class="eyebrow">{t.footer.services}</p>
+          <ul>
+            {SERVICES.map((s) => <li><a href={servicePath(s, lang)}>{s.copy[lang].name}</a></li>)}
+          </ul>
+        </nav>
+      )}
+
+      {!minimal && (
+        <nav class={styles.col} aria-label={t.footer.site}>
+          <p class="eyebrow">{t.footer.site}</p>
+          <ul>
+            <li><a href={`${home}#casos`}>{t.nav.cases}</a></li>
+            <li><a href={`${home}#proceso`}>{t.nav.process}</a></li>
+            <li><a href={`${home}#nosotros`}>{t.nav.about}</a></li>
+            <li><a href={`${home}#contacto`}>{t.bookCall}</a></li>
+          </ul>
+        </nav>
+      )}
+
+      {!minimal && states.length > 0 && (
+        <nav class={styles.col} aria-label={t.footer.states}>
+          <p class="eyebrow">{t.footer.states}</p>
+          <ul>
+            {states.map((state) => <li><a href={statePath(state, lang)}>{state.copy[lang].linkLabel}</a></li>)}
+          </ul>
+        </nav>
+      )}
+
+      <div class={styles.col}>
+        <p class="eyebrow">{t.footer.contact}</p>
+        <address>
+          {SITE.address.streetAddress}<br />
+          {SITE.address.postalCode} {t.footer.city}
+        </address>
+        <p>{t.footer.remoteValue}</p>
+        {minimal && <p><a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a></p>}
+      </div>
+    </div>
+
+    <div class={styles.bottom}>
+      <p>© {year} Aurin. {t.footer.rights}</p>
+      {/* Privacidad y cookies alcanzables desde todas las páginas, también las minimal (lo pide la ley) */}
+      <a href={privacyPath(lang)}>{t.footer.privacy}</a>
+      {ANALYTICS_ON && <button type="button" class={styles.linkButton} data-cookie-settings>{t.footer.cookieSettings}</button>}
+      {!minimal && <a href={lang === 'en' ? 'https://aurin.mx/en/' : 'https://aurin.mx/'}>{t.footer.alsoAt}</a>}
+      <a class={styles.top} href="#">{t.footer.backTop} <ArrowUp size={14} aria-hidden="true" /></a>
+    </div>
+  </div>
+
+  {/* El logo gigante, casi invisible, cortado por el borde: la firma del sitio */}
+  <img class={styles.wordmark} src="/img/aurin.svg" alt="" width="669" height="200" loading="lazy" aria-hidden="true" />
+</footer>

@@ -1,0 +1,75 @@
+---
+/**
+ * Meta tags de SEO, Open Graph, Twitter y JSON-LD. Misma pieza que en aurin.mx
+ * (blocks/shared/SEO/AdvancedSEO.astro), con los hreflang de aurinux:
+ * es-US / en-US y x-default al inglés, porque el público es de EE. UU.
+ */
+import { SITE } from '@/config/site';
+import { LANGS, LOCALE, getLangFromUrl, localizedPath } from '@/i18n';
+import { ogPath } from '@/lib/pages';
+
+export interface Props {
+  title: string;
+  description: string;
+  ogType?: string;
+  structuredData?: object[];
+  noindex?: boolean;
+}
+
+const { title, description, ogType = 'website', structuredData = [], noindex = false } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const canonicalURL = `${SITE.url}${Astro.url.pathname}`;
+
+// Miniatura propia por página (src/pages/og/): con una sola imagen genérica,
+// todas las páginas citadas por ChatGPT o Perplexity mostraban la misma.
+const ogImage = noindex ? SITE.ogImage : `${SITE.url}${ogPath(Astro.url.pathname)}`;
+
+const alternates = noindex
+  ? []
+  : [
+      ...LANGS.map((l) => ({ hreflang: LOCALE[l].hreflang, href: `${SITE.url}${localizedPath(Astro.url.pathname, l)}` })),
+      { hreflang: 'x-default', href: `${SITE.url}${localizedPath(Astro.url.pathname, 'en')}` },
+    ];
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content="Aurin" />
+{!noindex && <link rel="canonical" href={canonicalURL} />}
+<link rel="alternate" type="text/plain" href={`${SITE.url}/llms.txt`} title="LLM site index" />
+{alternates.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title} />
+<meta property="og:site_name" content="Aurin" />
+<meta property="og:locale" content={LOCALE[lang].og} />
+{LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LOCALE[l].og} />)}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={title} />
+<meta name="twitter:site" content="@aurinmx" />
+
+{/* Verificación de Search Console y Bing Webmaster por meta (variables en Vercel). Con la propiedad
+    de dominio de Search Console (registro DNS) no hace falta la de Google. Nunca los códigos de aurin.mx. */}
+{import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION && <meta name="google-site-verification" content={import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION} />}
+{import.meta.env.PUBLIC_BING_SITE_VERIFICATION && <meta name="msvalidate.01" content={import.meta.env.PUBLIC_BING_SITE_VERIFICATION} />}
+
+{structuredData.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+
+{/* Un solo `robots`: el acceso de los bots de IA se controla en robots.txt. */}
+<meta
+  name="robots"
+  content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+/>

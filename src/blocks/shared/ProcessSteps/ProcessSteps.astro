@@ -1,0 +1,29 @@
+---
+/** Sección lima del proceso. La home usa 4 pasos y las landings 3: el grid se adapta solo. */
+import type { Step } from '@/data/types';
+import styles from './ProcessSteps.module.css';
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  steps: readonly Step[];
+}
+
+const { eyebrow, heading, steps } = Astro.props;
+---
+
+<section id="proceso" class={styles.section} aria-labelledby="titulo-proceso">
+  <div class="wrap">
+    <p class:list={['eyebrow', styles.eyebrow]}>{eyebrow}</p>
+    <h2 id="titulo-proceso" class:list={['h2', styles.heading]}>{heading}</h2>
+    <ol class={styles.steps}>
+      {steps.map((step, i) => (
+        <li class="reveal">
+          <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class:list={['h3', styles.name]}>{step.name}</h3>
+          <p>{step.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

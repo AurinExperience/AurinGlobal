@@ -1,0 +1,13 @@
+---
+/** State landings — English. URL: /en/<state>/ (same closed list as the Spanish route). */
+import type { GetStaticPaths } from 'astro';
+import { publishedStates } from '@/data/states';
+import StatePage from '@/components/pages/StatePage.astro';
+
+export const getStaticPaths = (() =>
+  publishedStates().map((state) => ({ params: { state: state.slug }, props: { state } }))) satisfies GetStaticPaths;
+
+const { state } = Astro.props;
+---
+
+<StatePage state={state} />

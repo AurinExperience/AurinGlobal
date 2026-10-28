@@ -1,0 +1,103 @@
+---
+/**
+ * Header del sitio, con el look del de aurin.mx (fijo, transparente arriba y vidrio oscuro al
+ * hacer scroll, botón de idioma con globo, círculo lima de menú). A diferencia de allá, los
+ * enlaces se ven en escritorio; en móvil van en un popover nativo (sin MegaMenu).
+ *
+ * El mismo menú en todas las páginas, armado con los datos: servicios, industrias y estados
+ * publicados. Una página nueva en esas listas aparece aquí sola, enlazada desde todo el sitio
+ * (enlazado interno para Google y para la gente). Un grupo vacío no se pinta.
+ * Los grupos abren al pasar el mouse o con el foco (Tab), sin JS: en táctil se usa el popover.
+ */
+import ChevronDown from 'lucide-astro/ChevronDown';
+import Globe from 'lucide-astro/Globe';
+import Menu from 'lucide-astro/Menu';
+import { UI, getLangFromUrl, localizedPath, LOCALE } from '@/i18n';
+import { SERVICES, servicePath } from '@/data/services';
+import { INDUSTRY_PAGES } from '@/data/industries';
+import { publishedStates, statePath } from '@/data/states';
+import MainButton from '@/components/ui/MainButton.astro';
+import styles from './Header.module.css';
+
+interface Props {
+  /** Encima del hero (la foto del faro en la home): no ocupa lugar en el flujo. */
+  overlay?: boolean;
+  /** Destino de "Agenda una llamada": el formulario de la página; sin formulario, el de la home. */
+  cta?: string;
+}
+
+const { overlay = false, cta = '#contacto' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const other = lang === 'es' ? 'en' : 'es';
+const t = UI[lang];
+const home = lang === 'en' ? '/en/' : '/';
+const here = Astro.url.pathname;
+
+const groups = [
+  { label: t.nav.services, items: SERVICES.map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name })) },
+  { label: t.nav.industries, items: INDUSTRY_PAGES.map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name })) },
+  { label: t.nav.states, items: publishedStates().map((s) => ({ href: statePath(s, lang), label: s.name })) },
+].filter((group) => group.items.length > 0);
+
+const links = [
+  { href: `${home}#casos`, label: t.nav.cases },
+  { href: `${home}#nosotros`, label: t.nav.about },
+];
+
+const current = (href: string) => (href === here ? 'page' : undefined);
+---
+
+<header class:list={[styles.header, overlay && styles.overlay]}>
+  <div class:list={['wrap', styles.inner]}>
+    <a href={home} aria-label={t.homeLabel} class={styles.logo}>
+      <img src="/img/aurin.svg" alt="" width="134" height="40" />
+      <span class={styles.logoDot} aria-hidden="true"></span>
+    </a>
+    <nav class={styles.nav} aria-label={lang === 'es' ? 'Principal' : 'Main'}>
+      {groups.map((group) => (
+        <div class={styles.group}>
+          <button type="button" class:list={[styles.trigger, group.items.some((i) => i.href === here) && styles.active]}>
+            {group.label}<ChevronDown size={16} stroke-width={2.5} aria-hidden="true" />
+          </button>
+          <ul class={styles.panel}>
+            {group.items.map((item) => <li><a href={item.href} aria-current={current(item.href)}>{item.label}</a></li>)}
+          </ul>
+        </div>
+      ))}
+      {links.map((item) => <a class={styles.link} href={item.href}>{item.label}</a>)}
+    </nav>
+    <div class={styles.actions}>
+      <a
+        class={styles.lang}
+        href={localizedPath(here, other)}
+        hreflang={LOCALE[other].hreflang}
+        lang={LOCALE[other].html}
+        aria-label={t.switchLang.label}
+      ><Globe size={18} /><span>{t.switchLang.short}</span></a>
+      <span class={styles.cta}><MainButton href={cta} text={t.bookCall} small /></span>
+      <button class={styles.menuBtn} popovertarget="menu-movil" aria-label={t.menu.open}>
+        <Menu size={22} strokeWidth={2.5} />
+      </button>
+    </div>
+  </div>
+  <nav id="menu-movil" popover class={styles.sheet} aria-label={t.menu.label}>
+    {groups.map((group) => (
+      <div class={styles.sheetGroup}>
+        <p class="eyebrow">{group.label}</p>
+        {group.items.map((item) => <a href={item.href} aria-current={current(item.href)}>{item.label}</a>)}
+      </div>
+    ))}
+    <div class={styles.sheetGroup}>
+      {links.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+    <MainButton href={cta} text={t.bookCall} />
+  </nav>
+</header>
+
+<script>
+  // Un ancla de la misma página no cierra el popover sola
+  const sheet = document.getElementById('menu-movil');
+  sheet?.addEventListener('click', (e) => {
+    if ((e.target as Element).closest('a')) sheet.hidePopover();
+  });
+</script>

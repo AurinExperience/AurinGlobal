@@ -1,0 +1,93 @@
+---
+/**
+ * Franja de clientes: carrusel infinito con los logos de aurin.mx (SliderClients de allá).
+ * La lista va dos veces para el loop; la segunda copia está oculta para lectores y crawlers.
+ * Avanza solo, se pausa con el mouse encima y se puede arrastrar con el dedo o el mouse.
+ */
+import type { HomeCopy } from '@/data/home';
+import styles from './Clients.module.css';
+
+interface Props {
+  clients: HomeCopy['clients'];
+}
+
+const { clients } = Astro.props;
+const items = [...clients.items, ...clients.items];
+---
+
+<section class={styles.section} aria-labelledby="titulo-clientes" data-clients>
+  <div class:list={['wrap', styles.inner]}>
+    <h2 id="titulo-clientes" class:list={['eyebrow', styles.heading]}>{clients.heading}</h2>
+    <div class={styles.slider}>
+      <ul class={styles.track}>
+        {items.map((client, i) => {
+          const copy = i >= clients.items.length;
+          return (
+            <li aria-hidden={copy ? 'true' : undefined}>
+              <img
+                src={client.logo}
+                alt={copy ? '' : client.name}
+                width={client.w}
+                height={client.h}
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                draggable="false"
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  const SPEED = 30; // px por segundo
+  const section = document.querySelector<HTMLElement>('[data-clients]');
+  const slider = section?.querySelector<HTMLElement>('ul')?.parentElement;
+  const track = section?.querySelector<HTMLElement>('ul');
+  if (slider && track) {
+    const auto = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let x = 0;
+    let half = 1;
+    let drag: number | null = null; // última posición del puntero mientras se arrastra
+    let hover = false;
+    let raf = 0;
+    let last = 0;
+
+    // La segunda mitad repite la primera: x siempre en (-half, 0], el salto no se ve
+    const place = () => {
+      x = (x % half) - (x > 0 ? half : 0);
+      track.style.translate = `${x}px`;
+    };
+    new ResizeObserver(() => (half = track.scrollWidth / 2 || 1)).observe(track);
+
+    const frame = (now: number) => {
+      if (auto && drag === null && !hover && last) x -= (SPEED * (now - last)) / 1000;
+      last = now;
+      place();
+      raf = requestAnimationFrame(frame);
+    };
+    new IntersectionObserver(([entry]) => {
+      cancelAnimationFrame(raf);
+      last = 0;
+      if (entry.isIntersecting) raf = requestAnimationFrame(frame);
+    }).observe(slider);
+
+    slider.addEventListener('pointerenter', (e) => (hover = e.pointerType === 'mouse'));
+    slider.addEventListener('pointerleave', () => (hover = false));
+    slider.addEventListener('pointerdown', (e) => {
+      drag = e.clientX;
+      slider.setPointerCapture(e.pointerId);
+    });
+    slider.addEventListener('pointermove', (e) => {
+      if (drag === null) return;
+      x += e.clientX - drag;
+      drag = e.clientX;
+    });
+    const release = () => (drag = null);
+    slider.addEventListener('pointerup', release);
+    slider.addEventListener('pointercancel', release);
+  }
+</script>

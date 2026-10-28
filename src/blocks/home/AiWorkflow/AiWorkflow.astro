@@ -1,0 +1,33 @@
+---
+/** Cómo usamos la IA en el proceso (fondo blanco). */
+import type { HomeCopy } from '@/data/home';
+import styles from './AiWorkflow.module.css';
+
+interface Props {
+  ai: HomeCopy['ai'];
+}
+
+const { ai } = Astro.props;
+---
+
+<section id="ia" class={styles.section} aria-labelledby="titulo-ia">
+  <div class:list={['wrap', styles.grid]}>
+    <div class={styles.intro}>
+      <p class="eyebrow eyebrow-tag">{ai.eyebrow}</p>
+      <h2 id="titulo-ia" class="h2">{ai.heading}</h2>
+      <p class={styles.text}>{ai.text}</p>
+      <p class={styles.note}>{ai.note}</p>
+    </div>
+    <ol class={styles.list}>
+      {ai.items.map((item, i) => (
+        <li class:list={['reveal', styles.item]}>
+          <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h3 class="h3">{item.title}</h3>
+            <p class={styles.itemText}>{item.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+---
+/**
+ * Home — la usan pages/index.astro (ES) y pages/en/index.astro (EN). El idioma
+ * sale de la URL; todo el copy vive en src/data/home.ts.
+ */
+import { HOME } from '@/data/home';
+import { SERVICES, servicePath } from '@/data/services';
+import { caseCards } from '@/data/cases';
+import { SITE, ORG_ID } from '@/config/site';
+import { UI, getLangFromUrl } from '@/i18n';
+import { faqSchema } from '@/lib/seo';
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import CtaBanner from '@/components/layout/CtaBanner.astro';
+import ProcessSteps from '@/blocks/shared/ProcessSteps/ProcessSteps.astro';
+import { HeroHome, Clients, ServicesList, IndustriesGrid, Research, AiWorkflow, Cases, UsTeam, AboutFaq } from '@/blocks/home';
+
+const lang = getLangFromUrl(Astro.url);
+const copy = HOME[lang];
+const t = UI[lang];
+
+// Cada fila enlaza a su página de servicio (el contenido largo vive allá)
+const serviceRows = SERVICES.map((service) => ({
+  title: service.copy[lang].name,
+  text: service.copy[lang].summary,
+  tags: service.copy[lang].tags,
+  href: servicePath(service, lang),
+}));
+
+// Un Service por servicio visible, con el mismo nombre y texto que la sección
+const services = serviceRows.map((item) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: item.title,
+  serviceType: item.title,
+  description: item.text,
+  provider: { '@id': ORG_ID },
+  areaServed: { '@type': 'Country', name: 'United States' },
+  url: `${SITE.url}${item.href}`,
+}));
+
+---
+
+<Layout title={copy.seo.title} description={copy.seo.description} structuredData={[...services, faqSchema(copy.faq)]}>
+  <Header overlay />
+  <main id="main-content">
+    <HeroHome hero={copy.hero} />
+    <Clients clients={copy.clients} />
+    <ServicesList services={{ ...copy.services, items: serviceRows }} />
+    <IndustriesGrid industries={copy.industries} />
+    <Research research={copy.research} />
+    <AiWorkflow ai={copy.ai} />
+    <ProcessSteps {...copy.process} />
+    <Cases cases={{ ...copy.cases, items: caseCards(copy.cases.ids, lang) }} />
+    <UsTeam us={copy.us} />
+    <AboutFaq about={copy.about} faq={copy.faq} />
+    {/* La home no tiene formulario: este bloque es el destino de "Agenda una llamada". */}
+    <CtaBanner {...copy.cta} id="contacto" href="#" />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,55 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 88px 0 112px;
+  background: radial-gradient(60% 60% at 80% 30%, rgba(208, 223, 0, .16), transparent 70%), var(--color-black);
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.title { font-size: clamp(40px, 4.4vw, 60px); }
+
+.lead {
+  margin-top: var(--spacing-8);
+  font-size: 19px;
+  max-width: 540px;
+}
+
+/* La luz de la marca como viñeta: un punto lima encendido */
+.points {
+  display: grid;
+  gap: var(--spacing-3);
+  margin: var(--spacing-8) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+}
+
+.points li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.points li::before {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  box-shadow: 0 0 10px 2px rgba(208, 223, 0, .55);
+}
+
+@media (max-width: 900px) {
+  .section { padding: 64px 0 88px; }
+  .grid { grid-template-columns: 1fr; gap: 48px; }
+}

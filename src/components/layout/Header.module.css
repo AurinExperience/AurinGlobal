@@ -1,0 +1,294 @@
+/* Como aurin.mx: transparente arriba, vidrio oscuro al bajar. Sticky en las landings
+   (ocupa su lugar), fijo encima del hero en la home */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.overlay { position: fixed; inset: 0 0 auto; }
+
+/* Al bajar aparece un vidrio negro de lado a lado: mucho desenfoque (la página se intuye detrás),
+   un hairline abajo y nada más. Es una capa aparte, así el scroll solo anima su opacidad (CLAUDE.md) */
+.header::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+  /* .8: sobre las secciones blancas queda casi negro, no gris */
+  background: rgba(0, 0, 0, .8);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  opacity: 0;
+}
+
+@supports (animation-timeline: scroll()) {
+  .header::before {
+    animation: glass linear both;
+    animation-timeline: scroll();
+    animation-range: 0 120px;
+  }
+}
+
+/* Sin scroll-driven animations (o con reduced-motion, que las apaga en base.css): la barra se ve siempre */
+@supports not (animation-timeline: scroll()) {
+  .header::before { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header::before { opacity: 1; }
+}
+
+@keyframes glass {
+  to { opacity: 1; }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-6);
+  height: 80px;
+}
+
+.logo {
+  display: inline-flex;
+  position: relative;
+  flex-shrink: 0;
+  transition: opacity .3s ease;
+}
+
+.logo:hover { opacity: .8; }
+
+.logo img {
+  height: 36px;
+  width: auto;
+  filter: brightness(.85);
+}
+
+/* La luz: el punto de la "i" del logo (motivo de marca) */
+.logoDot {
+  position: absolute;
+  left: 71.8%;
+  top: 10.7%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--color-white);
+  animation: igniteDot 1s var(--ease-out) .4s both, pulseGlow 3.6s ease-in-out 1.4s infinite;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.link,
+.trigger,
+.panel a,
+.sheet a {
+  position: relative;
+  font-size: 17px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color .3s ease;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.trigger svg { transition: transform .3s ease; }
+
+/* Subrayado lima de aurin.mx, con scaleX en vez de width */
+.link::after,
+.trigger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  background: var(--color-yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+
+.link:hover,
+.group:hover .trigger,
+.group:focus-within .trigger,
+.active,
+.panel a:hover,
+.sheet a:hover,
+.panel [aria-current],
+.sheet [aria-current] { color: var(--color-yellow); }
+
+.link:hover::after,
+.active::after { transform: scaleX(1); }
+
+.group:hover .trigger svg,
+.group:focus-within .trigger svg { transform: rotate(180deg); }
+
+/* Grupo desplegable. El padding de arriba es un puente invisible: el mouse no lo pierde al bajar */
+.group { position: relative; }
+
+.panel {
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  min-width: 240px;
+  margin: 0;
+  padding: 18px 0 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 6px;
+  transition: opacity .2s ease, translate .2s ease, visibility 0s .2s;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 18px 0 0;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 12px;
+  background: #0a0a0a;
+}
+
+.panel li:first-child { padding-top: 10px; }
+
+.panel li:last-child { padding-bottom: 10px; }
+
+.panel a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.group:hover .panel,
+.group:focus-within .panel {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+  transition-delay: 0s;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(208, 223, 0, .3);
+  border-radius: 8px;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 15px;
+  line-height: 1;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background .3s ease, border-color .3s ease;
+}
+
+.lang:hover {
+  background: rgba(208, 223, 0, .1);
+  border-color: var(--color-yellow);
+}
+
+/* Círculo lima de aurin.mx; solo en móvil, donde los enlaces no caben */
+.menuBtn {
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  color: #0a0a0a;
+  cursor: pointer;
+}
+
+.sheet {
+  inset: 80px 16px auto auto;
+  margin: 0;
+  width: min(320px, calc(100vw - 32px));
+  padding: var(--spacing-6);
+  flex-direction: column;
+  gap: var(--spacing-5);
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 16px;
+  background: rgba(10, 10, 10, .92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--color-text);
+}
+
+.sheet:popover-open { display: flex; }
+
+/* El menú crece con cada industria o estado: con muchos, hace scroll por dentro */
+.sheet {
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.sheetGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.sheetGroup + .sheetGroup {
+  padding-top: var(--spacing-5);
+  border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+@media (max-width: 1100px) {
+  .nav { gap: 24px; }
+  .link, .trigger { font-size: 16px; }
+}
+
+@media (max-width: 968px) {
+  .nav,
+  .cta { display: none; }
+  .menuBtn { display: grid; }
+  .actions { gap: 12px; }
+}
+
+@media (max-width: 640px) {
+  .inner { height: 68px; }
+  .logo img { height: 28px; }
+  .lang { padding: 6px 10px; font-size: 13px; }
+  .menuBtn { width: 40px; height: 40px; }
+  .sheet { inset-block-start: 68px; }
+}
+
+@keyframes igniteDot {
+  0% { opacity: 0; transform: scale(.3); }
+  55% { opacity: 1; transform: scale(1.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 8px 3px rgba(208, 223, 0, .7); }
+  50% { box-shadow: 0 0 18px 8px rgba(208, 223, 0, .95); }
+}

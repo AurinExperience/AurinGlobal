@@ -1,0 +1,80 @@
+---
+/**
+ * Formulario de las landings y páginas de servicio. Envía a /api/contact (correo con Resend).
+ * Con JS manda por fetch y muestra el resultado aquí mismo; sin JS es un POST normal y el
+ * endpoint regresa a la página con ?enviado=1|0. `source` dice de qué página vino el lead.
+ */
+import { UI, getLangFromUrl } from '@/i18n';
+import MainButton from '@/components/ui/MainButton.astro';
+import PhoneInput from '@/components/ui/PhoneInput.astro';
+import styles from './LeadForm.module.css';
+
+interface Props {
+  /** Origen del lead, p. ej. "landing-texas". */
+  source: string;
+}
+
+const { source } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = UI[lang];
+---
+
+<form id="contacto" class:list={['rise rise-3', styles.form]} aria-labelledby="titulo-formulario" method="post" action="/api/contact/" data-lead-form={source}>
+  <h2 id="titulo-formulario" class:list={['h3', styles.title]}>{t.form.title}</h2>
+  <p class:list={['muted', styles.intro]}>{t.form.intro}</p>
+  <input type="hidden" name="source" value={source} />
+  <input type="hidden" name="lang" value={lang} />
+  {/* Trampa para bots: oculto para personas y lectores de pantalla */}
+  <input class={styles.trap} type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <div class={styles.row}>
+    <label class={styles.field}>{t.form.name}
+      <input type="text" name="name" autocomplete="name" required /></label>
+    <label class={styles.field}>{t.form.company}
+      <input type="text" name="company" autocomplete="organization" /></label>
+  </div>
+  <div class={styles.row}>
+    <label class={styles.field}>{t.form.email}
+      <input type="email" name="email" autocomplete="email" required /></label>
+    <div class={styles.field}>
+      <label for="lead-phone">{t.form.phone}</label>
+      <PhoneInput id="lead-phone" name="phone" placeholder="(555) 123-4567" inputClass={styles.control} selectClass={styles.control} />
+    </div>
+  </div>
+  <label class={styles.field}>{t.form.need}
+    <select name="service">
+      {t.form.options.map((option) => <option>{option}</option>)}
+    </select></label>
+  <MainButton type="submit" text={t.bookCallLong} class={styles.submit} />
+  <p class:list={['muted', styles.note]}>{t.form.note}</p>
+  <p class={styles.status} role="status" data-status data-sending={t.form.sending} data-success={t.form.success} data-error={t.form.error}></p>
+</form>
+
+<script>
+  for (const form of document.querySelectorAll<HTMLFormElement>('[data-lead-form]')) {
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    const button = form.querySelector<HTMLButtonElement>('[type="submit"]');
+    const show = (key: 'sending' | 'success' | 'error') => {
+      status.textContent = status.dataset[key]!;
+      status.dataset.state = key;
+    };
+
+    // Vuelta del envío sin JS
+    const sent = new URLSearchParams(location.search).get('enviado');
+    if (sent) show(sent === '1' ? 'success' : 'error');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      show('sending');
+      if (button) button.disabled = true;
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } }).catch(() => null);
+      const ok = res?.ok && (await res.json().catch(() => null))?.ok;
+      show(ok ? 'success' : 'error');
+      if (ok) {
+        // Conversión en GA4/Clarity (si hay analítica y consentimiento)
+        (window as any).aurinTrack?.('generate_lead', { form_id: form.dataset.leadForm });
+        form.reset();
+      }
+      if (button) button.disabled = false;
+    });
+  }
+</script>

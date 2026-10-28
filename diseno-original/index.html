@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Agencia de UX/UI y desarrollo web para empresas en EE. UU. | Aurin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aurin es una agencia de UX/UI, branding y desarrollo web con clientes en Estados Unidos, Canadá y Latinoamérica. Diseño basado en investigación y cotizaciones por etapa.">
+<link rel="canonical" href="https://aurinux.com/">
+<meta property="og:title" content="Aurin · UX/UI y desarrollo web">
+<meta property="og:description" content="UX/UI, branding y desarrollo web basados en investigación, para empresas que quieren crecer.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aurinux.com/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://aurinux.com/#org","name":"Aurin","url":"https://aurinux.com/","logo":"https://aurinux.com/logo.svg","foundingDate":"1998","address":{"@type":"PostalAddress","addressLocality":"Cuernavaca","addressRegion":"Morelos","addressCountry":"MX"},"areaServed":["US","CA","ES","MX"]},
+{"@type":"WebSite","@id":"https://aurinux.com/#site","url":"https://aurinux.com/","name":"Aurin","inLanguage":"es","publisher":{"@id":"https://aurinux.com/#org"}},
+{"@type":"Service","serviceType":"Diseño UX/UI","provider":{"@id":"https://aurinux.com/#org"},"areaServed":"US"},
+{"@type":"Service","serviceType":"Desarrollo web","provider":{"@id":"https://aurinux.com/#org"},"areaServed":"US"},
+{"@type":"Service","serviceType":"Branding","provider":{"@id":"https://aurinux.com/#org"},"areaServed":"US"},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué hace diferente a Aurin de otras agencias?","acceptedAnswer":{"@type":"Answer","text":"Estrategia, diseño y desarrollo en un mismo equipo, así nada se pierde entre una etapa y otra."}},
+{"@type":"Question","name":"¿Cómo empiezo un proyecto con Aurin?","acceptedAnswer":{"@type":"Answer","text":"Agenda una llamada de 30 minutos. Te enviamos una propuesta por etapas con entregables, fechas e inversión clara."}},
+{"@type":"Question","name":"¿Trabajan con empresas fuera de México?","acceptedAnswer":{"@type":"Answer","text":"Sí. Trabajamos en remoto con empresas de Estados Unidos, Canadá, España y Latinoamérica."}}
+]}
+]}
+</script>
+<link rel="preload" href="assets/fonts/clarity-city-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Clarity City';src:url(assets/fonts/clarity-city-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Clarity City';src:url(assets/fonts/clarity-city-latin-600-normal.woff2) format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Clarity City';src:url(assets/fonts/clarity-city-latin-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
+body{margin:0;background:#000;color:#FFFFFF;font-family:'Clarity City',sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible{outline:2px solid #D0DF00;outline-offset:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 48px;box-sizing:border-box}
+.eyebrow{margin:0 0 20px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:#D0DF00}
+.h1{font-family:'Titillium Web',sans-serif;font-weight:300;font-size:68px;line-height:1.04;letter-spacing:-0.02em;margin:0}
+.h2{font-family:'Titillium Web',sans-serif;font-weight:300;font-size:48px;line-height:1.08;letter-spacing:-0.015em;margin:0}
+.h3{font-family:'Titillium Web',sans-serif;font-weight:600;font-size:22px;line-height:1.25;margin:0}
+.muted{color:#A3A69F}
+.btn{display:inline-block;background:#D0DF00;color:#000;font-family:'Titillium Web',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.02em;padding:17px 28px;text-decoration:none;transition:box-shadow .3s}
+.btn:hover{box-shadow:0 0 42px 4px rgba(208,223,0,.45)}
+.btn-line{display:inline-block;color:#FFFFFF;font-family:'Titillium Web',sans-serif;font-weight:600;font-size:16px;padding:15px 0;text-decoration:none;border-bottom:1px solid #FFFFFF}
+.grain{position:absolute;inset:0;width:100%;height:100%;opacity:.07;pointer-events:none;mix-blend-mode:overlay}
+.row{display:grid;grid-template-columns:80px 1fr 1.1fr;gap:40px;padding:38px 0;border-top:1px solid #000;align-items:start}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.steps>div{border-left:1px solid #000;padding:0 28px}
+.steps>div:first-child{border-left:none;padding-left:0}
+.case{display:grid;grid-template-columns:1.3fr 1fr auto;gap:40px;align-items:center;padding:44px 0;border-top:1px solid #2A2A28;text-decoration:none;transition:padding .35s}
+.case:hover{padding-left:20px}
+.card3d{transform-style:preserve-3d;transition:transform .5s;border:1px solid #2A2A28;background:linear-gradient(180deg,#0E0F08,#000);padding:36px;box-sizing:border-box}
+.card3d:hover{transform:rotateX(6deg) rotateY(-8deg) translateZ(20px)}
+
+/* ---- HERO: una luz, tres caminos ---- */
+.hero-art{position:relative;height:440px}
+.hero-prism{position:absolute;left:0;top:0;width:560px;height:440px;perspective:1100px;transform-origin:0 0}
+.glow-lime{position:absolute;left:70px;top:70px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(208,223,0,.32),transparent 65%);animation:glowIn 2.4s ease .6s both}
+.prism{position:absolute;left:120px;top:100px;width:150px;height:240px;transform-style:preserve-3d;animation:spin 30s linear infinite}
+.pf{position:absolute;inset:0;transform:rotateY(var(--r)) translateZ(75px);border:1px solid rgba(208,223,0,.5);box-sizing:border-box}
+.pf-glass{background:linear-gradient(170deg,rgba(255,255,255,.34),rgba(255,255,255,.04) 42%,rgba(208,223,0,.16))}
+.pf-dark{background:linear-gradient(170deg,#14170B,#000 70%)}
+.pf-lime{background:linear-gradient(170deg,#F2FB55,#D0DF00 48%,#6F7A00)}
+.rays{position:absolute;left:0;top:0;width:560px;height:440px;overflow:visible}
+.ray{fill:none;stroke:url(#rayGrad);stroke-width:1.5;stroke-dasharray:100;stroke-dashoffset:100;animation:drawRay 1.4s cubic-bezier(.4,0,.2,1) both}
+.ray-1{animation-delay:1.5s}
+.ray-2{animation-delay:1.65s}
+.ray-3{animation-delay:1.8s}
+.beam-in{fill:none;stroke:url(#inGrad);stroke-width:2;stroke-dasharray:100;stroke-dashoffset:100;animation:drawRay 1.1s cubic-bezier(.6,0,.2,1) .2s both;filter:drop-shadow(0 0 6px rgba(208,223,0,.9))}
+.src{position:absolute;left:-5px;top:215px;width:10px;height:10px;border-radius:50%;background:#FFF;box-shadow:0 0 18px 6px rgba(208,223,0,.9);animation:igniteDot 1s cubic-bezier(.2,.7,.2,1) .1s both}
+.pl{position:absolute;left:420px;text-decoration:none;white-space:nowrap;animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) both}
+.pl-1{top:62px;animation-delay:1.9s}
+.pl-2{top:192px;animation-delay:2.05s}
+.pl-3{top:322px;animation-delay:2.2s}
+.pl .pn{display:block;font-size:11px;letter-spacing:.2em;color:#D0DF00}
+.pl b{display:block;font-family:'Titillium Web',sans-serif;font-weight:600;font-size:22px;line-height:1.25;color:#FFFFFF;transition:color .3s}
+.pl span.ds{display:block;font-size:14px;color:#A3A69F}
+.pl:hover b{color:#D0DF00}
+
+.rise{animation:blurIn 1.3s cubic-bezier(.2,.7,.2,1) both}
+.rise-2{animation-delay:.15s}
+.rise-3{animation-delay:.3s}
+.logo-dot{position:absolute;left:71.8%;top:10.7%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#FFF;animation:igniteDot 1s cubic-bezier(.2,.7,.2,1) .4s both,pulseGlow 3.6s ease-in-out 1.4s infinite}
+
+@keyframes spin{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+@keyframes drawRay{to{stroke-dashoffset:0}}
+@keyframes glowIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+@keyframes igniteDot{0%{opacity:0;transform:scale(.3)}55%{opacity:1;transform:scale(1.5)}100%{opacity:1;transform:scale(1)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 8px 3px rgba(208,223,0,.7)}50%{box-shadow:0 0 18px 8px rgba(208,223,0,.95)}}
+@keyframes fadeUp{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
+@keyframes blurIn{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
+@keyframes revealIn{from{opacity:0;translate:0 44px}to{opacity:1;translate:0 0}}
+@supports (animation-timeline:view()){
+.row,.card3d,.case,.steps>div{animation:revealIn linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+}
+@media (prefers-reduced-motion:reduce){
+.rise,.logo-dot,.prism,.glow-lime,.ray,.beam-in,.src,.pl,.row,.card3d,.case,.steps>div{animation:none !important}
+.ray,.beam-in{stroke-dashoffset:0}
+.pl{opacity:1}
+}
+@media (max-width:900px){
+.wrap{padding:0 22px}
+.h1{font-size:44px !important}
+.h2{font-size:32px !important}
+.split,.steps{grid-template-columns:1fr !important;gap:44px !important}
+.steps>div{border-left:none !important;padding:0 !important}
+.row,.case{grid-template-columns:1fr !important;gap:14px !important}
+.hide-m{display:none !important}
+.grid3{grid-template-columns:1fr !important}
+.hero-art{height:290px;overflow:hidden}
+.hero-prism{transform:scale(.6);transform-origin:0 0}
+}
+</style>
+</head>
+<body>
+<div style="width:100%;box-sizing:border-box">
+
+<!-- ENCABEZADO -->
+<header style="background:#000;position:relative;z-index:5;border-bottom:1px solid #161614">
+<div class="wrap" style="display:flex;align-items:center;justify-content:space-between;height:88px">
+<a href="/" aria-label="Aurin, inicio" style="display:inline-flex;position:relative"><img src="assets/img/aurin.svg" alt="Aurin, agencia de UX/UI y desarrollo web" style="height:28px;width:auto;display:block"><span class="logo-dot" aria-hidden="true"></span></a>
+<nav class="hide-m" aria-label="Principal" style="display:flex;gap:40px;font-size:15px">
+<a href="#servicios" style="text-decoration:none;color:#C9CBC6">Servicios</a>
+<a href="#casos" style="text-decoration:none;color:#C9CBC6">Casos</a>
+<a href="#proceso" style="text-decoration:none;color:#C9CBC6">Proceso</a>
+<a href="#nosotros" style="text-decoration:none;color:#C9CBC6">Nosotros</a>
+</nav>
+<a href="#contacto" class="btn" style="padding:12px 20px;font-size:15px">Agenda una llamada</a>
+</div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section aria-labelledby="titulo-hero" style="position:relative;overflow:hidden;padding:120px 0 150px;background:radial-gradient(50% 50% at 75% 45%,rgba(208,223,0,.1),transparent 70%),#000">
+<svg class="grain" aria-hidden="true"><filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grainF)"/></svg>
+<div class="wrap split" style="align-items:center;position:relative">
+<div>
+<p class="eyebrow rise">UX/UI · Branding · Desarrollo web</p>
+<h1 id="titulo-hero" class="h1 rise rise-2">Una estrategia, <span style="color:#D0DF00;font-weight:600">tres caminos</span> para que tu negocio crezca.</h1>
+<p class="muted rise rise-2" style="margin:32px 0 0;font-size:19px;max-width:540px">Investigamos a tus usuarios, diseñamos la experiencia que los lleva a decidir y la construimos en un mismo equipo. Confían en nosotros empresas de Estados Unidos, Canadá y Latinoamérica.</p>
+<div class="rise rise-3" style="display:flex;gap:30px;align-items:center;margin-top:48px;flex-wrap:wrap">
+<a href="#contacto" class="btn">Agenda una llamada gratis de 30 min</a>
+<a href="#casos" class="btn-line">Ver casos de estudio</a>
+</div>
+<ul class="rise rise-3" style="list-style:none;margin:34px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:14px;color:#C9CBC6">
+<li>✦ Cotización itemizada por etapa</li><li>✦ Equipo remoto</li><li>✦ Desde 1998</li>
+</ul>
+</div>
+
+<div class="hero-art rise rise-3" style="position:relative">
+<div class="hero-prism" aria-hidden="true">
+<div class="glow-lime"></div>
+<svg class="rays" viewBox="0 0 560 440" aria-hidden="true">
+<defs>
+<linearGradient id="inGrad" gradientUnits="userSpaceOnUse" x1="0" y1="220" x2="120" y2="220"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".6" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D0DF00"/></linearGradient>
+<linearGradient id="rayGrad" gradientUnits="userSpaceOnUse" x1="270" y1="220" x2="404" y2="220"><stop offset="0" stop-color="#D0DF00"/><stop offset="1" stop-color="#D0DF00" stop-opacity=".35"/></linearGradient>
+</defs>
+<path class="beam-in" pathLength="100" d="M0 220 L120 220"/>
+<path class="ray ray-1" pathLength="100" d="M270 220 C330 220 336 90 404 90"/>
+<path class="ray ray-2" pathLength="100" d="M270 220 L404 220"/>
+<path class="ray ray-3" pathLength="100" d="M270 220 C330 220 336 350 404 350"/>
+</svg>
+<span class="src"></span>
+<div class="prism">
+<div class="pf pf-glass" style="--r:0deg"></div>
+<div class="pf pf-dark" style="--r:90deg"></div>
+<div class="pf pf-lime" style="--r:180deg"></div>
+<div class="pf pf-glass" style="--r:270deg"></div>
+</div>
+</div>
+<nav class="hero-labels" aria-label="Servicios" style="position:absolute;left:0;top:0;width:560px;height:440px;pointer-events:none">
+<a class="pl pl-1" href="#servicios" style="pointer-events:auto"><span class="pn">01</span><b>UX/UI Design</b><span class="ds">Investigación y flujos</span></a>
+<a class="pl pl-2" href="#servicios" style="pointer-events:auto"><span class="pn">02</span><b>Desarrollo web</b><span class="ds">Sitios y aplicaciones</span></a>
+<a class="pl pl-3" href="#servicios" style="pointer-events:auto"><span class="pn">03</span><b>Branding</b><span class="ds">Identidad y guía de marca</span></a>
+</nav>
+</div>
+</div>
+</section>
+
+<!-- CLIENTES -->
+<section aria-label="Clientes" style="padding:48px 0;border-top:1px solid #2A2A28;border-bottom:1px solid #2A2A28">
+<div class="wrap" style="display:flex;flex-wrap:wrap;gap:20px 48px;align-items:center;justify-content:space-between">
+<p class="eyebrow" style="margin:0;color:#A3A69F">Confían en nosotros</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px 44px;font-family:'Titillium Web',sans-serif;font-weight:300;font-size:21px">
+<span>Galicia</span><span>Latiz</span><span>Monetix</span><span>Orquesta Sinfónica de Minería</span><span>Fruit Academy</span><span>Grupo Estrella</span>
+</div>
+</div>
+</section>
+
+<!-- SERVICIOS (blanco) -->
+<section id="servicios" aria-labelledby="titulo-servicios" style="background:#FFFFFF;color:#000;padding:140px 0">
+<div class="wrap">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:32px;margin-bottom:72px">
+<div>
+<p class="eyebrow" style="color:#000;background:#D0DF00;display:inline-block;padding:4px 10px;margin-bottom:24px">Servicios</p>
+<h2 id="titulo-servicios" class="h2" style="max-width:760px">Diseño que se entiende, se usa y convierte.</h2>
+</div>
+<p style="margin:0;max-width:340px;color:#4A4B47">Tres disciplinas, un solo equipo. Estrategia, diseño y código conectados desde la primera llamada hasta el lanzamiento.</p>
+</div>
+
+<article class="row" style="border-top:1px solid #000">
+<span style="font-family:'Titillium Web',sans-serif;font-weight:600;color:#4A4B47">01</span>
+<h3 class="h3" style="font-size:32px">UX/UI Design</h3>
+<div>
+<p style="margin:0;color:#4A4B47">Investigación con usuarios, arquitectura de información, prototipos y sistemas de diseño. Interfaces que la gente entiende desde el primer uso.</p>
+<p style="margin:14px 0 0;font-size:14px;font-weight:600">Investigación de usuarios · Prototipos · Sistemas de diseño</p>
+</div>
+</article>
+
+<article class="row">
+<span style="font-family:'Titillium Web',sans-serif;font-weight:600;color:#4A4B47">02</span>
+<h3 class="h3" style="font-size:32px">Desarrollo web</h3>
+<div>
+<p style="margin:0;color:#4A4B47">Sitios y aplicaciones rápidos, medibles y listos para crecer. Accesibilidad y SEO técnico desde el primer día.</p>
+<p style="margin:14px 0 0;font-size:14px;font-weight:600">Sitios web · Aplicaciones web · SEO técnico</p>
+</div>
+</article>
+
+<article class="row" style="border-bottom:1px solid #000">
+<span style="font-family:'Titillium Web',sans-serif;font-weight:600;color:#4A4B47">03</span>
+<h3 class="h3" style="font-size:32px">Branding</h3>
+<div>
+<p style="margin:0;color:#4A4B47">Identidades con criterio estratégico: nombre, sistema visual y guía de uso para que tu marca se vea igual en todos lados.</p>
+<p style="margin:14px 0 0;font-size:14px;font-weight:600">Identidad visual · Estrategia · Guía de marca</p>
+</div>
+</article>
+</div>
+</section>
+
+<!-- INVESTIGACIÓN -->
+<section aria-labelledby="titulo-investigacion" style="position:relative;overflow:hidden;padding:150px 0;background:radial-gradient(50% 50% at 20% 50%,rgba(208,223,0,.16),transparent 70%),#000">
+<div class="wrap split" style="align-items:center">
+<div>
+<p class="eyebrow">Basado en investigación</p>
+<h2 id="titulo-investigacion" class="h2">Construido sobre lo que tus usuarios realmente hacen.</h2>
+<p class="muted" style="margin:28px 0 0;font-size:18px">Cada proyecto empieza con entrevistas, mapas de usuario y pruebas de usabilidad reales. Las decisiones se sostienen en evidencia, no en suposiciones, así el trabajo convierte desde el primer día.</p>
+</div>
+<div class="scene-box" aria-hidden="true" style="position:relative;height:480px;perspective:1400px">
+<div style="position:absolute;left:0;top:4%;width:82%;height:26%;transform:rotateY(-24deg) rotateX(14deg) translateZ(-120px);background:#080902;border:1px solid rgba(208,223,0,.35);border-radius:14px;padding:26px;box-sizing:border-box;box-shadow:0 30px 80px -20px rgba(0,0,0,.9)"><div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#A3A69F">01</div><div style="font-family:'Titillium Web',sans-serif;font-weight:600;font-size:26px;margin-top:6px">Investigación de usuarios</div></div>
+<div style="position:absolute;left:6%;top:30%;width:82%;height:26%;transform:rotateY(-24deg) rotateX(14deg) translateZ(-40px);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:26px;box-sizing:border-box;backdrop-filter:blur(6px)"><div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#A3A69F">02</div><div style="font-family:'Titillium Web',sans-serif;font-weight:600;font-size:26px;margin-top:6px">Estructura y flujos</div></div>
+<div style="position:absolute;left:12%;top:56%;width:82%;height:26%;transform:rotateY(-24deg) rotateX(14deg) translateZ(40px);background:linear-gradient(135deg,#E4F21A,#D0DF00 55%,#8A9500);border-radius:14px;padding:26px;box-sizing:border-box;color:#000;box-shadow:0 40px 90px -10px rgba(208,223,0,.55)"><div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700">03</div><div style="font-family:'Titillium Web',sans-serif;font-weight:700;font-size:26px;margin-top:6px">Pruebas de usabilidad</div></div>
+</div>
+</div>
+</section>
+
+<!-- PROCESO (lima) -->
+<section id="proceso" aria-labelledby="titulo-proceso" style="background:#D0DF00;color:#000;padding:140px 0">
+<div class="wrap">
+<p class="eyebrow" style="color:#000">Proceso</p>
+<h2 id="titulo-proceso" class="h2" style="max-width:760px;margin-bottom:80px">Un camino claro desde la primera llamada hasta el lanzamiento, sin sorpresas.</h2>
+<div class="steps">
+<div>
+<div style="font-family:'Titillium Web',sans-serif;font-weight:700;font-size:48px;line-height:1">01</div>
+<h3 class="h3" style="margin:28px 0 12px">Llamada de 30 min</h3>
+<p style="margin:0;font-size:16px">Entendemos tu negocio, tus usuarios y lo que frena tus resultados.</p>
+</div>
+<div>
+<div style="font-family:'Titillium Web',sans-serif;font-weight:700;font-size:48px;line-height:1">02</div>
+<h3 class="h3" style="margin:28px 0 12px">Propuesta por etapas</h3>
+<p style="margin:0;font-size:16px">Cotización itemizada con entregables, fechas e inversión por etapa.</p>
+</div>
+<div>
+<div style="font-family:'Titillium Web',sans-serif;font-weight:700;font-size:48px;line-height:1">03</div>
+<h3 class="h3" style="margin:28px 0 12px">Diseño y desarrollo</h3>
+<p style="margin:0;font-size:16px">Ciclos cortos con tu equipo, revisiones periódicas y pruebas con usuarios reales.</p>
+</div>
+<div>
+<div style="font-family:'Titillium Web',sans-serif;font-weight:700;font-size:48px;line-height:1">04</div>
+<h3 class="h3" style="margin:28px 0 12px">Lanzamiento y crecimiento</h3>
+<p style="margin:0;font-size:16px">Publicamos, medimos y mejoramos con acompañamiento después del lanzamiento.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CASOS -->
+<section id="casos" aria-labelledby="titulo-casos" style="padding:140px 0">
+<div class="wrap">
+<p class="eyebrow">Casos de estudio</p>
+<h2 id="titulo-casos" class="h2" style="margin-bottom:72px">Historias que hablan por sí solas.</h2>
+
+<a class="case" href="#">
+<span style="font-family:'Titillium Web',sans-serif;font-weight:300;font-size:52px;letter-spacing:-0.01em">Fruit Academy</span>
+<span class="muted" style="font-size:16px">Plataforma educativa con rutas de aprendizaje claras, pensada para móvil. UX/UI y desarrollo web.</span>
+<span style="color:#D0DF00;font-family:'Titillium Web',sans-serif;font-weight:600;font-size:18px">Ver caso →</span>
+</a>
+<a class="case" href="#">
+<span style="font-family:'Titillium Web',sans-serif;font-weight:300;font-size:52px;letter-spacing:-0.01em">Orquesta Sinfónica de Minería</span>
+<span class="muted" style="font-size:16px">Identidad y sitio institucional con una presencia cultural clara y moderna. Branding y web.</span>
+<span style="color:#D0DF00;font-family:'Titillium Web',sans-serif;font-weight:600;font-size:18px">Ver caso →</span>
+</a>
+<a class="case" href="#" style="border-bottom:1px solid #2A2A28">
+<span style="font-family:'Titillium Web',sans-serif;font-weight:300;font-size:52px;letter-spacing:-0.01em">Grupo Estrella</span>
+<span class="muted" style="font-size:16px">Sistema de marca para un grupo con varias unidades de negocio y un mismo propósito. Branding.</span>
+<span style="color:#D0DF00;font-family:'Titillium Web',sans-serif;font-weight:600;font-size:18px">Ver caso →</span>
+</a>
+</div>
+</section>
+
+<!-- EE. UU. -->
+<section aria-labelledby="titulo-eeuu" style="padding:120px 0;border-top:1px solid #2A2A28">
+<div class="wrap">
+<p class="eyebrow">Trabajamos con empresas de EE. UU.</p>
+<h2 id="titulo-eeuu" class="h2" style="max-width:820px;margin-bottom:64px">Un equipo remoto que trabaja en tu zona horaria.</h2>
+<div class="grid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+<div class="card3d">
+<div style="font-family:'Titillium Web',sans-serif;font-weight:300;font-size:56px;color:#D0DF00">01</div>
+<h3 class="h3" style="margin:24px 0 12px">Horarios que se cruzan</h3>
+<p class="muted" style="margin:0;font-size:16px">Sesiones de trabajo programadas y revisiones asíncronas para avanzar rápido entre zonas horarias.</p>
+</div>
+<div class="card3d">
+<div style="font-family:'Titillium Web',sans-serif;font-weight:300;font-size:56px;color:#D0DF00">02</div>
+<h3 class="h3" style="margin:24px 0 12px">Cotizaciones transparentes</h3>
+<p class="muted" style="margin:0;font-size:16px">Cada propuesta viene itemizada por etapa, con entregables y fechas antes de empezar.</p>
+</div>
+<div class="card3d">
+<div style="font-family:'Titillium Web',sans-serif;font-weight:300;font-size:56px;color:#D0DF00">03</div>
+<h3 class="h3" style="margin:24px 0 12px">Hecho para ser encontrado</h3>
+<p class="muted" style="margin:0;font-size:16px">Cada sitio sale con estructura semántica, rendimiento medido y SEO técnico.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- NOSOTROS + FAQ (blanco) -->
+<section id="nosotros" aria-labelledby="titulo-nosotros" style="background:#FFFFFF;color:#000;padding:140px 0">
+<div class="wrap split">
+<div>
+<p class="eyebrow" style="color:#000;background:#D0DF00;display:inline-block;padding:4px 10px;margin-bottom:24px">Sobre Aurin</p>
+<h2 id="titulo-nosotros" class="h2" style="margin-bottom:28px">Una agencia de diseño desde 1998.</h2>
+<p style="margin:0;font-size:18px;color:#4A4B47">Aurin tiene sede en Cuernavaca, Morelos, México, y trabaja en modalidad remota con clientes en Estados Unidos, Canadá, España y Latinoamérica. Combinamos estrategia, diseño y desarrollo en un solo equipo.</p>
+</div>
+<div>
+<details open style="border-top:1px solid #000;padding:26px 0">
+<summary style="cursor:pointer;font-family:'Titillium Web',sans-serif;font-weight:600;font-size:21px;list-style:none">¿Qué hace diferente a Aurin de otras agencias?</summary>
+<p style="margin:14px 0 0;font-size:17px;color:#4A4B47">Estrategia, diseño y desarrollo en un mismo equipo, así nada se pierde entre una etapa y otra.</p>
+</details>
+<details style="border-top:1px solid #000;padding:26px 0">
+<summary style="cursor:pointer;font-family:'Titillium Web',sans-serif;font-weight:600;font-size:21px;list-style:none">¿Cómo empiezo un proyecto con Aurin?</summary>
+<p style="margin:14px 0 0;font-size:17px;color:#4A4B47">Agenda una llamada de 30 minutos. Te enviamos una propuesta por etapas con entregables, fechas e inversión clara.</p>
+</details>
+<details style="border-top:1px solid #000;border-bottom:1px solid #000;padding:26px 0">
+<summary style="cursor:pointer;font-family:'Titillium Web',sans-serif;font-weight:600;font-size:21px;list-style:none">¿Trabajan con empresas fuera de México?</summary>
+<p style="margin:14px 0 0;font-size:17px;color:#4A4B47">Sí. Trabajamos en remoto con empresas de Estados Unidos, Canadá, España y Latinoamérica.</p>
+</details>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="contacto" aria-labelledby="titulo-cta" style="position:relative;overflow:hidden;padding:160px 0;background:radial-gradient(60% 70% at 85% 30%,rgba(208,223,0,.22),transparent 70%),#000">
+<div class="wrap" style="position:relative">
+<h2 id="titulo-cta" class="h1" style="max-width:920px;font-size:64px">¿Listo para llevarte <span style="color:#D0DF00;font-weight:600">más lejos?</span></h2>
+<p class="muted" style="margin:28px 0 0;font-size:19px;max-width:580px">Agenda una llamada gratis de 30 minutos. Sales con una ruta clara y una cotización por etapas.</p>
+<div style="display:flex;gap:30px;align-items:center;margin-top:48px;flex-wrap:wrap">
+<a href="#" class="btn">Agenda una llamada gratis de 30 min</a>
+<a href="#" class="btn-line">Escríbenos por WhatsApp</a>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- PIE -->
+<footer style="background:#000;padding:72px 0 44px;border-top:1px solid #2A2A28">
+<div class="wrap">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:48px">
+<div style="max-width:320px">
+<img src="assets/img/aurin.svg" alt="Aurin" style="height:28px;width:auto;display:block">
+<p class="muted" style="margin:20px 0 0;font-size:15px">Diseño UX/UI, branding y desarrollo web desde 1998.</p>
+</div>
+<div style="font-size:15px;line-height:1.9;color:#A3A69F"><div class="eyebrow" style="margin-bottom:10px">Oficina</div>Cuernavaca, Morelos, México</div>
+<div style="font-size:15px;line-height:1.9;color:#A3A69F"><div class="eyebrow" style="margin-bottom:10px">Remoto</div>México · EE. UU. · Canadá · España · LatAm</div>
+<nav aria-label="Pie de página" style="font-size:15px;line-height:1.9"><div class="eyebrow" style="margin-bottom:10px">Sitio</div><a href="#servicios" style="color:#A3A69F;text-decoration:none">Servicios</a><br><a href="#casos" style="color:#A3A69F;text-decoration:none">Casos</a><br><a href="#proceso" style="color:#A3A69F;text-decoration:none">Proceso</a><br><a href="#nosotros" style="color:#A3A69F;text-decoration:none">Nosotros</a></nav>
+</div>
+<p style="margin:56px 0 0;font-size:13px;color:#6F726D">© 2026 Aurin. Todos los derechos reservados.</p>
+</div>
+</footer>
+
+</div>
+</body>
+</html>

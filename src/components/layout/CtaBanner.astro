@@ -1,0 +1,32 @@
+---
+/** Cierre de página: "+Lejos" (motivo de marca). Mismo nombre que en aurin.mx. */
+import { UI, getLangFromUrl } from '@/i18n';
+import { SITE, whatsappUrl } from '@/config/site';
+import MainButton from '@/components/ui/MainButton.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import styles from './CtaBanner.module.css';
+
+interface Props {
+  titleLead: string;
+  titleAccent: string;
+  /** Destino del botón principal: el formulario de la página o la sección de contacto. */
+  href?: string;
+  /** La home no tiene formulario: la sección misma es el destino de #contacto. */
+  id?: string;
+}
+
+const { titleLead, titleAccent, href = '#contacto', id } = Astro.props;
+const t = UI[getLangFromUrl(Astro.url)];
+---
+
+<section id={id} class={styles.section} aria-labelledby="titulo-cta">
+  <div class="wrap">
+    <h2 id="titulo-cta" class:list={['h1', styles.title]}>{titleLead} <span class="accent">{titleAccent}</span></h2>
+    <p class:list={['muted', styles.text]}>{t.ctaText}</p>
+    <div class="actions">
+      <MainButton href={href} text={t.bookCallLong} />
+      <SecondaryButton href={whatsappUrl(t.whatsappText, Astro.url.pathname)} text={t.whatsapp} newTab />
+    </div>
+    <p class={styles.mail}>{t.ctaMail} <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a></p>
+  </div>
+</section>

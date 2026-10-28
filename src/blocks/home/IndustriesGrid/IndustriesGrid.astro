@@ -1,0 +1,32 @@
+---
+/** Industrias con clientes reales de cada una (los mismos del carrusel y de aurin.mx/projects). */
+import type { HomeCopy } from '@/data/home';
+import styles from './IndustriesGrid.module.css';
+
+interface Props {
+  industries: HomeCopy['industries'];
+}
+
+const { industries } = Astro.props;
+---
+
+<section id="industrias" class={styles.section} aria-labelledby="titulo-industrias">
+  <div class="wrap">
+    <p class="eyebrow">{industries.eyebrow}</p>
+    <h2 id="titulo-industrias" class:list={['h2', styles.heading]}>{industries.heading}</h2>
+    <ul class={styles.grid}>
+      {industries.items.map((item) => (
+        <li class:list={['reveal', styles.item]}>
+          <h3 class="h3">{item.name}</h3>
+          <p class:list={['muted', styles.text]}>{item.text}</p>
+          <p class={styles.clients}>{item.clients}</p>
+          {item.links && (
+            <ul class={styles.links}>
+              {item.links.map((link) => <li><a href={link.href}>{link.label} <span aria-hidden="true">→</span></a></li>)}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

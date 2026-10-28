@@ -1,0 +1,34 @@
+---
+/**
+ * Aviso de privacidad y cookies. El texto vive en src/data/privacy.ts; los correos se vuelven enlace.
+ */
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import { SITE } from '@/config/site';
+import { getLangFromUrl } from '@/i18n';
+import { PRIVACY } from '@/data/privacy';
+import styles from './PrivacyPage.module.css';
+
+const lang = getLangFromUrl(Astro.url);
+const copy = PRIVACY[lang];
+const email = SITE.contactEmail;
+const paragraphs = (texts: string[] = []) => texts.map((text) => text.split(email));
+---
+
+<Layout title={copy.seo.title} description={copy.seo.description}>
+  <Header cta={`${lang === 'en' ? '/en/' : '/'}#contacto`} />
+  <main id="main-content" class:list={['wrap', styles.main]}>
+    <h1 class="h2">{copy.title}</h1>
+    <p class:list={['muted', styles.updated]}>{copy.updated}</p>
+    {copy.sections.map(({ id, title, paragraphs: before, list = [], after }) => (
+      <section id={id} class={styles.section}>
+        <h2 class="h3">{title}</h2>
+        {paragraphs(before).map((parts) => <p>{parts.map((part, i) => <>{i > 0 && <a href={`mailto:${email}`}>{email}</a>}{part}</>)}</p>)}
+        {list.length > 0 && <ul>{list.map((item) => <li>{item}</li>)}</ul>}
+        {paragraphs(after).map((parts) => <p>{parts.map((part, i) => <>{i > 0 && <a href={`mailto:${email}`}>{email}</a>}{part}</>)}</p>)}
+      </section>
+    ))}
+  </main>
+  <Footer />
+</Layout>

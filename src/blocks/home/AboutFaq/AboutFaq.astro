@@ -1,0 +1,24 @@
+---
+/** Sobre Aurin + preguntas frecuentes de la home (fondo blanco). */
+import type { HomeCopy } from '@/data/home';
+import FaqList from '@/blocks/shared/FaqList/FaqList.astro';
+import styles from './AboutFaq.module.css';
+
+interface Props {
+  about: HomeCopy['about'];
+  faq: HomeCopy['faq'];
+}
+
+const { about, faq } = Astro.props;
+---
+
+<section id="nosotros" class={styles.section} aria-labelledby="titulo-nosotros">
+  <div class:list={['wrap', styles.grid]}>
+    <div>
+      <p class="eyebrow eyebrow-tag">{about.eyebrow}</p>
+      <h2 id="titulo-nosotros" class:list={['h2', styles.heading]}>{about.heading}</h2>
+      <p class={styles.text}>{about.text}</p>
+    </div>
+    <FaqList items={faq} light />
+  </div>
+</section>

@@ -1,0 +1,48 @@
+@layer base {
+
+  /* Distinto de aurin.mx a propósito: el diseño de aurinux es texto blanco
+     sobre negro puro, con la lima solo como acento (CLAUDE.md). */
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    background: var(--color-black);
+    overflow-x: clip;
+    /* Las anclas no quedan bajo el header fijo */
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-family-primary);
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-white);
+    background-color: var(--color-black);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4, h5, h6, p { margin: 0; }
+
+  img, svg { display: block; }
+
+  a { color: inherit; }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}

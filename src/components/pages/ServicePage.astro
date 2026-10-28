@@ -1,0 +1,81 @@
+---
+/**
+ * Plantilla de las páginas de servicio y de industria. La usan pages/[servicio].astro (ES) y
+ * pages/en/[service].astro (EN); todo el copy vive en src/data/services.
+ *
+ * JSON-LD: Service (con los entregables como OfferCatalog), BreadcrumbList y
+ * FAQPage. Organization y WebSite van en GlobalSchema.
+ */
+import type { Service } from '@/data/services';
+import { SERVICES, servicePath } from '@/data/services';
+import { INDUSTRY_PAGES } from '@/data/industries';
+import { caseCards } from '@/data/cases';
+import { SITE, ORG_ID } from '@/config/site';
+import { UI, getLangFromUrl } from '@/i18n';
+import { faqSchema } from '@/lib/seo';
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import CtaBanner from '@/components/layout/CtaBanner.astro';
+import ProcessSteps from '@/blocks/shared/ProcessSteps/ProcessSteps.astro';
+import RelatedLinks from '@/blocks/shared/RelatedLinks/RelatedLinks.astro';
+import { Research, Cases } from '@/blocks/home';
+import { HeroState, Industries, ServicesIncluded, FaqSection } from '@/blocks/landing-state';
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const copy = service.copy[lang];
+const t = UI[lang];
+const url = `${SITE.url}${servicePath(service, lang)}`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: copy.name,
+  serviceType: copy.name,
+  description: copy.seo.description,
+  url,
+  provider: { '@id': ORG_ID },
+  areaServed: { '@type': 'Country', name: 'United States' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: copy.deliverables.heading,
+    itemListElement: copy.deliverables.items.map((item) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: item.title, description: item.text },
+    })),
+  },
+};
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t.home, item: `${SITE.url}${lang === 'en' ? '/en/' : '/'}` },
+    { '@type': 'ListItem', position: 2, name: copy.name, item: url },
+  ],
+};
+
+
+const others = [...SERVICES, ...INDUSTRY_PAGES].filter((s) => s.id !== service.id).map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name }));
+---
+
+<Layout title={copy.seo.title} description={copy.seo.description} structuredData={[schema, breadcrumb, faqSchema(copy.faq.items)]}>
+  <Header />
+  <main id="main-content">
+    <HeroState hero={copy.hero} source={`servicio-${service.id}`} />
+    <Industries industries={copy.industries} />
+    <Research research={copy.approach} />
+    <ServicesIncluded services={copy.deliverables} />
+    <ProcessSteps {...copy.process} />
+    <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(service.cases, lang) }} />
+    <FaqSection faq={copy.faq} />
+    <CtaBanner {...copy.cta} />
+    <RelatedLinks {...t.otherServices} items={others} />
+  </main>
+  <Footer />
+</Layout>

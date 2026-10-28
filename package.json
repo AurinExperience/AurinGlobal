@@ -1,0 +1,27 @@
+{
+  "name": "aurinux",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^10.0.8",
+    "@vercel/speed-insights": "^1.2.0",
+    "astro": "^6.4.8",
+    "fontkitten": "^1.0.3",
+    "libphonenumber-js": "^1.13.15",
+    "lucide-astro": "^0.544.0",
+    "sharp": "^0.34.5"
+  },
+  "engines": {
+    "node": "24.x"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0"
+  }
+}

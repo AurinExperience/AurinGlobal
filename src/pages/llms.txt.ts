@@ -18,7 +18,7 @@ export const GET: APIRoute = () => {
   const body = [
     `# ${SITE.name}`,
     '',
-    `> Aurin is a web design, web development, UX/UI design and branding agency founded in ${SITE.foundingDate}, headquartered in ${SITE.address.addressLocality}, ${SITE.address.addressRegion}, Mexico. It works remotely with companies in the United States, Canada, Spain and Latin America. aurinux.com is its site for the US market; aurin.mx is its main site.`,
+    `> Aurin is a web design, web development, UX/UI design and branding agency founded in ${SITE.foundingDate}, headquartered in ${SITE.address.addressLocality}, ${SITE.address.addressRegion}, Mexico. It works remotely with companies in the United States, Canada, Spain and Latin America. aurin.consulting is its site for the US market; aurin.mx is its main site.`,
     '',
     ...section('Main pages (EN)', 'en', 'home'),
     ...section('Services (EN)', 'en', 'service'),

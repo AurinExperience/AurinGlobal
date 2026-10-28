@@ -45,7 +45,7 @@
   }
 }
 
-/* Solo aurinux.com: contenedor del diseño de Claude Design (más angosto que
+/* Solo aurin.consulting: contenedor del diseño de Claude Design (más angosto que
    el --maxWidth de aurin.mx, que sigue disponible para componentes de allá). */
 @layer tokens {
   :root {

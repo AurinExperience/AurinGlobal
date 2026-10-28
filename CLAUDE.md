@@ -1,4 +1,4 @@
-# Aurin · aurinux.com
+# Aurin · aurin.consulting
 
 Sitio de Aurin (agencia de UX/UI, branding y desarrollo web) para posicionarse en Estados Unidos.
 Diseño de Claude Design (export original en `diseno-original/`) llevado al mismo stack y arquitectura que aurin.mx (`../AurinWebsite`).
@@ -21,9 +21,11 @@ nada en estas páginas necesita isla. `@astrojs/vercel` está instalado solo por
 ## Leads (formulario y WhatsApp)
 
 - `/api/contact/` (LeadForm) y `/api/whatsapp-lead/` (botón flotante) mandan el correo con Resend desde
-  `src/lib/mail.ts`: remitente `noreply@aurin.mx` (dominio ya verificado en la cuenta de aurin.mx), destino
+  `src/lib/mail.ts`: remitente "Aurin Consulting" `no-reply@aurin.mx` (dominio ya verificado en la cuenta de aurin.mx), destino
   info@sodio.net y leonel@sodio.net, `reply_to` = el correo del lead. Requiere `RESEND_API_KEY` en Vercel;
   `MAIL_TEST_TO` solo en local para probar sin escribirle al equipo.
+- El resultado del LeadForm sale en un `<dialog>` modal (también al volver sin JS con `?enviado=1|0`): el aviso
+  bajo el botón no se veía. aurin.mx tiene el suyo (`FormDialog`).
 - Los dos tienen honeypot (`website` / `empresa`) y validan el teléfono con `src/lib/phone.ts` (libphonenumber).
 - `PhoneInput` (copia de aurin.mx): lada por país, EE. UU. por omisión (aurin.mx usa México) y la región del
   idioma del navegador si coincide. Manda `phone` + `phoneLada`.
@@ -38,7 +40,7 @@ nada en estas páginas necesita isla. `@astrojs/vercel` está instalado solo por
   interacción (no frena el LCP), Clarity al cargar. EE. UU./México/LatAm: activas por defecto y se apagan en
   "Preferencias de cookies" (opt-out, respeta GPC); Europa y Canadá: solo con "Aceptar". Elección en localStorage 12 meses.
 - Solo se pinta con `PUBLIC_GA4_ID` o `PUBLIC_CLARITY_ID` (`ANALYTICS_ON` en config/site.ts): sin IDs no hay
-  script, ni aviso, ni botón de preferencias en el pie. IDs propios de aurinux, NUNCA los de aurin.mx.
+  script, ni aviso, ni botón de preferencias en el pie. IDs propios de aurin.consulting, NUNCA los de aurin.mx.
 - Conversiones: `window.aurinTrack('generate_lead')` (formulario) y `'whatsapp_lead'`. Marcarlas como evento clave en GA4.
 - `/privacidad/` ↔ `/en/privacy/`: en el registro de páginas como `legal` (sitemap con prioridad 0.3, fuera de llms.txt).
   Enlazado desde el pie de todas las páginas (también las minimal). Si cambia un proveedor o una cookie, actualizar
@@ -93,7 +95,7 @@ src/
 ## Tokens
 
 `styles/tokens/*` son copia de aurin.mx (`--color-yellow`, `--color-black-a`, `--font-*`, `--spacing-*`…) para poder
-traer componentes de allá sin tocarlos. Lo exclusivo de aurinux va al final de cada archivo, marcado
+traer componentes de allá sin tocarlos. Lo exclusivo de aurin.consulting va al final de cada archivo, marcado
 (`--color-black`, `--color-gray-c`, `--color-text-dark`, `--container-*`). Sin estilos inline: todo en `.module.css`.
 
 Ojo con las capas: tokens/base/utilities están en `@layer`, los módulos no. Un módulo SIEMPRE le gana a una
@@ -129,7 +131,7 @@ hreflang `es-US` / `en-US` y `x-default` al inglés (el público está en EE. UU
 
 ## Canibalización (una búsqueda principal por página)
 
-Dentro de aurinux:
+Dentro de aurin.consulting:
 - Home: marca + agencia general ("agencia digital de UX/UI, web y branding"); no usar "agencia de diseño web" en su title.
 - Servicios: cada uno su término (diseño web, desarrollo web, diseño UX/UI, branding) + EE. UU.
 - Estados: servicio + estado. Industrias: el nicho (p. ej. "apps de remesas").
@@ -144,21 +146,21 @@ deben poder salir en EE. UU.: SIN hreflang entre dominios (haría que Google mos
 | Industrias para EE. UU. que ya existen allá (fintech, wealthtech, med spas, clínicas…: `../AurinWebsite/src/data/sectors/us-*`) | aurin.mx | Ya publicadas |
 | Guías informativas (costos, elegir agencia, sitio bilingüe…)     | aurin.mx  | Ya existen (`../AurinWebsite/src/data/guides`)   |
 | Portafolio y casos completos                                     | aurin.mx  | Ahí viven los proyectos (CMS)                   |
-| Agencia + servicio + EE. UU.                                     | aurinux   | Razón de ser del sitio                          |
-| Estados de EE. UU. (Texas y los que sigan)                       | aurinux   | aurin.mx solo tiene estados de México           |
-| Nichos que aurin.mx no toca (remesas, …)                         | aurinux   | Terreno libre                                   |
+| Agencia + servicio + EE. UU.                                     | aurin.consulting   | Razón de ser del sitio                          |
+| Estados de EE. UU. (Texas y los que sigan)                       | aurin.consulting   | aurin.mx solo tiene estados de México           |
+| Nichos que aurin.mx no toca (remesas, …)                         | aurin.consulting   | Terreno libre                                   |
 
 Reglas para cada página nueva:
 1. Antes de crearla, buscar en aurin.mx (`src/data/sectors`, `src/data/guides`, sitemap en vivo) si ya existe una
    sobre lo mismo. Si existe, se enlaza en vez de duplicarla (como "UX/UI para fintech" en la tarjeta de la home).
 2. Nunca copiar texto de un sitio al otro, ni "adaptado": se escribe de cero.
-3. Títulos distintos: aurin.mx dice "from Mexico / nearshore"; aurinux dice "for US businesses" o el estado, sin "nearshore".
+3. Títulos distintos: aurin.mx dice "from Mexico / nearshore"; aurin.consulting dice "for US businesses" o el estado, sin "nearshore".
 4. Con datos, revisar cada mes en Search Console las búsquedas donde salgan páginas de los dos sitios. Si alternan
    semana a semana, cambiarle el enfoque a una.
 
-Orden de trabajo en aurinux:
+Orden de trabajo en aurin.consulting:
 1. Antes de publicar: `RESEND_API_KEY` en Vercel (el formulario ya está conectado), Search Console, IDs de GA4/Clarity.
-2. Perfiles en directorios de agencias de EE. UU. (Clutch, DesignRush, GoodFirms) apuntando a aurinux: autoridad
+2. Perfiles en directorios de agencias de EE. UU. (Clutch, DesignRush, GoodFirms) apuntando a aurin.consulting: autoridad
    para el dominio nuevo.
 3. Esperar 8–12 semanas con home, 4 servicios, Texas y remesas; con los datos, decidir el siguiente estado o nicho.
 
@@ -219,11 +221,11 @@ Orden de trabajo en aurinux:
 ## Pendientes
 
 - `RESEND_API_KEY` en Vercel (sin ella los leads dan error). El botón "Agenda una llamada" del CtaBanner de la home no tiene destino (`#`).
-- Crear la propiedad GA4 y el proyecto Clarity de aurinux y poner sus IDs en Vercel (`PUBLIC_GA4_ID`, `PUBLIC_CLARITY_ID`):
+- Crear la propiedad GA4 y el proyecto Clarity de aurin.consulting y poner sus IDs en Vercel (`PUBLIC_GA4_ID`, `PUBLIC_CLARITY_ID`):
   hasta entonces no hay analítica ni aviso de cookies (sin cookies no hay nada que avisar).
 - Testimonios: se quitaron por no tener citas reales. Si se consiguen, sección nueva en la home (sin schema Review: Google no muestra estrellas de reseñas propias).
-- Search Console (propiedad de dominio, por DNS) y Bing Webmaster (puede importar de Search Console): verificar aurinux.com
+- Search Console (propiedad de dominio, por DNS) y Bing Webmaster (puede importar de Search Console): verificar aurin.consulting
   y mandar el sitemap. Si se verifica por meta: `PUBLIC_GOOGLE_SITE_VERIFICATION` / `PUBLIC_BING_SITE_VERIFICATION`.
-- En pausa (decidido no hacerlo por ahora): enlaces desde aurin.mx/en a aurinux y aurinux en el `sameAs` de aurin.mx.
-- Perfiles en Clutch, DesignRush y GoodFirms apuntando a aurinux.
+- En pausa (decidido no hacerlo por ahora): enlaces desde aurin.mx/en a aurin.consulting y aurin.consulting en el `sameAs` de aurin.mx.
+- Perfiles en Clutch, DesignRush y GoodFirms apuntando a aurin.consulting.
 - Revisar el copy en inglés con alguien nativo.

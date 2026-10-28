@@ -3,7 +3,7 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://aurinux.com',
+  site: 'https://aurin.consulting',
   // Estático: las páginas no tienen nada que calcular por request. Solo los
   // endpoints marcados con `export const prerender = false` (/api/contact) corren
   // como función de Vercel, como en aurin.mx.

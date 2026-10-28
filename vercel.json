@@ -3,8 +3,8 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.aurinux.com" }],
-      "destination": "https://aurinux.com/:path*",
+      "has": [{ "type": "host", "value": "www.aurin.consulting" }],
+      "destination": "https://aurin.consulting/:path*",
       "permanent": true
     }
   ],

@@ -1,6 +1,6 @@
 import type { Service } from '@/data/services';
 
-/** Nicho propio de aurinux: aurin.mx tiene "UX/UI para fintech" en general, pero nada de remesas. */
+/** Nicho propio de aurin.consulting: aurin.mx tiene "UX/UI para fintech" en general, pero nada de remesas. */
 export const remittances: Service = {
   id: 'remittances',
   slug: { es: 'diseno-apps-de-remesas', en: 'remittance-app-design' },

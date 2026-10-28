@@ -7,9 +7,9 @@
 export const SITE = {
   name: 'Aurin User Experts',
   alternateName: 'Aurin',
-  url: 'https://aurinux.com',
-  logoUrl: 'https://aurinux.com/favicon/web-app-manifest-512x512.png',
-  ogImage: 'https://aurinux.com/og/aurin-og.png',
+  url: 'https://aurin.consulting',
+  logoUrl: 'https://aurin.consulting/favicon/web-app-manifest-512x512.png',
+  ogImage: 'https://aurin.consulting/og/aurin-og.png',
   contactEmail: 'hey@aurin.mx',
   // Mismo WhatsApp que aurin.mx (el teléfono de la ficha de Google Business Profile).
   whatsapp: '527773272365',
@@ -40,7 +40,7 @@ export const ORG_ID = `${SITE.url}/#organization`;
 
 /** Enlace a WhatsApp con el mensaje ya escrito; la página de origen va al final para saber de dónde llegó. */
 export const whatsappUrl = (text: string, path: string) =>
-  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(`${text} (aurinux.com${path})`)}`;
+  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(`${text} (aurin.consulting${path})`)}`;
 
-/** GA4 / Clarity de aurinux (variables en Vercel). Sin ellas no hay analítica ni aviso de cookies. */
+/** GA4 / Clarity de aurin.consulting (variables en Vercel). Sin ellas no hay analítica ni aviso de cookies. */
 export const ANALYTICS_ON = Boolean(import.meta.env.PUBLIC_GA4_ID || import.meta.env.PUBLIC_CLARITY_ID);

@@ -111,7 +111,7 @@ export const GET: APIRoute = async ({ props }) => {
   const titleSvg = lines
     .map((line, i) => textPaths(fonts, line, size, PAD, firstBaseline + i * lineHeight, '#FFFFFF'))
     .join('');
-  const footer = textPaths(fonts, `aurinux.com${pagePath === '/' ? '' : pagePath.replace(/\/$/, '')}`, 28, PAD, 560, '#A0A0A0');
+  const footer = textPaths(fonts, `aurin.consulting${pagePath === '/' ? '' : pagePath.replace(/\/$/, '')}`, 28, PAD, 560, '#A0A0A0');
 
   const svg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs><radialGradient id="glow" cx="0.85" cy="0.25" r="0.85">

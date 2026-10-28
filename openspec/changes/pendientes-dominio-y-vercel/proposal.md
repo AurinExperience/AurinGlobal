@@ -30,4 +30,4 @@ Estado verificado el 2026-10-28:
 - Código: `astro.config.mjs` (`site`), `src/config/site.ts` (`url`, `logoUrl`, `ogImage`, texto de WhatsApp), `vercel.json` (redirect de www), `public/robots.txt`, `src/pages/og/[...path].png.ts`, `src/pages/api/contact.ts`, `src/pages/api/whatsapp-lead.ts`, `src/data/privacy.ts` (y su fecha), `package.json` (`name`, opcional).
 - Comentarios que mencionan aurinux (estilos, componentes copiados de aurin.mx): cosméticos, no cambian comportamiento.
 - Externos: DNS en Hostinger, dominio en Vercel, Search Console y Bing Webmaster, IDs de GA4/Clarity (la propiedad debe ser del dominio nuevo), perfiles en Clutch/DesignRush/GoodFirms.
-- Resend: el remitente sigue siendo `noreply@aurin.mx` (dominio ya verificado); no cambia.
+- Resend: el remitente sigue siendo `no-reply@aurin.mx` (dominio ya verificado); no cambia.

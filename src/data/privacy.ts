@@ -3,7 +3,7 @@ import { SITE } from '@/config/site';
 
 /**
  * Aviso de privacidad y cookies (/privacidad/ ↔ /en/privacy/). Mismo responsable y mismas reglas
- * que el de aurin.mx, pero con lo que de verdad recoge aurinux: el formulario, el botón de WhatsApp
+ * que el de aurin.mx, pero con lo que de verdad recoge aurin.consulting: el formulario, el botón de WhatsApp
  * y la analítica (GA4 y Clarity, que solo cargan si sus IDs están configurados).
  * `#cookies` es el destino del enlace del aviso de cookies: no cambiarle el id.
  * Si se agrega un proveedor o una cookie, actualizar aquí y la fecha.
@@ -32,14 +32,14 @@ export const PRIVACY: Record<Lang, PrivacyCopy> = {
     slug: 'privacidad',
     seo: {
       title: 'Aviso de privacidad y cookies | Aurin',
-      description: 'Qué datos recaba Aurin en aurinux.com, para qué los usa, con quién los comparte, qué cookies usa y cómo ejercer tus derechos de privacidad en EE. UU., México, Europa y Canadá.',
+      description: 'Qué datos recaba Aurin en aurin.consulting, para qué los usa, con quién los comparte, qué cookies usa y cómo ejercer tus derechos de privacidad en EE. UU., México, Europa y Canadá.',
     },
     title: 'Aviso de privacidad',
-    updated: 'Última actualización: 26 de octubre de 2026',
+    updated: 'Última actualización: 28 de octubre de 2026',
     sections: [
       {
         title: '1. Responsable',
-        paragraphs: [`Aurin, con domicilio en ${address}, es responsable de los datos personales que recaba en aurinux.com. Para cualquier tema de privacidad escríbenos a ${email}.`],
+        paragraphs: [`Aurin, con domicilio en ${address}, es responsable de los datos personales que recaba en aurin.consulting. Para cualquier tema de privacidad escríbenos a ${email}.`],
       },
       {
         title: '2. Datos que recabamos',
@@ -126,14 +126,14 @@ export const PRIVACY: Record<Lang, PrivacyCopy> = {
     slug: 'privacy',
     seo: {
       title: 'Privacy and Cookie Policy | Aurin',
-      description: 'What data Aurin collects on aurinux.com, how it is used and shared, which cookies the site uses and how to exercise your privacy rights in the US, Mexico, Europe and Canada.',
+      description: 'What data Aurin collects on aurin.consulting, how it is used and shared, which cookies the site uses and how to exercise your privacy rights in the US, Mexico, Europe and Canada.',
     },
     title: 'Privacy Policy',
-    updated: 'Last updated: October 26, 2026',
+    updated: 'Last updated: October 28, 2026',
     sections: [
       {
         title: '1. Who is responsible',
-        paragraphs: [`Aurin, located at ${address}, is responsible for the personal data collected on aurinux.com. For any privacy question, email us at ${email}.`],
+        paragraphs: [`Aurin, located at ${address}, is responsible for the personal data collected on aurin.consulting. For any privacy question, email us at ${email}.`],
       },
       {
         title: '2. Data we collect',

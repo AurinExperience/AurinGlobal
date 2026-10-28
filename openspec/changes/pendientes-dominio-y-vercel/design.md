@@ -13,7 +13,7 @@
 - Que el cambio quede comprobable desde el build (buscar `aurinux.com` en la salida).
 
 **Non-Goals:**
-- Migrar el remitente de Resend: sigue `noreply@aurin.mx`.
+- Migrar el remitente de Resend: sigue `no-reply@aurin.mx`.
 - Reescribir los comentarios del código que dicen "aurinux" como nombre del proyecto; se cambian solo si confunden.
 - Cambiar los `<title>` de "agencia" a "studio" (decidido: solo el `<h1>` del hero).
 

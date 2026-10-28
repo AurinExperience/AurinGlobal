@@ -1,4 +1,4 @@
-# robots.txt de aurinux.com (misma política que aurin.mx)
+# robots.txt de aurin.consulting (misma política que aurin.mx)
 #
 # Estrategia AEO/GEO (AI Engine Optimization / Generative Engine Optimization):
 #
@@ -45,5 +45,5 @@ User-agent: *
 Allow: /
 Allow: /llms.txt
 
-# Índice para crawlers de IA (AEO/GEO): https://aurinux.com/llms.txt
-Sitemap: https://aurinux.com/sitemap.xml
+# Índice para crawlers de IA (AEO/GEO): https://aurin.consulting/llms.txt
+Sitemap: https://aurin.consulting/sitemap.xml

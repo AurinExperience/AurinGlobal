@@ -1,4 +1,4 @@
-# aurinux.com
+# aurin.consulting
 
 Sitio de Aurin para Estados Unidos: home y landings por estado, en español e inglés (`/en/`).
 Astro 6 estático en Vercel, mismo stack, tokens y componentes que aurin.mx (`../AurinWebsite`).

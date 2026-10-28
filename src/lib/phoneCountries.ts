@@ -18,7 +18,7 @@ export interface PhoneCountry {
   primary: boolean;
 }
 
-// Copia de aurin.mx (src/lib/phoneCountries.ts) con EE. UU. primero: es el público de aurinux.
+// Copia de aurin.mx (src/lib/phoneCountries.ts) con EE. UU. primero: es el público de aurin.consulting.
 // Mercados de Aurin: van arriba, con largos de celular y fijo revisados a mano.
 // Para el resto se usan los de libphonenumber, más holgados porque incluyen
 // números especiales (con ellos Guatemala aceptaría 11 dígitos por los 1-800).

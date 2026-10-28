@@ -1,12 +1,15 @@
 ---
 /**
  * Formulario de las landings y páginas de servicio. Envía a /api/contact (correo con Resend).
- * Con JS manda por fetch y muestra el resultado aquí mismo; sin JS es un POST normal y el
- * endpoint regresa a la página con ?enviado=1|0. `source` dice de qué página vino el lead.
+ * Con JS manda por fetch y muestra el resultado en un modal (abajo del formulario no se veía);
+ * sin JS es un POST normal y el endpoint regresa a la página con ?enviado=1|0, y el modal se abre
+ * igual. `source` dice de qué página vino el lead.
  */
 import { UI, getLangFromUrl } from '@/i18n';
 import MainButton from '@/components/ui/MainButton.astro';
 import PhoneInput from '@/components/ui/PhoneInput.astro';
+import Check from 'lucide-astro/Check';
+import X from 'lucide-astro/X';
 import styles from './LeadForm.module.css';
 
 interface Props {
@@ -46,25 +49,42 @@ const t = UI[lang];
     </select></label>
   <MainButton type="submit" text={t.bookCallLong} class={styles.submit} />
   <p class:list={['muted', styles.note]}>{t.form.note}</p>
-  <p class={styles.status} role="status" data-status data-sending={t.form.sending} data-success={t.form.success} data-error={t.form.error}></p>
+  <p class={styles.status} role="status" data-status data-sending={t.form.sending}></p>
 </form>
+
+{/* Fuera del <form>: el cierre es un <form method="dialog"> y no se pueden anidar */}
+<dialog class={styles.dialog} aria-labelledby="lead-dialog-title" closedby="any" data-lead-dialog>
+  <span class={styles.icon} aria-hidden="true"><Check class={styles.iconSuccess} /><X class={styles.iconError} /></span>
+  <h2 id="lead-dialog-title" class:list={['h3', styles.dialogTitle]} data-title-success={t.form.successTitle} data-title-error={t.form.errorTitle}></h2>
+  <p class:list={['muted', styles.dialogText]} data-text-success={t.form.success} data-text-error={t.form.error}></p>
+  <form method="dialog"><MainButton type="submit" text={t.form.close} class={styles.submit} /></form>
+</dialog>
 
 <script>
   for (const form of document.querySelectorAll<HTMLFormElement>('[data-lead-form]')) {
     const status = form.querySelector<HTMLElement>('[data-status]')!;
     const button = form.querySelector<HTMLButtonElement>('[type="submit"]');
-    const show = (key: 'sending' | 'success' | 'error') => {
-      status.textContent = status.dataset[key]!;
-      status.dataset.state = key;
+    const dialog = form.nextElementSibling as HTMLDialogElement;
+    const title = dialog.querySelector<HTMLElement>('h2')!;
+    const text = dialog.querySelector<HTMLElement>('p')!;
+    const show = (state: 'success' | 'error') => {
+      status.textContent = '';
+      dialog.dataset.state = state;
+      title.textContent = title.dataset[`title${state === 'success' ? 'Success' : 'Error'}`]!;
+      text.textContent = text.dataset[`text${state === 'success' ? 'Success' : 'Error'}`]!;
+      dialog.showModal();
     };
 
-    // Vuelta del envío sin JS
+    // Vuelta del envío sin JS: se quita ?enviado para que recargar no vuelva a abrir el modal
     const sent = new URLSearchParams(location.search).get('enviado');
-    if (sent) show(sent === '1' ? 'success' : 'error');
+    if (sent) {
+      show(sent === '1' ? 'success' : 'error');
+      history.replaceState(null, '', location.pathname + location.hash);
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      show('sending');
+      status.textContent = status.dataset.sending!;
       if (button) button.disabled = true;
       const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } }).catch(() => null);
       const ok = res?.ok && (await res.json().catch(() => null))?.ok;

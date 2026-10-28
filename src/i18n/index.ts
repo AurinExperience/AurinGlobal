@@ -16,7 +16,7 @@ import { PRIVACY } from '@/data/privacy';
 export type Lang = 'es' | 'en';
 export const LANGS: Lang[] = ['es', 'en'];
 
-/** Código para `lang`, hreflang y og:locale. El público de aurinux.com está en EE. UU. */
+/** Código para `lang`, hreflang y og:locale. El público de aurin.consulting está en EE. UU. */
 export const LOCALE: Record<Lang, { html: string; hreflang: string; og: string }> = {
   es: { html: 'es', hreflang: 'es-US', og: 'es_US' },
   en: { html: 'en', hreflang: 'en-US', og: 'en_US' },
@@ -91,9 +91,12 @@ export const UI = {
       phoneError: 'Revisa el número: con la lada {lada} son {n} dígitos.',
       need: '¿Qué necesitas?',
       options: ['Diseño web', 'Desarrollo web', 'Diseño UX/UI', 'Branding', 'Varios servicios'],
-      note: 'Respondemos en un día hábil.',
+      note: 'Te respondemos lo antes posible.',
       sending: 'Enviando…',
-      success: '¡Listo! Recibimos tus datos y te escribimos en un día hábil.',
+      successTitle: '¡Mensaje enviado!',
+      success: '¡Listo! Recibimos tus datos y te escribimos lo antes posible.',
+      errorTitle: 'No se pudo enviar',
+      close: 'Entendido',
       error: 'No pudimos enviarlo. Inténtalo de nuevo o escríbenos a hey@aurin.mx.',
     },
     footer: {
@@ -168,9 +171,12 @@ export const UI = {
       phoneError: 'Check the number: numbers with country code {lada} have {n} digits.',
       need: 'What do you need?',
       options: ['Web design', 'Web development', 'UX/UI design', 'Branding', 'Several services'],
-      note: 'We reply within one business day.',
+      note: 'We’ll get back to you as soon as possible.',
       sending: 'Sending…',
-      success: 'Done! We got your details and will write back within one business day.',
+      successTitle: 'Message sent!',
+      success: 'Done! We got your details and will write back as soon as possible.',
+      errorTitle: 'Couldn’t send it',
+      close: 'Got it',
       error: 'We couldn’t send it. Try again or email us at hey@aurin.mx.',
     },
     footer: {

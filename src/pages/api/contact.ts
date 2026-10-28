@@ -30,19 +30,22 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const email = field('email');
   if (!field('name') || !EMAIL.test(email) || !isValidPhone(phone)) return reply(false);
 
-  const ok = await sendLead(
-    `Nuevo contacto aurinux.com (${field('source')}) - ${field('name')}`,
-    [
+  const ok = await sendLead({
+    title: 'Nuevo mensaje de contacto',
+    name: field('name'),
+    rows: [
       ['Nombre', field('name')],
       ['Empresa', field('company') || '—'],
       ['Correo', email],
       ['Teléfono', phone],
       ['Servicio', field('service')],
-      ['Origen', field('source')],
+    ],
+    origin: [
+      ['Formulario', field('source')],
       ['Idioma', field('lang')],
       ['Página', back],
     ],
-    email,
-  );
+    replyTo: email,
+  });
   return reply(ok, ok ? 200 : 502);
 };

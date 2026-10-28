@@ -25,12 +25,19 @@ export const POST: APIRoute = async ({ request }) => {
   if (!nombre || !mensaje) return json({ error: 'Nombre y mensaje requeridos' }, 400);
   if (!isValidPhone(telefono)) return json({ error: 'Teléfono inválido' }, 400);
 
-  const ok = await sendLead(`Nuevo mensaje por WhatsApp (aurinux.com) - ${nombre}`, [
-    ['Nombre', nombre],
-    ['WhatsApp', telefono],
-    ['Mensaje', mensaje],
-    ['Página', String(data.origen ?? '').slice(0, 500)],
-    ['Llegó desde', String(data.referrer ?? 'Directo').slice(0, 500)],
-  ]);
+  const ok = await sendLead({
+    title: 'Nuevo mensaje por WhatsApp',
+    name: nombre,
+    rows: [
+      ['Nombre', nombre],
+      ['WhatsApp', telefono],
+      ['Contactar por', 'WhatsApp (se abrió el chat con este mensaje)'],
+    ],
+    message: mensaje,
+    origin: [
+      ['Página', String(data.origen ?? '').slice(0, 500)],
+      ['Procedencia', String(data.referrer ?? 'Directo').slice(0, 500)],
+    ],
+  });
   return ok ? json({ success: true }, 200) : json({ error: 'No se pudo enviar' }, 500);
 };

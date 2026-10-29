@@ -56,6 +56,23 @@ const lang = getLangFromUrl(Astro.url);
   </body>
 </html>
 
+<script>
+  // Halo de .spotlight (utilities.css): solo con mouse, y a lo más una escritura por cuadro
+  if (matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+    let frame = 0;
+    document.addEventListener('pointermove', (e) => {
+      const card = (e.target as Element).closest?.<HTMLElement>('.spotlight');
+      if (!card || frame) return;
+      frame = requestAnimationFrame(() => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--x', `${e.clientX - r.left}px`);
+        card.style.setProperty('--y', `${e.clientY - r.top}px`);
+        frame = 0;
+      });
+    }, { passive: true });
+  }
+</script>
+
 <style is:global>
   .skip-link:focus {
     position: fixed;

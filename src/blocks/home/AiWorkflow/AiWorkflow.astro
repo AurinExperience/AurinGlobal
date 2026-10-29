@@ -2,6 +2,7 @@
 /** Cómo usamos la IA en el proceso (fondo blanco). */
 import type { HomeCopy } from '@/data/home';
 import styles from './AiWorkflow.module.css';
+import Accent from '@/components/ui/Accent.astro';
 
 interface Props {
   ai: HomeCopy['ai'];
@@ -13,8 +14,7 @@ const { ai } = Astro.props;
 <section id="ia" class={styles.section} aria-labelledby="titulo-ia">
   <div class:list={['wrap', styles.grid]}>
     <div class={styles.intro}>
-      <p class="eyebrow eyebrow-tag">{ai.eyebrow}</p>
-      <h2 id="titulo-ia" class="h2">{ai.heading}</h2>
+      <h2 id="titulo-ia" class="h2"><Accent text={ai.heading} /></h2>
       <p class={styles.text}>{ai.text}</p>
       <p class={styles.note}>{ai.note}</p>
     </div>

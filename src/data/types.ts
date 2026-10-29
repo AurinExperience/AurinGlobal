@@ -15,4 +15,6 @@ export interface FaqItem {
 export interface Step {
   name: string;
   text: string;
+  /** Lo que el cliente recibe en ese paso ("Recibes: …"). */
+  gets?: string;
 }

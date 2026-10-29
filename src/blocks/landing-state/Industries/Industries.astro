@@ -1,19 +1,33 @@
 ---
-import type { StateCopy } from '@/data/states';
+/** Franja bajo el hero: industrias para las que ya hicimos el servicio, cada una con el logo de su cliente real (o su nombre). */
+import type { ServiceCopy } from '@/data/services/types';
+import { clientLogo } from '@/data/home';
 import styles from './Industries.module.css';
 
 interface Props {
-  industries: StateCopy['industries'];
+  industries: ServiceCopy['industries'];
 }
 
 const { industries } = Astro.props;
+const SCALE = .5;
 ---
 
 <section class={styles.section} aria-labelledby="titulo-industrias">
   <div class:list={['wrap', styles.inner]}>
     <h2 id="titulo-industrias" class:list={['eyebrow', styles.heading]}>{industries.heading}</h2>
     <ul class={styles.list}>
-      {industries.items.map((item) => <li>{item}</li>)}
+      {industries.items.map((item) => {
+        if (typeof item === 'string') return <li class={styles.name}>{item}</li>;
+        const logo = clientLogo(item.client);
+        return (
+          <li class={styles.item}>
+            <span class={styles.name}>{item.name}</span>
+            {logo
+              ? <img class={styles.logo} src={logo.logo} alt={item.client} data-tone={logo.tone} data-square={logo.w / logo.h < 2 || undefined} width={Math.round(logo.w * SCALE)} height={Math.round(logo.h * SCALE)} loading="lazy" decoding="async" />
+              : <span class={styles.client}>{item.client}</span>}
+          </li>
+        );
+      })}
     </ul>
   </div>
 </section>

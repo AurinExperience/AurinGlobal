@@ -10,7 +10,7 @@
  * /en/web-design/): es la palabra que se busca en cada idioma.
  */
 import { SERVICES } from '@/data/services';
-import { INDUSTRY_PAGES } from '@/data/industries';
+import { INDUSTRY_PAGES, INDUSTRIES_INDEX } from '@/data/industries';
 import { PRIVACY } from '@/data/privacy';
 
 export type Lang = 'es' | 'en';
@@ -32,6 +32,7 @@ export function localizedPath(pathname: string, lang: Lang): string {
   const service = [...SERVICES, ...INDUSTRY_PAGES].find((s) => LANGS.some((l) => base === `/${s.slug[l]}/`));
   if (service) base = `/${service.slug[lang]}/`;
   if (LANGS.some((l) => base === `/${PRIVACY[l].slug}/`)) base = `/${PRIVACY[lang].slug}/`;
+  if (LANGS.some((l) => base === `/${INDUSTRIES_INDEX[l].slug}/`)) base = `/${INDUSTRIES_INDEX[lang].slug}/`;
   return lang === 'en' ? `/en${base}` : base;
 }
 
@@ -48,8 +49,11 @@ export const UI = {
       description: 'Diseño web, desarrollo, UX/UI y branding viven en el mismo equipo: puedes empezar por uno y sumar los demás.',
     },
     caseLink: 'Ver caso',
+    industries: { allSub: 'Con clientes reales en cada una', all: 'Todas las industrias', more: 'Ver todas las industrias', clients: 'Clientes' },
     bookCall: 'Agenda una llamada',
-    bookCallLong: 'Agenda una llamada gratis de 30 min',
+    bookCallLong: 'Agenda una llamada gratis',
+    process: { gets: 'Recibes', cta: 'Empieza con una llamada gratis', note: 'Sin costo ni compromiso.' },
+    faqAside: { title: '¿Tienes otra pregunta?', text: 'Pregúntanos en una llamada gratis y sin compromiso. Sales con una idea clara de qué necesitas y cuánto cuesta.' },
     whatsapp: 'Escríbenos por WhatsApp',
     whatsappText: 'Hola, quiero información sobre un proyecto.',
     cookies: {
@@ -79,19 +83,38 @@ export const UI = {
       close: 'Cerrar',
       closeBubble: 'Ocultar mensaje',
     },
-    ctaText: 'Agenda una llamada gratis de 30 minutos. Sales con un plan claro y una propuesta con lo que incluye, el precio y las fechas.',
+    ctaText: 'Agenda una llamada gratis. Sales con un plan claro y una propuesta con lo que incluye, el precio y las fechas.',
     ctaMail: '¿Prefieres escribirnos?',
+    // Junto al formulario del cierre de la home: qué pasa al enviarlo (sin prometer tiempos)
+    ctaNext: {
+      title: 'Qué pasa después',
+      steps: [
+        'Te contactamos por el medio que elegiste para agendar la llamada.',
+        'Nos cuentas tu proyecto. Sin costo ni compromiso.',
+        'Te mandamos la propuesta: qué incluye, cuánto cuesta y cuándo se entrega.',
+      ],
+    },
     form: {
       title: 'Agenda tu llamada gratis',
-      intro: '30 minutos, sin costo. Recibes una propuesta clara: qué incluye, cuánto cuesta y cuándo se entrega.',
-      name: 'Nombre',
-      company: 'Empresa',
-      email: 'Correo de trabajo',
-      phone: 'Teléfono o WhatsApp',
+      intro: 'Sin costo ni compromiso. Recibes una propuesta clara: qué incluye, cuánto cuesta y cuándo se entrega.',
+      // Mismos campos que el LeadForm de aurin.mx
+      name: 'Nombre completo',
+      namePlaceholder: 'Tu nombre completo',
+      email: 'Correo electrónico',
+      emailPlaceholder: 'tu@empresa.com',
+      emailSuggestion: '¿Quisiste decir',
+      phone: 'Teléfono',
       phoneError: 'Revisa el número: con la lada {lada} son {n} dígitos.',
-      need: '¿Qué necesitas?',
+      contactPref: '¿Cómo te contactamos?',
+      contactPrefs: ['WhatsApp', 'Llamada telefónica', 'Videollamada', 'Correo electrónico'],
+      need: 'Tipo de proyecto',
       options: ['Diseño web', 'Desarrollo web', 'Diseño UX/UI', 'Branding', 'Varios servicios'],
-      note: 'Te respondemos lo antes posible.',
+      select: 'Selecciona…',
+      message: 'Cuéntanos sobre tu proyecto (opcional)',
+      messagePlaceholder: 'Ej. Necesitamos un sitio bilingüe de 6 secciones con formulario, para lanzar en dos meses.',
+      privacyBefore: 'Al enviar aceptas nuestro ',
+      privacyLink: 'aviso de privacidad',
+      privacyAfter: '.',
       sending: 'Enviando…',
       successTitle: '¡Mensaje enviado!',
       success: '¡Listo! Recibimos tus datos y te escribimos lo antes posible.',
@@ -115,6 +138,28 @@ export const UI = {
       cookieSettings: 'Preferencias de cookies',
     },
     services: ['Diseño web', 'Desarrollo web', 'Diseño UX/UI', 'Branding'],
+    team: {
+      titleLead: 'Personas reales',
+      titleAccent: 'detrás de cada proyecto.',
+      text: 'Desde 1998 trabajamos desde nuestra oficina en Cuernavaca, México. Diseño, investigación y programación se sientan en la misma mesa, así tu proyecto no pasa de mano en mano.',
+      office: 'Nuestra oficina en Cuernavaca, Morelos',
+      meeting: 'Una sesión de trabajo del equipo',
+      foundersLabel: 'Fundada y dirigida por',
+      compact: {
+        titleLead: 'Hablas directo con el equipo',
+        titleAccent: 'que hace tu proyecto.',
+        text: 'Desde 1998, diseño, investigación y programación trabajan en la misma mesa. Tu proyecto no pasa de mano en mano y siempre sabes con quién hablar.',
+      },
+      roles: { 'elias-aquique': 'CEO y cofundador', 'nayeli-quinto': 'CCO y cofundadora' },
+      linkedin: 'Perfil de LinkedIn de',
+      remote: {
+        heading: 'Trabajamos a distancia con empresas de EE. UU.',
+        office: 'Oficina en Cuernavaca, México',
+        language: 'Llamadas en inglés o español',
+        hours: 'Lunes a viernes, en horario del centro de EE. UU.',
+      },
+      map: 'Ver en Google Maps',
+    },
   },
   en: {
     skip: 'Skip to content',
@@ -128,8 +173,11 @@ export const UI = {
       description: 'Web design, development, UX/UI and branding live in the same team: start with one and add the rest.',
     },
     caseLink: 'View case',
+    industries: { allSub: 'With real clients in each one', all: 'All industries', more: 'See all industries', clients: 'Clients' },
     bookCall: 'Book a call',
-    bookCallLong: 'Book a free 30-min call',
+    bookCallLong: 'Book a free call',
+    process: { gets: 'You get', cta: 'Start with a free call', note: 'No cost, no commitment.' },
+    faqAside: { title: 'Have another question?', text: 'Ask us on a free call, with no commitment. You leave with a clear idea of what you need and what it costs.' },
     whatsapp: 'Message us on WhatsApp',
     whatsappText: 'Hi, I’d like information about a project.',
     cookies: {
@@ -159,19 +207,36 @@ export const UI = {
       close: 'Close',
       closeBubble: 'Hide message',
     },
-    ctaText: 'Book a free 30-minute call. You leave with a clear plan and a proposal showing what’s included, the price and the dates.',
+    ctaText: 'Book a free call. You leave with a clear plan and a proposal showing what’s included, the price and the dates.',
     ctaMail: 'Prefer to write?',
+    ctaNext: {
+      title: 'What happens next',
+      steps: [
+        'We reach out the way you chose to schedule the call.',
+        'You tell us about your project. No cost, no commitment.',
+        'We send you the proposal: what’s included, what it costs and when it’s delivered.',
+      ],
+    },
     form: {
       title: 'Book your free call',
-      intro: '30 minutes, no cost. You get a clear proposal: what’s included, what it costs and when it’s delivered.',
-      name: 'Name',
-      company: 'Company',
-      email: 'Work email',
-      phone: 'Phone or WhatsApp',
+      intro: 'No cost, no commitment. You get a clear proposal: what’s included, what it costs and when it’s delivered.',
+      name: 'Full name',
+      namePlaceholder: 'Your full name',
+      email: 'Email',
+      emailPlaceholder: 'you@company.com',
+      emailSuggestion: 'Did you mean',
+      phone: 'Phone',
       phoneError: 'Check the number: numbers with country code {lada} have {n} digits.',
-      need: 'What do you need?',
+      contactPref: 'How should we reach you?',
+      contactPrefs: ['WhatsApp', 'Phone call', 'Video call', 'Email'],
+      need: 'Project type',
       options: ['Web design', 'Web development', 'UX/UI design', 'Branding', 'Several services'],
-      note: 'We’ll get back to you as soon as possible.',
+      select: 'Select…',
+      message: 'Tell us about your project (optional)',
+      messagePlaceholder: 'E.g. We need a 6-page bilingual website with a contact form, launching in two months.',
+      privacyBefore: 'By submitting you agree to our ',
+      privacyLink: 'privacy policy',
+      privacyAfter: '.',
       sending: 'Sending…',
       successTitle: 'Message sent!',
       success: 'Done! We got your details and will write back as soon as possible.',
@@ -195,6 +260,28 @@ export const UI = {
       cookieSettings: 'Cookie settings',
     },
     services: ['Web design', 'Web development', 'UX/UI design', 'Branding'],
+    team: {
+      titleLead: 'Real people',
+      titleAccent: 'behind every project.',
+      text: 'Since 1998 we have worked from our office in Cuernavaca, Mexico. Design, research and development sit at the same table, so your project never gets passed from hand to hand.',
+      office: 'Our office in Cuernavaca, Morelos',
+      meeting: 'A working session with the team',
+      foundersLabel: 'Founded and led by',
+      compact: {
+        titleLead: 'You talk directly to the team',
+        titleAccent: 'building your project.',
+        text: 'Since 1998, design, research and development have worked at the same table. Your project never gets passed around, and you always know who to talk to.',
+      },
+      roles: { 'elias-aquique': 'CEO and co-founder', 'nayeli-quinto': 'CCO and co-founder' },
+      linkedin: 'LinkedIn profile of',
+      remote: {
+        heading: 'We work remotely with US businesses',
+        office: 'Office in Cuernavaca, Mexico',
+        language: 'Calls in English or Spanish',
+        hours: 'Monday to Friday, during US Central business hours',
+      },
+      map: 'View on Google Maps',
+    },
   },
 };
 

@@ -34,7 +34,7 @@ const social = [
 ];
 ---
 
-<footer class:list={[styles.footer, minimal && styles.minimal]}>
+<footer class:list={['sky', 'sky-stars', styles.footer, minimal && styles.minimal]}>
   <div class:list={['wrap', styles.inner]}>
     <div class={styles.grid}>
       <div class={styles.brand}>
@@ -99,7 +99,7 @@ const social = [
       {/* Privacidad y cookies alcanzables desde todas las páginas, también las minimal (lo pide la ley) */}
       <a href={privacyPath(lang)}>{t.footer.privacy}</a>
       {ANALYTICS_ON && <button type="button" class={styles.linkButton} data-cookie-settings>{t.footer.cookieSettings}</button>}
-      {!minimal && <a href={lang === 'en' ? 'https://aurin.mx/en/' : 'https://aurin.mx/'}>{t.footer.alsoAt}</a>}
+      {!minimal && <a href={lang === 'en' ? 'https://aurin.mx/en' : 'https://aurin.mx/'}>{t.footer.alsoAt}</a>}
       <a class={styles.top} href="#">{t.footer.backTop} <ArrowUp size={14} aria-hidden="true" /></a>
     </div>
   </div>

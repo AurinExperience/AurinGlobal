@@ -1,39 +1,208 @@
 ---
 /**
- * Hero de las landings por estado y de las páginas de servicio: H1 + argumentos clave a la
- * izquierda, formulario arriba del pliegue a la derecha. Sin animaciones decorativas.
- * Sin botón de "Agenda una llamada": el formulario de al lado ya es esa acción (y el header la repite).
+ * Hero de las landings por estado y de las páginas de servicio, a pantalla completa como el de la home.
+ * Foto (public/img/arco.avif, Clarisse Meyer en Unsplash, licencia Unsplash): una persona de pie en un
+ * arco de roca apunta su linterna al cielo, con la Vía Láctea real. Va en gris y es el fondo y el LCP; encima un shader WebGL le da el
+ * tratamiento del faro: el haz en lima con neblina que se mueve, el brillo de la lámpara y las
+ * estrellas titilando. Sin WebGL queda la foto quieta; con reduced-motion, un cuadro.
+ * La foto va invertida (el haz sube a la derecha) y el texto a la izquierda. El formulario vive en
+ * el cierre de la página (CtaBanner): el botón principal lleva ahí.
  */
 import type { StateCopy } from '@/data/states';
-import Grain from '@/components/ui/Grain.astro';
+import { UI, getLangFromUrl } from '@/i18n';
+import MainButton from '@/components/ui/MainButton.astro';
 import SecondaryButton from '@/components/ui/SecondaryButton.astro';
-import LeadForm from '../LeadForm/LeadForm.astro';
 import styles from './HeroState.module.css';
 
 interface Props {
   hero: Omit<StateCopy['hero'], 'points'> & { points?: string[] };
-  source: string;
 }
 
-const { hero, source } = Astro.props;
+const { hero } = Astro.props;
+const t = UI[getLangFromUrl(Astro.url)];
 ---
 
-<section class={styles.section} aria-labelledby="titulo-hero">
-  <Grain id="grain-state" />
-  <div class:list={['wrap', styles.grid]}>
-    <div>
-      <p class="eyebrow rise">{hero.eyebrow}</p>
+<section class={styles.section} aria-labelledby="titulo-hero" data-arco>
+  <div class={styles.scene}>
+    <picture>
+      <source srcset="/img/arco-m.avif" media="(max-width: 900px)" type="image/avif" />
+      <source srcset="/img/arco.avif" type="image/avif" />
+      <img class={styles.photo} src="/img/arco.webp" alt="" width="2560" height="1707" fetchpriority="high" data-photo />
+    </picture>
+    <canvas class={styles.fx} aria-hidden="true"></canvas>
+  </div>
+  <div class:list={['wrap', styles.content]}>
+    <div class={styles.copy}>
+      {hero.eyebrow && <p class="eyebrow rise">{hero.eyebrow}</p>}
       <h1 id="titulo-hero" class:list={['h1 rise rise-2', styles.title]}>{hero.titleLead} <span class="accent">{hero.titleAccent}</span></h1>
-      <p class:list={['muted rise rise-2', styles.lead]}>{hero.description}</p>
+      <p class:list={['rise rise-2', styles.lead]}>{hero.description}</p>
       {hero.points && (
         <ul class:list={['rise rise-3', styles.points]}>
           {hero.points.map((point) => <li>{point}</li>)}
         </ul>
       )}
       <div class="actions rise rise-3">
+        <MainButton href="#contacto" text={t.bookCallLong} />
         <SecondaryButton href="#servicios" text={hero.ctaSecondary} />
       </div>
     </div>
-    <LeadForm source={source} />
   </div>
 </section>
+
+<script>
+  import { setup } from '@/lib/webgl';
+
+  // Foto (proporción; las medidas del shader van en px de una foto de 1920) y la lámpara y el haz
+  // medidos en ella (0–1 desde arriba a la izquierda). La foto está invertida: el haz sube a la derecha.
+  // POS = el object-position de .photo (solo recorta en pantallas más altas o más anchas que la foto)
+  const IMG = [1920, 1280];
+  const LAMP = [0.4355, 0.655];
+  const BEAM = [0.374, -0.655]; // de la lámpara hacia donde el haz toca el borde de arriba
+  const POS = [0.4355, 0.7];
+
+  const FRAG = `
+    precision highp float;
+    uniform sampler2D img;
+    uniform vec2 r, s, off, texel;
+    uniform float t;
+
+    const vec2 IMG = vec2(${IMG[0]}., ${IMG[1]}.);
+    const vec3 LIME = vec3(.816, .875, 0.);
+
+    float h21(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
+    float noise(vec2 p) {
+      vec2 i = floor(p), f = fract(p);
+      f = f * f * (3. - 2. * f);
+      return mix(mix(h21(i), h21(i + vec2(1, 0)), f.x), mix(h21(i + vec2(0, 1)), h21(i + vec2(1, 1)), f.x), f.y);
+    }
+    float fbm(vec2 p) {
+      float v = 0., a = .5;
+      for (int i = 0; i < 4; i++) { v += a * noise(p); p *= 2.03; a *= .5; }
+      return v;
+    }
+
+    void main() {
+      vec2 lamp = vec2(${LAMP[0]}, ${LAMP[1]}) * IMG;
+      vec2 dir = normalize(vec2(${BEAM[0]}, ${BEAM[1]}) * IMG);
+      // Mismo recorte que object-fit: cover; en px de la foto (y hacia abajo)
+      vec2 uv = off + vec2(gl_FragCoord.x / r.x, 1. - gl_FragCoord.y / r.y) * s;
+      vec2 ip = uv * IMG;
+      float lum = texture2D(img, uv).r;
+
+      // Estrellas: lo que brilla más que sus vecinos titila (cada una a su ritmo)
+      float around = (texture2D(img, uv + vec2(texel.x * 3., 0.)).r + texture2D(img, uv - vec2(texel.x * 3., 0.)).r
+                    + texture2D(img, uv + vec2(0., texel.y * 3.)).r + texture2D(img, uv - vec2(0., texel.y * 3.)).r) * .25;
+      float star = max(lum - around, 0.);
+      // Titileo irregular, como el de verdad (la atmósfera): se apaga y se aviva a saltos, cada una a su ritmo
+      float h = h21(floor(ip / 6.));
+      lum += star * (noise(vec2(h * 97., t * (1.2 + 2.8 * h))) * 1.4 - .75);
+
+      // El haz de la foto, como un cono desde la lámpara: ahí la luz se vuelve lima
+      vec2 v = ip - lamp;
+      float along = dot(v, dir);
+      float perp = dot(v, vec2(-dir.y, dir.x));
+      float w = 6. + max(along, 0.) * .13;
+      float cone = smoothstep(-10., 20., along) * exp(-perp * perp / (2. * w * w));
+      // Neblina que sube por el haz
+      float haze = fbm(vec2(along / 140. - t * .35, perp / (w * 2.5)));
+      float fall = 1. / (1. + max(along, 0.) * .0007); // decae despacio: la luz llega lejos
+
+      vec3 c = vec3(lum) * vec3(.93, .96, 1.);
+      // Luz, no pintura: el gris de la foto toma un poco de lima
+      c = mix(c, mix(vec3(lum), LIME * lum * 1.45, .65) + LIME * .02, clamp(cone, 0., 1.));
+      c += LIME * cone * fall * (.03 + (haze - .45) * .12);
+      // La luz que se dispersa en el aire alrededor del haz
+      c += LIME * smoothstep(-10., 60., along) * exp(-perp * perp / (18. * w * w)) * fall * .045;
+
+      // Polvo flotando en el haz: motas que suben despacio y brillan solo dentro de la luz
+      vec2 bp = vec2(along - t * 14., perp) / 9.;
+      vec2 id = floor(bp);
+      float mote = 0.;
+      if (h21(id + 1.3) > .82) {
+        vec2 o = vec2(h21(id + 2.1), h21(id + 4.7)) - .5;
+        float md = length(fract(bp) - .5 - o * .6);
+        mote = exp(-md * md * 90.) * (.4 + .6 * sin(t * (1. + 2. * h21(id)) + h21(id + 9.) * 6.28) * .5 + .3);
+      }
+      c += mix(LIME, vec3(1., 1., .85), .5) * mote * cone * fall * .9;
+
+      // La lámpara: un brillo que respira apenas, y la luz que roza la cabeza y los hombros (la silueta)
+      float d = length(v);
+      c += mix(LIME, vec3(1., 1., .9), .6) * (exp(-d * d / 30.) * .55 + exp(-d / 40.) * .06) * (.96 + .04 * sin(t * 2.1));
+      c += LIME * (1. - smoothstep(.02, .08, lum)) * exp(-d / 16.) * .07;
+
+      // Neblina baja que avanza despacio delante de las rocas
+      float fog = smoothstep(.3, .85, fbm(vec2(ip.x / 420. - t * .025, ip.y / 130. + t * .006)));
+      c += vec3(.15, .155, .16) * fog * smoothstep(.5, .9, uv.y);
+
+      // Grano de película, casi imperceptible
+      c += (h21(gl_FragCoord.xy + fract(t * 7.) * 91.) - .5) * .018;
+
+      gl_FragColor = vec4(c, 1.);
+    }`;
+
+  async function init() {
+    const section = document.querySelector<HTMLElement>('[data-arco]');
+    const photo = section?.querySelector<HTMLImageElement>('[data-photo]');
+    const scene = photo?.closest('div');
+    const canvas = section?.querySelector('canvas');
+    const gl = canvas?.getContext('webgl', { alpha: false, antialias: false });
+    if (!section || !photo || !scene || !canvas || !gl) return;
+    const u = await setup(gl, FRAG, ['img', 'r', 's', 'off', 'texel', 't']);
+    if (!u) return;
+
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // 1x en táctiles; en escritorio la resolución real (hasta 2x): a 1.5x, como HeroHome, la foto se veía borrosa
+    const maxScale = matchMedia('(pointer: coarse)').matches ? 1 : 2;
+    let raf = 0;
+    let t0 = 0;
+
+    function draw(time: number) {
+      gl!.uniform1f(u!.t, reduce ? 6 : time);
+      gl!.drawArrays(gl!.TRIANGLES, 0, 3);
+    }
+
+    // Mismo recorte que object-fit: cover + object-position (POS), sobre la escena (más ancha que la sección)
+    function resize() {
+      const k = Math.min(devicePixelRatio, maxScale);
+      const w = Math.round(scene!.clientWidth * k);
+      const h = Math.round(scene!.clientHeight * k);
+      // Cambiar el tamaño borra el lienzo: solo si de verdad cambió (si no, parpadea)
+      if (canvas!.width !== w || canvas!.height !== h) [canvas!.width, canvas!.height] = [w, h];
+      gl!.viewport(0, 0, w, h);
+      const ratio = w / h;
+      const img = IMG[0] / IMG[1];
+      const s = ratio > img ? [1, img / ratio] : [ratio / img, 1];
+      gl!.uniform2f(u!.r, w, h);
+      gl!.uniform2f(u!.s, s[0], s[1]);
+      gl!.uniform2f(u!.off, (1 - s[0]) * POS[0], (1 - s[1]) * POS[1]);
+      draw(t0 ? (performance.now() - t0) / 1000 : 0);
+    }
+
+    function frame(now: number) {
+      t0 ||= now;
+      draw((now - t0) / 1000);
+      raf = requestAnimationFrame(frame);
+    }
+
+    photo.decode().then(() => {
+      gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, photo);
+      gl.uniform2f(u.texel, 1 / photo.naturalWidth, 1 / photo.naturalHeight);
+
+      resize();
+      new ResizeObserver(resize).observe(scene);
+      if (!reduce) {
+        new IntersectionObserver(([entry]) => {
+          cancelAnimationFrame(raf);
+          raf = entry.isIntersecting ? requestAnimationFrame(frame) : 0;
+        }).observe(section);
+      }
+      canvas.dataset.on = '';
+    }, () => {});
+  }
+
+  init();
+</script>

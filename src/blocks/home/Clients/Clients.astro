@@ -27,6 +27,7 @@ const items = [...clients.items, ...clients.items];
               <img
                 src={client.logo}
                 alt={copy ? '' : client.name}
+                data-tone={client.tone}
                 width={client.w}
                 height={client.h}
                 loading="lazy"
@@ -44,10 +45,9 @@ const items = [...clients.items, ...clients.items];
 
 <script>
   const SPEED = 30; // px por segundo
-  const section = document.querySelector<HTMLElement>('[data-clients]');
-  const slider = section?.querySelector<HTMLElement>('ul')?.parentElement;
-  const track = section?.querySelector<HTMLElement>('ul');
-  if (slider && track) {
+  for (const root of document.querySelectorAll<HTMLElement>('[data-clients]')) {
+    const track = root.querySelector<HTMLElement>('ul')!;
+    const slider = track.parentElement!;
     const auto = !matchMedia('(prefers-reduced-motion: reduce)').matches;
     let x = 0;
     let half = 1;

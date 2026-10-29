@@ -3,6 +3,7 @@
 import type { HomeCopy } from '@/data/home';
 import FaqList from '@/blocks/shared/FaqList/FaqList.astro';
 import styles from './AboutFaq.module.css';
+import Accent from '@/components/ui/Accent.astro';
 
 interface Props {
   about: HomeCopy['about'];
@@ -14,10 +15,11 @@ const { about, faq } = Astro.props;
 
 <section id="nosotros" class={styles.section} aria-labelledby="titulo-nosotros">
   <div class:list={['wrap', styles.grid]}>
-    <div>
-      <p class="eyebrow eyebrow-tag">{about.eyebrow}</p>
-      <h2 id="titulo-nosotros" class:list={['h2', styles.heading]}>{about.heading}</h2>
-      <p class={styles.text}>{about.text}</p>
+    <div class={styles.aside}>
+      <div class={styles.intro}>
+        <h2 id="titulo-nosotros" class:list={['h2', styles.heading]}><Accent text={about.heading} /></h2>
+        <p class={styles.text}>{about.text}</p>
+      </div>
     </div>
     <FaqList items={faq} light />
   </div>

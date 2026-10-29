@@ -8,6 +8,8 @@
 import { UI, getLangFromUrl } from '@/i18n';
 import MainButton from '@/components/ui/MainButton.astro';
 import PhoneInput from '@/components/ui/PhoneInput.astro';
+import EmailInput from '@/components/ui/EmailInput.astro';
+import { privacyPath } from '@/data/privacy';
 import Check from 'lucide-astro/Check';
 import X from 'lucide-astro/X';
 import styles from './LeadForm.module.css';
@@ -15,47 +17,59 @@ import styles from './LeadForm.module.css';
 interface Props {
   /** Origen del lead, p. ej. "landing-texas". */
   source: string;
+  /** Sin el párrafo bajo el título: en el cierre de la home ya lo dice el texto de al lado. */
+  intro?: boolean;
 }
 
-const { source } = Astro.props;
+const { source, intro = true } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = UI[lang];
 ---
 
 <form id="contacto" class:list={['rise rise-3', styles.form]} aria-labelledby="titulo-formulario" method="post" action="/api/contact/" data-lead-form={source}>
   <h2 id="titulo-formulario" class:list={['h3', styles.title]}>{t.form.title}</h2>
-  <p class:list={['muted', styles.intro]}>{t.form.intro}</p>
+  {intro && <p class:list={['muted', styles.intro]}>{t.form.intro}</p>}
   <input type="hidden" name="source" value={source} />
   <input type="hidden" name="lang" value={lang} />
   {/* Trampa para bots: oculto para personas y lectores de pantalla */}
   <input class={styles.trap} type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  {/* Mismos campos que el LeadForm de aurin.mx. Los obligatorios llevan * en lima. */}
   <div class={styles.row}>
-    <label class={styles.field}>{t.form.name}
-      <input type="text" name="name" autocomplete="name" required /></label>
-    <label class={styles.field}>{t.form.company}
-      <input type="text" name="company" autocomplete="organization" /></label>
-  </div>
-  <div class={styles.row}>
-    <label class={styles.field}>{t.form.email}
-      <input type="email" name="email" autocomplete="email" required /></label>
+    <label class={styles.field}><span class={styles.label}>{t.form.name} <span class={styles.required} aria-hidden="true">*</span></span>
+      <input class={styles.control} type="text" name="name" autocomplete="name" placeholder={t.form.namePlaceholder} required /></label>
     <div class={styles.field}>
-      <label for="lead-phone">{t.form.phone}</label>
-      <PhoneInput id="lead-phone" name="phone" placeholder="(555) 123-4567" inputClass={styles.control} selectClass={styles.control} />
+      <label class={styles.label} for="lead-email">{t.form.email} <span class={styles.required} aria-hidden="true">*</span></label>
+      <EmailInput id="lead-email" name="email" placeholder={t.form.emailPlaceholder} inputClass={styles.control} />
     </div>
   </div>
-  <label class={styles.field}>{t.form.need}
-    <select name="service">
-      {t.form.options.map((option) => <option>{option}</option>)}
-    </select></label>
+  {/* Teléfono solo (lada + número necesitan el ancho); los dos selects juntos */}
+  <div class={styles.field}>
+    <label class={styles.label} for="lead-phone">{t.form.phone} <span class={styles.required} aria-hidden="true">*</span></label>
+    <PhoneInput id="lead-phone" name="phone" placeholder="(555) 123-4567" inputClass={styles.control} selectClass={styles.control} />
+  </div>
+  <div class={styles.row}>
+    <label class={styles.field}><span class={styles.label}>{t.form.contactPref} <span class={styles.required} aria-hidden="true">*</span></span>
+      <select class={styles.control} name="contactPref" required>
+        <option value="" disabled selected>{t.form.select}</option>
+        {t.form.contactPrefs.map((option) => <option>{option}</option>)}
+      </select></label>
+    <label class={styles.field}><span class={styles.label}>{t.form.need} <span class={styles.required} aria-hidden="true">*</span></span>
+      <select class={styles.control} name="service" required>
+        <option value="" disabled selected>{t.form.select}</option>
+        {t.form.options.map((option) => <option>{option}</option>)}
+      </select></label>
+  </div>
+  <label class={styles.field}><span class={styles.label}>{t.form.message}</span>
+    <textarea class={styles.control} name="message" rows="2" maxlength="2000" placeholder={t.form.messagePlaceholder}></textarea></label>
   <MainButton type="submit" text={t.bookCallLong} class={styles.submit} />
-  <p class:list={['muted', styles.note]}>{t.form.note}</p>
+  <p class={styles.note}>{t.form.privacyBefore}<a href={privacyPath(lang)}>{t.form.privacyLink}</a>{t.form.privacyAfter}</p>
   <p class={styles.status} role="status" data-status data-sending={t.form.sending}></p>
 </form>
 
 {/* Fuera del <form>: el cierre es un <form method="dialog"> y no se pueden anidar */}
 <dialog class={styles.dialog} aria-labelledby="lead-dialog-title" closedby="any" data-lead-dialog>
   <span class={styles.icon} aria-hidden="true"><Check class={styles.iconSuccess} /><X class={styles.iconError} /></span>
-  <h2 id="lead-dialog-title" class:list={['h3', styles.dialogTitle]} data-title-success={t.form.successTitle} data-title-error={t.form.errorTitle}></h2>
+  <p id="lead-dialog-title" class:list={['h3', styles.dialogTitle]} data-title-success={t.form.successTitle} data-title-error={t.form.errorTitle}></p>
   <p class:list={['muted', styles.dialogText]} data-text-success={t.form.success} data-text-error={t.form.error}></p>
   <form method="dialog"><MainButton type="submit" text={t.form.close} class={styles.submit} /></form>
 </dialog>

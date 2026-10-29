@@ -11,8 +11,8 @@ const lang = getLangFromUrl(Astro.url);
 
 const description =
   lang === 'es'
-    ? 'Aurin es una agencia nearshore de diseño web, desarrollo web, diseño UX/UI y branding, fundada en 1998 en Cuernavaca, México. Trabaja a distancia con empresas de Estados Unidos, Canadá, España y Latinoamérica: un solo equipo investiga, diseña y desarrolla.'
-    : 'Aurin is a nearshore web design, web development, UX/UI design and branding agency founded in 1998 in Cuernavaca, Mexico. It works remotely with companies in the United States, Canada, Spain and Latin America: one team handles research, design and development.';
+    ? 'Aurin es una agencia de diseño web, desarrollo web, diseño UX/UI y branding, fundada en 1998 en Cuernavaca, México. Trabaja a distancia con empresas de Estados Unidos, Canadá, España y Latinoamérica: un solo equipo investiga, diseña y desarrolla.'
+    : 'Aurin is a web design, web development, UX/UI design and branding agency founded in 1998 in Cuernavaca, Mexico. It works remotely with companies in the United States, Canada, Spain and Latin America: one team handles research, design and development.';
 
 const knowsAbout =
   lang === 'es'
@@ -43,10 +43,15 @@ const graph = {
       })),
       knowsAbout,
       areaServed: ['United States', 'Canada', 'Mexico', 'Spain'].map((name) => ({ '@type': 'Country', name })),
+      telephone: SITE.telephone,
       address: { '@type': 'PostalAddress', ...SITE.address },
+      geo: { '@type': 'GeoCoordinates', ...SITE.geo },
+      hasMap: SITE.mapsUrl,
+      openingHoursSpecification: { '@type': 'OpeningHoursSpecification', ...SITE.openingHours },
       contactPoint: {
         '@type': 'ContactPoint',
         email: SITE.contactEmail,
+        telephone: SITE.telephone,
         contactType: 'customer service',
         availableLanguage: ['English', 'Spanish'],
       },
@@ -59,6 +64,7 @@ const graph = {
       name: SITE.name,
       alternateName: SITE.alternateName,
       inLanguage: LOCALE[lang].hreflang,
+      description,
       publisher: { '@id': ORG_ID },
     },
   ],

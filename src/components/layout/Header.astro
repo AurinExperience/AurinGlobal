@@ -9,13 +9,19 @@
  * (enlazado interno para Google y para la gente). Un grupo vacío no se pinta.
  * Los grupos abren al pasar el mouse o con el foco (Tab), sin JS: en táctil se usa el popover.
  */
+import ArrowRight from 'lucide-astro/ArrowRight';
+import ArrowRightLeft from 'lucide-astro/ArrowRightLeft';
 import ChevronDown from 'lucide-astro/ChevronDown';
+import Code from 'lucide-astro/Code';
+import Gem from 'lucide-astro/Gem';
+import LayoutGrid from 'lucide-astro/LayoutGrid';
+import Monitor from 'lucide-astro/Monitor';
+import MousePointerClick from 'lucide-astro/MousePointerClick';
 import Globe from 'lucide-astro/Globe';
 import Menu from 'lucide-astro/Menu';
 import { UI, getLangFromUrl, localizedPath, LOCALE } from '@/i18n';
 import { SERVICES, servicePath } from '@/data/services';
-import { INDUSTRY_PAGES } from '@/data/industries';
-import { publishedStates, statePath } from '@/data/states';
+import { INDUSTRY_PAGES, industriesPath } from '@/data/industries';
 import MainButton from '@/components/ui/MainButton.astro';
 import styles from './Header.module.css';
 
@@ -33,10 +39,25 @@ const t = UI[lang];
 const home = lang === 'en' ? '/en/' : '/';
 const here = Astro.url.pathname;
 
-const groups = [
-  { label: t.nav.services, items: SERVICES.map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name })) },
-  { label: t.nav.industries, items: INDUSTRY_PAGES.map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name })) },
-  { label: t.nav.states, items: publishedStates().map((s) => ({ href: statePath(s, lang), label: s.name })) },
+// Ícono de cada página del menú (por id); una página nueva sin ícono usa el de su grupo
+const ICONS: Record<string, typeof Monitor> = { 'web-design': Monitor, 'web-development': Code, 'ux-ui-design': MousePointerClick, branding: Gem, remittances: ArrowRightLeft };
+
+type Item = { href: string; label: string; sub?: string; icon: typeof Monitor };
+const groups: { label: string; items: Item[]; note?: string }[] = [
+  {
+    label: t.nav.services,
+    items: SERVICES.map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name, sub: s.copy[lang].tags, icon: ICONS[s.id] ?? Monitor })),
+    // Solo Servicios lleva pie (y dos columnas): es el grupo que más se abre
+    note: t.otherServices.description,
+  },
+  {
+    label: t.nav.industries,
+    items: [
+      { href: industriesPath(lang), label: t.industries.all, sub: t.industries.allSub, icon: LayoutGrid },
+      ...INDUSTRY_PAGES.map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name, sub: s.copy[lang].tags, icon: ICONS[s.id] ?? LayoutGrid })),
+    ],
+  },
+  // Sin Estados (decidido en octubre 2026): las landings de estado se enlazan desde el pie y entre ellas
 ].filter((group) => group.items.length > 0);
 
 const links = [
@@ -59,9 +80,32 @@ const current = (href: string) => (href === here ? 'page' : undefined);
           <button type="button" class:list={[styles.trigger, group.items.some((i) => i.href === here) && styles.active]}>
             {group.label}<ChevronDown size={16} stroke-width={2.5} aria-hidden="true" />
           </button>
-          <ul class={styles.panel}>
-            {group.items.map((item) => <li><a href={item.href} aria-current={current(item.href)}>{item.label}</a></li>)}
-          </ul>
+          <div class:list={[styles.panel, group.note && styles.wide]}>
+            <div class={styles.box}>
+              <ul class={styles.items}>
+                {group.items.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <li>
+                      <a class={styles.item} href={item.href} aria-current={current(item.href)}>
+                        <span class={styles.icon} aria-hidden="true"><Icon size={20} stroke-width={1.8} /></span>
+                        <span>
+                          <span class={styles.name}>{item.label}</span>
+                          {item.sub && <span class={styles.sub}>{item.sub}</span>}
+                        </span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+              {group.note && (
+                <p class={styles.note}>
+                  <span>{group.note}</span>
+                  <a href={cta}>{t.bookCallLong}<ArrowRight size={16} stroke-width={2.2} aria-hidden="true" /></a>
+                </p>
+              )}
+            </div>
+          </div>
         </div>
       ))}
       {links.map((item) => <a class={styles.link} href={item.href}>{item.label}</a>)}

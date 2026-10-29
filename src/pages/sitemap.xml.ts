@@ -22,11 +22,13 @@ export const GET: APIRoute = () => {
     return `  <url>
     <loc>${SITE.url}${page.path}</loc>
     <lastmod>${BUILD_DATE}</lastmod>
+    <changefreq>${page.kind === 'home' ? 'weekly' : page.kind === 'legal' ? 'yearly' : 'monthly'}</changefreq>
     <priority>${page.kind === 'home' ? '1.0' : page.kind === 'legal' ? '0.3' : '0.9'}</priority>
     ${links.join('\n    ')}
   </url>`;
   });
 
+  // Sin hoja XSL (la de aurin.mx): Chrome está quitando XSLT y avisa en la página; a los buscadores no les sirve
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls.join('\n')}

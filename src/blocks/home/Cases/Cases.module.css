@@ -10,18 +10,49 @@
 }
 
 .case {
+  position: relative;
   display: grid;
-  grid-template-columns: 1.3fr 1fr auto;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
   gap: var(--spacing-10);
   align-items: center;
   padding: 44px 0;
   border-top: 1px solid var(--color-gray-b);
   text-decoration: none;
-  transition: transform .35s;
 }
 
-/* translate y no padding: solo se animan propiedades de GPU (CLAUDE.md) */
-.case:hover { transform: translateX(20px); }
+/* Al pasar: la fila se corre, el nombre toma la luz y una línea lima se dibuja abajo.
+   Solo transform/opacity (CLAUDE.md); el color del nombre es una transición de hover. */
+.case > span:first-child { transition: transform .5s var(--ease-out); }
+
+.case::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 1px;
+  background: var(--color-yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .7s var(--ease-out);
+}
+
+.case:hover > span:first-child,
+.case:focus-visible > span:first-child { transform: translateX(16px); }
+
+.case:hover::after,
+.case:focus-visible::after { transform: scaleX(1); }
+
+.name { transition: color .4s ease; }
+
+.case:hover .name,
+.case:focus-visible .name { color: var(--color-yellow); }
+
+.arrow {
+  display: inline-block;
+  transition: transform .4s var(--ease-out);
+}
+
+.case:hover .arrow,
+.case:focus-visible .arrow { transform: translate(3px, -3px); }
 
 .name {
   font-family: var(--font-family-display);
@@ -52,6 +83,76 @@
 
 @media (max-width: 900px) {
   .section { padding: 100px 0; }
-  .case { grid-template-columns: 1fr; gap: 14px; }
+  .case { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .name { font-size: 36px; }
 }
+
+/* ---------- Tarjetas (páginas de servicio): qué hicimos, sin exponer al cliente ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 44px;
+  border: 1px solid var(--color-gray-b);
+  border-radius: 24px;
+  background: linear-gradient(160deg, rgb(255 255 255 / .06), rgb(255 255 255 / .01) 60%);
+}
+
+/* La luz de la marca, abajo a la izquierda */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: auto auto -120px -80px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(208 223 0 / .14), transparent 70%);
+  pointer-events: none;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.industry {
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--color-gray-a);
+}
+
+.cardName {
+  margin: auto 0 0;
+  padding-top: 64px;
+  max-width: 440px;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-light);
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+
+.card .meta { margin-top: var(--spacing-5); }
+
+@media (max-width: 900px) {
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .card { min-height: 0; padding: 32px; }
+  .cardName { padding-top: 44px; font-size: 26px; }
+}
+
+/* Cielo (.sky): esquina sin franja: solo estrellas sueltas, la lista se lee limpia */
+.section { --sky-zoom: 1.6; --sky-x: 100%; --sky-y: 100%; }

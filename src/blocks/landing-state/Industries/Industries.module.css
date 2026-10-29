@@ -7,7 +7,7 @@
 .inner {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-4) var(--spacing-12);
+  gap: var(--spacing-6) var(--spacing-12);
   align-items: center;
   justify-content: space-between;
 }
@@ -20,11 +20,44 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-3) 36px;
+  gap: var(--spacing-6) 44px;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* Industria arriba, la prueba (el cliente) abajo */
+.item {
+  display: grid;
+  gap: var(--spacing-2);
+  align-content: start;
+}
+
+.name {
   font-family: var(--font-family-display);
   font-weight: var(--font-weight-light);
   font-size: 21px;
 }
+
+.client {
+  font-size: 13px;
+  line-height: 25px;
+  color: var(--color-gray-a);
+}
+
+/* Logos del carrusel: oscuros sobre blanco, se invierten para el negro (mismo trato que IndustryCards) */
+.logo {
+  height: 25px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+  object-position: left;
+  filter: grayscale(1) invert(1);
+  opacity: .7;
+}
+
+/* Los cuadrados se ven chicos a la misma altura que los anchos */
+.logo[data-square] { height: 38px; margin-block: -6px -7px; }
+
+.logo[data-tone='light'] { filter: contrast(2.2); mix-blend-mode: screen; }
+.logo[data-tone='color'] { filter: grayscale(1) brightness(1.5); }

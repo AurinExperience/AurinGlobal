@@ -20,7 +20,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
   const form = await request.formData().catch(() => null);
   if (!form) return reply(false);
-  const field = (name: string) => String(form.get(name) ?? '').trim().slice(0, 500);
+  const field = (name: string, max = 500) => String(form.get(name) ?? '').trim().slice(0, max);
 
   // Trampa para bots: campo oculto que una persona nunca llena. Se responde "ok" para no darles pista.
   if (field('website')) return reply(true);
@@ -35,11 +35,12 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     name: field('name'),
     rows: [
       ['Nombre', field('name')],
-      ['Empresa', field('company') || '—'],
       ['Correo', email],
       ['Teléfono', phone],
-      ['Servicio', field('service')],
+      ['Prefiere que lo contacten por', field('contactPref') || '—'],
+      ['Tipo de proyecto', field('service') || '—'],
     ],
+    message: field('message', 2000) || undefined,
     origin: [
       ['Formulario', field('source')],
       ['Idioma', field('lang')],

@@ -1,0 +1,117 @@
+---
+/**
+ * El equipo: que se vea que detrás del sitio hay personas y una oficina reales. Solo datos
+ * verificables: fotos de la oficina (las de aurin.mx), fundadores con su LinkedIn (SITE.founders,
+ * lo mismo que `founder` en el schema) y la ficha de Google Maps. La tarjeta habla de cómo se trabaja
+ * con EE. UU. (no "Visítanos": el cliente no va a ir a Cuernavaca); la dirección completa va en el pie.
+ * Sin horas exactas: México ya no cambia de horario en verano y EE. UU. sí. Sin cifras
+ * de equipo ni testimonios: no hay datos que los respalden.
+ * Completa en la home y en los estados. `compact` (páginas de servicio): sección blanca de una foto,
+ * los datos y los fundadores, antes del FAQ, para dar confianza sin frenar la venta.
+ */
+import { Picture } from 'astro:assets';
+import Linkedin from 'lucide-astro/Linkedin';
+import MapPin from 'lucide-astro/MapPin';
+import Languages from 'lucide-astro/Languages';
+import Clock from 'lucide-astro/Clock';
+import ArrowUpRight from 'lucide-astro/ArrowUpRight';
+import { SITE } from '@/config/site';
+import { UI, getLangFromUrl } from '@/i18n';
+import oficina from '@/assets/team/oficina.webp';
+import reunion from '@/assets/team/reunion.webp';
+import styles from './Team.module.css';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact } = Astro.props;
+const t = UI[getLangFromUrl(Astro.url)].team;
+const initials = (name: string) => name.split(' ').map((word) => word[0]).join('');
+---
+
+{compact ? (
+<section class={styles.compact} aria-labelledby="titulo-equipo">
+  <div class:list={['wrap', styles.cGrid]}>
+    <figure class:list={['reveal', styles.photo, styles.cPhoto]}>
+      <Picture src={oficina} formats={['avif']} fallbackFormat="webp" widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 560px"
+        alt={t.office} loading="lazy" decoding="async" fetchpriority="low" />
+      <figcaption><span class={styles.dot} aria-hidden="true"></span>{t.office}</figcaption>
+    </figure>
+    <div>
+      <h2 id="titulo-equipo" class:list={['h2', styles.cTitle]}>{t.compact.titleLead}{' '}<span class="accent">{t.compact.titleAccent}</span></h2>
+      <p class={styles.cText}>{t.compact.text}</p>
+      <ul class:list={[styles.facts, styles.cFacts]}>
+        <li><MapPin aria-hidden="true" />{t.remote.office}</li>
+        <li><Languages aria-hidden="true" />{t.remote.language}</li>
+        <li><Clock aria-hidden="true" />{t.remote.hours}</li>
+      </ul>
+      <ul class={styles.cFounders}>
+        {SITE.founders.map(({ id, name, linkedin }) => (
+          <li class={styles.cFounder}>
+            <span class={styles.avatar} aria-hidden="true">{initials(name)}</span>
+            <div>
+              <p class={styles.cName}>{name}</p>
+              <p class={styles.cRole}>{t.roles[id as keyof typeof t.roles]}</p>
+            </div>
+            <a class={styles.cLinkedin} href={linkedin} target="_blank" rel="noopener" aria-label={`${t.linkedin} ${name}`}>
+              <Linkedin aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+) : (
+<section class={styles.section} aria-labelledby="titulo-equipo">
+  <div class="wrap">
+    <div class={styles.head}>
+      <div>
+        <h2 id="titulo-equipo" class="h2">{t.titleLead} <span class="accent">{t.titleAccent}</span></h2>
+      </div>
+      <p class:list={['muted', styles.text]}>{t.text}</p>
+    </div>
+
+    <div class={styles.mosaic}>
+      <figure class:list={['reveal', styles.photo, styles.main]}>
+        <Picture src={oficina} formats={['avif']} fallbackFormat="webp" widths={[700, 1100, 1600]} sizes="(max-width: 900px) 100vw, 800px"
+          alt={t.office} loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption><span class={styles.dot} aria-hidden="true"></span>{t.office}</figcaption>
+      </figure>
+      <figure class:list={['reveal', styles.photo]}>
+        <Picture src={reunion} formats={['avif']} fallbackFormat="webp" widths={[500, 800]} sizes="(max-width: 900px) 100vw, 400px"
+          alt={t.meeting} loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption><span class={styles.dot} aria-hidden="true"></span>{t.meeting}</figcaption>
+      </figure>
+      <div class:list={['reveal', 'spotlight', styles.visit]}>
+        <h3 class="h3">{t.remote.heading}</h3>
+        <ul class={styles.facts}>
+          <li><MapPin aria-hidden="true" />{t.remote.office}</li>
+          <li><Languages aria-hidden="true" />{t.remote.language}</li>
+          <li><Clock aria-hidden="true" />{t.remote.hours}</li>
+        </ul>
+        <a class={styles.map} href={SITE.mapsUrl} target="_blank" rel="noopener">{t.map} <ArrowUpRight aria-hidden="true" /></a>
+      </div>
+    </div>
+
+    <div class={styles.people}>
+      <p class={styles.label}>{t.foundersLabel}</p>
+      <ul class={styles.founders}>
+        {SITE.founders.map(({ id, name, linkedin }) => (
+          <li class:list={['reveal', 'spotlight', styles.founder]}>
+            <span class={styles.avatar} aria-hidden="true">{initials(name)}</span>
+            <div>
+              <p class={styles.name}>{name}</p>
+              <p class:list={['muted', styles.role]}>{t.roles[id as keyof typeof t.roles]}</p>
+            </div>
+            <a class={styles.linkedin} href={linkedin} target="_blank" rel="noopener" aria-label={`${t.linkedin} ${name}`}>
+              <Linkedin aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+)}

@@ -1,0 +1,10 @@
+---
+/** Título con el acento de la marca: lo que va entre *asteriscos* sale en lima, como el "más lejos?" del cierre. */
+interface Props {
+  text: string;
+}
+
+const parts = Astro.props.text.split('*');
+---
+
+{parts.map((part, i) => (i % 2 ? <span class="accent">{part}</span> : part))}

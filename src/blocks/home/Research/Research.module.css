@@ -2,7 +2,9 @@
   position: relative;
   overflow: hidden;
   padding: 150px 0;
-  background: radial-gradient(50% 50% at 20% 50%, rgba(208, 223, 0, .16), transparent 70%), var(--color-black);
+  /* Va después de Industrias (también negra): la línea marca el corte */
+  border-top: 1px solid var(--color-gray-b);
+  background: radial-gradient(50% 50% at 20% 50%, rgba(208, 223, 0, .16), transparent 70%);
 }
 
 .grid {
@@ -87,3 +89,6 @@
   .scene { height: 380px; }
   .name { font-size: 20px; }
 }
+
+/* Cielo (.sky): el inicio de la franja, verdoso, junto a la luz lima de la izquierda */
+.section { --sky-zoom: 1.7; --sky-x: 15%; --sky-y: 85%; }

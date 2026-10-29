@@ -1,6 +1,7 @@
 ---
 import type { HomeCopy } from '@/data/home';
 import styles from './ServicesList.module.css';
+import Accent from '@/components/ui/Accent.astro';
 
 interface Props {
   services: HomeCopy['services'] & { items: { title: string; text: string; tags: string; href: string }[] };
@@ -13,19 +14,19 @@ const { services } = Astro.props;
   <div class="wrap">
     <div class={styles.head}>
       <div>
-        <p class="eyebrow eyebrow-tag">{services.eyebrow}</p>
-        <h2 id="titulo-servicios" class:list={['h2', styles.heading]}>{services.heading}</h2>
+        <h2 id="titulo-servicios" class:list={['h2', styles.heading]}><Accent text={services.heading} /></h2>
       </div>
       <p class={styles.intro}>{services.intro}</p>
     </div>
     {services.items.map((item, i) => (
       <article class:list={['reveal', styles.row]}>
         <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-        {/* El enlace cubre toda la fila (::after) */}
-        <h3 class:list={['h3', styles.title]}><a href={item.href}>{item.title}</a></h3>
+        {/* El enlace cubre toda la fila (::after). Se mueve el span, no el h3: un transform
+            en un ancestro del enlace encogería el área clicable al título. */}
+        <h3 class:list={['h3', styles.title]}><a href={item.href}><span>{item.title}</span></a></h3>
         <div>
           <p class={styles.text}>{item.text}</p>
-          <p class={styles.tags}>{item.tags}</p>
+          <ul class:list={['dots', styles.tags]}>{item.tags.split(' · ').map((t) => <li>{t}</li>)}</ul>
         </div>
         <span class={styles.arrow} aria-hidden="true">→</span>
       </article>

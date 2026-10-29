@@ -21,7 +21,9 @@ import { faqSchema } from '@/lib/seo';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
+import Team from '@/blocks/shared/Team/Team.astro';
 import CtaBanner from '@/components/layout/CtaBanner.astro';
+import LeadForm from '@/blocks/landing-state/LeadForm/LeadForm.astro';
 import ProcessSteps from '@/blocks/shared/ProcessSteps/ProcessSteps.astro';
 import RelatedLinks from '@/blocks/shared/RelatedLinks/RelatedLinks.astro';
 import { Clients, UsTeam, ServicesList, IndustriesGrid, Cases } from '@/blocks/home';
@@ -74,7 +76,7 @@ const service = {
 const howTo = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  name: copy.process.heading,
+  name: copy.process.heading.replaceAll('*', ''),
   description: copy.howToDescription,
   step: copy.process.steps.map((step) => ({ '@type': 'HowToStep', name: step.name, text: step.text })),
 };
@@ -91,17 +93,19 @@ const breadcrumb = {
 ---
 
 <Layout title={copy.seo.title} description={copy.seo.description} structuredData={[service, howTo, breadcrumb, faqSchema(copy.faq.items)]}>
-  <Header />
+  <Header overlay />
   <main id="main-content">
-    <HeroState hero={copy.hero} source={`landing-${state.id}`} />
+    <HeroState hero={copy.hero} />
     <Clients clients={HOME[lang].clients} />
     <UsTeam us={copy.why} />
     <ServicesList services={{ ...copy.services, items: serviceRows }} />
+    {/* Después de la sección blanca: no se juntan negras seguidas */}
+    <Team />
     <IndustriesGrid industries={copy.sectors} />
     <ProcessSteps {...copy.process} />
     <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(copy.cases.ids, lang) }} />
     <FaqSection faq={copy.faq} />
-    <CtaBanner {...copy.cta} />
+    <CtaBanner {...copy.cta}><LeadForm source={`landing-${state.id}`} intro={false} /></CtaBanner>
     <RelatedLinks
       {...copy.nearby}
       items={siblingStates(state).map((item) => ({ href: statePath(item, lang), label: item.copy[lang].linkLabel }))}

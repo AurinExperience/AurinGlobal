@@ -1,24 +1,68 @@
+/* A pantalla completa, con el header encima (overlay, transparente hasta que bajas), como en la home */
 .section {
   position: relative;
   overflow: hidden;
-  padding: 88px 0 112px;
-  background: radial-gradient(60% 60% at 80% 30%, rgba(208, 223, 0, .16), transparent 70%), var(--color-black);
-}
-
-.grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 80px;
+  display: flex;
   align-items: center;
+  min-height: 100svh;
+  padding: 176px 0 96px;
+  background: var(--color-black);
 }
 
-.title { font-size: clamp(40px, 4.4vw, 60px); }
+/* Solo la parte derecha, con la foto casi entera: la persona queda chica y nítida (si se amplía, se ve
+   borrosa) y después del texto. El borde izquierdo se funde con el negro */
+.scene {
+  position: absolute;
+  inset: 0 0 0 25%;
+  mask-image: linear-gradient(90deg, transparent, #000 30%);
+}
+
+.photo,
+.fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* object-position = POS en el script */
+.photo {
+  object-fit: cover;
+  object-position: 43.55% 70%;
+}
+
+/* El shader aparece sobre la foto cuando ya pintó */
+.fx {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.fx[data-on] { opacity: 1; }
+
+/* Oscurece detrás del texto (izquierda), la esquina de abajo a la derecha y funde abajo con la sección siguiente */
+.scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 85% 100%, rgb(0 0 0 / .8), transparent),
+    linear-gradient(90deg, rgb(0 0 0 / .7), rgb(0 0 0 / .35) 32%, transparent 50%),
+    linear-gradient(to top, var(--color-black), transparent 12%);
+}
+
+.content {
+  position: relative;
+  width: 100%;
+}
+
+.copy { max-width: 580px; }
+
+.title { font-size: clamp(36px, 4vw, 56px); }
 
 .lead {
   margin-top: var(--spacing-8);
   font-size: 19px;
-  max-width: 540px;
+  color: var(--color-text);
 }
 
 /* La luz de la marca como viñeta: un punto lima encendido */
@@ -49,7 +93,14 @@
   box-shadow: 0 0 10px 2px rgba(208, 223, 0, .55);
 }
 
+/* En móvil el texto va arriba, sobre el cielo, y la persona abajo */
 @media (max-width: 900px) {
-  .section { padding: 64px 0 88px; }
-  .grid { grid-template-columns: 1fr; gap: 48px; }
+  .section { align-items: flex-start; padding: 136px 0 320px; }
+  .scene { left: 0; mask-image: none; }
+  .scene::after {
+    background:
+      linear-gradient(to bottom, rgb(0 0 0 / .75), rgb(0 0 0 / .3) 50%, transparent 70%),
+      linear-gradient(to top, var(--color-black), transparent 15%);
+  }
+  .copy { max-width: none; }
 }

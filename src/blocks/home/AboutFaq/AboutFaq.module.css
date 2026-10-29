@@ -11,6 +11,19 @@
   align-items: start;
 }
 
+/* Las preguntas son mucho más largas que el texto: la columna ocupa todo su alto y el texto
+   la recorre centrado en la pantalla (debajo del header fijo, 80px) en vez de dejarla vacía */
+.aside { align-self: stretch; }
+
+.intro {
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100svh - 80px);
+}
+
 .heading { margin-bottom: 28px; }
 
 .text {
@@ -21,4 +34,8 @@
 @media (max-width: 900px) {
   .section { padding: 100px 0; }
   .grid { grid-template-columns: 1fr; gap: 44px; }
+  .intro { position: static; min-height: 0; }
 }
+
+/* Sobre blanco la lima no se lee: el acento del título queda en negro y seminegrita */
+.section :global(.accent) { color: inherit; }

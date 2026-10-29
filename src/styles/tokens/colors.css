@@ -31,5 +31,7 @@
     /* gris de marca: texto terciario (copyright, notas) */
     --color-text-dark: #4A4B47;
     /* texto secundario sobre las secciones blancas y lima */
+    --color-surface-light: #F3F4EF;
+    /* tarjetas sobre las secciones blancas (Qué incluye) */
   }
 }

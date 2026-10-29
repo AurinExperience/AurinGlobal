@@ -33,26 +33,30 @@
 .track {
   display: flex;
   align-items: center;
-  gap: 104px;
+  gap: 80px;
   width: max-content;
   margin: 0;
   /* El gap también va al final: así la segunda mitad empieza justo donde -50% la deja */
-  padding: 0 104px 0 0;
+  padding: 0 80px 0 0;
   list-style: none;
   /* Lo mueve el script (translate): avanza solo y se arrastra */
 }
 
-/* Tamaño de cada logo: width/height de los datos (igualan su peso visual).
-   Grises sobre blanco: invertidos quedan claros sobre el negro */
+/* Tamaño de cada logo: width/height de los datos (igualan su peso visual), reducidos con zoom
+   para que la proporción entre logos no cambie. Grises sobre blanco: invertidos quedan claros sobre el negro */
 .track img {
   display: block;
-  filter: invert(1);
+  zoom: .75;
+  filter: grayscale(1) invert(1);
   opacity: .9;
   pointer-events: none;
 }
 
+.track img[data-tone='light'] { filter: contrast(2.2); mix-blend-mode: screen; }
+.track img[data-tone='color'] { filter: grayscale(1) brightness(1.5); }
+
 @media (max-width: 768px) {
   .inner { flex-direction: column; align-items: stretch; gap: var(--spacing-5); }
   .heading { text-align: center; }
-  .track { gap: 64px; padding-right: 64px; }
+  .track { gap: 56px; padding-right: 56px; }
 }

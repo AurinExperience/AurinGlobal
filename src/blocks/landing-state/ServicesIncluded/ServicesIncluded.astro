@@ -1,26 +1,73 @@
 ---
-import type { StateCopy } from '@/data/states';
+/** Qué incluye el servicio: tarjetas con ícono (lucide), número y texto. */
+import type { ServiceCopy } from '@/data/services/types';
 import styles from './ServicesIncluded.module.css';
+import Accent from '@/components/ui/Accent.astro';
+import ArrowRightLeft from 'lucide-astro/ArrowRightLeft';
+import BookOpen from 'lucide-astro/BookOpen';
+import CalendarCheck from 'lucide-astro/CalendarCheck';
+import ChartLine from 'lucide-astro/ChartLine';
+import Code from 'lucide-astro/Code';
+import CreditCard from 'lucide-astro/CreditCard';
+import Database from 'lucide-astro/Database';
+import Fingerprint from 'lucide-astro/Fingerprint';
+import Gem from 'lucide-astro/Gem';
+import Languages from 'lucide-astro/Languages';
+import Layers from 'lucide-astro/Layers';
+import LayoutDashboard from 'lucide-astro/LayoutDashboard';
+import Megaphone from 'lucide-astro/Megaphone';
+import MessageCircle from 'lucide-astro/MessageCircle';
+import Monitor from 'lucide-astro/Monitor';
+import MousePointerClick from 'lucide-astro/MousePointerClick';
+import Network from 'lucide-astro/Network';
+import Palette from 'lucide-astro/Palette';
+import PanelsTopLeft from 'lucide-astro/PanelsTopLeft';
+import PenTool from 'lucide-astro/PenTool';
+import Plug from 'lucide-astro/Plug';
+import RefreshCw from 'lucide-astro/RefreshCw';
+import Rocket from 'lucide-astro/Rocket';
+import Route from 'lucide-astro/Route';
+import Search from 'lucide-astro/Search';
+import ShieldCheck from 'lucide-astro/ShieldCheck';
+import Smartphone from 'lucide-astro/Smartphone';
+import Type from 'lucide-astro/Type';
+import Users from 'lucide-astro/Users';
+import Workflow from 'lucide-astro/Workflow';
 
 interface Props {
-  services: StateCopy['services'];
+  services: ServiceCopy['deliverables'];
+  /** Fondo negro con tarjetas oscuras (cuando la sección anterior es blanca). */
+  dark?: boolean;
+  /** Para usarlo más de una vez en la misma página (tipos de sitio, soporte…). */
+  id?: string;
 }
 
-const { services } = Astro.props;
+// `icon` en los datos = nombre del componente de lucide-astro (agregarlo aquí si se usa uno nuevo)
+const ICONS = { ArrowRightLeft, BookOpen, CalendarCheck, ChartLine, Code, CreditCard, Database, Fingerprint, Gem, Languages, Layers, LayoutDashboard, Megaphone, MessageCircle, Monitor, MousePointerClick, Network, Palette, PanelsTopLeft, PenTool, Plug, RefreshCw, Rocket, Route, Search, ShieldCheck, Smartphone, Type, Users, Workflow };
+
+const { services, dark, id = 'servicios' } = Astro.props;
 ---
 
-<section id="servicios" class={styles.section} aria-labelledby="titulo-servicios">
+<section id={id} class:list={[styles.section, dark && styles.dark]} aria-labelledby={`titulo-${id}`}>
   <div class="wrap">
-    <p class="eyebrow eyebrow-tag">{services.eyebrow}</p>
-    <h2 id="titulo-servicios" class:list={['h2', styles.heading]}>{services.heading}</h2>
-    <div class={styles.grid}>
-      {services.items.map((item, i) => (
-        <div class:list={['reveal', styles.item]}>
-          <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-          <h3 class:list={['h3', styles.title]}>{item.title}</h3>
-          <p class={styles.text}>{item.text}</p>
-        </div>
-      ))}
+    <div class={styles.head}>
+      <h2 id={`titulo-${id}`} class:list={['h2', styles.heading]}><Accent text={services.heading} /></h2>
+      {services.intro && <p class={styles.intro}>{services.intro}</p>}
     </div>
+    <ul class={styles.grid}>
+      {services.items.map((item, i) => {
+        const Icon = item.icon ? ICONS[item.icon as keyof typeof ICONS] : undefined;
+        return (
+          <li class:list={['reveal', styles.item]}>
+            <div class={styles.top}>
+              {Icon && <span class={styles.icon} aria-hidden="true"><Icon size={24} stroke-width={1.6} /></span>}
+              <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <h3 class:list={['h3', styles.title]}>{item.title}</h3>
+            <p class={styles.text}>{item.text}</p>
+          </li>
+        );
+      })}
+    </ul>
   </div>
 </section>

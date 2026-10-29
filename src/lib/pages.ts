@@ -2,7 +2,7 @@ import { LANGS, UI, type Lang } from '@/i18n';
 import { HOME } from '@/data/home';
 import { publishedStates, statePath } from '@/data/states';
 import { SERVICES, servicePath } from '@/data/services';
-import { INDUSTRY_PAGES } from '@/data/industries';
+import { INDUSTRY_PAGES, INDUSTRIES_INDEX, industriesPath } from '@/data/industries';
 import { PRIVACY, privacyPath } from '@/data/privacy';
 
 export interface PageEntry {
@@ -52,6 +52,15 @@ export function indexablePages(): PageEntry[] {
       label: page.copy[lang].name,
       kind: 'industry' as const,
     })),
+    {
+      path: industriesPath(lang),
+      lang,
+      key: 'industries',
+      title: INDUSTRIES_INDEX[lang].seo.title,
+      description: INDUSTRIES_INDEX[lang].seo.description,
+      label: INDUSTRIES_INDEX[lang].title,
+      kind: 'industry' as const,
+    },
     ...publishedStates().map((state) => ({
       path: statePath(state, lang),
       lang,

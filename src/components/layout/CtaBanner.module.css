@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   padding: 136px 0 120px;
-  background: radial-gradient(60% 70% at 85% 30%, rgba(208, 223, 0, .22), transparent 70%), var(--color-black);
+  background: radial-gradient(60% 70% at 85% 30%, rgba(208, 223, 0, .22), transparent 70%);
 }
 
 .title {
@@ -32,7 +32,108 @@
 
 .mail a:hover { color: var(--color-yellow); }
 
+/* Con formulario: título arriba, a la altura del formulario, y WhatsApp + correo abajo, a la altura
+   del botón de enviar. Así la columna izquierda no queda flotando a media tarjeta. */
+.withForm :global(.wrap) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "lead form" "alt form";
+  column-gap: var(--spacing-16);
+}
+
+.withForm .lead { grid-area: lead; }
+
+.withForm .alt {
+  grid-area: alt;
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--color-gray-b);
+}
+
+.withForm :global(.wrap) > form { grid-area: form; }
+
+.withForm .title { font-size: 56px; }
+
+/* Qué pasa después de enviar: pasos numerados en círculo (como los números de Servicios),
+   unidos por una línea fina */
+.next { margin-top: var(--spacing-12); margin-bottom: var(--spacing-12); }
+
+.nextTitle {
+  font-family: var(--font-family-display);
+  font-size: 20px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.next ol {
+  counter-reset: step;
+  list-style: none;
+  max-width: 440px;
+  margin: var(--spacing-6) 0 0;
+  padding: 0;
+}
+
+.next li {
+  counter-increment: step;
+  position: relative;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: var(--spacing-4);
+  align-items: center;
+  padding-bottom: var(--spacing-6);
+  line-height: 1.5;
+  color: var(--color-gray-a);
+}
+
+.next li:last-child { padding-bottom: 0; }
+
+.next li::before {
+  content: counter(step, decimal-leading-zero);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--color-gray-b);
+  border-radius: 50%;
+  background: var(--color-black);
+  color: var(--color-yellow);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* La línea entre círculos */
+.next li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 36px;
+  bottom: 0;
+  border-left: 1px solid var(--color-gray-b);
+}
+
+.withForm .alt :global(.actions) { margin-top: 0; }
+
 @media (max-width: 900px) {
   .section { padding: 100px 0 88px; }
   .title { font-size: 44px; }
+  .withForm :global(.wrap) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas: "lead" "form" "alt";
+    row-gap: var(--spacing-12);
+  }
 }
+
+/* Cielo (.sky): franja completa en espejo: el cierre es la noche entera */
+.section { --sky-flip: scaleX(-1); }
+
+/* Blanca: el acento queda en negro (regla de marca) y el formulario sigue negro */
+.light { background: var(--color-white); color: var(--color-black); }
+.light :global(.accent) { color: inherit; }
+.light .text,
+.light .mail,
+.light .next li { color: var(--color-text-dark); }
+.light .mail a { color: var(--color-black); }
+.light .mail a:hover { color: inherit; text-decoration-color: currentColor; }
+.light .next li::before { background: var(--color-white); border-color: var(--color-gray-c); color: var(--color-black); }
+.light .next li:not(:last-child)::after,
+.light.withForm .alt { border-color: var(--color-gray-c); }

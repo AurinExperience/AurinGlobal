@@ -11,6 +11,8 @@ export const SITE = {
   logoUrl: 'https://aurin.consulting/favicon/web-app-manifest-512x512.png',
   ogImage: 'https://aurin.consulting/og/aurin-og.png',
   contactEmail: 'hey@aurin.mx',
+  // Mismo teléfono que aurin.mx y la ficha de Google Business Profile (NAP idéntico).
+  telephone: '+52 777 327 2365',
   // Mismo WhatsApp que aurin.mx (el teléfono de la ficha de Google Business Profile).
   whatsapp: '527773272365',
   foundingDate: '1998',
@@ -30,6 +32,11 @@ export const SITE = {
     postalCode: '62170',
     addressCountry: 'MX',
   },
+  // Ficha de Google Business Profile (la misma que aurin.mx)
+  mapsUrl: 'https://maps.google.com/?cid=17105070640348628758',
+  geo: { latitude: 18.9389376, longitude: -99.2468182 },
+  // Igual que el horario de la ficha. Formato schema.org: días en inglés, 24 h.
+  openingHours: { dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '18:00' },
   founders: [
     { id: 'elias-aquique', name: 'Elias Aquique', jobTitle: 'CEO', linkedin: 'https://www.linkedin.com/in/elias-aquique-a5772037/' },
     { id: 'nayeli-quinto', name: 'Nayeli Quinto', jobTitle: 'CCO', linkedin: 'https://www.linkedin.com/in/nayeliquinto/' },

@@ -44,6 +44,8 @@ Disallow: /
 User-agent: *
 Allow: /
 Allow: /llms.txt
+# Endpoints del formulario y de WhatsApp (solo POST): no hay nada que indexar
+Disallow: /api/
 
 # Índice para crawlers de IA (AEO/GEO): https://aurin.consulting/llms.txt
 Sitemap: https://aurin.consulting/sitemap.xml

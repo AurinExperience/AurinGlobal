@@ -18,7 +18,7 @@
   transform-style: preserve-3d;
   transition: transform .5s;
   border: 1px solid var(--color-gray-b);
-  background: linear-gradient(180deg, #0E0F08, var(--color-black));
+  background: linear-gradient(180deg, rgb(14 15 8 / .8), rgb(0 0 0 / .6));
   padding: 36px;
 }
 
@@ -41,3 +41,6 @@
   .section { padding: 100px 0; }
   .grid { grid-template-columns: 1fr; }
 }
+
+/* Cielo (.sky): franja en espejo */
+.section { --sky-flip: scaleX(-1); --sky-zoom: 1.4; --sky-x: 60%; --sky-y: 30%; }

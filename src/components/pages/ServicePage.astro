@@ -16,11 +16,15 @@ import { faqSchema } from '@/lib/seo';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
+import Team from '@/blocks/shared/Team/Team.astro';
 import CtaBanner from '@/components/layout/CtaBanner.astro';
+import LeadForm from '@/blocks/landing-state/LeadForm/LeadForm.astro';
 import ProcessSteps from '@/blocks/shared/ProcessSteps/ProcessSteps.astro';
+import Guarantees from '@/blocks/shared/Guarantees/Guarantees.astro';
 import RelatedLinks from '@/blocks/shared/RelatedLinks/RelatedLinks.astro';
-import { Research, Cases } from '@/blocks/home';
-import { HeroState, Industries, ServicesIncluded, FaqSection } from '@/blocks/landing-state';
+import { Research, Cases, Clients } from '@/blocks/home';
+import { HOME } from '@/data/home';
+import { HeroState, Industries, Contrast, ServicesIncluded, FaqSection } from '@/blocks/landing-state';
 
 interface Props {
   service: Service;
@@ -43,7 +47,7 @@ const schema = {
   areaServed: { '@type': 'Country', name: 'United States' },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: copy.deliverables.heading,
+    name: copy.deliverables.heading.replaceAll('*', ''),
     itemListElement: copy.deliverables.items.map((item) => ({
       '@type': 'Offer',
       itemOffered: { '@type': 'Service', name: item.title, description: item.text },
@@ -65,16 +69,25 @@ const others = [...SERVICES, ...INDUSTRY_PAGES].filter((s) => s.id !== service.i
 ---
 
 <Layout title={copy.seo.title} description={copy.seo.description} structuredData={[schema, breadcrumb, faqSchema(copy.faq.items)]}>
-  <Header />
+  <Header overlay />
   <main id="main-content">
-    <HeroState hero={copy.hero} source={`servicio-${service.id}`} />
-    <Industries industries={copy.industries} />
-    <Research research={copy.approach} />
-    <ServicesIncluded services={copy.deliverables} />
-    <ProcessSteps {...copy.process} />
-    <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(service.cases, lang) }} />
+    <HeroState hero={copy.hero} />
+    {/* Servicios (los que llevan comparación): carrusel de logos (el de la home) en vez de la franja de industrias */}
+    {copy.approach.contrast ? <Clients clients={HOME[lang].clients} /> : <Industries industries={copy.industries} />}
+    {/* Con comparación, la sección es blanca y "Qué incluye" pasa a negro: dos blancas seguidas se leen como una */}
+    {copy.approach.contrast ? <Contrast approach={copy.approach} /> : <Research research={copy.approach} />}
+    <ServicesIncluded services={copy.deliverables} dark={!!copy.approach.contrast} />
+    {/* Con tipos de sitio: blanca → casos (negra) → proceso (lima) → soporte (negra), sin dos iguales seguidas */}
+    {copy.types && <ServicesIncluded id="tipos" services={copy.types} />}
+    {copy.types && <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(service.cases, lang) }} cards />}
+    <ProcessSteps {...copy.process} cta />
+    {copy.guarantees && <Guarantees {...copy.guarantees} />}
+    {!copy.approach.contrast && !copy.types && <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(service.cases, lang) }} cards />}
+    {copy.support && <ServicesIncluded id="soporte" services={copy.support} dark />}
+    {/* Versión corta y blanca: confianza antes de las dudas, y corta la fila de negras (casos, FAQ, cierre) */}
+    <Team compact />
     <FaqSection faq={copy.faq} />
-    <CtaBanner {...copy.cta} />
+    <CtaBanner {...copy.cta}><LeadForm source={`servicio-${service.id}`} intro={false} /></CtaBanner>
     <RelatedLinks {...t.otherServices} items={others} />
   </main>
   <Footer />

@@ -15,11 +15,42 @@
 }
 
 .list summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-6);
   cursor: pointer;
   list-style: none;
   font-family: var(--font-family-display);
   font-weight: var(--font-weight-semibold);
   font-size: 21px;
+  transition: color .3s ease;
+}
+
+.list summary:hover { color: var(--color-yellow); }
+
+.light summary:hover { color: inherit; opacity: .7; }
+
+/* + dibujado con dos líneas; abierto gira 45° y queda × */
+.list summary::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% 1.5px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1.5px 100% no-repeat;
+  transition: transform .4s var(--ease-out);
+}
+
+.list details[open] summary::after { transform: rotate(45deg); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .list details[open] p { animation: answerIn .5s var(--ease-out); }
+}
+
+@keyframes answerIn {
+  from { opacity: 0; transform: translateY(-6px); }
 }
 
 .list summary::-webkit-details-marker { display: none; }

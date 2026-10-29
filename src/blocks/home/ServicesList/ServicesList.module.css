@@ -34,19 +34,25 @@
 
 .num {
   justify-self: start;
-  padding: 2px 8px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  aspect-ratio: 1;
+  border-radius: 50%;
   font-family: var(--font-family-display);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-dark);
   transition: background .3s ease, color .3s ease;
 }
 
-.title {
-  font-size: var(--font-size-3xl);
+.title { font-size: var(--font-size-3xl); }
+
+.title span {
+  display: inline-block;
   transition: transform .4s var(--ease-out);
 }
 
-/* Al pasar: el número se vuelve etiqueta lima (como los eyebrow) y el título avanza */
+/* Al pasar: el número se vuelve etiqueta lima y el título avanza */
 .row:hover .num {
   background: var(--color-yellow);
   color: var(--color-black);
@@ -73,20 +79,26 @@
   transition: transform .4s var(--ease-out);
 }
 
-.row:hover .title { transform: translateX(8px); }
+.row:hover .title span { transform: translateX(8px); }
 
 .row:hover .arrow { transform: translateX(6px); }
 
 .text { color: var(--color-text-dark); }
 
 .tags {
-  margin-top: 14px;
+  margin: 14px 0 0;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
 }
+
+/* Sobre blanco, el punto lima sin brillo y con aro (como el badge) */
+.tags li + li::before { box-shadow: 0 0 0 2px rgb(208 223 0 / .35); }
 
 @media (max-width: 900px) {
   .section { padding: 100px 0; }
   .row { grid-template-columns: 1fr; gap: 14px; }
   .arrow { display: none; }
 }
+
+/* Sobre blanco la lima no se lee: el acento del título queda en negro y seminegrita */
+.section :global(.accent) { color: inherit; }

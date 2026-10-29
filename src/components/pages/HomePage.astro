@@ -13,8 +13,10 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import CtaBanner from '@/components/layout/CtaBanner.astro';
+import LeadForm from '@/blocks/landing-state/LeadForm/LeadForm.astro';
+import Team from '@/blocks/shared/Team/Team.astro';
 import ProcessSteps from '@/blocks/shared/ProcessSteps/ProcessSteps.astro';
-import { HeroHome, Clients, ServicesList, IndustriesGrid, Research, AiWorkflow, Cases, UsTeam, AboutFaq } from '@/blocks/home';
+import { HeroHome, Clients, ServicesList, IndustriesGrid, Research, AiWorkflow, Cases, AboutFaq } from '@/blocks/home';
 
 const lang = getLangFromUrl(Astro.url);
 const copy = HOME[lang];
@@ -53,10 +55,11 @@ const services = serviceRows.map((item) => ({
     <AiWorkflow ai={copy.ai} />
     <ProcessSteps {...copy.process} />
     <Cases cases={{ ...copy.cases, items: caseCards(copy.cases.ids, lang) }} />
-    <UsTeam us={copy.us} />
+    {/* Qué hacemos → para quién → cómo → casos → quiénes → dudas → contacto */}
+    <Team />
     <AboutFaq about={copy.about} faq={copy.faq} />
-    {/* La home no tiene formulario: este bloque es el destino de "Agenda una llamada". */}
-    <CtaBanner {...copy.cta} id="contacto" href="#" />
+    {/* El formulario del cierre es el destino de "Agenda una llamada" (#contacto) en la home. */}
+    <CtaBanner {...copy.cta}><LeadForm source="home" intro={false} /></CtaBanner>
   </main>
   <Footer />
 </Layout>

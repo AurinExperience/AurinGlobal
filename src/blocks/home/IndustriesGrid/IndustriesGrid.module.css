@@ -3,83 +3,34 @@
   border-top: 1px solid var(--color-gray-b);
 }
 
-.heading {
-  max-width: 820px;
+/* Título a la izquierda y la intro a la derecha, como en Servicios */
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--spacing-8);
   margin-bottom: var(--spacing-16);
 }
 
-/* Retícula de líneas finas: el gap de 1px deja ver el fondo gris entre celdas */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
+.heading { max-width: 760px; }
+
+.intro {
+  max-width: 340px;
   margin: 0;
-  padding: 0;
-  list-style: none;
-  border: 1px solid var(--color-gray-b);
-  background: var(--color-gray-b);
 }
 
-.item {
-  position: relative;
-  padding: 40px 36px;
-  background: var(--color-black);
-}
-
-/* La luz de la marca: una línea lima que se enciende arriba al pasar */
-.item::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 2px;
-  background: var(--color-yellow);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .5s var(--ease-out);
-}
-
-.item:hover::before { transform: scaleX(1); }
-
-.text {
-  margin: var(--spacing-3) 0 var(--spacing-6);
-  font-size: var(--font-size-base);
-}
-
-.clients {
-  margin: 0;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-yellow);
-}
-
-.links {
+/* "Ver todas las industrias": el botón secundario, como en el hero de las landings; centrado
+   bajo la retícula, que es simétrica */
+.more {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-2) var(--spacing-6);
-  margin: var(--spacing-5) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.links a {
-  font-family: var(--font-family-display);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-white);
-  text-decoration: none;
-  transition: color .3s ease;
-}
-
-.links a:hover { color: var(--color-yellow); }
-
-@media (max-width: 1000px) {
-  .grid { grid-template-columns: 1fr 1fr; }
+  justify-content: center;
+  margin-top: var(--spacing-12);
 }
 
 @media (max-width: 900px) {
   .section { padding: 100px 0; }
 }
 
-@media (max-width: 640px) {
-  .grid { grid-template-columns: 1fr; }
-  .item { padding: 32px 24px; }
-}
+/* Cielo (.sky): franja en espejo, al revés que el hero */
+.section { --sky-flip: scaleX(-1); --sky-zoom: 1.5; --sky-x: 30%; --sky-y: 60%; }

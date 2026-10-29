@@ -1,0 +1,130 @@
+.section {
+  background: var(--color-white);
+  color: var(--color-black);
+  padding: 150px 0;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--spacing-12) 96px;
+  align-items: end;
+}
+
+.heading {
+  text-wrap: balance;
+  font-size: clamp(40px, 4.6vw, 64px);
+}
+
+.text {
+  font-size: 18px;
+  color: var(--color-text-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: var(--spacing-4);
+  margin-top: 88px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 48px;
+}
+
+.label {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: var(--spacing-4) 0 36px;
+  font-size: 30px;
+}
+
+.list {
+  display: grid;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 17px;
+}
+
+.list li {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+/* Lo de siempre: blanca con borde gris, apagada */
+.bad {
+  isolation: isolate;
+  background: var(--color-white);
+  border: 1px solid rgb(0 0 0 / .12);
+}
+
+/* Retícula de puntos, como un boceto o una plantilla: se desvanece hacia abajo */
+.bad::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(rgb(0 0 0 / .14) 1px, transparent 1.4px) 0 0 / 16px 16px;
+  mask-image: linear-gradient(160deg, #000, transparent 60%);
+}
+
+.bad .label { color: var(--color-gray-c); }
+.bad .title { color: var(--color-text-dark); font-weight: var(--font-weight-regular); }
+.bad .list { color: var(--color-text-dark); }
+.bad .mark { background: rgb(0 0 0 / .07); color: var(--color-gray-c); }
+
+/* Lo que hacemos: negro liso, del mismo alto que la gris; la luz de la marca es el punto junto a la etiqueta */
+.good {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+/* El punto de luz de la "i" del logo, antes de "Con Aurin" */
+.good .label::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 12px;
+  vertical-align: .12em;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  box-shadow: 0 0 10px 2px rgb(208 223 0 / .55);
+}
+
+.good .label { color: var(--color-yellow); }
+.good .mark { border: 1.5px solid var(--color-yellow); color: var(--color-yellow); }
+
+@media (max-width: 900px) {
+  .section { padding: 100px 0; }
+  .head,
+  .grid { grid-template-columns: 1fr; }
+  .grid { margin-top: 56px; }
+  .card { padding: 32px; }
+  .title { font-size: 26px; }
+}
+
+/* Sobre blanco la lima no se lee: el acento del título queda en negro y seminegrita */
+.section :global(.accent) { color: inherit; }

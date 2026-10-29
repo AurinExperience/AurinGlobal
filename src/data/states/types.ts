@@ -1,5 +1,6 @@
 import type { FaqItem, Lang, Step } from '@/data/types';
 import type { CaseId } from '@/data/cases';
+import type { Industry } from '@/data/home';
 
 /**
  * Copy de una landing por estado. Todo es texto único por estado: con copy
@@ -12,7 +13,7 @@ export interface StateCopy {
     description: string;
   };
   hero: {
-    eyebrow: string;
+    eyebrow?: string;
     titleLead: string;
     titleAccent: string;
     description: string;
@@ -22,30 +23,25 @@ export interface StateCopy {
   };
   /** Por qué Aurin para este estado: razones propias del mercado local (bloque UsTeam). */
   why: {
-    eyebrow: string;
     heading: string;
     items: { title: string; text: string }[];
   };
   /** Encabezado de la lista de servicios; las filas y sus enlaces salen de src/data/services. */
   services: {
-    eyebrow: string;
     heading: string;
     intro: string;
   };
   /** Industrias del estado, cada una con clientes reales (bloque IndustriesGrid). */
   sectors: {
-    eyebrow: string;
     heading: string;
-    items: { name: string; text: string; clients: string; links?: { href: string; label: string }[] }[];
+    items: Industry[];
   };
   process: {
-    eyebrow: string;
     heading: string;
     steps: Step[];
   };
-  cases: { eyebrow: string; heading: string; ids: CaseId[] };
+  cases: { heading: string; ids: CaseId[] };
   faq: {
-    eyebrow: string;
     heading: string;
     items: FaqItem[];
   };

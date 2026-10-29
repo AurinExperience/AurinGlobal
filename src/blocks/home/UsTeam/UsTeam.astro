@@ -1,21 +1,22 @@
 ---
-import type { HomeCopy } from '@/data/home';
+import type { StateCopy } from '@/data/states/types';
 import styles from './UsTeam.module.css';
+import Accent from '@/components/ui/Accent.astro';
 
 interface Props {
-  us: HomeCopy['us'];
+  /** Por qué Aurin en el estado (`why`). La home ya no lo usa: lo cubren Equipo, Proceso e IA. */
+  us: StateCopy['why'];
 }
 
 const { us } = Astro.props;
 ---
 
-<section class={styles.section} aria-labelledby="titulo-eeuu">
+<section class:list={['sky', styles.section]} aria-labelledby="titulo-eeuu">
   <div class="wrap">
-    <p class="eyebrow">{us.eyebrow}</p>
-    <h2 id="titulo-eeuu" class:list={['h2', styles.heading]}>{us.heading}</h2>
+    <h2 id="titulo-eeuu" class:list={['h2', styles.heading]}><Accent text={us.heading} /></h2>
     <div class={styles.grid}>
       {us.items.map((item, i) => (
-        <div class:list={['reveal', styles.card]}>
+        <div class:list={['reveal', 'spotlight', styles.card]}>
           <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
           <h3 class:list={['h3', styles.title]}>{item.title}</h3>
           <p class:list={['muted', styles.text]}>{item.text}</p>

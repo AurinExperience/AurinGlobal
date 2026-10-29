@@ -48,7 +48,11 @@
 
 .num {
   justify-self: start;
-  padding: 2px 8px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  aspect-ratio: 1;
+  border-radius: 50%;
   font-family: var(--font-family-display);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-dark);
@@ -70,3 +74,6 @@
   .grid { grid-template-columns: 1fr; gap: 48px; }
   .intro { position: static; }
 }
+
+/* Sobre blanco la lima no se lee: el acento del título queda en negro y seminegrita */
+.section :global(.accent) { color: inherit; }

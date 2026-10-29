@@ -1,0 +1,49 @@
+---
+/**
+ * Garantías: franja lima (entre "Cómo trabajamos" y el equipo, así no se juntan tres negras) con lo que
+ * va por escrito en la propuesta. Quita el miedo a contratar justo antes del FAQ y el cierre.
+ */
+import { UI, getLangFromUrl } from '@/i18n';
+import Accent from '@/components/ui/Accent.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import Eye from 'lucide-astro/Eye';
+import Receipt from 'lucide-astro/Receipt';
+import KeyRound from 'lucide-astro/KeyRound';
+import CalendarCheck from 'lucide-astro/CalendarCheck';
+import styles from './Guarantees.module.css';
+
+interface Props {
+  heading: string;
+  intro: string;
+  items: { title: string; text: string }[];
+}
+
+const { heading, intro, items } = Astro.props;
+const t = UI[getLangFromUrl(Astro.url)];
+const icons = [Eye, Receipt, KeyRound, CalendarCheck];
+---
+
+<section class={styles.section} aria-labelledby="titulo-garantias">
+  <div class:list={['wrap', styles.grid]}>
+    <div class={styles.head}>
+      <h2 id="titulo-garantias" class:list={['h2', styles.heading]}><Accent text={heading} /></h2>
+      <p class={styles.intro}>{intro}</p>
+      <div class={styles.cta}>
+        <SecondaryButton href="#contacto" text={t.bookCallLong} />
+        <span>{t.process.note}</span>
+      </div>
+    </div>
+    <ol class={styles.items}>
+      {items.map((item, i) => {
+        const Icon = icons[i % icons.length];
+        return (
+          <li class="reveal">
+            <span class={styles.icon} aria-hidden="true"><Icon size={22} /></span>
+            <h3 class={styles.title}>{item.title}</h3>
+            <p class={styles.text}>{item.text}</p>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</section>

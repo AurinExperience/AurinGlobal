@@ -32,7 +32,7 @@ export const PRIVACY: Record<Lang, PrivacyCopy> = {
     slug: 'privacidad',
     seo: {
       title: 'Aviso de privacidad y cookies | Aurin',
-      description: 'Qué datos recaba Aurin en aurin.consulting, para qué los usa, con quién los comparte, qué cookies usa y cómo ejercer tus derechos de privacidad en EE. UU., México, Europa y Canadá.',
+      description: 'Qué datos recaba Aurin en aurin.consulting, para qué los usa, con quién los comparte, qué cookies usa y cómo ejercer tus derechos de privacidad.',
     },
     title: 'Aviso de privacidad',
     updated: 'Última actualización: 28 de octubre de 2026',
@@ -126,7 +126,7 @@ export const PRIVACY: Record<Lang, PrivacyCopy> = {
     slug: 'privacy',
     seo: {
       title: 'Privacy and Cookie Policy | Aurin',
-      description: 'What data Aurin collects on aurin.consulting, how it is used and shared, which cookies the site uses and how to exercise your privacy rights in the US, Mexico, Europe and Canada.',
+      description: 'What data Aurin collects on aurin.consulting, how it is used and shared, which cookies the site uses and how to exercise your privacy rights.',
     },
     title: 'Privacy Policy',
     updated: 'Last updated: October 28, 2026',

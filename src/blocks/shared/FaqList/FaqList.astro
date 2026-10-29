@@ -3,6 +3,7 @@
  * Acordeón de preguntas con <details> nativo: las respuestas quedan en el DOM
  * (rastreables) y es accesible sin JS. La página arma el FAQPage con
  * faqSchema() a partir de los MISMOS items, así nunca se desincronizan.
+ * `name`: una abierta a la vez (acordeón nativo), así la lista no crece al leer.
  */
 import type { FaqItem } from '@/data/types';
 import styles from './FaqList.module.css';
@@ -18,7 +19,7 @@ const { items, light = false } = Astro.props;
 
 <div class:list={[styles.list, light && styles.light]}>
   {items.map((item, i) => (
-    <details open={i === 0}>
+    <details name="faq" open={i === 0}>
       <summary>{item.question}</summary>
       <p>
         {item.answer}

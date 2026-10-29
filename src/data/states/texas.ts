@@ -15,9 +15,9 @@ export const texas: State = {
   copy: {
     es: {
       seo: {
-        title: 'Agencia de diseño web y UX/UI para empresas de Texas | Aurin',
+        title: 'Diseño de páginas web en Texas | Houston y Dallas | Aurin',
         description:
-          'Diseño web, UX/UI y branding para empresas de Houston, Dallas, Austin y San Antonio. Equipo bilingüe en la zona horaria central y precios claros desde el inicio.',
+          'Diseño de páginas web, UX/UI y branding para empresas de Houston, Dallas, Austin y San Antonio. Equipo bilingüe en tu zona horaria y precio claro.',
       },
       hero: {
         eyebrow: 'Diseño web · UX/UI · Branding · Texas',
@@ -29,8 +29,7 @@ export const texas: State = {
         points: ['En la zona horaria central', 'Sitios bilingües inglés · español', 'Diseño y desarrollo desde 1998'],
       },
       why: {
-        eyebrow: 'Por qué Aurin en Texas',
-        heading: 'Cerca de tu equipo, de tu horario y de tus clientes.',
+        heading: 'Cerca de tu equipo, *de tu horario y de tus clientes.*',
         items: [
           { title: 'En tu zona horaria', text: 'Trabajamos en horario del centro (UTC−6): la misma hora que Houston, Dallas, Austin y San Antonio en invierno y una hora de diferencia en verano. Las reuniones caben en tu jornada.' },
           { title: 'Bilingües de verdad', text: 'Más de 8 millones de texanos, casi 3 de cada 10, hablan español en casa (Censo de EE. UU., ACS 2024). Diseñamos y escribimos tu sitio en inglés y en español, con textos pensados para cada idioma y no traducciones literales.' },
@@ -38,43 +37,38 @@ export const texas: State = {
         ],
       },
       services: {
-        eyebrow: 'Servicios',
-        heading: 'Lo que tu empresa en Texas necesita en digital, en un mismo equipo.',
+        heading: 'Lo que tu empresa en Texas necesita en digital, *en un mismo equipo.*',
         intro: 'Empieza por el servicio que necesitas hoy o combínalos: marca, sitio y producto salen coherentes porque los hace el mismo equipo.',
       },
       sectors: {
-        eyebrow: 'Industrias',
-        heading: 'Experiencia en las industrias que mueven a Texas.',
+        heading: 'Experiencia en las industrias que *mueven a Texas.*',
         items: [
           { name: 'Energía', text: 'Sitios institucionales para empresas de energía que necesitan comunicar visión y confianza a inversionistas y comunidades.', clients: 'Mexico Pacific' },
           { name: 'Salud', text: 'Marcas y sitios bilingües para servicios de salud que atienden a familias en inglés y en español.', clients: 'Elite Home Health · Dentol' },
-          { name: 'Fintech y remesas', text: 'Apps de pagos, envíos de dinero y crédito con flujos claros, clave en un estado con tanto comercio con México.', clients: 'Ancient · Monetix · Bonanza', links: [{ href: '/diseno-apps-de-remesas/', label: 'Diseño de apps de remesas' }] },
+          { name: 'Fintech y remesas', text: 'Apps de pagos, envíos de dinero y crédito con flujos claros, clave en un estado con tanto comercio con México.', clients: 'Ancient · Monetix · Bonanza' },
           { name: 'Logística y construcción', text: 'Apps de pedidos y operación para empresas de materiales, distribución y obra.', clients: 'Grupo Estrella' },
           { name: 'Educación', text: 'Plataformas de aprendizaje y sistemas para gestionar alumnos, clases, pagos y sucursales.', clients: 'Inglés Individual · Fruit Academy' },
           { name: 'Turismo y entretenimiento', text: 'Sitios y apps con venta de boletos, mapas y toda la información de la visita.', clients: 'El Rollo' },
         ],
       },
       process: {
-        eyebrow: 'Cómo trabajamos',
-        heading: 'De la primera llamada al lanzamiento, en tres pasos.',
+        heading: 'De la primera llamada al lanzamiento, *en tres pasos.*',
         steps: [
-          { name: 'Llamada de 30 min', text: 'Revisamos tus objetivos, tu audiencia y lo que frena tus ventas, en tu horario.' },
+          { name: 'Llamada inicial', text: 'Revisamos tus objetivos, tu audiencia y lo que frena tus ventas, en tu horario.' },
           { name: 'Propuesta clara', text: 'Qué incluye, cuánto cuesta y cuándo se entrega, antes de empezar.' },
           { name: 'Diseño, desarrollo y lanzamiento', text: 'Ciclos cortos, revisiones en línea y acompañamiento después de publicar.' },
         ],
       },
       cases: {
-        eyebrow: 'Casos de estudio',
-        heading: 'Proyectos que ya diseñamos y desarrollamos.',
+        heading: 'Proyectos que ya *diseñamos y desarrollamos.*',
         ids: ['mexico-pacific', 'ancient', 'el-rollo', 'ingles-individual'],
       },
       faq: {
-        eyebrow: 'Preguntas frecuentes',
-        heading: 'Respuestas antes de agendar.',
+        heading: 'Respuestas *antes de agendar.*',
         items: [
           { question: '¿Trabajan con empresas de Texas?', answer: 'Sí. Trabajamos en remoto con empresas de todo Texas, de Houston, Dallas y Fort Worth a Austin, San Antonio y El Paso, con reuniones en línea durante todo el proyecto.' },
           { question: '¿En qué horario trabajan?', answer: 'En horario del centro de México (UTC−6). Es la misma hora que Houston, Dallas, Austin y San Antonio en invierno y una hora de diferencia en verano, así que las reuniones caben en tu jornada.' },
-          { question: '¿Por qué contratar una agencia nearshore y no una local?', answer: 'Porque trabajas con un equipo con experiencia desde 1998, en tu zona horaria, que habla inglés y español y que diseña y programa en el mismo lugar, con precios claros desde el inicio.' },
+          { question: '¿Por qué contratar una agencia a distancia y no una local?', answer: 'Porque trabajas con un equipo con experiencia desde 1998, en tu zona horaria, que habla inglés y español y que diseña y programa en el mismo lugar, con precios claros desde el inicio.' },
           { question: '¿Pueden hacer mi sitio en inglés y en español?', answer: 'Sí. Diseñamos sitios bilingües con textos y estructura pensados para cada idioma, y los configuramos para que Google muestre a cada visitante la versión correcta.' },
           { question: '¿Mi sitio aparecerá en Google en Texas?', answer: 'Lo construimos con SEO técnico: velocidad, datos estructurados, versiones por idioma y contenido que responde lo que buscan tus clientes. Para búsquedas locales también conviene tener al día tu perfil de Google Business.' },
           { question: '¿Cuánto cuesta un proyecto?', answer: 'El costo depende del alcance. Después de la llamada recibes una propuesta con lo que incluye, el precio y las fechas de entrega.' },
@@ -96,7 +90,7 @@ export const texas: State = {
     },
     en: {
       seo: {
-        title: 'Web Design & UX/UI Agency for Texas Businesses | Aurin',
+        title: 'Web Design Agency in Texas | Houston, Dallas, Austin | Aurin',
         description:
           'Web design, UX/UI and branding for businesses in Houston, Dallas, Austin and San Antonio. A senior team on Central Time, with clear pricing from the start.',
       },
@@ -110,8 +104,7 @@ export const texas: State = {
         points: ['On Central Time', 'Fluent English, from first call to launch', 'Design and development since 1998'],
       },
       why: {
-        eyebrow: 'Why Aurin in Texas',
-        heading: 'Close to your team, your schedule and your customers.',
+        heading: 'Close to your team, *your schedule and your customers.*',
         items: [
           { title: 'In your time zone', text: 'We work on Central Mexico time (UTC−6): the same time as Houston, Dallas, Austin and San Antonio in winter and one hour apart in summer. Meetings fit inside your workday.' },
           { title: 'English first, Spanish when you need it', text: 'We work with you in English from the first call. And if you also serve Spanish-speaking customers (over 8 million Texans, nearly 3 in 10, speak Spanish at home, US Census ACS 2024), we design a Spanish version crafted for them, not a literal translation.' },
@@ -119,44 +112,39 @@ export const texas: State = {
         ],
       },
       services: {
-        eyebrow: 'Services',
-        heading: 'Everything your Texas business needs in digital, in one team.',
+        heading: 'Everything your Texas business needs in digital, *in one team.*',
         intro: 'Start with the service you need today or combine them: brand, website and product stay consistent because the same team makes them.',
       },
       sectors: {
-        eyebrow: 'Industries',
-        heading: 'Experience in the industries that drive Texas.',
+        heading: 'Experience in the industries that *drive Texas.*',
         items: [
           { name: 'Energy', text: 'Institutional websites for energy companies that need to convey vision and trust to investors and communities.', clients: 'Mexico Pacific' },
           { name: 'Healthcare', text: 'Bilingual brands and websites for healthcare services that serve families in English and Spanish.', clients: 'Elite Home Health · Dentol' },
-          { name: 'Fintech and remittances', text: 'Payments, money transfer and lending apps with clear flows, key in a state with so much trade with Mexico.', clients: 'Ancient · Monetix · Bonanza', links: [{ href: '/en/remittance-app-design/', label: 'Remittance app design' }] },
+          { name: 'Fintech and remittances', text: 'Payments, money transfer and lending apps with clear flows, key in a state with so much trade with Mexico.', clients: 'Ancient · Monetix · Bonanza' },
           { name: 'Logistics and construction', text: 'Ordering and operations apps for materials, distribution and construction companies.', clients: 'Grupo Estrella' },
           { name: 'Education', text: 'Learning platforms and systems to manage students, classes, payments and branches.', clients: 'Inglés Individual · Fruit Academy' },
           { name: 'Tourism and entertainment', text: 'Websites and apps with ticketing, maps and everything visitors need to know.', clients: 'El Rollo' },
         ],
       },
       process: {
-        eyebrow: 'How we work',
-        heading: 'From the first call to launch, in three steps.',
+        heading: 'From the first call to launch, *in three steps.*',
         steps: [
-          { name: '30-min call', text: 'We review your goals, your audience and what is holding your sales back, on your schedule.' },
+          { name: 'Intro call', text: 'We review your goals, your audience and what is holding your sales back, on your schedule.' },
           { name: 'Clear proposal', text: 'What’s included, what it costs and when it’s delivered, before we start.' },
           { name: 'Design, development and launch', text: 'Short cycles, online reviews and support after going live.' },
         ],
       },
       cases: {
-        eyebrow: 'Case studies',
-        heading: 'Projects we have already designed and built.',
+        heading: 'Projects we have already *designed and built.*',
         ids: ['mexico-pacific', 'ancient', 'el-rollo', 'ingles-individual'],
       },
       faq: {
-        eyebrow: 'FAQ',
-        heading: 'Answers before you book.',
+        heading: 'Answers *before you book.*',
         items: [
           { question: 'Do you work with Texas businesses?', answer: 'Yes. We work remotely with businesses across Texas, from Houston, Dallas and Fort Worth to Austin, San Antonio and El Paso, with online meetings throughout the project.' },
           { question: 'Do you work in English?', answer: 'Yes. Calls, emails, deliverables and website copy are all in English, from the first call to launch.' },
           { question: 'What hours do you work?', answer: 'On Central Mexico time (UTC−6). That is the same time as Houston, Dallas, Austin and San Antonio in winter and one hour apart in summer, so meetings fit inside your workday.' },
-          { question: 'Why hire a nearshore agency instead of a local one?', answer: 'Because you work with a team experienced since 1998, in your time zone, that speaks English and Spanish and designs and builds in one place, with clear pricing from the start.' },
+          { question: 'Why hire a remote agency instead of a local one?', answer: 'Because you work with a team experienced since 1998, in your time zone, that speaks English and Spanish and designs and builds in one place, with clear pricing from the start.' },
           { question: 'Can you also build a Spanish version of my website?', answer: 'Yes. We design bilingual websites with copy and structure crafted for each language, and set them up so Google shows every visitor the right version.' },
           { question: 'Will my website show up on Google in Texas?', answer: 'We build it with technical SEO: speed, structured data, language versions and content that answers what your customers search for. For local searches, it also helps to keep your Google Business Profile up to date.' },
           { question: 'How much does a project cost?', answer: 'It depends on the scope. After the call you get a proposal with what’s included, the price and the delivery dates.' },

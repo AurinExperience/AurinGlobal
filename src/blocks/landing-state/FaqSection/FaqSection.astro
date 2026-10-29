@@ -2,20 +2,28 @@
 /** Preguntas de la landing (fondo oscuro). El FAQPage sale de los mismos items. */
 import type { StateCopy } from '@/data/states';
 import FaqList from '@/blocks/shared/FaqList/FaqList.astro';
+import MainButton from '@/components/ui/MainButton.astro';
+import { UI, getLangFromUrl } from '@/i18n';
 import styles from './FaqSection.module.css';
+import Accent from '@/components/ui/Accent.astro';
 
 interface Props {
   faq: StateCopy['faq'];
 }
 
 const { faq } = Astro.props;
+const t = UI[getLangFromUrl(Astro.url)];
 ---
 
 <section id="faq" class={styles.section} aria-labelledby="titulo-faq">
   <div class:list={['wrap', styles.grid]}>
-    <div>
-      <p class="eyebrow">{faq.eyebrow}</p>
-      <h2 id="titulo-faq" class="h2">{faq.heading}</h2>
+    <div class={styles.side}>
+      <h2 id="titulo-faq" class="h2"><Accent text={faq.heading} /></h2>
+      <div class:list={['spotlight', styles.ask]}>
+        <p class:list={['h3', styles.askTitle]}>{t.faqAside.title}</p>
+        <p class="muted">{t.faqAside.text}</p>
+        <MainButton href="#contacto" text={t.bookCallLong} />
+      </div>
     </div>
     <FaqList items={faq.items} />
   </div>

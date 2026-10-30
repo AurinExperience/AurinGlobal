@@ -4,7 +4,7 @@
  * (blocks/shared/SEO/AdvancedSEO.astro), con los hreflang de aurin.consulting:
  * es-US / es-CA / en-US / en-CA y x-default al inglés, porque el público es de EE. UU. y Canadá.
  */
-import { SITE, TRACKING } from '@/config/site';
+import { SITE } from '@/config/site';
 import { LANGS, LOCALE, getLangFromUrl, localizedPath } from '@/i18n';
 import { ogPath } from '@/lib/pages';
 
@@ -61,9 +61,6 @@ const alternates = noindex
 <meta name="twitter:image:alt" content={title} />
 <meta name="twitter:site" content="@aurinmx" />
 
-{/* Verificación de Search Console y Bing Webmaster por meta (TRACKING en config/site.ts). Nunca los códigos de aurin.mx. */}
-{TRACKING.googleVerification && <meta name="google-site-verification" content={TRACKING.googleVerification} />}
-{TRACKING.bingVerification && <meta name="msvalidate.01" content={TRACKING.bingVerification} />}
 
 {structuredData.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
 

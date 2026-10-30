@@ -7,7 +7,7 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 import WhatsAppButton from '@/components/ui/WhatsAppButton.astro';
 import Analytics from '@/components/ui/Analytics.astro';
 import CookieConsent from '@/components/ui/CookieConsent.astro';
-import { ANALYTICS_ON } from '@/config/site';
+import { ANALYTICS_ON, TRACKING } from '@/config/site';
 
 interface Props {
   title: string;
@@ -26,6 +26,9 @@ const lang = getLangFromUrl(Astro.url);
 <html lang={LOCALE[lang].html}>
   <head>
     <meta charset="UTF-8" />
+    {/* Verificación de Search Console y Bing (TRACKING en config/site.ts): lo primero del head. */}
+    {TRACKING.googleVerification && <meta name="google-site-verification" content={TRACKING.googleVerification} />}
+    {TRACKING.bingVerification && <meta name="msvalidate.01" content={TRACKING.bingVerification} />}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
 

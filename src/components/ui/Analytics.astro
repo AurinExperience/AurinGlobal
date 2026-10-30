@@ -2,8 +2,7 @@
 /**
  * GA4 y Microsoft Clarity con consentimiento: el mismo script que aurin.mx (Layout.astro de allá),
  * sin la atribución de leads ni el registro de decisiones en la hoja de Google.
- * Los IDs son de aurin.consulting (NUNCA los de aurin.mx: mezclarían los datos de los dos sitios) y viven en
- * variables de Vercel: PUBLIC_GA4_ID ("G-…") y PUBLIC_CLARITY_ID. Sin ninguna, no se pinta nada
+ * Los IDs son de aurin.consulting y viven en TRACKING (config/site.ts). Sin ninguno, no se pinta nada
  * (ni este script ni el aviso de cookies).
  *
  * El aviso sale a todos hasta que eligen; lo que cambia por región es qué pasa mientras tanto:
@@ -13,10 +12,10 @@
  * La elección vive en localStorage; window.aurinSetConsent(true|false) la cambia.
  * window.aurinTrack(evento, params) manda un evento a los dos (los formularios lo usan).
  */
-import { ANALYTICS_ON } from '@/config/site';
+import { ANALYTICS_ON, TRACKING } from '@/config/site';
 
-const GA = import.meta.env.PUBLIC_GA4_ID ?? '';
-const CLARITY = import.meta.env.PUBLIC_CLARITY_ID ?? '';
+const GA = TRACKING.ga4;
+const CLARITY = TRACKING.clarity;
 ---
 
 {ANALYTICS_ON && (

@@ -49,5 +49,17 @@ export const ORG_ID = `${SITE.url}/#organization`;
 export const whatsappUrl = (text: string, path: string) =>
   `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(`${text} (aurin.consulting${path})`)}`;
 
-/** GA4 / Clarity de aurin.consulting (variables en Vercel). Sin ellas no hay analítica ni aviso de cookies. */
-export const ANALYTICS_ON = Boolean(import.meta.env.PUBLIC_GA4_ID || import.meta.env.PUBLIC_CLARITY_ID);
+/**
+ * IDs de analítica y verificación de aurin.consulting. Van en el código (son públicos: salen en el HTML)
+ * para que no se pierdan con una variable de Vercel borrada. NUNCA los de aurin.mx: mezclarían los datos.
+ * Vacío = no se pinta (sin GA4 ni Clarity tampoco hay aviso de cookies).
+ */
+export const TRACKING = {
+  ga4: 'G-99DD3BJ6MK',
+  clarity: 'z60cnysh0u',
+  googleVerification: '9YBMaGH7_bHi_23YiHdQPsRfsRgrSpSaApsHFcp6vzQ',
+  bingVerification: '',
+};
+
+/** Solo en el build: en `npm run dev` no carga GA4 ni Clarity (no mete visitas de localhost a los datos). */
+export const ANALYTICS_ON = import.meta.env.PROD && Boolean(TRACKING.ga4 || TRACKING.clarity);

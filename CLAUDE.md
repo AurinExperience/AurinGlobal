@@ -33,7 +33,7 @@ nada en estas páginas necesita isla. `@astrojs/vercel` está instalado solo por
   idioma del navegador si coincide. Manda `phone` + `phoneLada`.
 - `WhatsAppButton` (copia de aurin.mx, en Layout): burbuja 👋 → mini-formulario → abre wa.me ANTES de
   cualquier await (si no, es popup bloqueado) y en paralelo manda el respaldo por correo con `keepalive`.
-  Sin el halo `waRing` de allá (animaba box-shadow) ni métricas (aún no hay GA4/Clarity aquí).
+  Sin el halo `waRing` de allá (animaba box-shadow) ni las métricas de allá (aquí manda `whatsapp_lead` con `aurinTrack`).
 - Probar con curl: Astro exige el header `Origin` en POST (sin él da 403) y la ruta lleva barra final.
 
 ## Cookies, analítica y privacidad
@@ -41,7 +41,8 @@ nada en estas páginas necesita isla. `@astrojs/vercel` está instalado solo por
 - `Analytics.astro` (en el `<head>`): el script de consentimiento de aurin.mx. GA4 diferido hasta la primera
   interacción (no frena el LCP), Clarity al cargar. EE. UU./México/LatAm: activas por defecto y se apagan en
   "Preferencias de cookies" (opt-out, respeta GPC); Europa y Canadá: solo con "Aceptar". Elección en localStorage 12 meses.
-- Solo se pinta con `PUBLIC_GA4_ID` o `PUBLIC_CLARITY_ID` (`ANALYTICS_ON` en config/site.ts): sin IDs no hay
+- IDs en el código, `TRACKING` de config/site.ts (GA4 `G-99DD3BJ6MK`, Clarity `z60cnysh0u`, meta de Search Console y Bing;
+  GA4 y Clarity solo en el build, no en `npm run dev`), no en variables de Vercel: así no se pierden. Con los dos vacíos (`ANALYTICS_ON`) no hay
   script, ni aviso, ni botón de preferencias en el pie. IDs propios de aurin.consulting, NUNCA los de aurin.mx.
 - Conversiones: `window.aurinTrack('generate_lead')` (formulario) y `'whatsapp_lead'`. Marcarlas como evento clave en GA4.
 - `/privacidad/` ↔ `/en/privacy/`: en el registro de páginas como `legal` (sitemap con prioridad 0.3, fuera de llms.txt).
@@ -342,11 +343,9 @@ Orden de trabajo en aurin.consulting:
 ## Pendientes
 
 - `RESEND_API_KEY` en Vercel (sin ella los leads dan error). El botón "Agenda una llamada" del CtaBanner de la home no tiene destino (`#`).
-- Crear la propiedad GA4 y el proyecto Clarity de aurin.consulting y poner sus IDs en Vercel (`PUBLIC_GA4_ID`, `PUBLIC_CLARITY_ID`):
-  hasta entonces no hay analítica ni aviso de cookies (sin cookies no hay nada que avisar).
 - Testimonios: se quitaron por no tener citas reales. Si se consiguen, sección nueva en la home (sin schema Review: Google no muestra estrellas de reseñas propias).
 - Search Console (propiedad de dominio, por DNS) y Bing Webmaster (puede importar de Search Console): verificar aurin.consulting
-  y mandar el sitemap. Si se verifica por meta: `PUBLIC_GOOGLE_SITE_VERIFICATION` / `PUBLIC_BING_SITE_VERIFICATION`.
+  y mandar el sitemap. La meta de Google ya está en `TRACKING`; la de Bing va en `TRACKING.bingVerification`.
 - En pausa (decidido no hacerlo por ahora): enlaces desde aurin.mx/en a aurin.consulting y aurin.consulting en el `sameAs` de aurin.mx.
 - Perfiles en Clutch, DesignRush y GoodFirms apuntando a aurin.consulting.
 - Revisar el copy en inglés con alguien nativo.

@@ -79,8 +79,10 @@ const t = UI[lang];
     const status = form.querySelector<HTMLElement>('[data-status]')!;
     const button = form.querySelector<HTMLButtonElement>('[type="submit"]');
     const dialog = form.nextElementSibling as HTMLDialogElement;
-    const title = dialog.querySelector<HTMLElement>('h2')!;
-    const text = dialog.querySelector<HTMLElement>('p')!;
+    const title = dialog.querySelector<HTMLElement>('[data-title-success]')!;
+    const text = dialog.querySelector<HTMLElement>('[data-text-success]')!;
+    const track = (event: string, params: Record<string, string> = {}) =>
+      (window as any).aurinTrack?.(event, { form_id: form.dataset.leadForm, ...params });
     const show = (state: 'success' | 'error') => {
       status.textContent = '';
       dialog.dataset.state = state;
@@ -96,6 +98,17 @@ const t = UI[lang];
       history.replaceState(null, '', location.pathname + location.hash);
     }
 
+    // Embudo en GA4/Clarity: empieza → (no pasa la validación | falla el envío) → lead
+    form.addEventListener('input', () => track('lead_form_start'), { once: true });
+    // `invalid` sale por cada campo: se reporta solo el primero de cada intento
+    let invalidSent = false;
+    form.addEventListener('invalid', (e) => {
+      if (invalidSent) return;
+      invalidSent = true;
+      setTimeout(() => (invalidSent = false));
+      track('lead_form_error', { error_type: 'invalid', field: (e.target as HTMLInputElement).name });
+    }, true);
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       status.textContent = status.dataset.sending!;
@@ -104,10 +117,10 @@ const t = UI[lang];
       const ok = res?.ok && (await res.json().catch(() => null))?.ok;
       show(ok ? 'success' : 'error');
       if (ok) {
-        // Conversión en GA4/Clarity (si hay analítica y consentimiento)
-        (window as any).aurinTrack?.('generate_lead', { form_id: form.dataset.leadForm });
+        const data = new FormData(form);
+        track('generate_lead', { service: String(data.get('service') ?? ''), contact_pref: String(data.get('contactPref') ?? '') });
         form.reset();
-      }
+      } else track('lead_form_error', { error_type: res ? 'server' : 'network' });
       if (button) button.disabled = false;
     });
   }

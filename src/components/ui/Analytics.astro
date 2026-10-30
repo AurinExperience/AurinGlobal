@@ -10,7 +10,10 @@
  * - Resto (EE. UU., México, Latinoamérica): activas por defecto y se apagan desde
  *   "Preferencias de cookies" (opt-out). La señal GPC del navegador cuenta como "no".
  * La elección vive en localStorage; window.aurinSetConsent(true|false) la cambia.
- * window.aurinTrack(evento, params) manda un evento a los dos (los formularios lo usan).
+ * window.aurinTrack(evento, params) manda un evento a los dos (los formularios lo usan). Eventos:
+ * lead_form_start, lead_form_error (error_type invalid|server|network, field), generate_lead (form_id,
+ * service, contact_pref), whatsapp_open, whatsapp_lead. Nunca datos personales (GA4 lo prohíbe).
+ * En Clarity los leads además etiquetan la sesión (`lead`) y la marcan para que se grabe completa.
  */
 import { ANALYTICS_ON, TRACKING } from '@/config/site';
 
@@ -78,7 +81,12 @@ const CLARITY = TRACKING.clarity;
 
     window.aurinTrack = function (event, params) {
       gtag('event', event, Object.assign({ transport_type: 'beacon' }, params));
-      if (window.clarity) clarity('event', event);
+      if (!window.clarity) return;
+      clarity('event', event);
+      if (/lead$/.test(event)) {
+        clarity('set', 'lead', (params && params.form_id) || event);
+        clarity('upgrade', event);
+      }
     };
 
     window.aurinSetConsent = function (on) {

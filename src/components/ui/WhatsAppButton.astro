@@ -47,7 +47,7 @@ const waUrl = `https://wa.me/${SITE.whatsapp}`;
       </button>
     </div>
 
-    <form class={styles.form} data-wa-form data-lead-form="whatsapp">
+    <form class={styles.form} data-wa-form>
       <label class={styles.label} for="wa-name">{t.nameLabel}</label>
       <input class={styles.input} id="wa-name" name="nombre" type="text" autocomplete="name" maxlength="100" placeholder={t.namePlaceholder} required />
 
@@ -113,6 +113,7 @@ const waUrl = `https://wa.me/${SITE.whatsapp}`;
     let sent = false;
 
     const open = () => {
+      if (panel.hidden) (window as any).aurinTrack?.('whatsapp_open');
       panel.hidden = false;
       root.dataset.open = '';
       root.dataset.seen = ''; // la burbuja ya cumplió: no vuelve a salir
@@ -186,7 +187,7 @@ const waUrl = `https://wa.me/${SITE.whatsapp}`;
           referrer: document.referrer || 'Directo',
         }),
       }).catch(() => {}); // el mensaje ya va por WhatsApp; el correo es respaldo
-      (window as any).aurinTrack?.('whatsapp_lead');
+      (window as any).aurinTrack?.('whatsapp_lead', { form_id: 'whatsapp' });
 
       sent = true;
       form.hidden = true;

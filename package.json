@@ -19,9 +19,13 @@
     "sharp": "^0.34.5"
   },
   "engines": {
-    "node": "26.x"
+    "node": "24.x"
   },
   "devDependencies": {
     "@types/node": "^24.0.0"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true,
+    "sharp@0.34.5": true
   }
 }

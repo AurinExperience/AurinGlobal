@@ -260,6 +260,8 @@ Orden de trabajo en aurin.consulting:
 - Home: Service ×4 (salen de `data/services`, `url` = la página de cada servicio) + FAQPage. Servicio: Service + OfferCatalog, BreadcrumbList, FAQPage. Estado: Service (areaServed State + ciudades), HowTo, BreadcrumbList, FAQPage.
 - El FAQ visible y el FAQPage salen de los mismos items (`faqSchema`). El texto `pending` se ve en lima y no entra al JSON-LD.
 - `robots.txt`: misma política de bots de IA que aurin.mx. 404 real, nunca redirigir al home.
+- IndexNow (Bing, Yandex…; Google no lo usa): clave en `public/<clave>.txt`. Después de publicar páginas nuevas,
+  `node scripts/indexnow.mjs` manda todas las URLs del sitemap publicado.
 
 ## Animaciones y rendimiento
 

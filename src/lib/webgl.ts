@@ -1,3 +1,15 @@
+/**
+ * Contexto WebGL solo si hay GPU de verdad. Sin ella (SwiftShader, llvmpipe: Lighthouse/PageSpeed,
+ * equipos sin aceleración) el shader se dibuja en el CPU y congela la página: se queda la foto fija.
+ */
+export function gpuContext(canvas: HTMLCanvasElement | null) {
+  const gl = canvas?.getContext('webgl', { alpha: false, antialias: false, failIfMajorPerformanceCaveat: true });
+  const info = gl?.getExtension('WEBGL_debug_renderer_info');
+  // ponytail: por nombre del renderizador; si un navegador lo oculta, pasa (el shader ya se pausa fuera de pantalla)
+  if (info && /swiftshader|llvmpipe|softpipe|software|basic render/i.test(gl!.getParameter(info.UNMASKED_RENDERER_WEBGL))) return null;
+  return gl ?? null;
+}
+
 const VERT = 'attribute vec2 p; void main() { gl_Position = vec4(p, 0., 1.); }';
 
 /**

@@ -3,14 +3,14 @@
 ## 1. Dominio en Vercel y DNS
 
 - [ ] 1.1 Conectar AurinGlobal a Vercel (cuenta `aurins-projects`) y verificar que el proyecto aparece con un deploy Ready
-- [ ] 1.2 Poner la retención de deploys del proyecto en Canceled 1 día, Errored 1 día, Pre-Production 1 semana, Production 2 semanas (Settings → Build and Deployment) y verificar que dice "Deployment retention policy updated"
-- [ ] 1.3 Agregar `aurin.consulting` y `www.aurin.consulting` al proyecto y copiar los registros DNS a Hostinger; verificar que Vercel marca los dos como "Valid Configuration" y que `curl -sI https://aurin.consulting/` responde `server: Vercel`
+- [x] 1.2 Poner la retención de deploys del proyecto en Canceled 1 día, Errored 1 día, Pre-Production 1 semana, Production 2 semanas (Settings → Build and Deployment) y verificar que dice "Deployment retention policy updated"
+- [x] 1.3 Agregar `aurin.consulting` y `www.aurin.consulting` al proyecto y copiar los registros DNS a Hostinger; verificar que Vercel marca los dos como "Valid Configuration" y que `curl -sI https://aurin.consulting/` responde `server: Vercel`
 
 ## 2. Cambio de dominio en el código
 
 - [ ] 2.1 Cambiar `site` en `astro.config.mjs` y `url`/`logoUrl`/`ogImage` en `src/config/site.ts` a `https://aurin.consulting`; verificar con `npm run build` que el sitemap y el canonical usan el dominio nuevo
 - [ ] 2.2 Derivar de `SITE.url` el host en el texto de WhatsApp (`site.ts`), el pie de las OG (`src/pages/og/[...path].png.ts`) y los asuntos de `api/contact.ts` y `api/whatsapp-lead.ts`; verificar con un lead de prueba (`MAIL_TEST_TO`) que el asunto dice `aurin.consulting`
-- [ ] 2.3 Actualizar `public/robots.txt` (comentarios y línea `Sitemap:`) y el redirect de www en `vercel.json`; verificar que `curl -sI https://www.aurin.consulting/diseno-web/` da 301/308 a `https://aurin.consulting/diseno-web/`
+- [x] 2.3 Actualizar `public/robots.txt` (comentarios y línea `Sitemap:`) y el redirect de www en `vercel.json`; verificar que `curl -sI https://www.aurin.consulting/diseno-web/` da 301/308 a `https://aurin.consulting/diseno-web/` (el de `vercel.json` no se aplica con el adaptador de Astro: el 308 lo hace el dominio en Vercel, Settings → Domains)
 - [ ] 2.4 Actualizar `src/data/privacy.ts` (dominio en ES y EN y fecha de actualización); verificar en `/privacidad/` y `/en/privacy/`
 - [ ] 2.5 Actualizar CLAUDE.md y README.md al dominio nuevo; verificar con `grep -rn "aurinux.com" CLAUDE.md README.md` sin resultados
 

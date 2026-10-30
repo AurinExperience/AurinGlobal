@@ -41,7 +41,7 @@ const { hero } = Astro.props;
 </section>
 
 <script>
-  import { setup } from '@/lib/webgl';
+  import { gpuContext, setup } from '@/lib/webgl';
   /*
    * Shader de pantalla completa sobre la foto, sin librerías. La foto se dibuja con
    * el mismo recorte que object-fit: cover + object-position del <img>, así el canvas
@@ -389,7 +389,7 @@ const { hero } = Astro.props;
     const photo = section?.querySelector<HTMLImageElement>('[data-photo]');
     const logo = section?.querySelector<HTMLElement>('[data-logo]');
     const canvas = section?.querySelector('canvas');
-    const gl = canvas?.getContext('webgl', { alpha: false, antialias: false });
+    const gl = gpuContext(canvas);
     if (!section || !scene || !photo || !logo || !canvas || !gl) return;
     const u = await setup(gl, FRAG, UNIFORMS);
     if (!u) return;

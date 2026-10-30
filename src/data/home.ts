@@ -66,7 +66,7 @@ export const CLIENTS: Client[] = [
   { name: 'Gein', logo: '/logos/gein.svg', w: 96, h: 45 },
   { name: 'SAI', logo: '/logos/sai.svg', w: 81, h: 51 },
   { name: 'Fortrade', logo: '/logos/fortrade.avif', w: 179, h: 29, tone: 'light' },
-  { name: 'Debiti', logo: '/logos/debiti.png', w: 111, h: 41, tone: 'color' },
+  { name: 'Debiti', logo: '/logos/debiti.webp', w: 111, h: 41, tone: 'color' },
   { name: 'Rafael Beltrán', logo: '/logos/rafael-beltran.svg', w: 137, h: 35 },
 ];
 

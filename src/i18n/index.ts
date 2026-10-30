@@ -72,7 +72,7 @@ export const UI = {
     cookies: {
       title: '¿Aceptas las cookies?',
       text: 'Usamos cookies propias y de terceros para analizar el uso del sitio y mejorarlo.',
-      link: 'Más información',
+      link: 'Aviso de cookies',
       reject: 'Rechazar',
       accept: 'Aceptar',
       noticeTitle: 'Usamos cookies',
@@ -209,7 +209,7 @@ export const UI = {
     cookies: {
       title: 'Do you accept cookies?',
       text: 'We use our own and third-party cookies to analyze how the site is used and improve it.',
-      link: 'Learn more',
+      link: 'Cookie policy',
       reject: 'Reject',
       accept: 'Accept',
       noticeTitle: 'We use cookies',

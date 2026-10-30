@@ -87,7 +87,7 @@ const current = (href: string) => (href === here ? 'page' : undefined);
 <header class:list={[styles.header, overlay && styles.overlay]}>
   <div class:list={['wrap', styles.inner]}>
     <a href={home} aria-label={t.homeLabel} class={styles.logo}>
-      <img src="/img/aurin.svg" alt="" width="134" height="40" />
+      <img src="/img/aurin.svg" alt="" width="134" height="40" fetchpriority="high" />
       <span class={styles.logoDot} aria-hidden="true"></span>
     </a>
     <nav class={styles.nav} aria-label={lang === 'es' ? 'Principal' : 'Main'}>

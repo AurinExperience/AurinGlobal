@@ -81,7 +81,7 @@ const t = UI[getLangFromUrl(Astro.url)];
 </section>
 
 <script>
-  import { setup } from '@/lib/webgl';
+  import { gpuContext, setup } from '@/lib/webgl';
 
   // Las medidas de la foto (PHOTOS en el frontmatter); el hero está en toda página que carga este script.
   const { img: IMG, lamp: LAMP, beam: BEAM, fx: FX } = JSON.parse(
@@ -456,7 +456,7 @@ const t = UI[getLangFromUrl(Astro.url)];
     const photo = section?.querySelector<HTMLImageElement>('[data-photo]');
     const scene = photo?.closest('div');
     const canvas = section?.querySelector('canvas');
-    const gl = canvas?.getContext('webgl', { alpha: false, antialias: false });
+    const gl = gpuContext(canvas);
     if (!section || !photo || !scene || !canvas || !gl) return;
     const u = await setup(gl, FRAG, ['img', 'code', 'cur', 'grid', 'r', 's', 'off', 'texel', 't', 'tgt']);
     if (!u) return;

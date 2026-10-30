@@ -5,10 +5,7 @@
   background: radial-gradient(60% 70% at 85% 30%, rgba(208, 223, 0, .22), transparent 70%);
 }
 
-.title {
-  max-width: 920px;
-  font-size: 64px;
-}
+.title { max-width: 920px; }
 
 .text {
   margin-top: 28px;
@@ -50,9 +47,14 @@
   border-top: 1px solid var(--color-gray-b);
 }
 
-.withForm :global(.wrap) > form { grid-area: form; }
+/* Del alto de su contenido (estirada dejaba un hueco negro bajo el botón) y fija mientras corre la columna izquierda */
+.withForm :global(.wrap) > form {
+  grid-area: form;
+  align-self: start;
+  position: sticky;
+  top: 110px;
+}
 
-.withForm .title { font-size: 56px; }
 
 /* Qué pasa después de enviar: pasos numerados en círculo (como los números de Servicios),
    unidos por una línea fina */
@@ -114,13 +116,13 @@
 
 @media (max-width: 900px) {
   .section { padding: 100px 0 88px; }
-  .title { font-size: 44px; }
   .withForm :global(.wrap) {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: none;
     grid-template-areas: "lead" "form" "alt";
     row-gap: var(--spacing-12);
   }
+  .withForm :global(.wrap) > form { position: static; }
 }
 
 /* Cielo (.sky): franja completa en espejo: el cierre es la noche entera */

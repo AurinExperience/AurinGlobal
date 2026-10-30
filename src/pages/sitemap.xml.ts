@@ -6,7 +6,7 @@ import { indexablePages } from '@/lib/pages';
 /*
  * Sitemap desde el mismo registro que llms.txt y las OG (lib/pages.ts): agregar
  * un estado no depende de acordarse de este archivo. Cada URL declara sus
- * alternas por idioma + x-default (inglés: el público está en EE. UU.).
+ * alternas por idioma y país (EE. UU. y Canadá) + x-default (inglés).
  */
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
@@ -16,7 +16,7 @@ export const GET: APIRoute = () => {
     const siblings = pages.filter((p) => p.key === page.key);
     const en = siblings.find((p) => p.lang === 'en');
     const links = [
-      ...siblings.map((p) => `<xhtml:link rel="alternate" hreflang="${LOCALE[p.lang].hreflang}" href="${SITE.url}${p.path}"/>`),
+      ...siblings.flatMap((p) => LOCALE[p.lang].regions.map((h) => `<xhtml:link rel="alternate" hreflang="${h}" href="${SITE.url}${p.path}"/>`)),
       en && `<xhtml:link rel="alternate" hreflang="x-default" href="${SITE.url}${en.path}"/>`,
     ].filter(Boolean);
     return `  <url>

@@ -10,8 +10,6 @@ interface Props {
   class?: string;
   href?: string;
   variant?: "primary" | "secondary";
-  /** aurin.consulting: versión compacta del header. */
-  small?: boolean;
   /** aurin.consulting: abre el enlace en otra pestaña (WhatsApp). */
   newTab?: boolean;
 }
@@ -24,14 +22,12 @@ const {
   class: className = "",
   href,
   variant = "primary",
-  small = false,
   newTab = false,
 } = Astro.props;
 
 const cls = [
   styles.btn,
   variant === "secondary" && styles.btnSecondary,
-  small && styles.btnSmall,
   className,
 ]
   .filter(Boolean)

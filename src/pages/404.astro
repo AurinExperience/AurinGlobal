@@ -1,24 +1,57 @@
 ---
 /**
  * 404 real (Astro la sirve con HTTP 404): es lo que le dice a Google que borre
- * la URL. Nunca redirigir URLs rotas al home: Google lo lee como soft 404.
- * Bilingüe porque una sola 404 atiende las rutas en español y bajo /en/.
+ * la URL. Nunca redirigir URLs rotas al home: Google lo lee como soft 404 (las
+ * URLs viejas conocidas van con 301 en astro.config.mjs).
+ * Como la de aurin.mx: enlaces de salida para que el visitante (o un rastreador)
+ * tenga por dónde seguir en vez de rebotar. Bilingüe porque una sola 404 atiende
+ * las rutas en español y bajo /en/.
  */
 import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
-import MainButton from '@/components/ui/MainButton.astro';
-import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import { SERVICES, servicePath } from '@/data/services';
+import { industriesPath } from '@/data/industries';
 import styles from './_404.module.css';
+
+const LINKS = {
+  es: [
+    { href: '/', label: 'Ir al inicio' },
+    ...SERVICES.map((s) => ({ href: servicePath(s, 'es'), label: s.copy.es.name })),
+    { href: industriesPath('es'), label: 'Industrias' },
+    { href: '/#casos', label: 'Casos' },
+    { href: '/#contacto', label: 'Contacto' },
+  ],
+  en: [
+    { href: '/en/', label: 'Go to home' },
+    ...SERVICES.map((s) => ({ href: servicePath(s, 'en'), label: s.copy.en.name })),
+    { href: industriesPath('en'), label: 'Industries' },
+    { href: '/en/#casos', label: 'Work' },
+    { href: '/en/#contacto', label: 'Contact' },
+  ],
+};
 ---
 
-<Layout title="Página no encontrada · Page not found | Aurin" description="La página que buscas no existe. The page you are looking for does not exist." noindex>
-  <main id="main-content" class:list={['wrap', styles.main]}>
-    <p class="eyebrow">404</p>
-    <h1 class="h1">Esta página no existe.</h1>
-    <p class:list={['muted', styles.en]} lang="en">This page does not exist.</p>
-    <div class="actions">
-      <MainButton href="/" text="Ir al inicio" />
-      <SecondaryButton href="/en/" text="Go to home (English)" />
+<Layout title="Página no encontrada · Page not found | Aurin" description="La página que buscas no existe o cambió de dirección. The page you are looking for does not exist or has moved." noindex>
+  <Header cta="/#contacto" />
+  <main id="main-content" class={styles.main}>
+    <div class:list={['wrap', styles.inner]}>
+      <p class={styles.code} aria-hidden="true">404</p>
+      <h1 class={styles.heading}>Esta página no existe.</h1>
+      <p class={styles.body}>
+        La dirección que abriste no lleva a ningún lado: puede que el enlace esté mal escrito o que la página haya
+        cambiado de lugar. Desde aquí puedes seguir a donde ibas.
+      </p>
+      <ul class={styles.links}>
+        {LINKS.es.map((link) => <li><a class={styles.link} href={link.href}>{link.label}<span aria-hidden="true">→</span></a></li>)}
+      </ul>
+      <div class={styles.en} lang="en">
+        <p class={styles.enTitle}>This page does not exist.</p>
+        <p class={styles.body}>The link may be mistyped, or the page may have moved. From here you can continue where you were going.</p>
+        <ul class={styles.links}>
+          {LINKS.en.map((link) => <li><a class={styles.link} href={link.href}>{link.label}<span aria-hidden="true">→</span></a></li>)}
+        </ul>
+      </div>
     </div>
   </main>
   <Footer minimal />

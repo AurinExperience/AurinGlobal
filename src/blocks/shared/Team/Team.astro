@@ -17,8 +17,8 @@ import Clock from 'lucide-astro/Clock';
 import ArrowUpRight from 'lucide-astro/ArrowUpRight';
 import { SITE } from '@/config/site';
 import { UI, getLangFromUrl } from '@/i18n';
-import oficina from '@/assets/team/oficina.webp';
-import reunion from '@/assets/team/reunion.webp';
+import office from '@/assets/team/office.webp';
+import meeting from '@/assets/team/meeting.webp';
 import styles from './Team.module.css';
 
 interface Props {
@@ -31,15 +31,15 @@ const initials = (name: string) => name.split(' ').map((word) => word[0]).join('
 ---
 
 {compact ? (
-<section class={styles.compact} aria-labelledby="titulo-equipo">
+<section class={styles.compact} aria-labelledby="title-team">
   <div class:list={['wrap', styles.cGrid]}>
     <figure class:list={['reveal', styles.photo, styles.cPhoto]}>
-      <Picture src={oficina} formats={['avif']} fallbackFormat="webp" widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 560px"
+      <Picture src={office} formats={['avif']} fallbackFormat="webp" widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 560px"
         alt={t.office} loading="lazy" decoding="async" fetchpriority="low" />
       <figcaption><span class={styles.dot} aria-hidden="true"></span>{t.office}</figcaption>
     </figure>
     <div>
-      <h2 id="titulo-equipo" class:list={['h2', styles.cTitle]}>{t.compact.titleLead}{' '}<span class="accent">{t.compact.titleAccent}</span></h2>
+      <h2 id="title-team" class:list={['h2', styles.cTitle]}>{t.compact.titleLead}{' '}<span class="accent">{t.compact.titleAccent}</span></h2>
       <p class={styles.cText}>{t.compact.text}</p>
       <ul class:list={[styles.facts, styles.cFacts]}>
         <li><MapPin aria-hidden="true" />{t.remote.office}</li>
@@ -64,23 +64,23 @@ const initials = (name: string) => name.split(' ').map((word) => word[0]).join('
   </div>
 </section>
 ) : (
-<section class={styles.section} aria-labelledby="titulo-equipo">
+<section class={styles.section} aria-labelledby="title-team">
   <div class="wrap">
     <div class={styles.head}>
       <div>
-        <h2 id="titulo-equipo" class="h2">{t.titleLead} <span class="accent">{t.titleAccent}</span></h2>
+        <h2 id="title-team" class="h2">{t.titleLead}{' '}<span class="accent">{t.titleAccent}</span></h2>
       </div>
       <p class:list={['muted', styles.text]}>{t.text}</p>
     </div>
 
     <div class={styles.mosaic}>
       <figure class:list={['reveal', styles.photo, styles.main]}>
-        <Picture src={oficina} formats={['avif']} fallbackFormat="webp" widths={[700, 1100, 1600]} sizes="(max-width: 900px) 100vw, 800px"
+        <Picture src={office} formats={['avif']} fallbackFormat="webp" widths={[700, 1100, 1600]} sizes="(max-width: 900px) 100vw, 800px"
           alt={t.office} loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption><span class={styles.dot} aria-hidden="true"></span>{t.office}</figcaption>
       </figure>
       <figure class:list={['reveal', styles.photo]}>
-        <Picture src={reunion} formats={['avif']} fallbackFormat="webp" widths={[500, 800]} sizes="(max-width: 900px) 100vw, 400px"
+        <Picture src={meeting} formats={['avif']} fallbackFormat="webp" widths={[500, 800]} sizes="(max-width: 900px) 100vw, 400px"
           alt={t.meeting} loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption><span class={styles.dot} aria-hidden="true"></span>{t.meeting}</figcaption>
       </figure>

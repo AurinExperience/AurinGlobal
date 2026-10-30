@@ -13,11 +13,12 @@
   text-decoration: none;
   opacity: 0;
   transform: translateY(20px);
-  height: 52px;
+  height: 40px;
   max-width: 100%;
   min-width: 0;
   font-family: var(--font-family-display);
   font-weight: 700;
+  font-size: 15px;
 }
 
 .btn:global(.is-visible) {
@@ -64,7 +65,7 @@
 }
 
 .btnIcon {
-  width: 52px;
+  width: 40px;
   flex-shrink: 0;
 }
 
@@ -103,23 +104,8 @@
 
 /* ---- Exclusivo de aurin.consulting ---- */
 
-/* Versión compacta del header (MainButton small) */
-.btnSmall {
-  height: 40px;
-  font-size: 15px;
-}
-
-.btnSmall .btnText {
-  padding: 0 14px;
-  border-radius: 8px;
-}
-
-.btnSmall .btnIcon {
-  width: 40px;
-  border-radius: 8px;
-}
-
-.btnSmall .btnIcon :global(svg) {
-  width: 20px;
-  height: 20px;
+/* Todos los botones miden 40 px de alto (header y cuerpo iguales); la flecha a 18 px para ese cuadro */
+.btnIcon :global(svg) {
+  width: 18px;
+  height: 18px;
 }

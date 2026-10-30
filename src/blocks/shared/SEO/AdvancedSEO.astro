@@ -2,7 +2,7 @@
 /**
  * Meta tags de SEO, Open Graph, Twitter y JSON-LD. Misma pieza que en aurin.mx
  * (blocks/shared/SEO/AdvancedSEO.astro), con los hreflang de aurin.consulting:
- * es-US / en-US y x-default al inglés, porque el público es de EE. UU.
+ * es-US / es-CA / en-US / en-CA y x-default al inglés, porque el público es de EE. UU. y Canadá.
  */
 import { SITE } from '@/config/site';
 import { LANGS, LOCALE, getLangFromUrl, localizedPath } from '@/i18n';
@@ -28,7 +28,7 @@ const ogImage = noindex ? SITE.ogImage : `${SITE.url}${ogPath(Astro.url.pathname
 const alternates = noindex
   ? []
   : [
-      ...LANGS.map((l) => ({ hreflang: LOCALE[l].hreflang, href: `${SITE.url}${localizedPath(Astro.url.pathname, l)}` })),
+      ...LANGS.flatMap((l) => LOCALE[l].regions.map((hreflang) => ({ hreflang, href: `${SITE.url}${localizedPath(Astro.url.pathname, l)}` }))),
       { hreflang: 'x-default', href: `${SITE.url}${localizedPath(Astro.url.pathname, 'en')}` },
     ];
 ---
@@ -51,7 +51,7 @@ const alternates = noindex
 <meta property="og:image:alt" content={title} />
 <meta property="og:site_name" content="Aurin" />
 <meta property="og:locale" content={LOCALE[lang].og} />
-{LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LOCALE[l].og} />)}
+{[...LOCALE[lang].ogAlt, ...LANGS.filter((l) => l !== lang).flatMap((l) => [LOCALE[l].og, ...LOCALE[l].ogAlt])].map((og) => <meta property="og:locale:alternate" content={og} />)}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />

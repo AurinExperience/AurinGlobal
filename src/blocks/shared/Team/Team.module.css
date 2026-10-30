@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: var(--spacing-16);
-  align-items: end;
+  align-items: start; /* título y texto arrancan en la misma línea: el texto largo no los descuadra */
   margin-bottom: var(--spacing-16);
 }
 
@@ -237,7 +237,6 @@
   border-radius: 24px;
 }
 
-.cTitle { font-size: clamp(34px, 3.6vw, 48px); }
 
 /* Sobre blanco la lima no se lee: el acento queda en negro y seminegrita */
 .cTitle :global(.accent) { color: inherit; }

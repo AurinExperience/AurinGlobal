@@ -15,9 +15,9 @@ const { clients } = Astro.props;
 const items = [...clients.items, ...clients.items];
 ---
 
-<section class={styles.section} aria-labelledby="titulo-clientes" data-clients>
+<section class={styles.section} aria-labelledby="title-clients" data-clients>
   <div class:list={['wrap', styles.inner]}>
-    <h2 id="titulo-clientes" class:list={['eyebrow', styles.heading]}>{clients.heading}</h2>
+    <h2 id="title-clients" class:list={['eyebrow', styles.heading]}>{clients.heading}</h2>
     <div class={styles.slider}>
       <ul class={styles.track}>
         {items.map((client, i) => {

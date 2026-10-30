@@ -14,7 +14,7 @@ export const uxUiDesign: Service = {
       seo: {
         title: 'Agencia de diseño UX/UI en Estados Unidos | Apps | Aurin',
         description:
-          'Diseño UX/UI de apps y plataformas para empresas en Estados Unidos: investigamos a tus usuarios y probamos el prototipo antes de programar. Llamada gratis.',
+          'Diseño UX/UI de apps y plataformas para empresas en Estados Unidos y Canadá: probamos el prototipo con tus usuarios antes de programar. Llamada gratis.',
       },
       name: 'Diseño UX/UI',
       summary: 'Apps y plataformas que la gente entiende desde el primer uso: investigación con usuarios, prototipos probados y un sistema de diseño para tu equipo.',
@@ -23,7 +23,7 @@ export const uxUiDesign: Service = {
         titleLead: 'Diseño UX/UI que convierte usuarios',
         titleAccent: 'en clientes que se quedan.',
         description:
-          'Para empresas en EE. UU. con una app o plataforma: hablamos con tus usuarios, encontramos dónde se atoran y diseñamos pantallas que entienden a la primera. Lo pruebas antes de programar.',
+          'Para empresas en EE. UU. con app o plataforma: encontramos dónde se atoran tus usuarios y diseñamos pantallas que se entienden.',
         ctaSecondary: 'Qué incluye',
       },
       industries: {
@@ -96,9 +96,9 @@ export const uxUiDesign: Service = {
     },
     en: {
       seo: {
-        title: 'UX/UI Design Agency for Apps & Platforms in the US | Aurin',
+        title: 'UX/UI Design Agency for Apps in the US & Canada | Aurin',
         description:
-          'UX/UI design for apps and platforms of US companies: we research your users and test the prototype before any code is written. Book a free call.',
+          'UX/UI design for apps and platforms of US and Canadian companies: we research your users and test the prototype before any code is written. Book a free call.',
       },
       name: 'UX/UI design',
       summary: 'Apps and platforms people understand from the first use: user research, tested prototypes and a design system for your team.',
@@ -107,7 +107,7 @@ export const uxUiDesign: Service = {
         titleLead: 'UX/UI design that turns users',
         titleAccent: 'into customers who stay.',
         description:
-          'For companies with an app or platform: we talk to your users, find where they get stuck and design screens they understand the first time. You test it before any code.',
+          'For companies with an app or platform: we find where your users get stuck and design screens they understand right away.',
         ctaSecondary: 'What’s included',
       },
       industries: {

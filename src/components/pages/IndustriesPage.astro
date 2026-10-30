@@ -47,17 +47,17 @@ const breadcrumb = {
 <Layout title={copy.seo.title} description={copy.seo.description} structuredData={[schema, breadcrumb]}>
   <Header cta={`${home}#contacto`} />
   <main id="main-content">
-    <section class:list={['sky', 'sky-stars', styles.section]} aria-labelledby="titulo-industrias">
+    <section class:list={['sky', 'sky-stars', styles.section]} aria-labelledby="title-industries">
       <div class="wrap">
         <div class={styles.head}>
           <div>
-            <h1 id="titulo-industrias" class:list={['h1', styles.title]}>{copy.title}</h1>
+            <h1 id="title-industries" class:list={['h1', styles.title]}>{copy.title}</h1>
             <p class:list={['muted', styles.intro]}>{copy.intro}</p>
           </div>
           <form class={styles.search} role="search" hidden>
-            <label class="sr-only" for="buscar-industria">{copy.search}</label>
+            <label class="sr-only" for="industry-search">{copy.search}</label>
             <Search size={20} strokeWidth={1.5} aria-hidden="true" />
-            <input id="buscar-industria" type="search" placeholder={copy.placeholder} autocomplete="off" />
+            <input id="industry-search" type="search" placeholder={copy.placeholder} autocomplete="off" />
           </form>
         </div>
         <IndustryCards id="lista-industrias" items={items} />

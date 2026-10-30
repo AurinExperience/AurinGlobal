@@ -9,7 +9,7 @@ export const webDesign: Service = {
       seo: {
         title: 'Diseño de páginas web en Estados Unidos | Bilingüe | Aurin',
         description:
-          'Diseñamos páginas web para empresas en Estados Unidos, en español e inglés. Apruebas el diseño antes de programar y sabes el precio desde el inicio.',
+          'Diseñamos páginas web para empresas en Estados Unidos y Canadá, en español e inglés. Apruebas el diseño antes de programar y sabes el precio desde el inicio.',
       },
       name: 'Diseño web',
       summary: 'Sitios web a la medida de tu marca y de tu cliente: arquitectura de contenidos, diseño responsive y prototipos que apruebas antes de programar.',
@@ -18,7 +18,7 @@ export const webDesign: Service = {
         titleLead: 'Diseño web que vende',
         titleAccent: 'mientras tú atiendes tu negocio.',
         description:
-          'Sitios y landing pages para empresas en EE. UU., México y Latinoamérica, pensados para tu cliente: qué busca, qué dudas tiene y qué lo convence. Apruebas el prototipo antes de que escribamos una sola línea de código.',
+          'Sitios y landing pages para empresas en EE. UU., pensados para lo que tu cliente busca. Apruebas el diseño antes de programar.',
         ctaSecondary: 'Qué incluye',
       },
       industries: {
@@ -108,9 +108,9 @@ export const webDesign: Service = {
     },
     en: {
       seo: {
-        title: 'Web Design Agency for US Businesses | Bilingual | Aurin',
+        title: 'Web Design Agency for US & Canadian Businesses | Aurin',
         description:
-          'Websites for US businesses in English, Spanish or both. You approve the design before we build it and know the price from day one. Book a free call.',
+          'Websites for US and Canadian businesses that turn visitors into customers. You approve the design before we build and know the price from day one. Free call.',
       },
       name: 'Web design',
       summary: 'Websites built around your brand and your customer: content architecture, responsive design and prototypes you approve before any code is written.',
@@ -119,7 +119,7 @@ export const webDesign: Service = {
         titleLead: 'Web design that sells',
         titleAccent: 'while you run your business.',
         description:
-          'Corporate websites and landing pages designed around your customer: what they look for, what they doubt and what convinces them. You approve the prototype before a single line of code.',
+          'Corporate websites and landing pages built around what your customer looks for. You approve the design before any code.',
         ctaSecondary: 'What’s included',
       },
       industries: {
@@ -157,7 +157,7 @@ export const webDesign: Service = {
           { icon: 'PanelsTopLeft', title: 'The pages you need, and no more', text: 'We decide which pages your site needs and which customer question each one answers, so visitors find what they want fast and reach out.' },
           { icon: 'MousePointerClick', title: 'A prototype you click through before any code', text: 'You see and test your website before it exists. A change at this stage takes minutes, not weeks.' },
           { icon: 'Smartphone', title: 'Design that works on phones', text: 'Many of your customers will meet you on their phone: every page is designed for mobile, tablet and desktop.' },
-          { icon: 'Languages', title: 'Copy that convinces, in English and Spanish', text: 'Headlines and buttons that answer what your customer asks and lead them to call, message or buy, in one language or both.' },
+          { icon: 'Languages', title: 'Copy that convinces', text: 'Headlines and buttons that answer what your customer asks and lead them to call, message or buy.' },
           { icon: 'Search', title: 'Built to show up on Google', text: 'Every page with its own search, title and description, fast loading and structured data, so Google and AI search understand what you offer.' },
           { icon: 'MessageCircle', title: 'Calls, WhatsApp and forms that work', text: 'Every page gives a clear way to reach you, and messages land in your inbox.' },
         ],
@@ -185,7 +185,7 @@ export const webDesign: Service = {
         intro: 'Once your site launches, you’re not on your own: we keep it running.',
         items: [
           { icon: 'ShieldCheck', title: 'Fast, secure hosting', text: 'We host your site on fast servers with a security certificate (the padlock next to the address). Nothing technical for you to handle.' },
-          { icon: 'Users', title: 'Support from the same team', text: 'If something breaks or you have a question, you hear back from the team that built your site, in English or Spanish.' },
+          { icon: 'Users', title: 'Support from the same team', text: 'If something breaks or you have a question, you hear back from the team that built your site.' },
           { icon: 'PenTool', title: 'Updates as your business changes', text: 'A new service, a new promotion, new photos: we update it for you. If it’s something bigger, we tell you the cost first.' },
         ],
       },
@@ -199,7 +199,7 @@ export const webDesign: Service = {
           { question: 'Do you build bilingual English and Spanish websites?', answer: 'Yes. We design bilingual websites with copy and structure planned for each language, not translated word for word, and every visitor switches language with one click.' },
           { question: 'Will my website show up on Google?', answer: 'We build it for Google from the design stage: every page targets a search and has its own title, description, fast loading and structured data. Reaching the top takes time and depends on your competition; we tell you which searches to go after first.' },
           { question: 'Can you redesign my current website?', answer: 'Yes. First we check what already works, like pages that get traffic from Google, so you don’t lose it. If page addresses change, we set up redirects to keep your rankings.' },
-          { question: 'Do you work with businesses in any US state?', answer: 'Yes. We work over video calls at hours that fit yours, in English or Spanish, with businesses across the United States.' },
+          { question: 'Do you work with businesses in any US state?', answer: 'Yes. We work over video calls at hours that fit yours, with businesses across the United States.' },
           { question: 'Do you also build and launch the website?', answer: 'Yes. Web design and development are in the same team, so the live site looks exactly like the design you approved.' },
           { question: 'Do you handle hosting and support?', answer: 'Yes. We host your website on fast, secure servers, and after launch we support you: if something breaks, you have a question or you want a change, you hear back from the same team that built your site. Updates can be covered by a monthly plan, so your site stays current without a new quote every time.' },
           { question: 'Can you do just the design if I already have a developer?', answer: 'Yes. We design your website and hand it to your developer with everything they need to build it exactly like the design you approved.' },

@@ -1,8 +1,8 @@
 ---
 /**
  * Pie del sitio. `minimal` en las landings (sin navegación, igual que en aurin.mx): solo marca,
- * dirección y correo. El completo enlaza a los servicios y a todos los estados publicados (es lo
- * que evita que una landing nueva quede huérfana desde la home). La dirección es la misma de
+ * dirección y correo. El completo abre con una franja que invita a escribir y enlaza a los servicios
+ * y a las industrias (enlazado interno). Los estados no van por ahora (aún no se publican). La dirección es la misma de
  * Google Business Profile (SITE.address): el NAP visible e idéntico cuenta para el SEO local.
  */
 import ArrowUp from 'lucide-astro/ArrowUp';
@@ -12,7 +12,7 @@ import Facebook from 'lucide-astro/Facebook';
 import { UI, getLangFromUrl } from '@/i18n';
 import { ANALYTICS_ON, SITE } from '@/config/site';
 import { privacyPath } from '@/data/privacy';
-import { publishedStates, statePath } from '@/data/states';
+import { INDUSTRY_PAGES, industriesPath } from '@/data/industries';
 import { SERVICES, servicePath } from '@/data/services';
 import styles from './Footer.module.css';
 
@@ -24,7 +24,6 @@ const { minimal = false } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = UI[lang];
 const home = lang === 'en' ? '/en/' : '/';
-const states = publishedStates();
 const year = new Date().getFullYear();
 const profile = (domain: string) => SITE.sameAs.find((url) => url.includes(domain))!;
 const social = [
@@ -40,6 +39,8 @@ const social = [
       <div class={styles.brand}>
         <img src="/img/aurin.svg" alt="Aurin" width="134" height="40" loading="lazy" />
         <p>{t.footer.tagline}</p>
+        {/* El punto de luz de la marca: el equipo atiende en los dos idiomas */}
+        <p class={styles.status}><span class={styles.dot} aria-hidden="true"></span>{t.footer.languages}</p>
         {!minimal && (
           <ul class={styles.social} aria-label={t.footer.follow}>
             {social.map(({ href, label, Icon }) => (
@@ -57,40 +58,34 @@ const social = [
         <nav class={styles.col} aria-label={t.footer.services}>
           <p class="eyebrow">{t.footer.services}</p>
           <ul>
-            {SERVICES.map((s) => <li><a href={servicePath(s, lang)}>{s.copy[lang].name}</a></li>)}
+            {SERVICES.map((s) => <li><a class={styles.link} href={servicePath(s, lang)}>{s.copy[lang].name}</a></li>)}
           </ul>
         </nav>
       )}
 
       {!minimal && (
-        <nav class={styles.col} aria-label={t.footer.site}>
-          <p class="eyebrow">{t.footer.site}</p>
+        <nav class={styles.col} aria-label={t.footer.industries}>
+          <p class="eyebrow">{t.footer.industries}</p>
           <ul>
-            <li><a href={`${home}#casos`}>{t.nav.cases}</a></li>
-            <li><a href={`${home}#proceso`}>{t.nav.process}</a></li>
-            <li><a href={`${home}#nosotros`}>{t.nav.about}</a></li>
-            <li><a href={`${home}#contacto`}>{t.bookCall}</a></li>
+            {INDUSTRY_PAGES.slice(0, 6).map((s) => <li><a class={styles.link} href={servicePath(s, lang)}>{s.copy[lang].name}</a></li>)}
           </ul>
-        </nav>
-      )}
-
-      {!minimal && states.length > 0 && (
-        <nav class={styles.col} aria-label={t.footer.states}>
-          <p class="eyebrow">{t.footer.states}</p>
-          <ul>
-            {states.map((state) => <li><a href={statePath(state, lang)}>{state.copy[lang].linkLabel}</a></li>)}
-          </ul>
+          <a class={styles.all} href={industriesPath(lang)}>{t.footer.allIndustries} →</a>
         </nav>
       )}
 
       <div class={styles.col}>
         <p class="eyebrow">{t.footer.contact}</p>
-        <address>
-          {SITE.address.streetAddress}<br />
-          {SITE.address.postalCode} {t.footer.city}
-        </address>
-        <p>{t.footer.remoteValue}</p>
-        {minimal && <p><a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a></p>}
+        <ul class={styles.contact}>
+          <li><a class={styles.link} href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a></li>
+          <li><a class={styles.link} href={`tel:${SITE.telephone.replace(/\s/g, '')}`}>{SITE.telephone}</a></li>
+          <li>
+            <address>
+              {SITE.address.streetAddress}<br />
+              {SITE.address.postalCode} {t.footer.city}
+            </address>
+          </li>
+        </ul>
+        <p class={styles.remote}>{t.footer.remoteValue}</p>
       </div>
     </div>
 
@@ -104,6 +99,10 @@ const social = [
     </div>
   </div>
 
-  {/* El logo gigante, casi invisible, cortado por el borde: la firma del sitio */}
-  <img class={styles.wordmark} src="/img/aurin.svg" alt="" width="669" height="200" loading="lazy" aria-hidden="true" />
+  {/* La firma: el logo gigante a lo ancho, con su haz de luz, que se funde hacia abajo y lo corta el borde */}
+  {!minimal && (
+    <div class:list={['wrap', styles.signature]} aria-hidden="true">
+      <img src="/img/aurin.svg" alt="" width="669" height="200" loading="lazy" />
+    </div>
+  )}
 </footer>

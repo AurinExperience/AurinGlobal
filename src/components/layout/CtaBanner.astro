@@ -21,10 +21,10 @@ const t = UI[getLangFromUrl(Astro.url)];
 const hasForm = Astro.slots.has('default');
 ---
 
-<section class:list={[!light && 'sky', styles.section, hasForm && styles.withForm, light && styles.light]} aria-labelledby="titulo-cta">
+<section class:list={[!light && 'sky', styles.section, hasForm && styles.withForm, light && styles.light]} aria-labelledby="title-cta">
   <div class="wrap">
     <div class={styles.lead}>
-      <h2 id="titulo-cta" class:list={['h1', styles.title]}>{titleLead} <span class="accent">{titleAccent}</span></h2>
+      <h2 id="title-cta" class:list={['h2', styles.title]}>{titleLead} <span class="accent">{titleAccent}</span></h2>
       <p class:list={['muted', styles.text]}>{t.ctaText}</p>
       {hasForm && (
         <div class={styles.next}>

@@ -1,6 +1,17 @@
 import type { Lang } from '@/data/types';
 import type { Service } from '@/data/services';
+import { fintech } from './fintech';
 import { remittances } from './remittances';
+import { healthcare } from './healthcare';
+import { education } from './education';
+import { tourism } from './tourism';
+import { energy } from './energy';
+import { culture } from './culture';
+import { software } from './software';
+import { agencies } from './agencies';
+import { legal } from './legal';
+import { realEstate } from './real-estate';
+import { nonprofits } from './nonprofits';
 
 /**
  * Página índice /industrias/ ↔ /en/industries/: todas las industrias de la home (HOME[lang].industries.items)
@@ -11,7 +22,7 @@ export const INDUSTRIES_INDEX = {
     slug: 'industrias',
     seo: {
       title: 'Diseño web y UX/UI por industria | Clientes reales | Aurin',
-      description: 'Sitios web, apps y marcas para fintech, salud, educación, turismo, energía, legal, bienes raíces y más, con clientes reales en cada industria. Llamada gratis.',
+      description: 'Sitios web, plataformas y marcas para fintech, salud, educación, turismo, legal, bienes raíces y más, con clientes reales en cada industria. Llamada gratis.',
     },
     title: 'Diseño web y UX/UI por industria',
     intro: 'Busca la tuya y mira con qué clientes ya trabajamos en ella. Si no aparece, escríbenos: lo más probable es que ya hayamos resuelto algo parecido.',
@@ -22,8 +33,8 @@ export const INDUSTRIES_INDEX = {
   en: {
     slug: 'industries',
     seo: {
-      title: 'Web design and UX/UI by industry for US businesses | Aurin',
-      description: 'Websites, apps and brands for fintech, healthcare, education, tourism, energy, legal, real estate and more, with real clients in each industry. Free call.',
+      title: 'Web Design & UX/UI by Industry, US & Canada | Aurin',
+      description: 'Websites, platforms and brands for fintech, healthcare, education, tourism, energy, legal, real estate and more, with real clients in each industry. Free call.',
     },
     title: 'Web design and UX/UI by industry',
     intro: 'Find yours and see which clients we already work with in it. If it’s not listed, write to us: chances are we’ve already solved something similar.',
@@ -37,7 +48,8 @@ export const industriesPath = (lang: Lang) => `${lang === 'en' ? '/en' : ''}/${I
 
 /**
  * Páginas de industria: usan la plantilla de servicio (ServicePage) pero no salen en la lista de
- * servicios de la home. Solo nichos que aurin.mx NO cubre: allá ya hay fintech, wealthtech y otras
- * industrias para EE. UU. (ver Canibalización en CLAUDE.md).
+ * servicios de la home. Dos tipos: las industrias generales de HOME.industries (fintech, salud…;
+ * su tarjeta en /industrias/ enlaza aquí con `page`) y nichos que aurin.mx no toca (remesas).
+ * Sin nombres de clientes. Una nueva: su archivo aquí + sumarla a esta lista.
  */
-export const INDUSTRY_PAGES: Service[] = [remittances];
+export const INDUSTRY_PAGES: Service[] = [fintech, healthcare, education, tourism, energy, culture, software, agencies, legal, realEstate, nonprofits, remittances];

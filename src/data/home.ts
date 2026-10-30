@@ -6,7 +6,8 @@ import type { CaseId } from '@/data/cases';
 export interface Client { name: string; logo: string; w: number; h: number; tone?: 'light' | 'color' }
 
 /** Industria con clientes reales (los mismos del carrusel y de aurin.mx/projects). */
-export interface Industry { name: string; text: string; clients: string }
+/** `page`: id de su página en src/data/industries (si existe, la tarjeta de /industrias/ enlaza ahí). */
+export interface Industry { name: string; text: string; clients: string; page?: string }
 
 export interface HomeCopy {
   seo: { title: string; description: string };
@@ -78,7 +79,7 @@ export const HOME: Record<Lang, HomeCopy> = {
     seo: {
       title: 'Aurin | Agencia digital de UX/UI, web y branding desde 1998',
       description:
-        'Diseño web, desarrollo, UX/UI y branding en un solo equipo bilingüe, desde 1998. Para empresas en Estados Unidos. Agenda una llamada gratis.',
+        'Diseño web, desarrollo, UX/UI y branding en un solo equipo bilingüe, desde 1998. Para empresas en Estados Unidos y Canadá. Agenda una llamada gratis.',
     },
     hero: {
       // h1 = en lo que somos expertos; el mercado (EE. UU., cada estado) va en el <title> y en las landings
@@ -98,17 +99,17 @@ export const HOME: Record<Lang, HomeCopy> = {
       heading: 'Diseño web y UX/UI para industrias donde *la confianza importa.*',
       intro: 'Cada industria tiene sus reglas y su forma de ganarse a la gente. Estas son algunas en las que ya trabajamos, con clientes reales.',
       items: [
-        { name: 'Fintech y finanzas', text: 'Wallets, remesas, crédito, factoraje y redes de corresponsales bancarios: flujos complejos que se entienden y dan confianza.', clients: 'Ancient · Monetix · Bonanza · Fortrade · Debiti · MiRed' },
-        { name: 'Salud', text: 'Marcas y sitios bilingües que transmiten cuidado y profesionalismo desde la primera visita.', clients: 'Elite Home Health · Dentol · Rafael Beltrán' },
-        { name: 'Educación', text: 'Plataformas de aprendizaje, sistemas de gestión de alumnos y sitios institucionales.', clients: 'Inglés Individual · Fruit Academy' },
-        { name: 'Turismo y entretenimiento', text: 'Sitios y apps con venta de boletos, mapas y toda la información de la visita.', clients: 'El Rollo' },
-        { name: 'Energía y construcción', text: 'Presencia institucional y apps de operación para empresas de la industria.', clients: 'Mexico Pacific · Grupo Estrella' },
-        { name: 'Cultura y ciencia', text: 'Sitios y plataformas que acercan la música, la ciencia y la cultura a su público.', clients: 'Orquesta Sinfónica de Minería · instituciones académicas' },
-        { name: 'Desarrollo de software', text: 'UX/UI y desarrollo para empresas de software: el diseño de sus apps y un sitio con contenidos e integraciones para vender en todo el mundo.', clients: 'Ancient' },
-        { name: 'Agencias de diseño', text: 'Programamos los sitios de agencias de diseño y marca respetando su visión, hasta el último detalle.', clients: 'Ideograma · Identidad' },
-        { name: 'Legal', text: 'Sitios web y herramientas digitales para despachos y consultorías legales: sobrios, fáciles de recorrer y conectados con sus sistemas.', clients: 'Galicia · SAI' },
-        { name: 'Bienes raíces', text: 'Sitios para desarrollos y agencias inmobiliarias que venden a compradores de EE. UU. y Canadá: lotes, planes de pago y la vida en el lugar.', clients: 'Gein' },
-        { name: 'Fundaciones y ONG', text: 'Sitios para organizaciones sin fines de lucro que necesitan explicar su causa con claridad y sumar aliados.', clients: 'Equipar' },
+        { name: 'Fintech y finanzas', text: 'Wallets, remesas, crédito, factoraje y redes de corresponsales bancarios: flujos complejos que se entienden y dan confianza.', clients: 'Ancient · Monetix · Bonanza · Fortrade · Debiti · MiRed', page: 'fintech' },
+        { name: 'Salud', text: 'Marcas y sitios bilingües que transmiten cuidado y profesionalismo desde la primera visita.', clients: 'Elite Home Health · Dentol · Rafael Beltrán', page: 'healthcare' },
+        { name: 'Educación', text: 'Plataformas de aprendizaje, sistemas de gestión de alumnos y sitios institucionales.', clients: 'Inglés Individual · Fruit Academy', page: 'education' },
+        { name: 'Turismo y entretenimiento', text: 'Sitios con venta de boletos, mapas y toda la información de la visita.', clients: 'El Rollo', page: 'tourism' },
+        { name: 'Energía y construcción', text: 'Presencia institucional y portales para empresas de la industria.', clients: 'Mexico Pacific · Grupo Estrella', page: 'energy' },
+        { name: 'Cultura y ciencia', text: 'Sitios y plataformas que acercan la música, la ciencia y la cultura a su público.', clients: 'Orquesta Sinfónica de Minería · instituciones académicas', page: 'culture' },
+        { name: 'Desarrollo de software', text: 'UX/UI y desarrollo para empresas de software: el diseño de su producto y un sitio con contenidos e integraciones para vender en todo el mundo.', clients: 'Ancient', page: 'software' },
+        { name: 'Agencias de diseño', text: 'Programamos los sitios de agencias de diseño y marca respetando su visión, hasta el último detalle.', clients: 'Ideograma · Identidad', page: 'agencies' },
+        { name: 'Legal', text: 'Sitios web y herramientas digitales para despachos y consultorías legales: sobrios, fáciles de recorrer y conectados con sus sistemas.', clients: 'Galicia · SAI', page: 'legal' },
+        { name: 'Bienes raíces', text: 'Sitios para desarrollos y agencias inmobiliarias que venden a compradores de EE. UU. y Canadá: lotes, planes de pago y la vida en el lugar.', clients: 'Gein', page: 'real-estate' },
+        { name: 'Fundaciones y ONG', text: 'Sitios para organizaciones sin fines de lucro que necesitan explicar su causa con claridad y sumar aliados.', clients: 'Equipar', page: 'nonprofits' },
       ],
     },
     research: {
@@ -155,7 +156,7 @@ export const HOME: Record<Lang, HomeCopy> = {
       { question: '¿Usan inteligencia artificial en sus proyectos?', answer: 'Sí, para acelerar el diseño y la programación de tu sitio. La información confidencial de tu negocio no pasa por herramientas de IA, y cada decisión y entregable lo revisa nuestro equipo. Ganas tiempo sin perder calidad, y tu sitio sale preparado para aparecer en buscadores con IA como ChatGPT y Perplexity.' },
       { question: '¿Trabajan en inglés?', answer: 'Sí. Llamadas, entregables y textos del sitio, en inglés o en español. También diseñamos sitios bilingües, como el de Elite Home Health.' },
       { question: '¿Cuánto cuesta un sitio web o un proyecto de branding?', answer: 'Depende de lo que necesites. Después de la llamada te enviamos una propuesta con lo que incluye y el precio, así conoces la inversión completa antes de empezar.' },
-      { question: '¿Cuánto tarda un proyecto?', answer: 'Una landing page toma menos que un sitio corporativo, una app o una marca completa. Cada propuesta incluye las fechas de entrega.' },
+      { question: '¿Cuánto tarda un proyecto?', answer: 'Una landing page toma menos que un sitio corporativo, una plataforma o una marca completa. Cada propuesta incluye las fechas de entrega.' },
       { question: '¿Dan mantenimiento después del lanzamiento?', answer: 'Sí. Después de publicar medimos, corregimos y seguimos mejorando el sitio o el producto contigo.' },
       { question: '¿Qué necesitan de mi parte para empezar?', answer: 'Una llamada para entender tu negocio y tus objetivos. Si ya tienes marca, textos o acceso a tu sitio actual, nos ayuda; si no, lo resolvemos dentro del proyecto.' },
     ],
@@ -165,7 +166,7 @@ export const HOME: Record<Lang, HomeCopy> = {
     seo: {
       title: 'Aurin | UX/UI, Web Design & Branding Agency Since 1998',
       description:
-        'Web design, development, UX/UI and branding from one senior team, since 1998. For US businesses, on Central Time. Book a free call.',
+        'Web design, development, UX/UI and branding from one senior team, since 1998. For US and Canadian businesses, on Central Time. Book a free call.',
     },
     hero: {
       titleLead: 'UX/UI design agency',
@@ -184,17 +185,17 @@ export const HOME: Record<Lang, HomeCopy> = {
       heading: 'Web design and UX/UI for industries where *trust matters.*',
       intro: 'Every industry has its own rules and its own way of winning people over. Here are some we already work in, with real clients.',
       items: [
-        { name: 'Fintech and finance', text: 'Wallets, remittances, lending, factoring and banking agent networks: complex flows that are easy to follow and build trust.', clients: 'Ancient · Monetix · Bonanza · Fortrade · Debiti · MiRed' },
-        { name: 'Healthcare', text: 'Bilingual brands and websites that convey care and professionalism from the first visit.', clients: 'Elite Home Health · Dentol · Rafael Beltrán' },
-        { name: 'Education', text: 'Learning platforms, student management systems and institutional websites.', clients: 'Inglés Individual · Fruit Academy' },
-        { name: 'Tourism and entertainment', text: 'Websites and apps with ticketing, maps and everything visitors need to know.', clients: 'El Rollo' },
-        { name: 'Energy and construction', text: 'Institutional presence and operations apps for industrial companies.', clients: 'Mexico Pacific · Grupo Estrella' },
-        { name: 'Culture and science', text: 'Websites and platforms that bring music, science and culture closer to their audience.', clients: 'Minería Symphony Orchestra · academic institutions' },
-        { name: 'Software development', text: 'UX/UI and development for software companies: the design of their apps and a website with content and integrations to sell worldwide.', clients: 'Ancient' },
-        { name: 'Design agencies', text: 'We build websites for design and branding agencies, true to their vision down to the last detail.', clients: 'Ideograma · Identidad' },
-        { name: 'Legal', text: 'Websites and digital tools for law firms and legal consultancies: understated, easy to navigate and connected to their systems.', clients: 'Galicia · SAI' },
-        { name: 'Real estate', text: 'Websites for real estate developments and agencies selling to buyers from the US and Canada: lots, payment plans and life on site.', clients: 'Gein' },
-        { name: 'Nonprofits', text: 'Websites for nonprofit organizations that need to explain their cause clearly and win supporters.', clients: 'Equipar' },
+        { name: 'Fintech and finance', text: 'Wallets, remittances, lending, factoring and banking agent networks: complex flows that are easy to follow and build trust.', clients: 'Ancient · Monetix · Bonanza · Fortrade · Debiti · MiRed', page: 'fintech' },
+        { name: 'Healthcare', text: 'Brands and websites that convey care and professionalism from the first visit.', clients: 'Elite Home Health · Dentol · Rafael Beltrán', page: 'healthcare' },
+        { name: 'Education', text: 'Learning platforms, student management systems and institutional websites.', clients: 'Inglés Individual · Fruit Academy', page: 'education' },
+        { name: 'Tourism and entertainment', text: 'Websites with ticketing, maps and everything visitors need to know.', clients: 'El Rollo', page: 'tourism' },
+        { name: 'Energy and construction', text: 'Institutional presence and portals for industrial companies.', clients: 'Mexico Pacific · Grupo Estrella', page: 'energy' },
+        { name: 'Culture and science', text: 'Websites and platforms that bring music, science and culture closer to their audience.', clients: 'Minería Symphony Orchestra · academic institutions', page: 'culture' },
+        { name: 'Software development', text: 'UX/UI and development for software companies: the design of their product and a website with content and integrations to sell worldwide.', clients: 'Ancient', page: 'software' },
+        { name: 'Design agencies', text: 'We build websites for design and branding agencies, true to their vision down to the last detail.', clients: 'Ideograma · Identidad', page: 'agencies' },
+        { name: 'Legal', text: 'Websites and digital tools for law firms and legal consultancies: understated, easy to navigate and connected to their systems.', clients: 'Galicia · SAI', page: 'legal' },
+        { name: 'Real estate', text: 'Websites for real estate developments and agencies selling to buyers from the US and Canada: lots, payment plans and life on site.', clients: 'Gein', page: 'real-estate' },
+        { name: 'Nonprofits', text: 'Websites for nonprofit organizations that need to explain their cause clearly and win supporters.', clients: 'Equipar', page: 'nonprofits' },
       ],
     },
     research: {
@@ -239,9 +240,9 @@ export const HOME: Record<Lang, HomeCopy> = {
       { question: 'How do I start a project with Aurin?', answer: 'Book a call with us. Then we send you a proposal with what’s included, the price and the dates.' },
       { question: 'Do you work with companies outside Mexico?', answer: 'Yes. We work remotely with companies in the United States, Canada, Spain and Latin America.' },
       { question: 'Do you use artificial intelligence in your projects?', answer: 'Yes, to speed up the design and development of your website. Confidential information about your business never goes through AI tools, and our team reviews every decision and deliverable. You save time without losing quality, and your site launches ready to show up in AI search like ChatGPT and Perplexity.' },
-      { question: 'Do you work in English?', answer: 'Yes. Calls, deliverables and website copy, in English or Spanish. We also design bilingual websites, like Elite Home Health’s.' },
+      { question: 'Do you work in English?', answer: 'Yes. Calls, documents and website copy are all in English. If you also serve Spanish-speaking customers, we can add a Spanish version, like Elite Home Health’s.' },
       { question: 'How much does a website or branding project cost?', answer: 'It depends on what you need. After the call we send you a proposal with what’s included and the price, so you know the full investment before we start.' },
-      { question: 'How long does a project take?', answer: 'A landing page takes less time than a corporate website, an app or a full brand. Every proposal includes the delivery dates.' },
+      { question: 'How long does a project take?', answer: 'A landing page takes less time than a corporate website, a platform or a full brand. Every proposal includes the delivery dates.' },
       { question: 'Do you offer maintenance after launch?', answer: 'Yes. After launch we measure, fix and keep improving the website or product with you.' },
       { question: 'What do you need from me to get started?', answer: 'A call to understand your business and goals. If you already have a brand, copy or access to your current site, that helps; if not, we handle it within the project.' },
     ],

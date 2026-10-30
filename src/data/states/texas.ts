@@ -7,7 +7,7 @@ import type { State } from './types';
  */
 export const texas: State = {
   id: 'texas',
-  status: 'live',
+  status: 'draft',
   slug: 'texas',
   name: 'Texas',
   geo: { latitude: 31.9686, longitude: -99.9018 },
@@ -20,13 +20,11 @@ export const texas: State = {
           'Diseño de páginas web, UX/UI y branding para empresas de Houston, Dallas, Austin y San Antonio. Equipo bilingüe en tu zona horaria y precio claro.',
       },
       hero: {
-        eyebrow: 'Diseño web · UX/UI · Branding · Texas',
         titleLead: 'Diseño web y UX/UI para empresas de',
         titleAccent: 'Texas.',
         description:
-          'Sitios que venden, productos digitales que la gente usa y marcas que se recuerdan, en inglés y en español. Un equipo que diseña y programa desde 1998, en tu misma zona horaria.',
+          'Sitios que venden, productos que la gente usa y marcas que se recuerdan, en inglés y en español, en tu zona horaria.',
         ctaSecondary: 'Ver servicios',
-        points: ['En la zona horaria central', 'Sitios bilingües inglés · español', 'Diseño y desarrollo desde 1998'],
       },
       why: {
         heading: 'Cerca de tu equipo, *de tu horario y de tus clientes.*',
@@ -45,10 +43,10 @@ export const texas: State = {
         items: [
           { name: 'Energía', text: 'Sitios institucionales para empresas de energía que necesitan comunicar visión y confianza a inversionistas y comunidades.', clients: 'Mexico Pacific' },
           { name: 'Salud', text: 'Marcas y sitios bilingües para servicios de salud que atienden a familias en inglés y en español.', clients: 'Elite Home Health · Dentol' },
-          { name: 'Fintech y remesas', text: 'Apps de pagos, envíos de dinero y crédito con flujos claros, clave en un estado con tanto comercio con México.', clients: 'Ancient · Monetix · Bonanza' },
-          { name: 'Logística y construcción', text: 'Apps de pedidos y operación para empresas de materiales, distribución y obra.', clients: 'Grupo Estrella' },
+          { name: 'Fintech y remesas', text: 'Plataformas de pagos, envíos de dinero y crédito con flujos claros, clave en un estado con tanto comercio con México.', clients: 'Ancient · Monetix · Bonanza' },
+          { name: 'Logística y construcción', text: 'Plataformas de pedidos y operación para empresas de materiales, distribución y obra.', clients: 'Grupo Estrella' },
           { name: 'Educación', text: 'Plataformas de aprendizaje y sistemas para gestionar alumnos, clases, pagos y sucursales.', clients: 'Inglés Individual · Fruit Academy' },
-          { name: 'Turismo y entretenimiento', text: 'Sitios y apps con venta de boletos, mapas y toda la información de la visita.', clients: 'El Rollo' },
+          { name: 'Turismo y entretenimiento', text: 'Sitios con venta de boletos, mapas y toda la información de la visita.', clients: 'El Rollo' },
         ],
       },
       process: {
@@ -72,7 +70,7 @@ export const texas: State = {
           { question: '¿Pueden hacer mi sitio en inglés y en español?', answer: 'Sí. Diseñamos sitios bilingües con textos y estructura pensados para cada idioma, y los configuramos para que Google muestre a cada visitante la versión correcta.' },
           { question: '¿Mi sitio aparecerá en Google en Texas?', answer: 'Lo construimos con SEO técnico: velocidad, datos estructurados, versiones por idioma y contenido que responde lo que buscan tus clientes. Para búsquedas locales también conviene tener al día tu perfil de Google Business.' },
           { question: '¿Cuánto cuesta un proyecto?', answer: 'El costo depende del alcance. Después de la llamada recibes una propuesta con lo que incluye, el precio y las fechas de entrega.' },
-          { question: '¿Cuánto tarda un proyecto?', answer: 'Depende del alcance: una landing page toma menos que un sitio corporativo, una app o una marca completa. La propuesta incluye las fechas de entrega.' },
+          { question: '¿Cuánto tarda un proyecto?', answer: 'Depende del alcance: una landing page toma menos que un sitio corporativo, una plataforma o una marca completa. La propuesta incluye las fechas de entrega.' },
           { question: '¿Se pueden reunir en persona?', answer: 'Por ahora todas las sesiones son en línea: videollamadas, prototipos compartidos y revisiones asíncronas.' },
         ],
       },
@@ -95,19 +93,17 @@ export const texas: State = {
           'Web design, UX/UI and branding for businesses in Houston, Dallas, Austin and San Antonio. A senior team on Central Time, with clear pricing from the start.',
       },
       hero: {
-        eyebrow: 'Web design · UX/UI · Branding · Texas',
         titleLead: 'Web design and UX/UI for businesses in',
         titleAccent: 'Texas.',
         description:
-          'Websites that sell, digital products people actually use and brands people remember. A team designing and building since 1998, in your time zone.',
+          'Websites that sell, products people actually use and brands people remember, from a team in your time zone.',
         ctaSecondary: 'See services',
-        points: ['On Central Time', 'Fluent English, from first call to launch', 'Design and development since 1998'],
       },
       why: {
         heading: 'Close to your team, *your schedule and your customers.*',
         items: [
           { title: 'In your time zone', text: 'We work on Central Mexico time (UTC−6): the same time as Houston, Dallas, Austin and San Antonio in winter and one hour apart in summer. Meetings fit inside your workday.' },
-          { title: 'English first, Spanish when you need it', text: 'We work with you in English from the first call. And if you also serve Spanish-speaking customers (over 8 million Texans, nearly 3 in 10, speak Spanish at home, US Census ACS 2024), we design a Spanish version crafted for them, not a literal translation.' },
+          { title: 'In English, from the first call', text: 'Calls, proposals, website copy and support are all in English, with the same team from kickoff to launch. You always know who is working on your project.' },
           { title: 'One team, close by', text: 'From Mexico, a short flight from Texas, the same team researches, designs and builds your project, with a clear price and dates from the start.' },
         ],
       },
@@ -119,11 +115,11 @@ export const texas: State = {
         heading: 'Experience in the industries that *drive Texas.*',
         items: [
           { name: 'Energy', text: 'Institutional websites for energy companies that need to convey vision and trust to investors and communities.', clients: 'Mexico Pacific' },
-          { name: 'Healthcare', text: 'Bilingual brands and websites for healthcare services that serve families in English and Spanish.', clients: 'Elite Home Health · Dentol' },
-          { name: 'Fintech and remittances', text: 'Payments, money transfer and lending apps with clear flows, key in a state with so much trade with Mexico.', clients: 'Ancient · Monetix · Bonanza' },
-          { name: 'Logistics and construction', text: 'Ordering and operations apps for materials, distribution and construction companies.', clients: 'Grupo Estrella' },
+          { name: 'Healthcare', text: 'Brands and websites for healthcare services that convey care from the first visit.', clients: 'Elite Home Health · Dentol' },
+          { name: 'Fintech and remittances', text: 'Payments, money transfer and lending platforms with clear flows, key in a state with so much trade with Mexico.', clients: 'Ancient · Monetix · Bonanza' },
+          { name: 'Logistics and construction', text: 'Ordering and operations platforms for materials, distribution and construction companies.', clients: 'Grupo Estrella' },
           { name: 'Education', text: 'Learning platforms and systems to manage students, classes, payments and branches.', clients: 'Inglés Individual · Fruit Academy' },
-          { name: 'Tourism and entertainment', text: 'Websites and apps with ticketing, maps and everything visitors need to know.', clients: 'El Rollo' },
+          { name: 'Tourism and entertainment', text: 'Websites with ticketing, maps and everything visitors need to know.', clients: 'El Rollo' },
         ],
       },
       process: {
@@ -144,11 +140,11 @@ export const texas: State = {
           { question: 'Do you work with Texas businesses?', answer: 'Yes. We work remotely with businesses across Texas, from Houston, Dallas and Fort Worth to Austin, San Antonio and El Paso, with online meetings throughout the project.' },
           { question: 'Do you work in English?', answer: 'Yes. Calls, emails, deliverables and website copy are all in English, from the first call to launch.' },
           { question: 'What hours do you work?', answer: 'On Central Mexico time (UTC−6). That is the same time as Houston, Dallas, Austin and San Antonio in winter and one hour apart in summer, so meetings fit inside your workday.' },
-          { question: 'Why hire a remote agency instead of a local one?', answer: 'Because you work with a team experienced since 1998, in your time zone, that speaks English and Spanish and designs and builds in one place, with clear pricing from the start.' },
-          { question: 'Can you also build a Spanish version of my website?', answer: 'Yes. We design bilingual websites with copy and structure crafted for each language, and set them up so Google shows every visitor the right version.' },
+          { question: 'Why hire a remote agency instead of a local one?', answer: 'Because you work with a team experienced since 1998, in your time zone, that designs and builds in one place, with clear pricing from the start.' },
+          { question: 'Can you also build a Spanish version of my website?', answer: 'Yes. Over 8 million Texans, nearly 3 in 10, speak Spanish at home (US Census ACS 2024). If some of your customers are among them, we design a Spanish version with its own copy and set it up so Google shows every visitor the right version.' },
           { question: 'Will my website show up on Google in Texas?', answer: 'We build it with technical SEO: speed, structured data, language versions and content that answers what your customers search for. For local searches, it also helps to keep your Google Business Profile up to date.' },
           { question: 'How much does a project cost?', answer: 'It depends on the scope. After the call you get a proposal with what’s included, the price and the delivery dates.' },
-          { question: 'How long does a project take?', answer: 'It depends on the scope: a landing page takes less time than a corporate website, an app or a full brand. The proposal includes the delivery dates.' },
+          { question: 'How long does a project take?', answer: 'It depends on the scope: a landing page takes less time than a corporate website, a platform or a full brand. The proposal includes the delivery dates.' },
           { question: 'Can we meet in person?', answer: 'For now, all sessions are online: video calls, shared prototypes and async reviews.' },
         ],
       },

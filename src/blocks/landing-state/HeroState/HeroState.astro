@@ -1,47 +1,78 @@
 ---
 /**
  * Hero de las landings por estado y de las páginas de servicio, a pantalla completa como el de la home.
- * Foto (public/img/arco.avif, Clarisse Meyer en Unsplash, licencia Unsplash): una persona de pie en un
+ * Foto (public/img/arch.avif, Clarisse Meyer en Unsplash, licencia Unsplash): una persona de pie en un
  * arco de roca apunta su linterna al cielo, con la Vía Láctea real. Va en gris y es el fondo y el LCP; encima un shader WebGL le da el
  * tratamiento del faro: el haz en lima con neblina que se mueve, el brillo de la lámpara y las
  * estrellas titilando. Sin WebGL queda la foto quieta; con reduced-motion, un cuadro.
  * La foto va invertida (el haz sube a la derecha) y el texto a la izquierda. El formulario vive en
  * el cierre de la página (CtaBanner): el botón principal lleva ahí.
+ * Páginas de industria: cada una su foto (`photo` en su archivo de datos), para no parecerse a los servicios ni entre
+ * ellas. Fotos reales de Unsplash (licencia Unsplash) de noche, con una luz que ya está en la foto; en gris con esa luz
+ * en lima, como tinte (la luz va en el color: verde − azul). El shader anima la luz según la foto (`fx`): corre por
+ * pistas y estelas, late, tiembla como una llama, titila o respira.
  */
 import type { StateCopy } from '@/data/states';
+import type { IndustryPhoto } from '@/data/services/types';
 import { UI, getLangFromUrl } from '@/i18n';
 import MainButton from '@/components/ui/MainButton.astro';
 import SecondaryButton from '@/components/ui/SecondaryButton.astro';
 import styles from './HeroState.module.css';
 
 interface Props {
-  hero: Omit<StateCopy['hero'], 'points'> & { points?: string[] };
+  hero: StateCopy['hero'];
+  photo?: 'arch' | IndustryPhoto;
 }
 
-const { hero } = Astro.props;
+// Medidas en la foto (fracciones desde arriba a la izquierda; si cambias una foto, vuelve a medirlas).
+// img = proporción (en px de una foto de 1920 de ancho: así miden los efectos; el recorte sale del object-position
+// del .module.css). Arco: lamp = la lámpara, beam = hacia dónde va el haz. Industrias: fx = cómo se mueve la luz (flow = corre
+// hacia la derecha, flame = llama, twinkle = destellos, breath = respira, card = chip que late + reflejo que cruza, headlamp = haz de la lámpara hasta el botón de la llamada, liberty = antorcha que titila + agua que se mueve, weld = arco que chisporrotea en el humo + humo que sube, stage = neblina y polvo en el haz de un reflector, night = en la pantalla de la laptop se escribe código letra por letra + luces de la ciudad que titilan)
+const PHOTOS = {
+  arch: { img: [1920, 1280], lamp: [0.4355, 0.655], beam: [0.374, -0.655] },
+  // Tarjetas negras con chip (Kingsley Mkpandiok, Unsplash): el chip late y un reflejo cruza las tarjetas
+  'ind-fintech': { img: [1600, 2000], fx: 'card' },
+  'ind-remittances': { img: [1920, 1280], fx: 'flow' },
+  // Cirujano con lámpara frontal (Unsplash), compuesto a lo ancho con negro a la izquierda: el haz de su lámpara
+  // (lamp, medida en la foto) cruza el hero hasta el botón "Agenda una llamada gratis"
+  'ind-healthcare': { img: [3200, 1800], fx: 'headlamp', lamp: [0.6775, 0.5383] },
+  // Graduados lanzando birretes al atardecer (Unsplash): el resplandor del sol detrás del grupo en lima
+  'ind-education': { img: [2200, 1463], fx: 'dusk' },
+  // Estatua de la Libertad de noche (Jose Marroquin, Unsplash): la antorcha (lamp) titila y el reflejo del agua se mueve
+  'ind-tourism': { img: [2000, 1241], fx: 'liberty', lamp: [0.6235, 0.1813] },
+  // Soldador en una tubería, a oscuras (Stavan Macwan, Unsplash): su humo en lima y, encima, humo que se mueve y sube
+  // desde el arco (lamp)
+  'ind-energy': { img: [2000, 1250], fx: 'weld', lamp: [0.375, 0.592] },
+  // Bailarina en el haz de un reflector con neblina (Hulki Okan Tabak, Unsplash): la neblina se mueve y el polvo brilla en
+  // el haz que baja del reflector (lamp, arriba a la derecha)
+  'ind-culture': { img: [2000, 1333], fx: 'stage', lamp: [0.97, 0.0] },
+  // Programador a oscuras, la pantalla reflejada en sus lentes (nacer eddine, Unsplash): renglones de código corren en el reflejo
+  'ind-software': { img: [1600, 2400], fx: 'night' },
+  'ind-agencies': { img: [1920, 1280], fx: 'breath' },
+  'ind-legal': { img: [1920, 1280], fx: 'breath' },
+  'ind-real-estate': { img: [1920, 1280], fx: 'flow' },
+  'ind-nonprofits': { img: [1920, 1077], fx: 'flame' },
+} satisfies Record<'arch' | IndustryPhoto, { img: number[]; lamp?: number[]; beam?: number[]; fx?: string }>;
+
+const { hero, photo = 'arch' } = Astro.props;
 const t = UI[getLangFromUrl(Astro.url)];
 ---
 
-<section class={styles.section} aria-labelledby="titulo-hero" data-arco>
+<section class:list={[styles.section, photo !== 'arch' && styles.industry, styles[photo]]} aria-labelledby="title-hero" data-photo={JSON.stringify(PHOTOS[photo])}>
   <div class={styles.scene}>
     <picture>
-      <source srcset="/img/arco-m.avif" media="(max-width: 900px)" type="image/avif" />
-      <source srcset="/img/arco.avif" type="image/avif" />
-      <img class={styles.photo} src="/img/arco.webp" alt="" width="2560" height="1707" fetchpriority="high" data-photo />
+      <source srcset={`/img/${photo}-m.avif`} media="(max-width: 900px)" type="image/avif" />
+      <source srcset={`/img/${photo}.avif`} type="image/avif" />
+      <img class={styles.photo} src={`/img/${photo}.webp`} alt="" width={PHOTOS[photo].img[0]} height={PHOTOS[photo].img[1]} fetchpriority="high" data-photo />
     </picture>
     <canvas class={styles.fx} aria-hidden="true"></canvas>
   </div>
   <div class:list={['wrap', styles.content]}>
     <div class={styles.copy}>
-      {hero.eyebrow && <p class="eyebrow rise">{hero.eyebrow}</p>}
-      <h1 id="titulo-hero" class:list={['h1 rise rise-2', styles.title]}>{hero.titleLead} <span class="accent">{hero.titleAccent}</span></h1>
+      <p class:list={['rise', styles.badge]}><span class={styles.dot} aria-hidden="true"></span>{t.heroBadge[0]}<span class={styles.sep} aria-hidden="true"></span>{t.heroBadge[1]}</p>
+      <h1 id="title-hero" class:list={['h1 rise rise-2', styles.title]}>{hero.titleLead} <span class="accent">{hero.titleAccent}</span></h1>
       <p class:list={['rise rise-2', styles.lead]}>{hero.description}</p>
-      {hero.points && (
-        <ul class:list={['rise rise-3', styles.points]}>
-          {hero.points.map((point) => <li>{point}</li>)}
-        </ul>
-      )}
-      <div class="actions rise rise-3">
+      <div class="actions rise rise-3" data-hero-cta>
         <MainButton href="#contacto" text={t.bookCallLong} />
         <SecondaryButton href="#servicios" text={hero.ctaSecondary} />
       </div>
@@ -52,18 +83,16 @@ const t = UI[getLangFromUrl(Astro.url)];
 <script>
   import { setup } from '@/lib/webgl';
 
-  // Foto (proporción; las medidas del shader van en px de una foto de 1920) y la lámpara y el haz
-  // medidos en ella (0–1 desde arriba a la izquierda). La foto está invertida: el haz sube a la derecha.
-  // POS = el object-position de .photo (solo recorta en pantallas más altas o más anchas que la foto)
-  const IMG = [1920, 1280];
-  const LAMP = [0.4355, 0.655];
-  const BEAM = [0.374, -0.655]; // de la lámpara hacia donde el haz toca el borde de arriba
-  const POS = [0.4355, 0.7];
+  // Las medidas de la foto (PHOTOS en el frontmatter); el hero está en toda página que carga este script.
+  const { img: IMG, lamp: LAMP, beam: BEAM, fx: FX } = JSON.parse(
+    document.querySelector<HTMLElement>('[data-photo]')!.dataset.photo!,
+  );
 
-  const FRAG = `
+  const COMMON = `
     precision highp float;
-    uniform sampler2D img;
-    uniform vec2 r, s, off, texel;
+    uniform sampler2D img, code;
+    uniform vec2 r, s, off, texel, tgt, cur;
+    uniform vec4 grid;
     uniform float t;
 
     const vec2 IMG = vec2(${IMG[0]}., ${IMG[1]}.);
@@ -79,7 +108,187 @@ const t = UI[getLangFromUrl(Astro.url)];
       float v = 0., a = .5;
       for (int i = 0; i < 4; i++) { v += a * noise(p); p *= 2.03; a *= .5; }
       return v;
-    }
+    }`;
+
+  // Industrias: la luz lima de la foto se mueve según la foto (FX), siempre poco: es luz real, no un efecto encima
+  const MOTION = {
+    // Pulsos que corren hacia la derecha (pistas de un circuito, estelas, líneas de luz)
+    flow: 'float m = .75 + .5 * noise(vec2(ip.x / 110. - t * 1.4, ip.y / 26.));',
+    // Una llama: dos ritmos de ruido, sin parpadeo brusco
+    flame: 'float m = .85 + .2 * noise(vec2(t * 7., 1.)) + .08 * noise(vec2(t * 19., 5.));',
+    // Luces que titilan a saltos, cada una a su ritmo
+    twinkle: 'float m = .7 + .6 * noise(vec2(h21(floor(ip / 7.)) * 97., t * 1.6));',
+    // Respira despacio
+    breath: 'float m = .9 + .15 * noise(vec2(t * .5, 1.));',
+    // La lámpara frontal: casi fija, con un temblor mínimo
+    headlamp: 'float m = .95 + .08 * noise(vec2(t * .8, 3.));',
+    // El atardecer respira despacio
+    dusk: 'float m = .88 + .18 * noise(vec2(t * .3, 7.));',
+    // El chip late despacio (dos tiempos, como un pulso)
+    card: 'float m = .8 + .3 * pow(.5 + .5 * sin(t * 1.6), 3.);',
+    // La estatua respira más vivo que breath
+    liberty: 'float m = .9 + .18 * noise(vec2(t * 1.3, 2.));',
+    // El arco de soldar chisporrotea: su luz en el humo sube y baja a saltos, irregular
+    // La pantalla: casi fija
+    // La luz de una pantalla, casi fija
+    night: 'float m = .95 + .08 * noise(vec2(t * .7, 13.));',
+    // El reflector: casi fijo
+    stage: 'float m = .92 + .12 * noise(vec2(t * .6, 6.));',
+    weld: 'float m = .86 + .2 * noise(vec2(t * 13., 4.)) + .08 * noise(vec2(t * 37., 9.));',
+  };
+  // Lo que se suma encima de la foto, por fx
+  const AFTER = {
+    dusk: `
+      // Graduados al atardecer: rayos de sol entre las nubes que giran muy despacio, y neblina que cruza.
+      // Solo sobre el cielo (lo claro): las siluetas y la colina se quedan negras. Poco: tiene que verse natural
+      vec2 v = (ip - vec2(.378, .49) * IMG) / IMG.x;
+      float d = length(v);
+      float sky = smoothstep(.03, .14, lum);
+      float ang = atan(v.y, v.x);
+      float rays = fbm(vec2(ang * 5. + t * .03, t * .08)) * fbm(vec2(ang * 11. - t * .02, 3.));
+      c += LIME * pow(rays, 1.6) * exp(-d * 3.5) * sky * .32 * m;
+      c += LIME * (fbm(ip / 380. + vec2(t * .025, 0.)) - .45) * exp(-d * 2.5) * sky * .08;`,
+    headlamp: `
+      // El haz de la lámpara frontal hasta el botón de la llamada (tgt, en coordenadas de la foto; lo mide el script)
+      vec2 lamp = LAMP * IMG, aim = tgt * IMG;
+      vec2 dir = normalize(aim - lamp);
+      vec2 v = ip - lamp;
+      float along = dot(v, dir), perp = dot(v, vec2(-dir.y, dir.x));
+      float len = length(aim - lamp);
+      float w = 8. + max(along, 0.) * .07;
+      // Cono que nace en la lámpara y se apaga un poco después del botón
+      float cone = smoothstep(-6., 40., along) * exp(-perp * perp / (2. * w * w)) * (1. - smoothstep(len * .95, len * 1.25, along));
+      float fall = 1. / (1. + max(along, 0.) * .0012);
+      float haze = fbm(vec2(along / 170. - t * .3, perp / (w * 2.2)));
+      c += LIME * cone * fall * (.17 + (haze - .45) * .16);
+      // La luz que se abre en el aire alrededor del haz
+      c += LIME * smoothstep(-6., 80., along) * exp(-perp * perp / (16. * w * w)) * fall * .06 * (1. - smoothstep(len, len * 1.4, along));
+      // Polvo flotando en el haz
+      vec2 bp = vec2(along - t * 16., perp) / 10.;
+      vec2 id = floor(bp);
+      if (h21(id + 1.3) > .84) {
+        vec2 o = vec2(h21(id + 2.1), h21(id + 4.7)) - .5;
+        float md = length(fract(bp) - .5 - o * .6);
+        c += mix(LIME, vec3(1., 1., .85), .5) * exp(-md * md * 90.) * (.5 + .5 * sin(t * (1. + 2. * h21(id)) + h21(id + 9.) * 6.28)) * cone * fall * .7;
+      }
+      // Donde el haz llega: el botón queda en una mancha de luz suave
+      vec2 q = ip - aim;
+      c += LIME * exp(-dot(q, q) / (2. * pow(w * 1.6, 2.))) * .14;
+      // El brillo de la lámpara
+      float d = length(v);
+      c += mix(LIME, vec3(1., 1., .9), .6) * (exp(-d * d / 60.) * .5 + exp(-d / 45.) * .07) * m;`,
+    card: `
+      // Reflejo que cruza las tarjetas en diagonal cada 7 s; solo sobre su superficie (gris), no en el fondo negro
+      float d = (ip.x - ip.y * .55) / IMG.x;
+      float band = exp(-pow((d - (fract(t / 7.) * 2.4 - .9)) / .05, 2.));
+      c += mix(vec3(1.), LIME, .35) * band * smoothstep(.04, .2, lum) * .22;
+      // Halo lima alrededor del chip, solo cuando la foto está en lima
+      vec2 q = (ip - vec2(.516, .475) * IMG) / IMG.x;
+      c += LIME * exp(-dot(q, q) * 90.) * max(m - .8, 0.) * .35;`,
+    liberty: `
+      // La antorcha: llama que titila (LAMP, medida en la foto); poco, que parezca su propia luz y no un efecto encima
+      float d = length(ip - LAMP * IMG);
+      c += mix(LIME, vec3(1., 1., .85), .4) * (exp(-d * d / 25.) * .22 + exp(-d / 18.) * .025) * (.6 + .4 * noise(vec2(t * 6., 1.)) + .15 * noise(vec2(t * 17., 3.)));
+      // El reflejo en el agua (debajo de la orilla, 72.5% del alto) se mueve con las ondas: solo cambia lo que tiene luz
+      float water = smoothstep(.722, .735, ip.y / IMG.y);
+      c *= 1. + (noise(vec2(ip.x / 12., ip.y / 2.6 - t * 2.2)) - .5) * .8 * water;`,
+    stage: `
+      // El haz del reflector: solo donde la foto ya tiene la luz (verde − azul), así sigue su forma. La neblina se mueve
+      // despacio dentro del haz y el polvo brilla al cruzarlo
+      float beam = clamp((p.g - p.b) * 8., 0., 1.);
+      c += LIME * beam * (fbm(vec2(ip.x / 150. + t * .07, ip.y / 210. - t * .1)) - .45) * .25 * m;
+      // Neblina de escenario en dos capas que cruzan despacio: espesa dentro del haz (la luz la alumbra), tenue fuera de
+      // él y más baja junto al piso
+      float fog = fbm(vec2(ip.x / 520. - t * .035, ip.y / 300. + t * .008));
+      fog = smoothstep(.35, .8, fog * .65 + fbm(vec2(ip.x / 240. + t * .05, ip.y / 160. - t * .02)) * .35);
+      float low = smoothstep(.55, .95, ip.y / IMG.y);
+      c += mix(vec3(.75, .76, .72), LIME, .55) * fog * (beam * .24 + .03 + low * .05) * m;
+      // Polvo: pocas motas sueltas (una de cada ~8 celdas de 30 px), cada una con su tamaño y su brillo, que se encienden
+      // y se apagan despacio al cruzar la luz
+      vec2 bp = vec2(ip.x + t * 3., ip.y + t * 8.) / 30.;
+      vec2 id = floor(bp);
+      if (h21(id + 1.3) > .88) {
+        vec2 o = vec2(h21(id + 2.1), h21(id + 4.7)) - .5;
+        float md = length(fract(bp) - .5 - o * .7) * 30.;
+        float size = 1. + 1.6 * h21(id + 5.9);
+        float tw = pow(.5 + .5 * sin(t * (.6 + 1.2 * h21(id)) + h21(id + 9.) * 6.28), 2.);
+        c += mix(LIME, vec3(1., 1., .85), .5) * exp(-md * md / (size * size)) * tw * (.25 + .35 * h21(id + 7.7)) * beam;
+      }
+      // El reflector
+      float d = length(ip - LAMP * IMG);
+      c += mix(LIME, vec3(1., 1., .9), .6) * exp(-d * d / 90.) * .25 * m;`,
+    night: `
+      // La pantalla de la laptop: un escritorio de Mac con el editor y el dock (textura code, la dibuja el script: rojo =
+      // lo gris, verde = el código) donde el código se va escribiendo letra por letra (cur = columna y renglón del cursor,
+      // grid = dónde empieza el código, ancho de letra y alto de renglón, en px de la textura). La pantalla está en
+      // perspectiva: sus esquinas medidas en la foto; todo se dibuja en coordenadas de la pantalla (sx, v)
+      const vec2 TL = vec2(.1275, .533), TR = vec2(.4125, .523), BL = vec2(.1475, .677), BR = vec2(.44, .667);
+      float xl = mix(TL.x, BL.x, (uv.y - TL.y) / (BL.y - TL.y)), xr = mix(TR.x, BR.x, (uv.y - TR.y) / (BR.y - TR.y));
+      float sx = (uv.x - xl) / (xr - xl);
+      float yt = mix(TL.y, TR.y, sx), yb = mix(BL.y, BR.y, sx);
+      float v = (uv.y - yt) / (yb - yt);
+      float inScreen = smoothstep(0., .015, sx) * (1. - smoothstep(.985, 1., sx)) * smoothstep(0., .02, v) * (1. - smoothstep(.98, 1., v));
+      vec3 tx = texture2D(code, vec2(sx, v * .75)).rgb;
+      vec2 px = vec2(sx * 1024., v * 768.);
+      float row = floor((px.y - grid.y) / grid.w), col = floor((px.x - grid.x) / grid.z);
+      float lines = step(grid.y, px.y) * step(px.y, grid.y + 16. * grid.w);
+      // Lo escrito: renglones anteriores completos, el actual hasta el cursor; los números de renglón, hasta el actual
+      float typed = row < cur.y || (row == cur.y && col < cur.x) ? 1. : 0.;
+      float gutter = step(px.x, grid.x - 4.) * lines;
+      float shown = mix(1., mix(typed, step(row, cur.y), gutter), lines);
+      float caret = lines * step(abs(row - cur.y), .5) * step(0., px.x - grid.x - cur.x * grid.z) * step(px.x - grid.x - cur.x * grid.z, 4.)
+                  * step(fract(t * 1.1), .6);
+      vec3 scr = vec3(.02) + vec3(tx.r * .6) + LIME * (tx.g * shown + caret) * .8 * m;
+      c = mix(c, scr, inScreen);
+      // Las luces de la ciudad (lo que brilla detrás de la ventana, arriba de la pantalla) titilan, cada una a su ritmo
+      float h = h21(floor(ip / 40.));
+      c *= 1. + (noise(vec2(h * 97., t * (.6 + 1.4 * h))) - .5) * .9 * smoothstep(.12, .35, lum) * (1. - step(.52, uv.y));`,
+    weld: `
+      // Humo de soldar en movimiento encima del humo de la foto: sale del arco (LAMP, medido en la foto) y sube a la
+      // izquierda como el de la foto, con volutas que se mueven. Se suma suave: la foto pone la forma, esto el movimiento
+      vec2 q = (ip - LAMP * IMG) / 320.;
+      float up = max(-q.y, 0.);
+      float cx = q.x + up * .5 + .06 * sin(up * 3. - t * .7);
+      float w = .22 + up * .3;
+      float body = exp(-cx * cx / (w * w)) * smoothstep(-.06, .08, -q.y) * exp(-up * 1.8); // pegado al arco: lejos se apaga
+      vec2 sp = vec2(cx * 3.6, q.y * 1.7 + t * .7);
+      float warp = fbm(sp * 1.3 + vec2(t * .12, 0.));
+      float smoke = fbm(sp + vec2(warp * 1.1, warp * .5) - vec2(0., t * .15));
+      float dens = smoothstep(.35, .75, smoke) * body;
+      float lit = .5 + exp(-length(q) * 1.8);
+      c += mix(vec3(.85), LIME, .5) * lit * dens * .16 * m;
+      // Como el fuego de verdad: la luz del arco alumbra el humo desde adentro y titila con el arco (sin punto de luz encima:
+      // solo lo que ya brilla en la foto, junto al arco, se aviva y se apaga)
+      float near = exp(-length(q * vec2(1., 1.3)) * 1.6);
+      c *= 1. + (m - .95) * .7 * near * smoothstep(.15, .6, lum);
+      // Cuando la luz está en lima, el arco alumbra al soldador (casco, guantes, brazo) y el tubo: más cerca, más luz;
+      // solo donde hay algo (lum), el fondo negro no se aclara
+      float da = length(ip - LAMP * IMG);
+      c += LIME * lum * 1.8 * smoothstep(.04, .25, lum) * exp(-da / 380.) * .85 * cyc * m;`,
+  };
+  // Cada cuánto pasa de gris a lima y vuelve (s): la estatua y el soldador más rápido, las demás más calmadas
+  const PERIOD = FX === 'liberty' || FX === 'weld' ? 9 : 14;
+  const GLOW_FRAG = FX && `${COMMON}
+    const vec2 LAMP = vec2(${LAMP ? LAMP.join(', ') : '0., 0.'});
+    void main() {
+      vec2 uv = off + vec2(gl_FragCoord.x / r.x, 1. - gl_FragCoord.y / r.y) * s;
+      vec2 ip = uv * IMG;
+      vec3 p = texture2D(img, uv).rgb;
+      float lum = p.b;
+      ${MOTION[FX as keyof typeof MOTION]}
+      vec3 c = vec3(lum) + (p - vec3(lum)) * m;
+      // Como el faro de la home: la luz pasa de gris a lima y vuelve, cada PERIOD s (con reduced-motion, t = 6: en lima).
+      // En gris la luz sigue ahí (su brillo en gris), solo pierde el color. cyc: 0 = gris, 1 = lima (los fx lo usan)
+      float cyc = pow(.5 - .5 * cos((t - 6. + ${(PERIOD / 2).toFixed(1)}) * ${(2 * Math.PI / PERIOD).toFixed(4)}), 1.5);
+      ${AFTER[FX as keyof typeof AFTER] ?? ''}
+      c = mix(vec3(dot(c, vec3(.2126, .7152, .0722))), c, cyc);
+
+      // Grano de película, casi imperceptible
+      c += (h21(gl_FragCoord.xy + fract(t * 7.) * 91.) - .5) * .018;
+      gl_FragColor = vec4(c, 1.);
+    }`;
+
+  const FRAG = GLOW_FRAG || `${COMMON}
 
     void main() {
       vec2 lamp = vec2(${LAMP[0]}, ${LAMP[1]}) * IMG;
@@ -140,14 +349,116 @@ const t = UI[getLangFromUrl(Astro.url)];
       gl_FragColor = vec4(c, 1.);
     }`;
 
+  // Software: lo que se ve en la pantalla de la laptop, un escritorio de Mac con el editor abierto y el dock. El código
+  // se escribe letra por letra, como lo haría alguien programando, con un mensaje para quien lo alcance a leer
+  const EN = document.documentElement.lang.startsWith('en');
+  const CODE = EN
+    ? ["import { project } from './your-company';", "import { Aurin } from '@aurin/team';", '',
+       'const team = new Aurin({ since: 1998 });', '', 'async function launch(product) {',
+       '  const design = await team.design(product);', '  const site = await team.build(design);',
+       '  return site.publish();', '}', '', '// TODO: book a call with Aurin', 'if (!project.ready) {',
+       '  team.hire(); // ;)', '}', 'export default launch(project);']
+    : ["import { proyecto } from './tu-empresa';", "import { Aurin } from '@aurin/equipo';", '',
+       'const equipo = new Aurin({ desde: 1998 });', '', 'async function lanzar(producto) {',
+       '  const diseno = await equipo.disenar(producto);', '  const sitio = await equipo.programar(diseno);',
+       '  return sitio.publicar();', '}', '', '// TODO: agendar llamada con Aurin', 'if (!proyecto.listo) {',
+       '  equipo.contratar(); // ;)', '}', 'export default lanzar(proyecto);'];
+  const CODE_X = 110, CODE_Y = 100, LINE = 32;
+
+  // Dibuja la pantalla en una textura de 1024 (se usan 1024×768, la proporción de la pantalla). Rojo = lo gris (fondo,
+  // ventana, dock), verde = el código (en lima). Devuelve el ancho de una letra
+  function codeTexture(gl: WebGLRenderingContext, loc: WebGLUniformLocation | null) {
+    const cv = document.createElement('canvas');
+    cv.width = cv.height = 1024;
+    const ctx = cv.getContext('2d')!;
+    const gray = (v: number) => `rgb(${v},0,0)`;
+    const box = (x: number, y: number, w: number, h: number, rad: number, v: number) => {
+      ctx.fillStyle = gray(v);
+      ctx.beginPath();
+      ctx.roundRect(x, y, w, h, rad);
+      ctx.fill();
+    };
+    ctx.fillStyle = gray(16);
+    ctx.fillRect(0, 0, 1024, 768);
+    // Barra de menús
+    ctx.fillStyle = gray(34);
+    ctx.fillRect(0, 0, 1024, 24);
+    ctx.font = '500 14px system-ui, sans-serif';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = gray(120);
+    ctx.fillText(EN ? 'Code     File     Edit     Selection     View     Terminal' : 'Code     Archivo     Editar     Selección     Ver     Terminal', 20, 12);
+    // Ventana del editor: barra de título con los tres botones y la pestaña del archivo
+    box(36, 48, 952, 592, 12, 26);
+    box(36, 48, 952, 34, 12, 44);
+    for (const x of [58, 80, 102]) box(x - 6, 59, 12, 12, 6, 90);
+    ctx.fillStyle = gray(150);
+    ctx.fillText(EN ? 'launch.ts' : 'lanzar.ts', 140, 66);
+    // Números de renglón y el código
+    ctx.font = '600 20px ui-monospace, Menlo, Consolas, monospace';
+    CODE.forEach((line, i) => {
+      const y = CODE_Y + i * LINE + LINE / 2;
+      ctx.textAlign = 'right';
+      ctx.fillStyle = gray(70);
+      ctx.fillText(String(i + 1), CODE_X - 16, y);
+      ctx.textAlign = 'left';
+      // Comentarios más tenues; la llamada y la contratación, más brillantes
+      const g = /TODO|hire\(|contratar\(/.test(line) ? 255 : line.trim().startsWith('//') ? 120 : 190;
+      // El código se suma (verde) sin borrar el gris de la ventana (rojo): así lo que falta por escribir no se ve
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.fillStyle = `rgb(0,${g},0)`;
+      ctx.fillText(line, CODE_X, y);
+      ctx.globalCompositeOperation = 'source-over';
+    });
+    // Dock, del tamaño del de una Mac y centrado abajo: barra translúcida, íconos con su figura, separador antes del
+    // último y el punto del editor abierto (en lima)
+    const N = 9, ICON = 34, GAP = 6, W = N * (ICON + GAP) + 14, X = (1024 - W) / 2;
+    box(X, 714, W, 46, 14, 38);
+    for (let i = 0; i < N; i++) {
+      const x = X + 10 + i * (ICON + GAP) + (i === N - 1 ? 6 : 0);
+      box(x, 720, ICON, ICON, 9, [92, 70, 118, 140, 80, 104, 64, 126, 74][i]);
+      box(x + 9, 729, ICON - 18, ICON - 18, i % 3 ? 4 : 8, [52, 120, 66, 90, 130, 60, 110, 70, 120][i]);
+    }
+    ctx.fillStyle = gray(70);
+    ctx.fillRect(X + 10 + (N - 1) * (ICON + GAP) - 1, 722, 1, 30);
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.fillStyle = 'rgb(0,255,0)';
+    ctx.beginPath();
+    ctx.arc(X + 10 + 3 * (ICON + GAP) + ICON / 2, 757, 2, 0, 7);
+    ctx.fill();
+    gl.activeTexture(gl.TEXTURE1);
+    gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, cv);
+    gl.generateMipmap(gl.TEXTURE_2D);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+    gl.uniform1i(loc, 1);
+    gl.activeTexture(gl.TEXTURE0);
+    return ctx.measureText('M').width;
+  }
+
+  // Dónde va el cursor a los `time` s: escribe a 14 letras por segundo (la sangría sale sola, como en el editor), se
+  // detiene un momento al final de cada renglón y, al terminar, espera 5 s y empieza otra vez. [columna, renglón]
+  function cursorAt(time: number) {
+    const CPS = 14, PAUSE = .4, HOLD = 5;
+    const total = CODE.reduce((sum, l) => sum + l.trim().length / CPS + PAUSE, 0) + HOLD;
+    let x = time % total;
+    for (let i = 0; i < CODE.length; i++) {
+      const indent = CODE[i].length - CODE[i].trimStart().length, d = CODE[i].trim().length / CPS;
+      if (x < d) return [indent + Math.floor(x * CPS), i];
+      x -= d;
+      if (x < PAUSE) return [CODE[i].length, i];
+      x -= PAUSE;
+    }
+    return [0, CODE.length];
+  }
+
   async function init() {
-    const section = document.querySelector<HTMLElement>('[data-arco]');
+    const section = document.querySelector<HTMLElement>('[data-photo]');
     const photo = section?.querySelector<HTMLImageElement>('[data-photo]');
     const scene = photo?.closest('div');
     const canvas = section?.querySelector('canvas');
     const gl = canvas?.getContext('webgl', { alpha: false, antialias: false });
     if (!section || !photo || !scene || !canvas || !gl) return;
-    const u = await setup(gl, FRAG, ['img', 'r', 's', 'off', 'texel', 't']);
+    const u = await setup(gl, FRAG, ['img', 'code', 'cur', 'grid', 'r', 's', 'off', 'texel', 't', 'tgt']);
     if (!u) return;
 
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -158,10 +469,18 @@ const t = UI[getLangFromUrl(Astro.url)];
 
     function draw(time: number) {
       gl!.uniform1f(u!.t, reduce ? 6 : time);
+      if (FX === 'night') gl!.uniform2f(u!.cur, ...((reduce ? [0, CODE.length] : cursorAt(time)) as [number, number]));
       gl!.drawArrays(gl!.TRIANGLES, 0, 3);
     }
 
-    // Mismo recorte que object-fit: cover + object-position (POS), sobre la escena (más ancha que la sección)
+    // Posición en la página sin transforms (offset*)
+    function at(el: HTMLElement) {
+      let x = 0, y = 0;
+      for (let e: HTMLElement | null = el; e; e = e.offsetParent as HTMLElement | null) { x += e.offsetLeft; y += e.offsetTop; }
+      return [x, y];
+    }
+
+    // Mismo recorte que object-fit: cover + object-position del CSS, sobre la escena (más ancha que la sección)
     function resize() {
       const k = Math.min(devicePixelRatio, maxScale);
       const w = Math.round(scene!.clientWidth * k);
@@ -174,7 +493,19 @@ const t = UI[getLangFromUrl(Astro.url)];
       const s = ratio > img ? [1, img / ratio] : [ratio / img, 1];
       gl!.uniform2f(u!.r, w, h);
       gl!.uniform2f(u!.s, s[0], s[1]);
-      gl!.uniform2f(u!.off, (1 - s[0]) * POS[0], (1 - s[1]) * POS[1]);
+      const pos = getComputedStyle(photo!).objectPosition.split(' ').map((v) => parseFloat(v) / 100);
+      gl!.uniform2f(u!.off, (1 - s[0]) * pos[0], (1 - s[1]) * pos[1]);
+      // El haz de la lámpara apunta al botón de la llamada: su centro, pasado a coordenadas de la foto. En celular el
+      // cirujano queda debajo de los botones: ahí el haz sale hacia la izquierda, como apunta la lámpara
+      const button = section!.querySelector<HTMLElement>('[data-hero-cta] a');
+      if (LAMP && matchMedia('(max-width: 900px)').matches) gl!.uniform2f(u!.tgt, LAMP[0] - .2, LAMP[1] + .05);
+      else if (button) {
+        // Con offset* y no getBoundingClientRect: la animación de entrada de los botones (translate) no mueve el haz
+        const [bx, by] = at(button), [sx, sy] = at(scene!);
+        gl!.uniform2f(u!.tgt,
+          (1 - s[0]) * pos[0] + (bx + button.offsetWidth * .5 - sx) / scene!.offsetWidth * s[0],
+          (1 - s[1]) * pos[1] + (by + button.offsetHeight * .5 - sy) / scene!.offsetHeight * s[1]);
+      }
       draw(t0 ? (performance.now() - t0) / 1000 : 0);
     }
 
@@ -191,9 +522,14 @@ const t = UI[getLangFromUrl(Astro.url)];
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, photo);
       gl.uniform2f(u.texel, 1 / photo.naturalWidth, 1 / photo.naturalHeight);
+      if (FX === 'night') gl.uniform4f(u.grid, CODE_X, CODE_Y, codeTexture(gl, u.code), LINE);
 
       resize();
-      new ResizeObserver(resize).observe(scene);
+      // También el texto: cuando carga la tipografía crece y baja el botón al que apunta el haz
+      const ro = new ResizeObserver(resize);
+      ro.observe(scene);
+      const copy = section.querySelector('[data-hero-cta]')?.parentElement;
+      if (copy) ro.observe(copy);
       if (!reduce) {
         new IntersectionObserver(([entry]) => {
           cancelAnimationFrame(raf);

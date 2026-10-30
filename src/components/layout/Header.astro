@@ -11,10 +11,20 @@
  */
 import ArrowRight from 'lucide-astro/ArrowRight';
 import ArrowRightLeft from 'lucide-astro/ArrowRightLeft';
+import Building2 from 'lucide-astro/Building2';
 import ChevronDown from 'lucide-astro/ChevronDown';
 import Code from 'lucide-astro/Code';
+import CreditCard from 'lucide-astro/CreditCard';
 import Gem from 'lucide-astro/Gem';
+import GraduationCap from 'lucide-astro/GraduationCap';
+import HandHeart from 'lucide-astro/HandHeart';
+import HeartPulse from 'lucide-astro/HeartPulse';
 import LayoutGrid from 'lucide-astro/LayoutGrid';
+import Music from 'lucide-astro/Music';
+import PenTool from 'lucide-astro/PenTool';
+import Scale from 'lucide-astro/Scale';
+import Ticket from 'lucide-astro/Ticket';
+import Zap from 'lucide-astro/Zap';
 import Monitor from 'lucide-astro/Monitor';
 import MousePointerClick from 'lucide-astro/MousePointerClick';
 import Globe from 'lucide-astro/Globe';
@@ -39,23 +49,29 @@ const t = UI[lang];
 const home = lang === 'en' ? '/en/' : '/';
 const here = Astro.url.pathname;
 
-// Ícono de cada página del menú (por id); una página nueva sin ícono usa el de su grupo
-const ICONS: Record<string, typeof Monitor> = { 'web-design': Monitor, 'web-development': Code, 'ux-ui-design': MousePointerClick, branding: Gem, remittances: ArrowRightLeft };
+// Ícono de cada página del menú (por id); una página nueva sin ícono usa el de su grupo. A 24 px, su tamaño
+// de dibujo: más chicos el trazo cae entre píxeles y se ve borroso
+const ICONS: Record<string, typeof Monitor> = {
+  'web-design': Monitor, 'web-development': Code, 'ux-ui-design': MousePointerClick, branding: Gem,
+  fintech: CreditCard, healthcare: HeartPulse, education: GraduationCap, tourism: Ticket, energy: Zap, culture: Music,
+  software: Code, agencies: PenTool, legal: Scale, 'real-estate': Building2, nonprofits: HandHeart, remittances: ArrowRightLeft,
+};
 
 type Item = { href: string; label: string; sub?: string; icon: typeof Monitor };
-const groups: { label: string; items: Item[]; note?: string }[] = [
+// grid = panel ancho: servicios en dos columnas con su descripción; industrias en tres, solo el nombre (son muchas
+// y en una columna el panel se salía de la pantalla). El pie lleva el enlace que no es una página más de la lista.
+const groups: { label: string; items: Item[]; grid: 'two' | 'three'; note: { text: string; href: string; label: string } }[] = [
   {
     label: t.nav.services,
     items: SERVICES.map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name, sub: s.copy[lang].tags, icon: ICONS[s.id] ?? Monitor })),
-    // Solo Servicios lleva pie (y dos columnas): es el grupo que más se abre
-    note: t.otherServices.description,
+    grid: 'two',
+    note: { text: t.otherServices.description, href: cta, label: t.bookCallLong },
   },
   {
     label: t.nav.industries,
-    items: [
-      { href: industriesPath(lang), label: t.industries.all, sub: t.industries.allSub, icon: LayoutGrid },
-      ...INDUSTRY_PAGES.map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name, sub: s.copy[lang].tags, icon: ICONS[s.id] ?? LayoutGrid })),
-    ],
+    items: INDUSTRY_PAGES.map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name, icon: ICONS[s.id] ?? LayoutGrid })),
+    grid: 'three',
+    note: { text: t.industries.allSub, href: industriesPath(lang), label: t.industries.all },
   },
   // Sin Estados (decidido en octubre 2026): las landings de estado se enlazan desde el pie y entre ellas
 ].filter((group) => group.items.length > 0);
@@ -77,10 +93,10 @@ const current = (href: string) => (href === here ? 'page' : undefined);
     <nav class={styles.nav} aria-label={lang === 'es' ? 'Principal' : 'Main'}>
       {groups.map((group) => (
         <div class={styles.group}>
-          <button type="button" class:list={[styles.trigger, group.items.some((i) => i.href === here) && styles.active]}>
+          <button type="button" class:list={[styles.trigger, (group.items.some((i) => i.href === here) || group.note.href === here) && styles.active]}>
             {group.label}<ChevronDown size={16} stroke-width={2.5} aria-hidden="true" />
           </button>
-          <div class:list={[styles.panel, group.note && styles.wide]}>
+          <div class:list={[styles.panel, styles[group.grid]]}>
             <div class={styles.box}>
               <ul class={styles.items}>
                 {group.items.map((item) => {
@@ -88,7 +104,7 @@ const current = (href: string) => (href === here ? 'page' : undefined);
                   return (
                     <li>
                       <a class={styles.item} href={item.href} aria-current={current(item.href)}>
-                        <span class={styles.icon} aria-hidden="true"><Icon size={20} stroke-width={1.8} /></span>
+                        <span class={styles.icon} aria-hidden="true"><Icon size={24} stroke-width={1.75} /></span>
                         <span>
                           <span class={styles.name}>{item.label}</span>
                           {item.sub && <span class={styles.sub}>{item.sub}</span>}
@@ -98,12 +114,10 @@ const current = (href: string) => (href === here ? 'page' : undefined);
                   );
                 })}
               </ul>
-              {group.note && (
-                <p class={styles.note}>
-                  <span>{group.note}</span>
-                  <a href={cta}>{t.bookCallLong}<ArrowRight size={16} stroke-width={2.2} aria-hidden="true" /></a>
-                </p>
-              )}
+              <p class={styles.note}>
+                <span>{group.note.text}</span>
+                <a href={group.note.href} aria-current={current(group.note.href)}>{group.note.label}<ArrowRight size={16} stroke-width={2.2} aria-hidden="true" /></a>
+              </p>
             </div>
           </div>
         </div>
@@ -111,6 +125,7 @@ const current = (href: string) => (href === here ? 'page' : undefined);
       {links.map((item) => <a class={styles.link} href={item.href}>{item.label}</a>)}
     </nav>
     <div class={styles.actions}>
+      <span class={styles.cta} data-header-cta><MainButton href={cta} text={t.bookCall} /></span>
       <a
         class={styles.lang}
         href={localizedPath(here, other)}
@@ -118,18 +133,20 @@ const current = (href: string) => (href === here ? 'page' : undefined);
         lang={LOCALE[other].html}
         aria-label={t.switchLang.label}
       ><Globe size={18} /><span>{t.switchLang.short}</span></a>
-      <span class={styles.cta}><MainButton href={cta} text={t.bookCall} small /></span>
-      <button class={styles.menuBtn} popovertarget="menu-movil" aria-label={t.menu.open}>
+      <button class={styles.menuBtn} popovertarget="mobile-menu" aria-label={t.menu.open}>
         <Menu size={22} strokeWidth={2.5} />
       </button>
     </div>
   </div>
-  <nav id="menu-movil" popover class={styles.sheet} aria-label={t.menu.label}>
+  <nav id="mobile-menu" popover class={styles.sheet} aria-label={t.menu.label}>
     {groups.map((group) => (
-      <div class={styles.sheetGroup}>
-        <p class="eyebrow">{group.label}</p>
-        {group.items.map((item) => <a href={item.href} aria-current={current(item.href)}>{item.label}</a>)}
-      </div>
+      <details class:list={[styles.sheetGroup, styles.fold]} name="mobile-menu" open={group.items.some((i) => i.href === here) || group.note.href === here}>
+        <summary>{group.label}<ChevronDown size={18} stroke-width={2.5} aria-hidden="true" /></summary>
+        <div class={styles.sheetItems}>
+          {group.items.map((item) => <a href={item.href} aria-current={current(item.href)}>{item.label}</a>)}
+          {group.grid === 'three' && <a class={styles.sheetAll} href={group.note.href} aria-current={current(group.note.href)}>{group.note.label}<ArrowRight size={16} stroke-width={2.2} aria-hidden="true" /></a>}
+        </div>
+      </details>
     ))}
     <div class={styles.sheetGroup}>
       {links.map((item) => <a href={item.href}>{item.label}</a>)}
@@ -139,8 +156,17 @@ const current = (href: string) => (href === here ? 'page' : undefined);
 </header>
 
 <script>
+  // "Agendar llamada" entra cuando el botón del hero sale por arriba (ya pasó bajo el header, ~80 px)
+  const heroCta = document.querySelector('[data-hero-cta]');
+  const headerCta = document.querySelector<HTMLElement>('[data-header-cta]');
+  if (heroCta && headerCta) {
+    new IntersectionObserver(([entry]) => {
+      headerCta.toggleAttribute('data-shown', !entry.isIntersecting && entry.boundingClientRect.top < 80);
+    }, { rootMargin: '-80px 0px 0px 0px' }).observe(heroCta);
+  }
+
   // Un ancla de la misma página no cierra el popover sola
-  const sheet = document.getElementById('menu-movil');
+  const sheet = document.getElementById('mobile-menu');
   sheet?.addEventListener('click', (e) => {
     if ((e.target as Element).closest('a')) sheet.hidePopover();
   });

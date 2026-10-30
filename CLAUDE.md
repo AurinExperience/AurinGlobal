@@ -54,22 +54,22 @@ nada en estas páginas necesita isla. `@astrojs/vercel` está instalado solo por
 src/
 ├── pages/                index, en/index, [servicio] (ES), en/[service] (EN), [estado] (ES), en/[state] (EN), privacidad ↔ en/privacy,
 │                         industrias ↔ en/industries (índice con buscador), 404,
-│                         sitemap.xml, llms.txt, og/[...path].png (OG por página, en build)
+│                         sitemap.xml, llms.txt, robots.txt (endpoints: salen con charset utf-8), og/[...path].png (OG por página, en build)
 ├── components/
 │   ├── ui/               ButtonIsland (de aurin.mx), MainButton, SecondaryButton, Grain, PhoneInput, WhatsAppButton,
 │   │                     Analytics (GA4 + Clarity con consentimiento), CookieConsent
-│   ├── layout/           Header, Footer (minimal en landings; NAP de SITE.address), CtaBanner
+│   ├── layout/           Header, Footer (marca, servicios, 6 industrias + "Todas", contacto; sin franja de CTA: todas las páginas ya cierran con una; minimal en landings; NAP de SITE.address), CtaBanner
 │   └── pages/            HomePage, ServicePage, StatePage (plantilla de estado; sin nombres de estados), PrivacyPage, IndustriesPage
 ├── blocks/
 │   ├── home/             secciones exclusivas de la home (HeroHome = faro)
 │   ├── landing-state/    HeroState (h1 + argumentos + botón al formulario del cierre; foto con shader), LeadForm, Industries, ServicesIncluded, FaqSection
-│   └── shared/           SEO/ (AdvancedSEO, GlobalSchema), FaqList, ProcessSteps, RelatedLinks (estados/servicios hermanos),
+│   └── shared/           SEO/ (AdvancedSEO, GlobalSchema), FaqList, ProcessSteps, RelatedLinks ("Sigue explorando", en gris claro para no confundirse con el pie negro: servicios en filas con su descripción + industrias o estados en etiquetas),
 │                         IndustryCards (tarjetas de industria con logos de clientes; home, estados y /industrias/),
 │                         Team (fotos reales de la oficina, fundadores con LinkedIn, dirección + Google Maps)
 ├── data/
 │   ├── home.ts           copy de la home ES/EN
 │   ├── services/         un archivo por servicio (copy ES/EN de su página + fila de la home) + index.ts
-│   ├── industries/       páginas de industria (misma plantilla ServicePage; hoy: apps de remesas)
+│   ├── industries/       páginas de industria (misma plantilla ServicePage; hoy: fintech y apps de remesas)
 │   ├── privacy.ts        aviso de privacidad y cookies ES/EN (`#cookies` = destino del aviso)
 │   ├── cases.ts          casos de estudio (proyectos PUBLICADOS en el CMS de aurin.mx, con su URL real)
 │   └── states/           un archivo por estado + index.ts (lista CERRADA)
@@ -85,16 +85,20 @@ src/
 - Colores: negro `#000000`, lima `#D0DF00`, blanco `#FFFFFF`, gris `#7D7F79` / `#A3A69F`.
 - Header: el de aurin.mx (fijo sobre el hero / sticky en landings, transparente arriba y, al bajar, vidrio negro de lado a lado
   (blur fuerte, hairline abajo) con `animation-timeline: scroll()`, idioma con globo). A diferencia de allá, los enlaces se ven en escritorio; en móvil,
-  círculo lima que abre un `popover` nativo (sin MegaMenu). El CTA "Agenda una llamada" vive en el header; en landings y
-  servicios el hero también lo lleva (el formulario está en el cierre de la página).
+  círculo lima que abre un `popover` nativo (sin MegaMenu). El CTA "Agendar llamada" vive en el header; en landings y
+  servicios el hero también lo lleva (el formulario está en el cierre de la página), y el del header se esconde mientras el del
+  hero se ve (`data-hero-cta` + IntersectionObserver en Header; entra con transición propia, no atada al scroll).
 - Menú: el MISMO en todas las páginas y armado con los datos (Header.astro): Servicios ▾ (`SERVICES`),
   Industrias ▾ ("Todas las industrias" → /industrias/ + `INDUSTRY_PAGES`), Casos y Nosotros (anclas de la home).
-  Estados NO va en el menú (decidido en octubre 2026): las landings de estado se enlazan desde el pie y entre ellas.
+  Estados NO va en el menú (decidido en octubre 2026): por ahora tampoco van en el pie (aún no se publican; volver a sumar la columna cuando salgan). Se enlazan entre ellas.
   Una página nueva en esas listas sale sola en el menú de todo el sitio (enlazado interno); un grupo vacío no se pinta.
   Los grupos abren con hover o foco (Tab), sin JS; la página actual va con `aria-current` y su grupo en lima.
-  En móvil, el popover agrupa por sección y hace scroll si crece. Si un grupo pasa de ~8 enlaces, que su
-  primer enlace sea una página índice (p. ej. /industrias/) en vez de alargar la lista.
-- Botones: los de aurin.mx (`ButtonIsland`: texto + cuadro con flecha `lucide-astro`, la flecha gira al hover). `MainButton` lima, `SecondaryButton` oscuro, `small` en el header. Sin el `Tilt` de React de allá.
+  Enlaces sin subrayado, en Clarity City 500 (variable: no carga otro archivo).
+  Servicios: dos columnas con descripción; Industrias: tres columnas solo con nombre e ícono (`ICONS` en Header,
+  uno por id) y "Todas las industrias" en el pie (en una columna el panel se salía de la pantalla).
+  En móvil, el popover lleva cada grupo en un `<details name>` (se abre uno a la vez; el de la página actual
+  empieza abierto) y hace scroll si crece.
+- Botones: los de aurin.mx (`ButtonIsland`: texto + cuadro con flecha `lucide-astro`, la flecha gira al hover). `MainButton` lima, `SecondaryButton` oscuro, todos de 40 px de alto (header y cuerpo iguales; el de idioma también). Sin el `Tilt` de React de allá.
 - Títulos (h1/h2): como el de aurin.mx, parte delgada + acento en lima y seminegrita (`.accent`). En los datos el acento va
   entre `*asteriscos*` y lo pinta `components/ui/Accent.astro`; en secciones blancas o lima el acento queda en negro
   (`.section :global(.accent) { color: inherit }` en su módulo). Si el título va a un schema, quitarle los `*`.
@@ -113,8 +117,17 @@ utilidad global, así que los cambios responsive de un componente van en su prop
 ## Idiomas
 
 Español sin prefijo (`/texas/`), inglés en `/en/` (`/en/texas/`); los slugs de estado son iguales en los dos.
+**Público de las páginas en inglés (regla para toda página nueva):** estadounidenses que hablan inglés y no son
+hispanos: son los que más pagan. El español no es el argumento de venta en inglés: si se repite, el comprador piensa
+que es una agencia para el mercado latino o duda de nuestro inglés. Máximo UNA mención del español por página
+(una tarjeta de "Qué incluye" o una pregunta del FAQ, no las dos), y solo como producto donde el cliente final de
+verdad lo habla (salud, legal, educación, bienes raíces, ONG; remesas es la excepción: su mercado es ese). Nunca en el
+hero, la pastilla, el title/description, el pie, el bloque de equipo ni la tabla «The usual / With Aurin». En español sí
+es el diferenciador (dueños de negocio hispanos). Decidido en octubre 2026.
+
 Los servicios sí traducen el slug (`/diseno-web/` ↔ `/en/web-design/`): `localizedPath` lo resuelve con `SERVICES`.
-hreflang `es-US` / `en-US` y `x-default` al inglés (el público está en EE. UU.). URLs siempre con barra final.
+hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los dos países, `regions` en `LOCALE`) y `x-default` al inglés
+(el público está en EE. UU. y Canadá). URLs siempre con barra final.
 
 ## Home y páginas de servicio
 
@@ -135,8 +148,29 @@ hreflang `es-US` / `en-US` y `x-default` al inglés (el público está en EE. UU
 - Industrias (`HOME[lang].industries.items`): la home muestra las primeras 6 + "Ver todas" → `/industrias/` (todas, con buscador
   que ignora acentos y lee el `alt` de los logos). Cada tarjeta: clientes reales con el logo del carrusel (`CLIENTS`, se busca por
   nombre) o el nombre si no hay logo; en una fila, y si no caben se deslizan (lo calcula IndustryCards al compilar). Sin enlaces
-  dentro de las tarjetas. Logos en `CLIENTS` (también el carrusel): oscuros sobre blanco por defecto (gris + invertido);
+  dentro de las tarjetas, salvo el título cuando la industria tiene página propia (`page`, ver abajo). Logos en `CLIENTS` (también el carrusel): oscuros sobre blanco por defecto (gris + invertido);
   `tone: 'light'` si ya es claro sobre negro, `tone: 'color'` si es de colores claros.
+
+## Páginas de industria
+
+- Una por cada industria general de `HOME.industries` (las 11 ya tienen página: fintech, salud, educación, turismo,
+  energía, cultura, software, agencias, legal, bienes raíces, ONG). Más los nichos que aurin.mx no toca (remesas: sitio y plataforma web para empresas de remesas, `/diseno-web-remesas/`; sin apps).
+  Donde aurin.mx ya tiene un nicho para EE. UU. (lujo inmobiliario, galerías, hoteles boutique, startups de IA, med spas…)
+  la de aquí es la industria en general y no entra a ese nicho (lo dice el comentario de cada archivo).
+- Agregar una: copiar `src/data/industries/fintech.ts`, reescribir TODO el copy en ES y EN (texto único), sumarla a
+  `INDUSTRY_PAGES` y poner `page: '<id>'` en su tarjeta de `HOME[lang].industries.items` (ES y EN): la tarjeta de
+  /industrias/ y de la home enlaza sola. Menú, sitemap, llms.txt, OG y enlaces relacionados salen solos.
+  Su foto: `photo: 'ind-<id>'` (sumarla a `IndustryPhoto` en data/services/types.ts y a `PHOTOS` en HeroState).
+- Diseño propio, distinto de los servicios (`src/blocks/industry`, mismo contenido de datos): `Fixes` (blanca: filas
+  "hoy → con Aurin", los `contrast.bad/good` van en pares, y franja negra con botón), `Offer` (negra: título y botón fijos a
+  la izquierda, lista con íconos a la derecha; `id="servicios"`; el ítem con `service: '<ServiceId>'` enlaza a esa página de servicio y lleva su `url` en el OfferCatalog: uno por servicio, en el ítem que mejor lo representa) y `Journey` (lima: pasos en tarjetas negras). Los botones
+  de esos bloques invitan a escribir ("Mándanos un mensaje", "Cuéntanos tu proyecto") y llevan al formulario del cierre.
+- SIN nombres de clientes ni casos (`cases: []`): con `approach.contrast` la plantilla pone la franja "Diseñamos para"
+  en vez del carrusel de logos: etiquetas en una sola línea que se deslizan solas (CSS, lista duplicada con la copia
+  `aria-hidden`; con reduced-motion quedan quietas en varias líneas). Secciones: hero (foto propia de la industria) → franja → Contrast (blanca) → qué incluye (negra) → proceso (lima) →
+  Team compact → FAQ → cierre.
+- aurin.mx tiene fintech, salud, healthtech, banca… sin país: aquí el terreno es "para empresas en Estados Unidos" y
+  sitio + app + marca. Vigilar en Search Console si alternan con las de allá.
 
 ## Landings por estado
 
@@ -144,12 +178,12 @@ hreflang `es-US` / `en-US` y `x-default` al inglés (el público está en EE. UU
   son doorway pages) y sumarlo a `ALL_STATES`. Rutas, sitemap, llms.txt, OG, footer y enlaces entre estados salen solos.
 - `status: 'draft'` lo oculta en producción. `publishAt` programa la publicación, pero el sitio es estático:
   se publica en el primer build después de la fecha → configurar un Deploy Hook de Vercel llamado a diario.
-- Publicar de a uno, con semanas de por medio (misma estrategia que aurin.mx). Texas es el piloto: no sumar otro estado
-  hasta ver impresiones en Search Console.
+- Publicar de a uno, con semanas de por medio (misma estrategia que aurin.mx). Texas es el piloto (en `draft` desde octubre 2026: los estados
+  aún no se publican): no sumar otro estado hasta ver impresiones en Search Console.
 - Secciones: hero + formulario, clientes, por qué Aurin en el estado (`why`: zona horaria, idioma, cercanía, datos
   verificables como el Censo), servicios (enlazan a sus páginas), industrias con clientes reales (`sectors`), proceso,
   casos, FAQ, CTA, estados hermanos. Medido en build: FCP ~0.2 s, LCP ~0.33 s, ~108 KB, ~1,000 palabras.
-- Inglés para estadounidenses: lo que se vende es "inglés fluido"; lo bilingüe es un extra, no el argumento principal.
+- Inglés para estadounidenses: lo que se vende es "inglés fluido"; lo bilingüe es un extra, no el argumento principal (ver «Público de las páginas en inglés»).
 
 ## Canibalización (una búsqueda principal por página)
 
@@ -165,10 +199,14 @@ Dentro de aurin.consulting:
 Títulos de Google (`seo.title`): [búsqueda exacta como la escribe el cliente] + [dónde] | [diferenciador] | Aurin.
 Máximo 60 caracteres (si no cabe, se quita el diferenciador antes que la búsqueda o el dónde); descripción máximo 155–160.
 El title del home es marca + agencia general, sin "Estados Unidos" (decidido en octubre 2026).
+Canadá (decidido en octubre 2026): `areaServed` US + Canadá en home y servicios/industrias; en inglés, los titles y descripciones de
+la home, los 4 servicios y el índice de industrias dicen "US & Canada" / "US and Canadian businesses"; en español solo la descripción
+("Estados Unidos y Canadá"; el title sigue con "Estados Unidos": así busca el hispano). Las industrias y los estados siguen solo EE. UU.
+(HIPAA, Censo, etc.). Si Search Console muestra impresiones de Canadá, sumarlo al texto visible.
 En español "páginas web" (así busca el dueño de negocio; validar con Search Console) y "Estados Unidos" completo
-(en los textos visibles, "EE. UU."). Diferenciadores reales: bilingüe, desde 1998, ves el diseño antes de programar,
+(en los textos visibles, "EE. UU."). Diferenciadores reales: bilingüe (solo en español), desde 1998, ves el diseño antes de programar,
 precio claro. Nada de "#1" ni "la mejor". Descripción (~150): qué y para quién → prueba → diferenciador → llamada gratis.
-En inglés lo bilingüe solo como producto (sitios en inglés y español), no como argumento del equipo.
+En inglés lo bilingüe no va en el title ni en la descripción (ver «Público de las páginas en inglés»).
 
 Contra aurin.mx: competir entre dominios no se castiga, pero si dos páginas atacan la misma búsqueda Google suele
 mostrar solo una, y gana aurin.mx (más antiguo y con más autoridad). Por eso cada sitio tiene su terreno. Los dos
@@ -183,6 +221,7 @@ deben poder salir en EE. UU.: SIN hreflang entre dominios (haría que Google mos
 | Agencia + servicio + EE. UU.                                     | aurin.consulting   | Razón de ser del sitio                          |
 | Estados de EE. UU. (Texas y los que sigan)                       | aurin.consulting   | aurin.mx solo tiene estados de México           |
 | Nichos que aurin.mx no toca (remesas, …)                         | aurin.consulting   | Terreno libre                                   |
+| Agencia + servicio + Canadá                                      | aurin.consulting   | aurin.mx solo ve a Canadá como comprador de empresas mexicanas |
 
 Reglas para cada página nueva:
 1. Antes de crearla, buscar en aurin.mx (`src/data/sectors`, `src/data/guides`, sitemap en vivo) si ya existe una
@@ -196,7 +235,12 @@ Orden de trabajo en aurin.consulting:
 1. Antes de publicar: `RESEND_API_KEY` en Vercel (el formulario ya está conectado), Search Console, IDs de GA4/Clarity.
 2. Perfiles en directorios de agencias de EE. UU. (Clutch, DesignRush, GoodFirms) apuntando a aurin.consulting: autoridad
    para el dominio nuevo.
-3. Esperar 8–12 semanas con home, 4 servicios, Texas y remesas; con los datos, decidir el siguiente estado o nicho.
+3. Esperar 8–12 semanas con home, 4 servicios e industrias (Texas en borrador); con los datos, decidir el siguiente estado o nicho.
+
+## Código
+
+- Nombres en inglés: archivos, ids, variables, clases, ids del HTML y fotos (`healthcare.ts`, `ind-healthcare.avif`, `title-faq`).
+  En español solo los textos, los comentarios y lo que forma la URL (slugs, rutas como `industrias.astro`, anclas `#casos`).
 
 ## Git
 
@@ -225,7 +269,7 @@ Orden de trabajo en aurin.consulting:
   El hero compila con `KHR_parallel_shader_compile` (no congela el hilo principal) y dibuja a 1x en táctiles
   (`pointer: coarse`), 1.5x en escritorio. Medido en M2: 0.3 ms de GPU por cuadro, 60 fps, script 7.4 KB gzip.
   - `HeroState` (servicios, estados, industrias): a pantalla completa con el header `overlay`, como la home. Foto
-    `public/img/arco.avif` (Clarisse Meyer, Unsplash, licencia Unsplash: persona en un arco de roca con la linterna
+    `public/img/arch.avif` (Clarisse Meyer, Unsplash, licencia Unsplash: persona en un arco de roca con la linterna
     en alto y la Vía Láctea real; invertida y en gris con curva de noche). El procesado (script en el scratchpad, no en
     el repo) aclara un poco el cielo, sobre todo detrás de la persona (contraluz), y deja la roca y la persona oscuras:
     la roca se detecta por color (poco azul) unida al borde de abajo y conserva su textura real; la persona sale de
@@ -236,12 +280,26 @@ Orden de trabajo en aurin.consulting:
     Descartado: luz de la linterna con textura inventada sobre la roca (se veía falsa).
     `LAMP`/`BEAM` = la lámpara y el haz medidos en la foto; `POS` = el object-position. Texto a la izquierda;
     `.scene` ocupa del 25% a la derecha con el borde fundido (`mask-image`) y muestra la foto casi entera: la persona
-    queda chica y nítida (ampliada se veía borrosa). h1 más chico que en la home (`clamp(36px, 4vw, 56px)`).
-    Sin eyebrow en servicios (repetía el h1). Títulos: búsqueda + EE. UU. + beneficio concreto.
+    queda chica y nítida (ampliada se veía borrosa). h1 `clamp(34px, 3.1vw, 46px)` y h2 `clamp(26px, 2.25vw, 32px)` en `.h1`/`.h2` (utilities; el h1 de la home igual), sin tamaños propios por sección.
+    Sobre el h1 va la pastilla `heroBadge` (i18n: "Desde 1998 · Sitios en inglés y español" / "Since 1998 · You see the design before we build", igual en todas; sin eyebrow por página, repetía el h1). Descripción del hero de ~20 palabras (2 renglones). h1 con `text-wrap: balance`; sin puntos bajo el texto
+    (se quitaron en octubre 2026): título, texto y botones. Títulos: búsqueda + EE. UU. + beneficio concreto.
     El formulario NO va en el hero: va en el CtaBanner del cierre (como la home) y el hero lleva el botón "Agenda una llamada gratis".
     Se probaron y descartaron: foto de Joshua Gresham (cielo falso), persona en SVG, haz en CSS, aurora boreal, estrellas fugaces, cielo solo de estrellas.
+    Páginas de industria: el mismo `HeroState`, cada una con su foto (`public/img/ind-<id>`): foto real de Unsplash
+    (licencia Unsplash), de noche, con una sola luz que ya está en la foto (chip de tarjeta en fintech, un soldador en una tubería a oscuras en energía y construcción (Stavan Macwan; antes una refinería toda en lima: `welder/soft.mjs` del scratchpad deja el humo de la foto denso junto al arco y tenue al alejarse, y `luz2.mjs` pone lima suave solo en el arco y su humo; fx `weld` = la luz del arco chisporrotea dentro del humo de la foto (se aviva y se apaga a saltos) + humo en movimiento sumado suave encima, que sube del arco + cuando la luz está en lima (`cyc` en el shader) el arco alumbra al soldador y el tubo; descartados: chispas, un punto de luz en el arco y quitar el humo de la foto para dibujarlo todo en el shader (se veía falso); en celular va bajo los botones), la Estatua de la Libertad iluminada de noche en turismo (Jose Marroquin; que se reconozca EE. UU.; nada de Disney ni marcas ajenas; `liberty/compose.mjs` del scratchpad la pone sobre negro a la derecha, de tamaño medio (~55% del alto; más chica se perdía) y completa con el agua abajo; el agua lleva el reflejo del pedestal con ondas: negra se veía cortada; `luz2.mjs` del scratchpad = luz.mjs con máscara: solo antorcha, corona, ventanas del pedestal y orilla/reflejo en lima, suave, el cuerpo en gris (toda lima se veía mal); fx `liberty` = la antorcha titila apenas y el reflejo se mueve, ciclo gris↔lima de 9 s (las demás 14 s); en celular la estatua va centrada bajo los botones), la lámpara frontal de un cirujano en salud
+    (`surgeon2.mjs` del scratchpad: compone la foto a lo ancho con negro a la izquierda, con la mano y el instrumento
+    y la lámpara del quirófano apagada para que no se vea vacía; fx `headlamp` = haz que cruza
+    el hero hasta el botón "Agenda una llamada gratis", medida con getBoundingClientRect en el script), lámpara,
+    el atardecer detrás de unos graduados lanzando birretes en educación (`grad.mjs` del scratchpad), una bailarina en el haz de un reflector con neblina en cultura (Hulki Okan Tabak; la foto ya trae el negro a la izquierda y ocupa todo el ancho, como salud; oscurecida ×.45 para que la bailarina y la luz se vean menos, y `luz2.mjs` con fuerza .38 en toda la foto; fx `stage` = neblina de escenario en dos capas que cruza despacio (espesa en el haz, tenue fuera y más baja junto al piso) + pocas motas de polvo sueltas, de tamaños y brillos distintos (juntas se veían apretadas); en celular va bajo los botones; descartados por «no dicen nada»: atril con neblina lima plana, piano de cola en una sala vacía, actor solo en el escenario, artista con micrófono, orquesta vista desde el público), una laptop entreabierta sobre negro con la luz de la pantalla saliendo por la rendija en software (Unsplash G78c3DPmD_A; en el estilo de fintech: un objeto sobre negro con la luz como protagonista; en escritorio en el mismo cuadro que flota con la orilla fundida en círculo; `ajar/proc.mjs` del scratchpad: la laptop en gris y la luz de colores en lima con fuerza .38, más fuerte junto a la rendija; fx `laptop` = la luz de la rendija sube y baja como la de una pantalla + reflejo que cruza la laptop cada 8 s; descartados: teclado retroiluminado todo en lima, oficina frente a la ciudad (genérica), equipo de noche en una sala de juntas, código reflejado en unos lentes, programador frente a dos monitores, lámpara junto a un monitor con código, lámpara de escritorio con una libreta y laptop con código junto a un foco (el código que corre en la pantalla se veía bien, pero la escena no impactaba)), vela, refinería…). En gris con esa luz en lima como tinte: el script del scratchpad (`luz.mjs`, no va en
+    el repo) mide la luz y la guarda en el color (azul = la foto en gris, verde − azul = cuánta luz lima), así se ve bien
+    sin WebGL y el shader la separa. `fx` en PHOTOS = cómo se mueve la luz (flow corre a la derecha, flame, twinkle,
+    breath; dusk = rayos del sol entre las nubes que giran despacio + neblina, solo sobre el cielo (sin chispas: natural); card = chip que late + reflejo que cruza las tarjetas). En todas, la luz pasa de gris a lima y vuelve cada 14 s, como la home (en gris el destello se sigue viendo, sin color). La foto va a la derecha (fintech: cuadro centrado a la derecha, orilla fundida en círculo, flota apenas) (`.industry .scene` desde el 40%, orilla fundida) y el lado del texto queda negro;
+    el encuadre por foto en `.ind-<id> .photo { object-position }` (el shader lo lee del CSS). Lima como tinte, nunca
+    áreas planas: descartadas pantallas de celular o reloj llenas de lima (se ven falsas) y fotos de día oscurecidas
+    (quedan lodosas). Descartados antes: monitor de signos vitales y doctora con visor para salud (foto de estudio recortada), mano robótica (Unsplash+, se leía como robótica), rack de servidores y panel LED de bolsa para fintech, el globo de la Tierra (NASA) en todas sus versiones, láseres, persona con
+    linterna, lámpara de escritorio, escritorio de diseñador, cubos, laptop con código, circuito.
     `setup()` de los shaders vive en `lib/webgl.ts` (lo usan los dos heros).
-  - `HeroHome` (el faro): la foto `public/img/faro.avif` (original, lima) es el fondo y el LCP. Se ve en gris: `SAT`,
+  - `HeroHome` (el faro): la foto `public/img/lighthouse.avif` (original, lima) es el fondo y el LCP. Se ve en gris: `SAT`,
     `REVEAL` y `LIGHT` en el shader controlan saturación, color que devuelve la luz y color del haz (`SAT` va
     igual en `filter: saturate()` de `.photo`). El shader titila estrellas, mueve neblina y dibuja luciérnagas (`fireflies()`: destello corto cada 5–11 s en otro lugar, dos o tres a la vez).
     El lago también es 3D: el rayo de vista corta el plano del agua, `waves()` (tres capas de olas en el mundo) inclina

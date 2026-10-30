@@ -11,9 +11,9 @@ interface Props {
 const { us } = Astro.props;
 ---
 
-<section class:list={['sky', styles.section]} aria-labelledby="titulo-eeuu">
+<section class:list={['sky', styles.section]} aria-labelledby="title-us">
   <div class="wrap">
-    <h2 id="titulo-eeuu" class:list={['h2', styles.heading]}><Accent text={us.heading} /></h2>
+    <h2 id="title-us" class:list={['h2', styles.heading]}><Accent text={us.heading} /></h2>
     <div class={styles.grid}>
       {us.items.map((item, i) => (
         <div class:list={['reveal', 'spotlight', styles.card]}>

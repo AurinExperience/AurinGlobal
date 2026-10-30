@@ -17,10 +17,10 @@ const { approach } = Astro.props;
 const { bad, good } = approach.contrast!;
 ---
 
-<section class={styles.section} aria-labelledby="titulo-enfoque">
+<section class={styles.section} aria-labelledby="title-approach">
   <div class="wrap">
     <div class={styles.head}>
-      <h2 id="titulo-enfoque" class:list={['h2', styles.heading]}><Accent text={approach.heading} /></h2>
+      <h2 id="title-approach" class:list={['h2', styles.heading]}><Accent text={approach.heading} /></h2>
       <p class={styles.text}>{approach.text}</p>
     </div>
     <div class={styles.grid}>

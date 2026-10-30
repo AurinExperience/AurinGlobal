@@ -1,6 +1,6 @@
 ---
 /**
- * Hero de la home: el faro. La foto (public/img/faro.avif) es el fondo y el LCP;
+ * Hero de la home: el faro. La foto (public/img/lighthouse.avif) es el fondo y el LCP;
  * encima un shader WebGL mueve el lago, hace titilar las estrellas y gira el haz
  * del faro (en 3D: vuelta de 360°, de espaldas pasa detrás de la torre), que ilumina
  * el paisaje y el lago. El logo va centrado bajo la linterna; la vuelta arranca con el haz alineado al haz del logo
@@ -17,11 +17,11 @@ interface Props {
 const { hero } = Astro.props;
 ---
 
-<section class={styles.section} aria-labelledby="titulo-hero" data-faro>
+<section class={styles.section} aria-labelledby="title-hero" data-faro>
   <div class={styles.scene} data-scene>
     <picture>
-      <source srcset="/img/faro.avif" type="image/avif" />
-      <img class={styles.photo} src="/img/faro.webp" alt="" width="2560" height="1296" fetchpriority="high" data-photo />
+      <source srcset="/img/lighthouse.avif" type="image/avif" />
+      <img class={styles.photo} src="/img/lighthouse.webp" alt="" width="2560" height="1296" fetchpriority="high" data-photo />
     </picture>
     <canvas class={styles.fx} aria-hidden="true"></canvas>
   </div>
@@ -33,7 +33,7 @@ const { hero } = Astro.props;
       </span>
       <span class={styles.tag}>User<br />Experts</span>
     </p>
-    <h1 id="titulo-hero" class:list={['rise rise-2', styles.title]}>
+    <h1 id="title-hero" class:list={['rise rise-2', styles.title]}>
       <span>{hero.titleLead}</span> <span class="accent">{hero.titleAccent}</span>
     </h1>
     <p class:list={['rise rise-2', styles.lead]}>{hero.description}</p>

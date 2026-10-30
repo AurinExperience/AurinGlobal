@@ -13,13 +13,10 @@ export interface StateCopy {
     description: string;
   };
   hero: {
-    eyebrow?: string;
     titleLead: string;
     titleAccent: string;
     description: string;
     ctaSecondary: string;
-    /** Tres argumentos cortos junto al formulario (zona horaria, idioma, experiencia…). */
-    points: string[];
   };
   /** Por qué Aurin para este estado: razones propias del mercado local (bloque UsTeam). */
   why: {

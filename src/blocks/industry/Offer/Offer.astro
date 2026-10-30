@@ -1,0 +1,53 @@
+---
+/**
+ * Qué incluye, en las industrias (negra): título, intro y botón fijos a la izquierda mientras la lista corre a la
+ * derecha, así el botón al formulario siempre está a la vista. Los servicios usan ServicesIncluded (tarjetas en retícula).
+ * `id="servicios"`: el ancla del botón secundario del hero. Los ítems con `service` enlazan a su página de servicio.
+ */
+import type { ServiceCopy } from '@/data/services/types';
+import Accent from '@/components/ui/Accent.astro';
+import MainButton from '@/components/ui/MainButton.astro';
+import ArrowUpRight from 'lucide-astro/ArrowUpRight';
+import { serviceById, servicePath } from '@/data/services';
+import { ICONS } from '@/lib/icons';
+import { UI, getLangFromUrl } from '@/i18n';
+import styles from './Offer.module.css';
+
+interface Props {
+  services: ServiceCopy['deliverables'];
+}
+
+const { services } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = UI[lang];
+---
+
+<section id="servicios" class={styles.section} aria-labelledby="title-services">
+  <div class:list={['wrap', styles.grid]}>
+    <div class={styles.aside}>
+      <h2 id="title-services" class:list={['h2', styles.heading]}><Accent text={services.heading} /></h2>
+      {services.intro && <p class={styles.intro}>{services.intro}</p>}
+      <div class={styles.cta}>
+        <MainButton href="#contacto" text={t.industryPage.offerCta} />
+        <p class={styles.note}>{t.process.note}</p>
+      </div>
+    </div>
+    <ol class={styles.list}>
+      {services.items.map((item, i) => {
+        const Icon = item.icon ? ICONS[item.icon as keyof typeof ICONS] : undefined;
+        const service = item.service && serviceById(item.service);
+        return (
+          <li class:list={['reveal', styles.item]}>
+            <span class={styles.icon} aria-hidden="true">{Icon && <Icon size={24} stroke-width={1.75} />}</span>
+            <div>
+              <h3 class:list={['h3', styles.title]}>{item.title}</h3>
+              <p class={styles.text}>{item.text}</p>
+              {service && <a class={styles.link} href={servicePath(service, lang)}>{service.copy[lang].name}<ArrowUpRight size={16} aria-hidden="true" /></a>}
+            </div>
+            <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</section>

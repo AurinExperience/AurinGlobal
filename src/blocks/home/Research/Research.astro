@@ -12,10 +12,10 @@ const { research } = Astro.props;
 const layers = [styles.layer1, styles.layer2, styles.layer3];
 ---
 
-<section class:list={['sky', 'sky-stars', styles.section]} aria-labelledby="titulo-investigacion">
+<section class:list={['sky', 'sky-stars', styles.section]} aria-labelledby="title-research">
   <div class:list={['wrap', styles.grid]}>
     <div>
-      <h2 id="titulo-investigacion" class="h2"><Accent text={research.heading} /></h2>
+      <h2 id="title-research" class="h2"><Accent text={research.heading} /></h2>
       <p class:list={['muted', styles.text]}>{research.text}</p>
     </div>
     <div class={styles.scene} aria-hidden="true">

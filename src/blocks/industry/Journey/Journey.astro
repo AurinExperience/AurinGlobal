@@ -1,0 +1,40 @@
+---
+/**
+ * Proceso de las industrias (lima): cuatro tarjetas negras numeradas, cada una con lo que recibes en ese paso.
+ * Cierra invitando a escribir: el paso 1 es un mensaje. Los servicios usan ProcessSteps (línea con puntos).
+ */
+import type { Step } from '@/data/types';
+import Accent from '@/components/ui/Accent.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import { UI, getLangFromUrl } from '@/i18n';
+import styles from './Journey.module.css';
+
+interface Props {
+  heading: string;
+  steps: readonly Step[];
+}
+
+const { heading, steps } = Astro.props;
+const ui = UI[getLangFromUrl(Astro.url)];
+const t = ui.process;
+---
+
+<section id="proceso" class={styles.section} aria-labelledby="title-process">
+  <div class="wrap">
+    <h2 id="title-process" class:list={['h2', styles.heading]}><Accent text={heading} /></h2>
+    <ol class={styles.steps}>
+      {steps.map((step, i) => (
+        <li class:list={['reveal', styles.step]}>
+          <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class:list={['h3', styles.name]}>{step.name}</h3>
+          <p class={styles.text}>{step.text}</p>
+          {step.gets && <p class={styles.gets}><span class={styles.getsLabel}>{t.gets}</span>{step.gets}</p>}
+        </li>
+      ))}
+    </ol>
+    <div class:list={['reveal', styles.cta]}>
+      <p>{ui.industryPage.journeyNote}</p>
+      <SecondaryButton href="#contacto" text={ui.industryPage.write} />
+    </div>
+  </div>
+</section>

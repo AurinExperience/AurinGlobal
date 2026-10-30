@@ -38,7 +38,7 @@ const services = serviceRows.map((item) => ({
   serviceType: item.title,
   description: item.text,
   provider: { '@id': ORG_ID },
-  areaServed: { '@type': 'Country', name: 'United States' },
+  areaServed: ['United States', 'Canada'].map((name) => ({ '@type': 'Country', name })),
   url: `${SITE.url}${item.href}`,
 }));
 

@@ -7,7 +7,7 @@
  * FAQPage. Organization y WebSite van en GlobalSchema.
  */
 import type { Service } from '@/data/services';
-import { SERVICES, servicePath } from '@/data/services';
+import { SERVICES, serviceById, servicePath } from '@/data/services';
 import { INDUSTRY_PAGES } from '@/data/industries';
 import { caseCards } from '@/data/cases';
 import { SITE, ORG_ID } from '@/config/site';
@@ -25,6 +25,7 @@ import RelatedLinks from '@/blocks/shared/RelatedLinks/RelatedLinks.astro';
 import { Research, Cases, Clients } from '@/blocks/home';
 import { HOME } from '@/data/home';
 import { HeroState, Industries, Contrast, ServicesIncluded, FaqSection } from '@/blocks/landing-state';
+import { Fixes, Offer, Journey } from '@/blocks/industry';
 
 interface Props {
   service: Service;
@@ -33,6 +34,8 @@ interface Props {
 const { service } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const copy = service.copy[lang];
+// Las páginas de industria no llevan clientes: franja de lo que diseñamos en vez del carrusel de logos
+const isIndustry = INDUSTRY_PAGES.includes(service);
 const t = UI[lang];
 const url = `${SITE.url}${servicePath(service, lang)}`;
 
@@ -44,13 +47,17 @@ const schema = {
   description: copy.seo.description,
   url,
   provider: { '@id': ORG_ID },
-  areaServed: { '@type': 'Country', name: 'United States' },
+  areaServed: ['United States', 'Canada'].map((name) => ({ '@type': 'Country', name })),
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: copy.deliverables.heading.replaceAll('*', ''),
     itemListElement: copy.deliverables.items.map((item) => ({
       '@type': 'Offer',
-      itemOffered: { '@type': 'Service', name: item.title, description: item.text },
+      itemOffered: {
+        '@type': 'Service', name: item.title, description: item.text,
+        // En las industrias, el ítem apunta a su página de servicio
+        ...(item.service && { url: `${SITE.url}${servicePath(serviceById(item.service), lang)}` }),
+      },
     })),
   },
 };
@@ -65,30 +72,38 @@ const breadcrumb = {
 };
 
 
-const others = [...SERVICES, ...INDUSTRY_PAGES].filter((s) => s.id !== service.id).map((s) => ({ href: servicePath(s, lang), label: s.copy[lang].name }));
+// Al final: los otros servicios (con su descripción) y las otras industrias, en dos grupos
+const link = (s: Service) => ({ href: servicePath(s, lang), label: s.copy[lang].name });
+const related = [
+  { label: t.nav.services, items: SERVICES.filter((s) => s !== service).map((s) => ({ ...link(s), sub: s.copy[lang].tags })) },
+  { label: t.nav.industries, items: INDUSTRY_PAGES.filter((s) => s !== service).map(link) },
+];
 ---
 
 <Layout title={copy.seo.title} description={copy.seo.description} structuredData={[schema, breadcrumb, faqSchema(copy.faq.items)]}>
   <Header overlay />
   <main id="main-content">
-    <HeroState hero={copy.hero} />
+    {/* Industrias: cada una con su foto (service.photo), para no parecerse a los servicios ni entre ellas */}
+    <HeroState hero={copy.hero} photo={service.photo ?? 'arch'} />
     {/* Servicios (los que llevan comparación): carrusel de logos (el de la home) en vez de la franja de industrias */}
-    {copy.approach.contrast ? <Clients clients={HOME[lang].clients} /> : <Industries industries={copy.industries} />}
+    {copy.approach.contrast && !isIndustry ? <Clients clients={HOME[lang].clients} /> : <Industries industries={copy.industries} />}
     {/* Con comparación, la sección es blanca y "Qué incluye" pasa a negro: dos blancas seguidas se leen como una */}
-    {copy.approach.contrast ? <Contrast approach={copy.approach} /> : <Research research={copy.approach} />}
-    <ServicesIncluded services={copy.deliverables} dark={!!copy.approach.contrast} />
+    {/* Industrias: mismo contenido, otro diseño (filas hoy → con Aurin, lista con la llamada fija, pasos en tarjetas) */}
+    {isIndustry ? <Fixes approach={copy.approach} /> : copy.approach.contrast ? <Contrast approach={copy.approach} /> : <Research research={copy.approach} />}
+    {isIndustry ? <Offer services={copy.deliverables} /> : <ServicesIncluded services={copy.deliverables} dark={!!copy.approach.contrast} />}
     {/* Con tipos de sitio: blanca → casos (negra) → proceso (lima) → soporte (negra), sin dos iguales seguidas */}
     {copy.types && <ServicesIncluded id="tipos" services={copy.types} />}
     {copy.types && <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(service.cases, lang) }} cards />}
-    <ProcessSteps {...copy.process} cta />
+    {isIndustry ? <Journey {...copy.process} /> : <ProcessSteps {...copy.process} cta />}
     {copy.guarantees && <Guarantees {...copy.guarantees} />}
-    {!copy.approach.contrast && !copy.types && <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(service.cases, lang) }} cards />}
+    {!copy.approach.contrast && !copy.types && service.cases.length > 0 && <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(service.cases, lang) }} cards />}
     {copy.support && <ServicesIncluded id="soporte" services={copy.support} dark />}
     {/* Versión corta y blanca: confianza antes de las dudas, y corta la fila de negras (casos, FAQ, cierre) */}
     <Team compact />
     <FaqSection faq={copy.faq} />
-    <CtaBanner {...copy.cta}><LeadForm source={`servicio-${service.id}`} intro={false} /></CtaBanner>
-    <RelatedLinks {...t.otherServices} items={others} />
+    {/* Industrias: cierre con formulario en blanco (después del FAQ negro) */}
+    <CtaBanner {...copy.cta} light={copy.cta.light || isIndustry}><LeadForm source={`servicio-${service.id}`} intro={false} /></CtaBanner>
+    <RelatedLinks {...t.related} groups={related} />
   </main>
   <Footer />
 </Layout>

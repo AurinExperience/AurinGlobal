@@ -2,6 +2,8 @@
 /** Retícula de industrias con sus clientes reales. La usan IndustriesGrid (home, estados) y /industrias/. */
 import { clientLogo as logo, type Industry } from '@/data/home';
 import { UI, getLangFromUrl } from '@/i18n';
+import { INDUSTRY_PAGES } from '@/data/industries';
+import { servicePath } from '@/data/services';
 import styles from './IndustryCards.module.css';
 
 interface Props {
@@ -11,7 +13,9 @@ interface Props {
 }
 
 const { items, id } = Astro.props;
-const t = UI[getLangFromUrl(Astro.url)];
+const lang = getLangFromUrl(Astro.url);
+const t = UI[lang];
+const pageHref = (id?: string) => { const page = id && INDUSTRY_PAGES.find((p) => p.id === id); return page ? servicePath(page, lang) : undefined; };
 
 const SCALE = .6;
 const GAP = 24;
@@ -22,7 +26,8 @@ const rowWidth = (names: string[]) => names.reduce((sum, name) => sum + (logo(na
 <ul id={id} class={styles.grid}>
   {items.map((item) => (
     <li class:list={['reveal', 'spotlight', styles.item]}>
-      <h3 class="h3">{item.name}</h3>
+      {/* Con página propia, el título enlaza (el enlace cubre la tarjeta: .link::after) */}
+      <h3 class="h3">{pageHref(item.page) ? <a class={styles.link} href={pageHref(item.page)}>{item.name}</a> : item.name}</h3>
       <p class:list={['muted', styles.text]}>{item.text}</p>
       <p class={styles.label}>{t.industries.clients}</p>
       {(() => {

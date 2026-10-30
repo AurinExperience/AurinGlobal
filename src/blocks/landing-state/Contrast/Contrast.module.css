@@ -6,14 +6,13 @@
 
 .head {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   gap: var(--spacing-12) 96px;
-  align-items: end;
+  align-items: start; /* título y texto arrancan en la misma línea: el texto largo no los descuadra */
 }
 
 .heading {
   text-wrap: balance;
-  font-size: clamp(40px, 4.6vw, 64px);
 }
 
 .text {

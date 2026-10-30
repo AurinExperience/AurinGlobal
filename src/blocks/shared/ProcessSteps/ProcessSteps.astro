@@ -17,9 +17,9 @@ const { heading, steps, cta } = Astro.props;
 const t = UI[getLangFromUrl(Astro.url)].process;
 ---
 
-<section id="proceso" class={styles.section} aria-labelledby="titulo-proceso">
+<section id="proceso" class={styles.section} aria-labelledby="title-process">
   <div class="wrap">
-    <h2 id="titulo-proceso" class:list={['h2', styles.heading]}><Accent text={heading} /></h2>
+    <h2 id="title-process" class:list={['h2', styles.heading]}><Accent text={heading} /></h2>
     <ol class={styles.steps}>
       {steps.map((step, i) => (
         <li class="reveal">

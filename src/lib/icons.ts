@@ -1,0 +1,33 @@
+/** Íconos de las tarjetas de "qué incluye": `icon` en los datos = nombre del componente de lucide-astro (agregarlo aquí si se usa uno nuevo). */
+import ArrowRightLeft from 'lucide-astro/ArrowRightLeft';
+import BookOpen from 'lucide-astro/BookOpen';
+import CalendarCheck from 'lucide-astro/CalendarCheck';
+import ChartLine from 'lucide-astro/ChartLine';
+import Code from 'lucide-astro/Code';
+import CreditCard from 'lucide-astro/CreditCard';
+import Database from 'lucide-astro/Database';
+import Fingerprint from 'lucide-astro/Fingerprint';
+import Gem from 'lucide-astro/Gem';
+import Languages from 'lucide-astro/Languages';
+import Layers from 'lucide-astro/Layers';
+import LayoutDashboard from 'lucide-astro/LayoutDashboard';
+import Megaphone from 'lucide-astro/Megaphone';
+import MessageCircle from 'lucide-astro/MessageCircle';
+import Monitor from 'lucide-astro/Monitor';
+import MousePointerClick from 'lucide-astro/MousePointerClick';
+import Network from 'lucide-astro/Network';
+import Palette from 'lucide-astro/Palette';
+import PanelsTopLeft from 'lucide-astro/PanelsTopLeft';
+import PenTool from 'lucide-astro/PenTool';
+import Plug from 'lucide-astro/Plug';
+import RefreshCw from 'lucide-astro/RefreshCw';
+import Rocket from 'lucide-astro/Rocket';
+import Route from 'lucide-astro/Route';
+import Search from 'lucide-astro/Search';
+import ShieldCheck from 'lucide-astro/ShieldCheck';
+import Smartphone from 'lucide-astro/Smartphone';
+import Type from 'lucide-astro/Type';
+import Users from 'lucide-astro/Users';
+import Workflow from 'lucide-astro/Workflow';
+
+export const ICONS = { ArrowRightLeft, BookOpen, CalendarCheck, ChartLine, Code, CreditCard, Database, Fingerprint, Gem, Languages, Layers, LayoutDashboard, Megaphone, MessageCircle, Monitor, MousePointerClick, Network, Palette, PanelsTopLeft, PenTool, Plug, RefreshCw, Rocket, Route, Search, ShieldCheck, Smartphone, Type, Users, Workflow };

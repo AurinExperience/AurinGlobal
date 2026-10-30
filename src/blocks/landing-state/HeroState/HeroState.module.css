@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   min-height: 100svh;
-  padding: 176px 0 96px;
+  padding: 140px 0 72px;
   background: var(--color-black);
 }
 
@@ -25,7 +25,7 @@
   height: 100%;
 }
 
-/* object-position = POS en el script */
+/* El script lee el object-position para recortar el shader igual */
 .photo {
   object-fit: cover;
   object-position: 43.55% 70%;
@@ -50,52 +50,132 @@
     linear-gradient(to top, var(--color-black), transparent 12%);
 }
 
+/* Sobre el h1: una pastilla de vidrio con la luz de la marca (punto lima que respira) y dos datos reales */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 var(--spacing-6);
+  padding: 7px 14px 7px 12px;
+  border: 1px solid rgb(255 255 255 / .12);
+  border-radius: 999px;
+  background: rgb(255 255 255 / .04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-white);
+}
+
+.dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  box-shadow: 0 0 8px 1px rgb(208 223 0 / .6);
+}
+
+.dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgb(208 223 0 / .35);
+  animation: halo 2.6s ease-out infinite;
+}
+
+@keyframes halo {
+  from { opacity: .9; scale: .4; }
+  to { opacity: 0; scale: 1.6; }
+}
+
+.sep {
+  width: 1px;
+  height: 12px;
+  background: rgb(255 255 255 / .2);
+}
+
 .content {
   position: relative;
   width: 100%;
 }
 
-.copy { max-width: 580px; }
+.copy { max-width: 620px; }
 
-.title { font-size: clamp(36px, 4vw, 56px); }
+/* balance: renglones parejos, sin una palabra sola al final ("negocio.") */
+.title {
+  text-wrap: balance;
+}
 
 .lead {
-  margin-top: var(--spacing-8);
-  font-size: 19px;
+  max-width: 540px;
+  margin-top: var(--spacing-5);
+  font-size: 18px;
   color: var(--color-text);
-}
-
-/* La luz de la marca como viñeta: un punto lima encendido */
-.points {
-  display: grid;
-  gap: var(--spacing-3);
-  margin: var(--spacing-8) 0 0;
-  padding: 0;
-  list-style: none;
-  font-family: var(--font-family-display);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-lg);
-}
-
-.points li {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-3);
-}
-
-.points li::before {
-  content: '';
-  flex: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-yellow);
-  box-shadow: 0 0 10px 2px rgba(208, 223, 0, .55);
+  text-wrap: pretty;
 }
 
 /* En móvil el texto va arriba, sobre el cielo, y la persona abajo */
+/* Industrias: la foto a la derecha del texto, con la orilla izquierda fundida con el negro: el lado del texto queda
+   oscuro. object-position por foto si hace falta (la luz, siempre a la derecha) */
+.industry .scene {
+  left: 40%;
+  mask-image: linear-gradient(90deg, transparent, #000 30%);
+}
+
+.industry .photo { object-position: 100% 50%; }
+.ind-fintech .photo { object-position: 50% 100%; }
+.ind-software .photo { object-position: 50% 72%; }
+/* Las tarjetas y el programador de software (fotos verticales): un cuadro más chico, centrado en el lado
+   derecho, con la orilla fundida en círculo; flota apenas */
+@media (min-width: 901px) {
+  .ind-fintech .scene,
+  .ind-software .scene {
+    --size: min(88svh, 780px);
+    inset: 0 auto;
+    left: calc(70% - var(--size) / 2);
+    width: var(--size);
+    height: var(--size);
+    margin: auto 0;
+    mask-image: radial-gradient(closest-side, #000 70%, transparent);
+    animation: float 9s ease-in-out infinite;
+  }
+  .ind-fintech .scene::after,
+  .ind-software .scene::after { background: none; }
+  /* El programador no flota: lo que se mueve es el código */
+  .ind-software .scene { animation: none; }
+}
+
+@keyframes float { 50% { translate: 0 -12px; } }
+.ind-remittances .photo { object-position: 100% 70%; }
+.ind-healthcare .photo { object-position: 100% 30%; }
+/* Salud: la foto ya trae el negro a la izquierda; ocupa todo el ancho para que el haz de la lámpara llegue al
+   botón de la llamada */
+@media (min-width: 901px) {
+  .ind-healthcare .scene { left: 0; mask-image: none; }
+  .ind-healthcare .scene::after { background: linear-gradient(to top, var(--color-black), transparent 12%); }
+}
+.ind-nonprofits .photo { object-position: 55% 50%; }
+.ind-education .photo { object-position: 55% 50%; }
+/* Energía: el arco está a la izquierda de la foto; se ve desde la orilla izquierda para que no quede en la parte fundida */
+.ind-energy .photo { object-position: 0% 50%; }
+/* Cultura: la foto ya trae el negro a la izquierda (lado del texto); desde el 20% se ve completa, con la bailarina
+   de cuerpo entero y el reflector arriba */
+@media (min-width: 901px) {
+  .ind-culture .scene { left: 20%; mask-image: none; }
+  .ind-culture .scene::after { background: linear-gradient(to top, var(--color-black), transparent 12%); }
+  .ind-culture .photo { object-position: 50% 50%; }
+}
+
+.industry .scene::after {
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / .5), transparent 35%),
+    linear-gradient(to top, var(--color-black), transparent 12%);
+}
+
 @media (max-width: 900px) {
-  .section { align-items: flex-start; padding: 136px 0 320px; }
+  .section { align-items: flex-start; padding: 120px 0 320px; }
   .scene { left: 0; mask-image: none; }
   .scene::after {
     background:
@@ -103,4 +183,42 @@
       linear-gradient(to top, var(--color-black), transparent 15%);
   }
   .copy { max-width: none; }
+  .lead { font-size: 16px; }
+  /* Los dos botones caben en dos renglones: menos aire entre ellos que en escritorio */
+  .copy :global(.actions) { gap: 12px 16px; margin-top: var(--spacing-8); }
+  .industry .scene { left: 0; mask-image: none; }
+  .industry .photo { object-position: 75% 100%; }
+  /* El texto ocupa todo el ancho: oscurece arriba, no a la izquierda (si no, la foto queda sin velo bajo el texto) */
+  .industry .scene::after {
+    background:
+      linear-gradient(to bottom, rgb(0 0 0 / .8), rgb(0 0 0 / .4) 50%, transparent 72%),
+      linear-gradient(to top, var(--color-black), transparent 15%);
+  }
+  /* Tarjetas: solo en la mitad de abajo, para que el chip lima no quede detrás del texto */
+  .ind-fintech .scene { top: 45%; mask-image: linear-gradient(to bottom, transparent, #000 25%); }
+  .ind-fintech .photo { object-position: 50% 100%; }
+  /* Educación: el grupo y los birretes debajo de los botones */
+  .ind-education .scene { top: 40%; mask-image: linear-gradient(to bottom, transparent, #000 18%); }
+  .ind-education .photo { object-position: 52% 50%; }
+  /* Salud: el cirujano debajo de los botones, no detrás del texto; el haz va hacia la izquierda (script) */
+  /* (la composición trae mucho negro alrededor: se amplía la escena para que el cirujano se vea más grande) */
+  .ind-healthcare .scene { top: 44%; mask-image: linear-gradient(to bottom, transparent, #000 20%); scale: 1.5; transform-origin: 75% 20%; }
+  .ind-healthcare .photo { object-position: 88% 30%; }
+  /* Turismo: la estatua centrada debajo de los botones (no detrás del texto), completa y con su reflejo: la escena
+     va pegada abajo con alto fijo y el hero crece un poco para que quepa */
+  .ind-tourism { padding-bottom: 440px; }
+  .ind-tourism .scene { top: auto; bottom: -40px; height: 540px; mask-image: linear-gradient(to bottom, transparent, #000 15%); }
+  .ind-tourism .photo { object-position: 77% 50%; }
+  /* Energía: igual, el arco y el soldador debajo de los botones */
+  .ind-energy { padding-bottom: 420px; }
+  .ind-energy .scene { top: auto; bottom: 0; height: 500px; mask-image: linear-gradient(to bottom, transparent, #000 20%); }
+  .ind-energy .photo { object-position: 30% 50%; }
+  /* Software: el programador y la laptop debajo de los botones */
+  .ind-software { padding-bottom: 300px; }
+  .ind-software .scene { top: auto; bottom: 0; height: 380px; mask-image: linear-gradient(to bottom, transparent, #000 20%); }
+  .ind-software .photo { object-position: 50% 82%; }
+  /* Cultura: la bailarina y el haz debajo de los botones */
+  .ind-culture { padding-bottom: 400px; }
+  .ind-culture .scene { top: auto; bottom: 0; height: 480px; mask-image: linear-gradient(to bottom, transparent, #000 20%); }
+  .ind-culture .photo { object-position: 95% 50%; }
 }

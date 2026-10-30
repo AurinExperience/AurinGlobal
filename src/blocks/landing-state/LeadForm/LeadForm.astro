@@ -26,8 +26,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = UI[lang];
 ---
 
-<form id="contacto" class:list={['rise rise-3', styles.form]} aria-labelledby="titulo-formulario" method="post" action="/api/contact/" data-lead-form={source}>
-  <h2 id="titulo-formulario" class:list={['h3', styles.title]}>{t.form.title}</h2>
+<form id="contacto" class:list={['rise rise-3', styles.form]} aria-labelledby="title-form" method="post" action="/api/contact/" data-lead-form={source}>
+  <h2 id="title-form" class:list={['h3', styles.title]}>{t.form.title}</h2>
   {intro && <p class:list={['muted', styles.intro]}>{t.form.intro}</p>}
   <input type="hidden" name="source" value={source} />
   <input type="hidden" name="lang" value={lang} />

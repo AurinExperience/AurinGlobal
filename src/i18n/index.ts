@@ -16,10 +16,11 @@ import { PRIVACY } from '@/data/privacy';
 export type Lang = 'es' | 'en';
 export const LANGS: Lang[] = ['es', 'en'];
 
-/** Código para `lang`, hreflang y og:locale. El público de aurin.consulting está en EE. UU. */
-export const LOCALE: Record<Lang, { html: string; hreflang: string; og: string }> = {
-  es: { html: 'es', hreflang: 'es-US', og: 'es_US' },
-  en: { html: 'en', hreflang: 'en-US', og: 'en_US' },
+/** Código para `lang`, hreflang y og:locale. El público de aurin.consulting está en EE. UU. y Canadá: `regions` son
+ *  los hreflang de cada idioma (la misma URL para los dos países) y `ogAlt` sus og:locale:alternate. */
+export const LOCALE: Record<Lang, { html: string; hreflang: string; og: string; regions: string[]; ogAlt: string[] }> = {
+  es: { html: 'es', hreflang: 'es-US', og: 'es_US', regions: ['es-US', 'es-CA'], ogAlt: ['es_CA'] },
+  en: { html: 'en', hreflang: 'en-US', og: 'en_US', regions: ['en-US', 'en-CA'], ogAlt: ['en_CA'] },
 };
 
 export function getLangFromUrl(url: URL): Lang {
@@ -44,14 +45,26 @@ export const UI = {
     switchLang: { label: 'English', short: 'EN' },
     menu: { open: 'Abrir menú', label: 'Menú' },
     nav: { services: 'Servicios', cases: 'Casos', process: 'Proceso', about: 'Nosotros', industries: 'Industrias', states: 'Estados', faq: 'Preguntas', includes: 'Qué incluye' },
+    related: {
+      heading: 'Sigue explorando',
+      description: 'Diseño web, desarrollo, UX/UI y branding en el mismo equipo, para empresas de cualquier industria.',
+    },
     otherServices: {
       heading: 'Otros servicios',
       description: 'Diseño web, desarrollo, UX/UI y branding viven en el mismo equipo: puedes empezar por uno y sumar los demás.',
     },
     caseLink: 'Ver caso',
     industries: { allSub: 'Con clientes reales en cada una', all: 'Todas las industrias', more: 'Ver todas las industrias', clients: 'Clientes' },
-    bookCall: 'Agenda una llamada',
+    bookCall: 'Agendar llamada',
     bookCallLong: 'Agenda una llamada gratis',
+    /** Etiqueta sobre el h1 de servicios, industrias y estados: datos reales, iguales en todas */
+    heroBadge: ['Desde 1998', 'Sitios en inglés y español'],
+    industryPage: {
+      fixesNote: '¿Tu sitio se parece a «Lo de siempre»? Cuéntanos cómo es hoy y te decimos qué cambiaríamos primero.',
+      write: 'Mándanos un mensaje',
+      offerCta: 'Cuéntanos tu proyecto',
+      journeyNote: 'El primer paso es un mensaje: dinos qué necesitas y te proponemos por dónde empezar.',
+    },
     process: { gets: 'Recibes', cta: 'Empieza con una llamada gratis', note: 'Sin costo ni compromiso.' },
     faqAside: { title: '¿Tienes otra pregunta?', text: 'Pregúntanos en una llamada gratis y sin compromiso. Sales con una idea clara de qué necesitas y cuánto cuesta.' },
     whatsapp: 'Escríbenos por WhatsApp',
@@ -129,7 +142,9 @@ export const UI = {
       city: 'Cuernavaca, Morelos, México',
       remoteValue: 'Remoto: México · EE. UU. · Canadá · España · LatAm',
       site: 'Sitio',
-      states: 'Estados',
+      industries: 'Industrias',
+      allIndustries: 'Todas las industrias',
+      languages: 'Te atendemos en inglés y en español',
       follow: 'Síguenos',
       backTop: 'Volver arriba',
       alsoAt: 'Portafolio completo en aurin.mx',
@@ -168,6 +183,10 @@ export const UI = {
     switchLang: { label: 'Español', short: 'ES' },
     menu: { open: 'Open menu', label: 'Menu' },
     nav: { services: 'Services', cases: 'Work', process: 'Process', about: 'About', industries: 'Industries', states: 'States', faq: 'FAQ', includes: 'What’s included' },
+    related: {
+      heading: 'Keep exploring',
+      description: 'Web design, development, UX/UI and branding in one team, for companies in any industry.',
+    },
     otherServices: {
       heading: 'Other services',
       description: 'Web design, development, UX/UI and branding live in the same team: start with one and add the rest.',
@@ -176,6 +195,13 @@ export const UI = {
     industries: { allSub: 'With real clients in each one', all: 'All industries', more: 'See all industries', clients: 'Clients' },
     bookCall: 'Book a call',
     bookCallLong: 'Book a free call',
+    heroBadge: ['Since 1998', 'You see the design before we build'],
+    industryPage: {
+      fixesNote: 'Does your website look like “The usual”? Tell us how it works today and we’ll tell you what we’d change first.',
+      write: 'Send us a message',
+      offerCta: 'Tell us about your project',
+      journeyNote: 'Step one is a message: tell us what you need and we’ll suggest where to start.',
+    },
     process: { gets: 'You get', cta: 'Start with a free call', note: 'No cost, no commitment.' },
     faqAside: { title: 'Have another question?', text: 'Ask us on a free call, with no commitment. You leave with a clear idea of what you need and what it costs.' },
     whatsapp: 'Message us on WhatsApp',
@@ -233,7 +259,7 @@ export const UI = {
       options: ['Web design', 'Web development', 'UX/UI design', 'Branding', 'Several services'],
       select: 'Select…',
       message: 'Tell us about your project (optional)',
-      messagePlaceholder: 'E.g. We need a 6-page bilingual website with a contact form, launching in two months.',
+      messagePlaceholder: 'E.g. We need a 6-page website with a contact form, launching in two months.',
       privacyBefore: 'By submitting you agree to our ',
       privacyLink: 'privacy policy',
       privacyAfter: '.',
@@ -251,7 +277,9 @@ export const UI = {
       city: 'Cuernavaca, Morelos, Mexico',
       remoteValue: 'Remote: Mexico · US · Canada · Spain · LatAm',
       site: 'Site',
-      states: 'States',
+      industries: 'Industries',
+      allIndustries: 'All industries',
+      languages: 'Working on US Central Time',
       follow: 'Follow us',
       backTop: 'Back to top',
       alsoAt: 'Full portfolio at aurin.mx',
@@ -277,7 +305,7 @@ export const UI = {
       remote: {
         heading: 'We work remotely with US businesses',
         office: 'Office in Cuernavaca, Mexico',
-        language: 'Calls in English or Spanish',
+        language: 'All calls and documents in English',
         hours: 'Monday to Friday, during US Central business hours',
       },
       map: 'View on Google Maps',

@@ -1,0 +1,50 @@
+---
+/**
+ * 2.ª sección de las industrias (blanca): lo que hoy falla en los sitios de esa industria contra lo que hacemos,
+ * fila por fila (`contrast.bad` y `contrast.good` van en pares). El visitante se reconoce en la primera fila sin
+ * bajar más, y la franja negra del final lo invita a escribir (lleva al formulario del cierre). Los servicios usan Contrast (dos tarjetas).
+ */
+import type { ServiceCopy } from '@/data/services/types';
+import Accent from '@/components/ui/Accent.astro';
+import MainButton from '@/components/ui/MainButton.astro';
+import ArrowRight from 'lucide-astro/ArrowRight';
+import { UI, getLangFromUrl } from '@/i18n';
+import styles from './Fixes.module.css';
+
+interface Props {
+  approach: ServiceCopy['approach'];
+}
+
+const { approach } = Astro.props;
+const { bad, good } = approach.contrast!;
+const t = UI[getLangFromUrl(Astro.url)];
+---
+
+<section class={styles.section} aria-labelledby="title-approach">
+  <div class="wrap">
+    <div class={styles.head}>
+      <h2 id="title-approach" class:list={['h2', styles.heading]}><Accent text={approach.heading} /></h2>
+      <p class={styles.text}>{approach.text}</p>
+    </div>
+    <div class={styles.board}>
+      <div class={styles.labels}>
+        <div class={styles.bad}><p class={styles.label}>{bad.label}</p><h3 class:list={['h3', styles.title]}>{bad.title}</h3></div>
+        <div class={styles.good}><p class={styles.label}>{good.label}</p><h3 class:list={['h3', styles.title]}>{good.title}</h3></div>
+      </div>
+      <ol class={styles.rows}>
+        {bad.items.map((item, i) => (
+          <li class:list={['reveal', styles.row]}>
+            <span class={styles.num} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <p class={styles.before}><span class={styles.prefix}>{bad.label}: </span>{item}</p>
+            <ArrowRight class={styles.arrow} size={20} stroke-width={1.75} aria-hidden="true" />
+            <p class={styles.after}><span class={styles.prefix}>{good.label}: </span>{good.items[i]}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <div class:list={['reveal', styles.cta]}>
+      <p>{t.industryPage.fixesNote}</p>
+      <MainButton href="#contacto" text={t.industryPage.write} />
+    </div>
+  </div>
+</section>

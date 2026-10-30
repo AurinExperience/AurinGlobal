@@ -14,7 +14,7 @@ export const webDevelopment: Service = {
       seo: {
         title: 'Desarrollo web a la medida en Estados Unidos | Aurin',
         description:
-          'Desarrollo web a la medida en Estados Unidos: pagos, reservas, portales y sistemas conectados con tus herramientas. Precio cerrado. Llamada gratis.',
+          'Desarrollo web a la medida en Estados Unidos y Canadá: pagos, reservas, portales y sistemas conectados con tus herramientas. Precio cerrado. Llamada gratis.',
       },
       name: 'Desarrollo web',
       summary: 'Sitios y sistemas a la medida que cobran, agendan y se conectan con tus herramientas. Tu equipo los actualiza sin programar.',
@@ -23,7 +23,7 @@ export const webDevelopment: Service = {
         titleLead: 'Desarrollo web a la medida:',
         titleAccent: 'tu sitio cobra, agenda y trabaja solo.',
         description:
-          'Para empresas en EE. UU. que necesitan más que páginas: pagos en línea, reservas, portales para tus clientes y sistemas internos, conectados con las herramientas que ya usas.',
+          'Para empresas en EE. UU. que necesitan más que páginas: pagos, reservas, portales y sistemas conectados con lo que ya usas.',
         ctaSecondary: 'Qué incluye',
       },
       industries: {
@@ -68,7 +68,7 @@ export const webDevelopment: Service = {
           { name: 'Lanzamiento y soporte', text: 'Lo probamos en celulares y navegadores, lo publicamos y acompañamos los primeros ajustes.', gets: 'Tu sitio en línea y funcionando.' },
         ],
       },
-      cases: { heading: 'Sitios, apps y sistemas que *programamos.*' },
+      cases: { heading: 'Sitios, plataformas y sistemas que *programamos.*' },
       guarantees: {
         heading: 'Sin riesgo *para ti.*',
         intro: 'Un desarrollo no debería ser una caja negra. Todo esto va por escrito en tu propuesta.',
@@ -97,9 +97,9 @@ export const webDevelopment: Service = {
     },
     en: {
       seo: {
-        title: 'Custom Web Development Company in the US | Aurin',
+        title: 'Custom Web Development Company in the US & Canada | Aurin',
         description:
-          'Custom web development for US businesses: payments, bookings, customer portals and systems connected to your tools. Fixed price. Book a free call.',
+          'Custom web development for US and Canadian businesses: payments, bookings, customer portals and systems connected to your tools. Fixed price. Book a free call.',
       },
       name: 'Web development',
       summary: 'Custom websites and systems that take payments, book appointments and connect to your tools. Your team updates them without code.',
@@ -108,7 +108,7 @@ export const webDevelopment: Service = {
         titleLead: 'Custom web development:',
         titleAccent: 'your website sells, books and works on its own.',
         description:
-          'For businesses that need more than pages: online payments, bookings, customer portals and internal systems, connected to the tools you already use.',
+          'For businesses that need more than pages: payments, bookings, customer portals and internal systems, connected to your tools.',
         ctaSecondary: 'What’s included',
       },
       industries: {
@@ -153,7 +153,7 @@ export const webDevelopment: Service = {
           { name: 'Launch and support', text: 'We test it on phones and browsers, take it live and support the first adjustments.', gets: 'Your website live and working.' },
         ],
       },
-      cases: { heading: 'Websites, apps and systems *we built.*' },
+      cases: { heading: 'Websites, platforms and systems *we built.*' },
       guarantees: {
         heading: 'Zero risk *for you.*',
         intro: 'Development shouldn’t be a black box. All of this goes in writing in your proposal.',

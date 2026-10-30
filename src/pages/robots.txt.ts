@@ -1,19 +1,26 @@
-# robots.txt de aurin.consulting (misma política que aurin.mx)
+import type { APIRoute } from 'astro';
+import { SITE } from '@/config/site';
+
+/*
+ * robots.txt como endpoint (antes en /public): así sale con `charset=utf-8` también en
+ * `npm run dev`, donde el archivo estático salía sin charset y los acentos se veían rotos.
+ */
+const body = `# robots.txt de aurin.consulting (misma política que aurin.mx)
 #
 # Estrategia AEO/GEO (AI Engine Optimization / Generative Engine Optimization):
 #
-# Solo se declara un grupo explícito cuando la regla del bot difiere de `*`.
+# Solo se declara un grupo explícito cuando la regla del bot difiere de \`*\`.
 # Cada bot obedece únicamente al grupo más específico que lo nombra: si tiene
-# grupo propio, ignora `*` por completo. Un Allow: / redundante sobre `*` no
-# aporta nada y rompe el aislamiento si `*` algún día restringe una ruta.
+# grupo propio, ignora \`*\` por completo. Un Allow: / redundante sobre \`*\` no
+# aporta nada y rompe el aislamiento si \`*\` algún día restringe una ruta.
 #
 # Bots de búsqueda IA (OAI-SearchBot, PerplexityBot, Claude-SearchBot, meta-webindexer…)
-# y bots clásicos (Googlebot, Bingbot…) quedan cubiertos por `*`.
+# y bots clásicos (Googlebot, Bingbot…) quedan cubiertos por \`*\`.
 #
 # ⚠ Excepción: Google-Extended — a diferencia de otros, acopla entrenamiento Y
 # grounding de Gemini Apps bajo el mismo token (no hay separación). Bloquearlo
 # impide que Gemini cite a Aurin como fuente en sus respuestas, por lo que se
-# permite vía `*` en lugar de tener grupo propio con Disallow.
+# permite vía \`*\` en lugar de tener grupo propio con Disallow.
 
 # ── Entrenamiento de modelos: BLOQUEAR ────────────────────────────────────────
 # Consumen contenido para entrenar modelos, no generan citas ni tráfico.
@@ -35,7 +42,7 @@ Disallow: /
 User-agent: meta-externalagent
 Disallow: /
 
-# Google-Extended queda cubierto por `*` (Allow) de forma intencional:
+# Google-Extended queda cubierto por \`*\` (Allow) de forma intencional:
 # bloquear entrenamiento Gemini también bloquearía el grounding en Gemini Apps,
 # y ambos están acoplados bajo el mismo token sin posibilidad de separación.
 
@@ -47,5 +54,9 @@ Allow: /llms.txt
 # Endpoints del formulario y de WhatsApp (solo POST): no hay nada que indexar
 Disallow: /api/
 
-# Índice para crawlers de IA (AEO/GEO): https://aurin.consulting/llms.txt
-Sitemap: https://aurin.consulting/sitemap.xml
+# Índice para crawlers de IA (AEO/GEO): ${SITE.url}/llms.txt
+Sitemap: ${SITE.url}/sitemap.xml
+`;
+
+export const GET: APIRoute = () =>
+  new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });

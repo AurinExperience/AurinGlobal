@@ -12,8 +12,12 @@
   justify-content: space-between;
 }
 
+/* Con etiquetas: título y carrusel en la misma línea */
+.inner:has(.marquee) { flex-wrap: nowrap; }
+
 .heading {
   margin: 0;
+  flex-shrink: 0;
   color: var(--color-gray-a);
 }
 
@@ -24,6 +28,49 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* Solo nombres (páginas de industria): una línea de etiquetas que se desliza sola, con las orillas fundidas */
+.marquee {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent);
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  list-style: none;
+  margin: 0;
+  padding: 0 10px 0 0;
+  animation: slide 40s linear infinite;
+}
+
+.marquee:hover .tags { animation-play-state: paused; }
+
+/* La lista va dos veces: al llegar a la mitad vuelve al inicio sin que se note */
+@keyframes slide {
+  to { translate: -50% 0; }
+}
+
+.tag {
+  padding: 8px 16px;
+  border: 1px solid rgb(255 255 255 / .14);
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+
+/* Sin movimiento: quieta y sin la copia, en varias líneas si no cabe */
+@media (prefers-reduced-motion: reduce) {
+  .marquee { mask-image: none; }
+  .tags { animation: none; flex-wrap: wrap; width: auto; }
+  .tag[aria-hidden] { display: none; }
 }
 
 /* Industria arriba, la prueba (el cliente) abajo */
@@ -61,3 +108,8 @@
 
 .logo[data-tone='light'] { filter: contrast(2.2); mix-blend-mode: screen; }
 .logo[data-tone='color'] { filter: grayscale(1) brightness(1.5); }
+
+@media (max-width: 768px) {
+  .inner:has(.marquee) { flex-wrap: wrap; }
+  .marquee { flex-basis: 100%; }
+}

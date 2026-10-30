@@ -1,24 +1,120 @@
 .section {
   padding: var(--spacing-20) 0;
-  border-top: 1px solid var(--color-gray-b);
+  /* Gris claro: en negro se confundía con el pie, que va justo abajo */
+  background: var(--color-surface-light);
+  color: var(--color-black);
+  border-top: 1px solid rgb(0 0 0 / .08);
 }
 
-.text { margin-top: var(--spacing-3); }
+/* Título fijo a la izquierda, grupos de enlaces a la derecha */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 2fr);
+  gap: var(--spacing-10) 80px;
+  align-items: start;
+}
+
+.heading { margin: 0; }
+
+.text {
+  margin-top: var(--spacing-3);
+  font-size: 15px;
+  color: var(--color-text-dark);
+}
+
+.groups {
+  display: grid;
+  gap: var(--spacing-10);
+}
+
+.label {
+  margin: 0 0 var(--spacing-4);
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-gray-c);
+}
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-3) var(--spacing-10);
   list-style: none;
-  margin: var(--spacing-8) 0 0;
+  margin: 0;
   padding: 0;
 }
 
 .list a {
-  font-family: var(--font-family-display);
-  font-size: var(--font-size-lg);
   text-decoration: none;
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
-.list a:hover { color: var(--color-yellow); }
+.arrow {
+  flex: none;
+  color: var(--color-gray-c);
+  transition: rotate .25s, color .25s;
+}
+
+.list a:hover .arrow { rotate: 45deg; color: var(--color-black); }
+
+/* Servicios: filas en dos columnas con su descripción */
+.rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--spacing-10);
+  border-top: 1px solid rgb(0 0 0 / .12);
+}
+
+.rows a {
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 18px 0;
+  border-bottom: 1px solid rgb(0 0 0 / .12);
+}
+
+.rows .name {
+  font-family: var(--font-family-display);
+  font-size: 20px;
+  transition: color .25s;
+}
+
+.rows a:hover .name { text-decoration: underline; text-decoration-color: var(--color-yellow); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+
+.sub {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  color: var(--color-text-dark);
+}
+
+/* Industrias y estados: etiquetas */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chips a {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 14px 10px 18px;
+  border: 1px solid rgb(0 0 0 / .14);
+  border-radius: 999px;
+  background: var(--color-white);
+  font-size: 15px;
+  font-weight: 500;
+  transition: border-color .25s, color .25s, background-color .25s;
+}
+
+/* Al pasar: negra con texto lima (sobre claro la lima solo se lee sobre negro) */
+.chips a:hover { border-color: var(--color-black); background: var(--color-black); color: var(--color-yellow); }
+.chips a:hover .arrow { color: var(--color-yellow); }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .rows { grid-template-columns: 1fr; }
+}

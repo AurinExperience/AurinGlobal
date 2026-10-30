@@ -1,28 +1,53 @@
 ---
 /**
- * Enlaces a las páginas hermanas (otros estados, otros servicios). Existe por SEO, como
+ * Enlaces a las páginas hermanas (otros estados, otros servicios e industrias). Existe por SEO, como
  * NearbyLandings en aurin.mx: sin enlaces internos una página nueva queda huérfana, y el anchor
  * text le dice a Google qué búsqueda cubre cada una. Va al final: primero la conversión.
+ * Con `sub` (servicios) van en filas con su descripción; sin `sub` (industrias, estados), en etiquetas.
  */
+import ArrowUpRight from 'lucide-astro/ArrowUpRight';
 import styles from './RelatedLinks.module.css';
+
+type Item = { href: string; label: string; sub?: string };
 
 interface Props {
   heading: string;
   description: string;
-  items: { href: string; label: string }[];
+  items?: Item[];
+  groups?: { label: string; items: Item[] }[];
 }
 
-const { heading, description, items } = Astro.props;
+const { heading, description, items = [], groups } = Astro.props;
+const list = (groups ?? [{ label: '', items }]).filter((group) => group.items.length > 0);
 ---
 
-{items.length > 0 && (
-  <section class={styles.section} aria-labelledby="titulo-relacionados">
-    <div class="wrap">
-      <h2 id="titulo-relacionados" class="h3">{heading}</h2>
-      <p class:list={['muted', styles.text]}>{description}</p>
-      <ul class={styles.list}>
-        {items.map((item) => <li><a href={item.href}>{item.label} <span aria-hidden="true">→</span></a></li>)}
-      </ul>
+{list.length > 0 && (
+  <section class={styles.section} aria-labelledby="title-related">
+    <div class:list={['wrap', styles.grid]}>
+      <div class={styles.head}>
+        <h2 id="title-related" class:list={['h3', styles.heading]}>{heading}</h2>
+        <p class:list={['muted', styles.text]}>{description}</p>
+      </div>
+      <div class={styles.groups}>
+        {list.map((group) => {
+          const rows = group.items.some((item) => item.sub);
+          return (
+            <div>
+              {group.label && <h3 class={styles.label}>{group.label}</h3>}
+              <ul class:list={[styles.list, rows ? styles.rows : styles.chips]}>
+                {group.items.map((item) => (
+                  <li>
+                    <a href={item.href}>
+                      <span class={styles.name}>{item.label}{item.sub && <span class={styles.sub}>{item.sub}</span>}</span>
+                      <ArrowUpRight class={styles.arrow} size={rows ? 20 : 16} stroke-width={2} aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
     </div>
   </section>
 )}

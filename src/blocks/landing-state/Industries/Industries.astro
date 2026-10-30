@@ -1,5 +1,9 @@
 ---
-/** Franja bajo el hero: industrias para las que ya hicimos el servicio, cada una con el logo de su cliente real (o su nombre). */
+/**
+ * Franja bajo el hero: industrias para las que ya hicimos el servicio, cada una con el logo de su cliente real (o su nombre).
+ * En las páginas de industria solo trae nombres (sin clientes): ahí van como etiquetas chicas en una sola línea que
+ * se desliza sola (CSS, sin JS). La lista va dos veces para el loop; la copia está oculta para lectores y crawlers.
+ */
 import type { ServiceCopy } from '@/data/services/types';
 import { clientLogo } from '@/data/home';
 import styles from './Industries.module.css';
@@ -10,11 +14,21 @@ interface Props {
 
 const { industries } = Astro.props;
 const SCALE = .5;
+const tags = industries.items.every((item) => typeof item === 'string');
 ---
 
-<section class={styles.section} aria-labelledby="titulo-industrias">
+<section class={styles.section} aria-labelledby="title-industries">
   <div class:list={['wrap', styles.inner]}>
-    <h2 id="titulo-industrias" class:list={['eyebrow', styles.heading]}>{industries.heading}</h2>
+    <h2 id="title-industries" class:list={['eyebrow', styles.heading]}>{industries.heading}</h2>
+    {tags ? (
+      <div class={styles.marquee}>
+        <ul class={styles.tags}>
+          {[...industries.items, ...industries.items].map((item, i) => (
+            <li class={styles.tag} aria-hidden={i >= industries.items.length ? 'true' : undefined}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ) : (
     <ul class={styles.list}>
       {industries.items.map((item) => {
         if (typeof item === 'string') return <li class={styles.name}>{item}</li>;
@@ -29,5 +43,6 @@ const SCALE = .5;
         );
       })}
     </ul>
+    )}
   </div>
 </section>

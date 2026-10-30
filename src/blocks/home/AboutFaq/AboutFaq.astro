@@ -13,11 +13,11 @@ interface Props {
 const { about, faq } = Astro.props;
 ---
 
-<section id="nosotros" class={styles.section} aria-labelledby="titulo-nosotros">
+<section id="nosotros" class={styles.section} aria-labelledby="title-about">
   <div class:list={['wrap', styles.grid]}>
     <div class={styles.aside}>
       <div class={styles.intro}>
-        <h2 id="titulo-nosotros" class:list={['h2', styles.heading]}><Accent text={about.heading} /></h2>
+        <h2 id="title-about" class:list={['h2', styles.heading]}><Accent text={about.heading} /></h2>
         <p class={styles.text}>{about.text}</p>
       </div>
     </div>

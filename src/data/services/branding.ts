@@ -14,7 +14,7 @@ export const branding: Service = {
       seo: {
         title: 'Agencia de branding y logo en Estados Unidos | Aurin',
         description:
-          'Branding para empresas en Estados Unidos: estrategia, logo, identidad visual y guía de marca, pensados para tu sitio, tus redes y tu app. Llamada gratis.',
+          'Branding para empresas en Estados Unidos y Canadá: estrategia, logo, identidad visual y guía de marca, para tu sitio, tus redes y tu app. Llamada gratis.',
       },
       name: 'Branding',
       summary: 'Estrategia, logo, identidad visual y guía de marca, para que tu marca se vea igual de bien en el sitio, en redes y en todo lo demás.',
@@ -23,7 +23,7 @@ export const branding: Service = {
         titleLead: 'Branding que te hace',
         titleAccent: 'la opción obvia.',
         description:
-          'Para empresas en EE. UU. que empiezan o que ya no se distinguen de su competencia: estrategia, logo, identidad visual y guía de marca, pensados desde el inicio para tu sitio, tus redes y tu app.',
+          'Para empresas en EE. UU. que empiezan o ya no se distinguen: estrategia, logo, identidad y guía de marca, listos para tu sitio.',
         ctaSecondary: 'Qué incluye',
       },
       industries: {
@@ -96,9 +96,9 @@ export const branding: Service = {
     },
     en: {
       seo: {
-        title: 'Branding Agency for US Businesses | Logo & Identity | Aurin',
+        title: 'Branding & Logo Agency for US & Canadian Businesses | Aurin',
         description:
-          'Branding for US businesses: strategy, logo, visual identity and brand guidelines, designed for your website, social media and app. Book a free call.',
+          'Branding for US and Canadian businesses: strategy, logo, visual identity and brand guidelines, made for your website, social media and app. Free call.',
       },
       name: 'Branding',
       summary: 'Strategy, logo, visual identity and brand guidelines, so your brand looks just as good on your website, on social media and everywhere else.',
@@ -107,7 +107,7 @@ export const branding: Service = {
         titleLead: 'Branding that makes you',
         titleAccent: 'the obvious choice.',
         description:
-          'For businesses that are just starting or no longer stand out from their competitors: strategy, logo, visual identity and brand guidelines, designed from the start for your website, social media and app.',
+          'For businesses just starting or blending in with competitors: strategy, logo, visual identity and brand guidelines, ready for your website.',
         ctaSecondary: 'What’s included',
       },
       industries: {

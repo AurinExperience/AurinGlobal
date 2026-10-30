@@ -23,10 +23,10 @@ const t = UI[getLangFromUrl(Astro.url)];
 const icons = [Eye, Receipt, KeyRound, CalendarCheck];
 ---
 
-<section class={styles.section} aria-labelledby="titulo-garantias">
+<section class={styles.section} aria-labelledby="title-guarantees">
   <div class:list={['wrap', styles.grid]}>
     <div class={styles.head}>
-      <h2 id="titulo-garantias" class:list={['h2', styles.heading]}><Accent text={heading} /></h2>
+      <h2 id="title-guarantees" class:list={['h2', styles.heading]}><Accent text={heading} /></h2>
       <p class={styles.intro}>{intro}</p>
       <div class={styles.cta}>
         <SecondaryButton href="#contacto" text={t.bookCallLong} />

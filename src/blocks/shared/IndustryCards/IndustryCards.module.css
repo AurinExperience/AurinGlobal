@@ -113,3 +113,11 @@
 
 /* El buscador de /industrias/ oculta tarjetas con [hidden]; display: grid le ganaría */
 .item[hidden] { display: none; }
+
+/* Tarjeta con página propia (`page` en los datos): el título es el enlace y su ::after cubre toda la tarjeta */
+.link { color: inherit; text-decoration: none; }
+.link::after { content: ''; position: absolute; inset: 0; }
+.link:focus-visible { outline: none; }
+.item:has(.link:focus-visible) { outline: 2px solid var(--color-yellow); outline-offset: -2px; }
+.item:has(.link) h3 { transition: color .3s; }
+.item:has(.link:hover) h3 { color: var(--color-yellow); }

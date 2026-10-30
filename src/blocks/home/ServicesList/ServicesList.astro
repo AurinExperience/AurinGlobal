@@ -10,11 +10,11 @@ interface Props {
 const { services } = Astro.props;
 ---
 
-<section id="servicios" class={styles.section} aria-labelledby="titulo-servicios">
+<section id="servicios" class={styles.section} aria-labelledby="title-services">
   <div class="wrap">
     <div class={styles.head}>
       <div>
-        <h2 id="titulo-servicios" class:list={['h2', styles.heading]}><Accent text={services.heading} /></h2>
+        <h2 id="title-services" class:list={['h2', styles.heading]}><Accent text={services.heading} /></h2>
       </div>
       <p class={styles.intro}>{services.intro}</p>
     </div>

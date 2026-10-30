@@ -15,10 +15,10 @@ const { faq } = Astro.props;
 const t = UI[getLangFromUrl(Astro.url)];
 ---
 
-<section id="faq" class={styles.section} aria-labelledby="titulo-faq">
+<section id="faq" class={styles.section} aria-labelledby="title-faq">
   <div class:list={['wrap', styles.grid]}>
     <div class={styles.side}>
-      <h2 id="titulo-faq" class="h2"><Accent text={faq.heading} /></h2>
+      <h2 id="title-faq" class="h2"><Accent text={faq.heading} /></h2>
       <div class:list={['spotlight', styles.ask]}>
         <p class:list={['h3', styles.askTitle]}>{t.faqAside.title}</p>
         <p class="muted">{t.faqAside.text}</p>

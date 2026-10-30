@@ -13,12 +13,10 @@ export interface ServiceCopy {
   summary: string;
   tags: string;
   hero: {
-    eyebrow?: string;
     titleLead: string;
     titleAccent: string;
     description: string;
     ctaSecondary: string;
-    points?: string[];
   };
   /** Franja bajo el hero: industrias para las que ya se hizo este servicio, con el cliente real (su logo si está en CLIENTS). */
   industries: { heading: string; items: (string | { name: string; client: string })[] };
@@ -30,8 +28,8 @@ export interface ServiceCopy {
     /** Si está, la sección es blanca y compara "lo de siempre" contra lo que hacemos (bloque Contrast) en vez de las capas. */
     contrast?: Record<'bad' | 'good', { label: string; title: string; items: string[] }>;
   };
-  /** Qué incluye: los entregables (van también al OfferCatalog del schema). */
-  deliverables: { heading: string; intro?: string; items: { icon?: string; title: string; text: string }[] };
+  /** Qué incluye: los entregables (van también al OfferCatalog del schema). `service`: en las industrias, el ítem enlaza a esa página de servicio (uno por servicio). */
+  deliverables: { heading: string; intro?: string; items: { icon?: string; title: string; text: string; service?: ServiceId }[] };
   /** Tipos de sitio (bloque ServicesIncluded, blanco): el visitante se reconoce en uno. Con esto los casos van antes del proceso. */
   types?: ServiceCopy['deliverables'];
   process: { heading: string; steps: Step[] };
@@ -48,11 +46,18 @@ export interface ServiceCopy {
 export type ServiceId = 'web-design' | 'web-development' | 'ux-ui-design' | 'branding';
 
 /** Un servicio (src/data/services) o una página de industria (src/data/industries): misma plantilla. */
+/** Fotos del hero de las páginas de industria (public/img/<id>.avif; medidas y animación en PHOTOS de HeroState). */
+export type IndustryPhoto =
+  | 'ind-fintech' | 'ind-remittances' | 'ind-healthcare' | 'ind-education' | 'ind-tourism' | 'ind-energy'
+  | 'ind-culture' | 'ind-software' | 'ind-agencies' | 'ind-legal' | 'ind-real-estate' | 'ind-nonprofits';
+
 export interface Service {
   id: string;
   /** Segmento de URL por idioma: /diseno-web/ y /en/web-design/. */
   slug: Record<Lang, string>;
   /** Proyectos de src/data/cases.ts que muestra la página. */
   cases: CaseId[];
+  /** Páginas de industria: la foto de su hero (cada industria la suya; ver PHOTOS en HeroState). */
+  photo?: IndustryPhoto;
   copy: Record<Lang, ServiceCopy>;
 }

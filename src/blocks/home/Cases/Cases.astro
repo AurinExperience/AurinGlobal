@@ -18,9 +18,9 @@ const lang = getLangFromUrl(Astro.url);
 const services = (item: CaseCard) => item.services.map((id) => serviceById(id).copy[lang].name).join(', ');
 ---
 
-<section id="casos" class:list={['sky', 'sky-stars', styles.section]} aria-labelledby="titulo-casos">
+<section id="casos" class:list={['sky', 'sky-stars', styles.section]} aria-labelledby="title-cases">
   <div class="wrap">
-    <h2 id="titulo-casos" class:list={['h2', styles.heading]}><Accent text={cases.heading} /></h2>
+    <h2 id="title-cases" class:list={['h2', styles.heading]}><Accent text={cases.heading} /></h2>
     {cards ? (
       <>
         <ul class={styles.cards}>

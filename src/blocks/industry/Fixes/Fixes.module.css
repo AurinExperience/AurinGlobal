@@ -1,0 +1,181 @@
+.section {
+  background: var(--color-white);
+  color: var(--color-black);
+  padding: 140px 0;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: var(--spacing-8) 80px;
+  align-items: start; /* título y texto arrancan en la misma línea: el texto largo no los descuadra */
+}
+
+.heading {
+  text-wrap: balance;
+}
+
+.text {
+  margin: 0;
+  font-size: 17px;
+  color: var(--color-text-dark);
+}
+
+.board {
+  margin-top: 72px;
+}
+
+/* Misma retícula para encabezados y filas: número · hoy · flecha · con Aurin */
+.labels,
+.row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 44px minmax(0, 1fr);
+  gap: 0 var(--spacing-6);
+  align-items: center;
+}
+
+.labels {
+  padding-bottom: var(--spacing-6);
+  border-bottom: 1px solid var(--color-black);
+}
+
+.labels .bad { grid-column: 2; }
+.labels .good { grid-column: 4; }
+
+.label {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-gray-c);
+}
+
+/* El punto de luz de la "i" del logo antes de "Con Aurin" (sobre blanco la lima va solo como punto) */
+.good .label { color: var(--color-black); }
+.good .label::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  vertical-align: .12em;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  box-shadow: 0 0 8px 2px rgb(208 223 0 / .7);
+}
+
+.title {
+  margin: 6px 0 0;
+  font-size: 22px;
+}
+
+.bad .title { font-weight: var(--font-weight-regular); color: var(--color-gray-c); }
+
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  padding: 22px 0;
+  border-bottom: 1px solid rgb(0 0 0 / .1);
+  transition: background-color .2s;
+}
+
+.row:hover { background: var(--color-surface-light); }
+
+.num {
+  padding-left: 8px;
+  font-family: var(--font-family-display);
+  font-size: 14px;
+  color: var(--color-gray-c);
+}
+
+.before,
+.after { margin: 0; }
+
+.before {
+  font-size: 16px;
+  color: var(--color-gray-c);
+}
+
+.after {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.arrow {
+  justify-self: center;
+  color: var(--color-gray-c);
+  transition: translate .2s, color .2s;
+}
+
+.row:hover .arrow { translate: 4px 0; color: var(--color-black); }
+
+/* En escritorio la columna ya dice qué es; en celular, cada texto lleva su etiqueta */
+.prefix {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Cierre negro: el que se reconoce en la izquierda no tiene que bajar hasta el formulario */
+.cta {
+  display: flex;
+  gap: var(--spacing-6) var(--spacing-12);
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 56px;
+  padding: 32px 40px;
+  border-radius: 20px;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.cta p {
+  margin: 0;
+  max-width: 560px;
+  font-family: var(--font-family-display);
+  font-size: 22px;
+  font-weight: var(--font-weight-light);
+  line-height: 1.3;
+}
+
+@media (max-width: 900px) {
+  .section { padding: 100px 0; }
+  .head { grid-template-columns: 1fr; }
+  .board { margin-top: 48px; }
+  .labels { display: none; }
+  .row {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2);
+    border-bottom-color: rgb(0 0 0 / .14);
+  }
+  .row:hover { background: none; }
+  .num, .arrow { display: none; }
+  .prefix {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    clip-path: none;
+    margin-bottom: 2px;
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-semibold);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .after .prefix { color: var(--color-black); }
+  .cta { flex-direction: column; align-items: flex-start; padding: 28px; }
+  .cta p { font-size: 20px; }
+}
+
+/* Sobre blanco la lima no se lee: el acento del título queda en negro y seminegrita */
+.section :global(.accent) { color: inherit; }

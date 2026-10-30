@@ -1,8 +1,8 @@
-/* Negro con una luz lima muy tenue arriba (la luz de la marca) y el logo gigante al fondo */
+/* Negro con una luz lima muy tenue arriba (la luz de la marca) y el logo gigante abajo */
 .footer {
   position: relative;
   overflow: hidden;
-  padding: 24px 0 0;
+  padding: 72px 0 0;
   border-top: 1px solid rgba(255, 255, 255, .08);
   background:
     radial-gradient(60% 50% at 50% 0%, rgba(208, 223, 0, .07), transparent 70%);
@@ -16,11 +16,70 @@
 
 /* ── Columnas ─────────────────────────────────────────────── */
 
+/* marca · servicios · industrias · contacto, directo sobre el negro (sin tarjeta); hairline abajo */
 .grid {
   display: grid;
-  grid-template-columns: minmax(240px, 1.4fr) repeat(auto-fit, minmax(150px, 1fr));
-  gap: var(--spacing-12) var(--spacing-10);
-  padding: 64px 0;
+  grid-template-columns: minmax(240px, 1.5fr) repeat(3, minmax(170px, 1fr));
+  gap: var(--spacing-12) 64px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.minimal .grid { grid-template-columns: minmax(240px, 1.4fr) minmax(200px, 1fr); }
+
+.brand .status {
+  max-width: none;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  margin: var(--spacing-5) 0 0;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .03);
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  box-shadow: 0 0 10px 2px rgba(208, 223, 0, .6);
+}
+
+/* Enlaces: al pasar se ponen en lima y asoma una flecha */
+.col .link {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.col .link::after {
+  content: '→';
+  opacity: 0;
+  translate: -4px 0;
+  transition: opacity .25s, translate .25s;
+}
+
+.col .link:hover { color: var(--color-yellow); }
+.col .link:hover::after { opacity: 1; translate: 0 0; }
+
+.col .contact { gap: 10px; }
+
+.contact address { margin-top: 4px; line-height: 1.6; }
+
+.col .remote {
+  margin-top: var(--spacing-5);
+  font-size: 13px;
+  color: var(--color-gray-c);
+}
+
+.col .all {
+  display: inline-block;
+  margin-top: var(--spacing-4);
+  color: var(--color-yellow);
 }
 
 .brand img {
@@ -74,7 +133,7 @@
 
 .col ul {
   display: grid;
-  gap: 6px;
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -112,8 +171,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--spacing-3) var(--spacing-8);
-  padding: var(--spacing-6) 0 var(--spacing-8);
-  border-top: 1px solid rgba(255, 255, 255, .08);
+  padding: var(--spacing-6) 0 var(--spacing-10);
   font-size: 13px;
   color: var(--color-gray-c);
 }
@@ -127,31 +185,37 @@
   margin-left: auto;
 }
 
-/* El logo gigante: casi invisible, detrás de las columnas (no suma altura), se desvanece hacia
-   abajo y lo corta el borde */
-.wordmark {
+/* La firma: el logo gigante casi invisible detrás de los enlaces (no suma altura al pie), fundido hacia abajo y cortado por el borde */
+.signature {
   position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: min(100%, 1400px);
-  height: auto;
-  translate: -50% 40%;
-  opacity: .06;
-  filter: grayscale(1) brightness(2);
-  mask-image: linear-gradient(to bottom, black 30%, transparent 85%);
+  inset: auto 0 0;
+  z-index: 0;
   pointer-events: none;
   user-select: none;
 }
 
-.minimal .wordmark { display: none; }
+.signature img {
+  display: block;
+  width: 100%;
+  height: auto;
+  translate: 0 38%;
+  opacity: .06;
+  filter: grayscale(1) brightness(2);
+  mask-image: linear-gradient(to bottom, #000 25%, transparent 80%);
+}
 
-@media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr 1fr; padding: 56px 0; }
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .brand { grid-column: 1 / -1; }
 }
 
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; padding-bottom: 40px; }
+  .footer { padding-top: 48px; }
+}
+
 @media (max-width: 520px) {
-  .grid { grid-template-columns: 1fr; }
+  .grid, .minimal .grid { grid-template-columns: 1fr; }
   .top { margin-left: 0; }
 }
 

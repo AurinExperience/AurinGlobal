@@ -126,12 +126,37 @@
 
 .industry .photo { object-position: 100% 50%; }
 .ind-fintech .photo { object-position: 50% 100%; }
-.ind-software .photo { object-position: 50% 72%; }
-/* Las tarjetas y el programador de software (fotos verticales): un cuadro más chico, centrado en el lado
+/* Software: arriba de la foto solo hay negro; pegada abajo se ven la taza y la planta. Empieza después del texto */
+.ind-software .photo { object-position: 100% 100%; }
+@media (min-width: 901px) {
+  /* Más chica que las demás: separada de arriba, de abajo y de la orilla derecha, con las orillas fundidas */
+  .ind-software .scene {
+    inset: 16% 3% 5% 52%;
+    mask-image: linear-gradient(90deg, transparent, #000 18%, #000 92%, transparent);
+  }
+}
+/* Agencias: foto vertical a la derecha de su cuadro negro; escena más chica, bajo el header y con aire en las orillas */
+@media (min-width: 901px) {
+  .ind-agencies .scene {
+    inset: 13% 3% 4% 46%;
+    /* Fundida por los cuatro lados: la foto llega hasta arriba y a la derecha (con un solo degradado se veía el corte) */
+    mask-image: linear-gradient(90deg, transparent, #000 30%, #000 88%, transparent), linear-gradient(transparent, #000 14%, #000 86%, transparent);
+    mask-composite: intersect;
+  }
+}
+/* Bienes raíces: la torre empieza bajo el header (si no, la corona queda detrás del botón de idioma); orilla de arriba fundida */
+@media (min-width: 901px) {
+  .ind-real-estate .scene {
+    top: 12%;
+    mask-image: linear-gradient(90deg, transparent, #000 30%), linear-gradient(transparent, #000 12%);
+    mask-composite: intersect;
+  }
+  .ind-real-estate .photo { object-position: 100% 0; }
+}
+/* Las tarjetas de fintech (foto vertical): un cuadro más chico, centrado en el lado
    derecho, con la orilla fundida en círculo; flota apenas */
 @media (min-width: 901px) {
-  .ind-fintech .scene,
-  .ind-software .scene {
+  .ind-fintech .scene {
     --size: min(88svh, 780px);
     inset: 0 auto;
     left: calc(70% - var(--size) / 2);
@@ -141,10 +166,7 @@
     mask-image: radial-gradient(closest-side, #000 70%, transparent);
     animation: float 9s ease-in-out infinite;
   }
-  .ind-fintech .scene::after,
-  .ind-software .scene::after { background: none; }
-  /* El programador no flota: lo que se mueve es el código */
-  .ind-software .scene { animation: none; }
+  .ind-fintech .scene::after { background: none; }
 }
 
 @keyframes float { 50% { translate: 0 -12px; } }
@@ -156,7 +178,15 @@
   .ind-healthcare .scene { left: 0; mask-image: none; }
   .ind-healthcare .scene::after { background: linear-gradient(to top, var(--color-black), transparent 12%); }
 }
-.ind-nonprofits .photo { object-position: 55% 50%; }
+.ind-nonprofits .photo { object-position: 50% 45%; }
+/* Fundaciones: más chica que las demás y apaisada (las dos manos y la vela completas), fundida en óvalo */
+@media (min-width: 901px) {
+  .ind-nonprofits .scene {
+    inset: 20% 3% 12% 46%;
+    mask-image: radial-gradient(closest-side, #000 62%, transparent);
+  }
+  .ind-nonprofits .scene::after { background: none; }
+}
 .ind-education .photo { object-position: 55% 50%; }
 /* Energía: el arco está a la izquierda de la foto; se ve desde la orilla izquierda para que no quede en la parte fundida */
 .ind-energy .photo { object-position: 0% 50%; }
@@ -213,10 +243,17 @@
   .ind-energy { padding-bottom: 420px; }
   .ind-energy .scene { top: auto; bottom: 0; height: 500px; mask-image: linear-gradient(to bottom, transparent, #000 20%); }
   .ind-energy .photo { object-position: 30% 50%; }
-  /* Software: el programador y la laptop debajo de los botones */
+  /* Software: el escritorio debajo de los botones */
   .ind-software { padding-bottom: 300px; }
   .ind-software .scene { top: auto; bottom: 0; height: 380px; mask-image: linear-gradient(to bottom, transparent, #000 20%); }
-  .ind-software .photo { object-position: 50% 82%; }
+  /* Bienes raíces: las torres debajo de los botones */
+  .ind-real-estate { padding-bottom: 470px; }
+  .ind-real-estate .scene { top: auto; bottom: 0; height: 500px; mask-image: linear-gradient(to bottom, transparent, #000 18%); }
+  .ind-real-estate .photo { object-position: 78% 0; }
+  /* Agencias: el monitor y la cabeza del programador debajo de los botones */
+  .ind-agencies { padding-bottom: 360px; }
+  .ind-agencies .scene { top: auto; bottom: 0; height: 440px; mask-image: linear-gradient(to bottom, transparent, #000 18%); }
+  .ind-agencies .photo { object-position: 72% 40%; }
   /* Cultura: la bailarina y el haz debajo de los botones */
   .ind-culture { padding-bottom: 400px; }
   .ind-culture .scene { top: auto; bottom: 0; height: 480px; mask-image: linear-gradient(to bottom, transparent, #000 20%); }

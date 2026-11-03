@@ -27,7 +27,7 @@ interface Props {
 // Medidas en la foto (fracciones desde arriba a la izquierda; si cambias una foto, vuelve a medirlas).
 // img = proporción (en px de una foto de 1920 de ancho: así miden los efectos; el recorte sale del object-position
 // del .module.css). Arco: lamp = la lámpara, beam = hacia dónde va el haz. Industrias: fx = cómo se mueve la luz (flow = corre
-// hacia la derecha, flame = llama, twinkle = destellos, breath = respira, card = chip que late + reflejo que cruza, headlamp = haz de la lámpara hasta el botón de la llamada, liberty = antorcha que titila + agua que se mueve, weld = arco que chisporrotea en el humo + humo que sube, stage = neblina y polvo en el haz de un reflector, night = en la pantalla de la laptop se escribe código letra por letra + luces de la ciudad que titilan)
+// hacia la derecha, flame = llama, twinkle = destellos, breath = respira, card = chip que late + reflejo que cruza, headlamp = haz de la lámpara hasta el botón de la llamada, liberty = antorcha que titila + agua que se mueve, weld = arco que chisporrotea en el humo + humo que sube, code = la luz de detrás del monitor respira + el código de la pantalla se escribe letra por letra + una ola recorre el teclado, stage = neblina y polvo en el haz de un reflector, skyline = luz que recorre la corona de la torre + ventanas que se apagan y se prenden + baliza)
 const PHOTOS = {
   arch: { img: [1920, 1280], lamp: [0.4355, 0.655], beam: [0.374, -0.655] },
   // Tarjetas negras con chip (Kingsley Mkpandiok, Unsplash): el chip late y un reflejo cruza las tarjetas
@@ -46,11 +46,14 @@ const PHOTOS = {
   // Bailarina en el haz de un reflector con neblina (Hulki Okan Tabak, Unsplash): la neblina se mueve y el polvo brilla en
   // el haz que baja del reflector (lamp, arriba a la derecha)
   'ind-culture': { img: [2000, 1333], fx: 'stage', lamp: [0.97, 0.0] },
-  // Programador a oscuras, la pantalla reflejada en sus lentes (nacer eddine, Unsplash): renglones de código corren en el reflejo
-  'ind-software': { img: [1600, 2400], fx: 'night' },
-  'ind-agencies': { img: [1920, 1280], fx: 'breath' },
-  'ind-legal': { img: [1920, 1280], fx: 'breath' },
-  'ind-real-estate': { img: [1920, 1280], fx: 'flow' },
+  // Escritorio oscuro con el monitor lleno de código, taza y planta (Unsplash, 1fhzUGpPk5I): lo naranja de la foto en lima
+  'ind-software': { img: [1800, 1714], fx: 'breath' },
+  // Programador frente a dos monitores (Tai Bui, Unsplash, kpGj50PWAG0), a la derecha de un cuadro negro: la luz naranja de
+  // detrás del monitor en lima, la cabeza en silueta contra ella; el código de la pantalla se escribe y el teclado brilla
+  'ind-agencies': { img: [1800, 1500], fx: 'code' },
+  // Torres a la hora azul (Jerry Wei, Unsplash, Nz1zE8JEg2k), en espejo, sin el letrero ni los cables: la corona y las
+  // ventanas encendidas en lima. Una luz recorre la corona, algunas ventanas se apagan y se prenden, la baliza parpadea
+  'ind-real-estate': { img: [1920, 1524], fx: 'skyline' },
   'ind-nonprofits': { img: [1920, 1077], fx: 'flame' },
 } satisfies Record<'arch' | IndustryPhoto, { img: number[]; lamp?: number[]; beam?: number[]; fx?: string }>;
 
@@ -90,9 +93,9 @@ const t = UI[getLangFromUrl(Astro.url)];
 
   const COMMON = `
     precision highp float;
-    uniform sampler2D img, code;
-    uniform vec2 r, s, off, texel, tgt, cur;
-    uniform vec4 grid;
+    uniform sampler2D img;
+    uniform vec2 r, s, off, texel, tgt;
+    uniform vec3 cur;
     uniform float t;
 
     const vec2 IMG = vec2(${IMG[0]}., ${IMG[1]}.);
@@ -114,8 +117,8 @@ const t = UI[getLangFromUrl(Astro.url)];
   const MOTION = {
     // Pulsos que corren hacia la derecha (pistas de un circuito, estelas, líneas de luz)
     flow: 'float m = .75 + .5 * noise(vec2(ip.x / 110. - t * 1.4, ip.y / 26.));',
-    // Una llama: dos ritmos de ruido, sin parpadeo brusco
-    flame: 'float m = .85 + .2 * noise(vec2(t * 7., 1.)) + .08 * noise(vec2(t * 19., 5.));',
+    // Una llama: dos ritmos de ruido, suaves (una vela sin viento casi no parpadea)
+    flame: 'float m = .9 + .12 * noise(vec2(t * 3., 1.)) + .04 * noise(vec2(t * 11., 5.));',
     // Luces que titilan a saltos, cada una a su ritmo
     twinkle: 'float m = .7 + .6 * noise(vec2(h21(floor(ip / 7.)) * 97., t * 1.6));',
     // Respira despacio
@@ -128,12 +131,13 @@ const t = UI[getLangFromUrl(Astro.url)];
     card: 'float m = .8 + .3 * pow(.5 + .5 * sin(t * 1.6), 3.);',
     // La estatua respira más vivo que breath
     liberty: 'float m = .9 + .18 * noise(vec2(t * 1.3, 2.));',
-    // El arco de soldar chisporrotea: su luz en el humo sube y baja a saltos, irregular
-    // La pantalla: casi fija
-    // La luz de una pantalla, casi fija
-    night: 'float m = .95 + .08 * noise(vec2(t * .7, 13.));',
+    // La luz de detrás del monitor respira como breath (el código y el teclado van en AFTER)
+    code: 'float m = .9 + .15 * noise(vec2(t * .5, 1.));',
+    // La corona de la torre respira despacio
+    skyline: 'float m = .9 + .12 * noise(vec2(t * .4, 4.));',
     // El reflector: casi fijo
     stage: 'float m = .92 + .12 * noise(vec2(t * .6, 6.));',
+    // El arco de soldar chisporrotea: su luz en el humo sube y baja a saltos, irregular
     weld: 'float m = .86 + .2 * noise(vec2(t * 13., 4.)) + .08 * noise(vec2(t * 37., 9.));',
   };
   // Lo que se suma encima de la foto, por fx
@@ -217,32 +221,69 @@ const t = UI[getLangFromUrl(Astro.url)];
       // El reflector
       float d = length(ip - LAMP * IMG);
       c += mix(LIME, vec3(1., 1., .9), .6) * exp(-d * d / 90.) * .25 * m;`,
-    night: `
-      // La pantalla de la laptop: un escritorio de Mac con el editor y el dock (textura code, la dibuja el script: rojo =
-      // lo gris, verde = el código) donde el código se va escribiendo letra por letra (cur = columna y renglón del cursor,
-      // grid = dónde empieza el código, ancho de letra y alto de renglón, en px de la textura). La pantalla está en
-      // perspectiva: sus esquinas medidas en la foto; todo se dibuja en coordenadas de la pantalla (sx, v)
-      const vec2 TL = vec2(.1275, .533), TR = vec2(.4125, .523), BL = vec2(.1475, .677), BR = vec2(.44, .667);
-      float xl = mix(TL.x, BL.x, (uv.y - TL.y) / (BL.y - TL.y)), xr = mix(TR.x, BR.x, (uv.y - TR.y) / (BR.y - TR.y));
-      float sx = (uv.x - xl) / (xr - xl);
-      float yt = mix(TL.y, TR.y, sx), yb = mix(BL.y, BR.y, sx);
-      float v = (uv.y - yt) / (yb - yt);
-      float inScreen = smoothstep(0., .015, sx) * (1. - smoothstep(.985, 1., sx)) * smoothstep(0., .02, v) * (1. - smoothstep(.98, 1., v));
-      vec3 tx = texture2D(code, vec2(sx, v * .75)).rgb;
-      vec2 px = vec2(sx * 1024., v * 768.);
-      float row = floor((px.y - grid.y) / grid.w), col = floor((px.x - grid.x) / grid.z);
-      float lines = step(grid.y, px.y) * step(px.y, grid.y + 16. * grid.w);
-      // Lo escrito: renglones anteriores completos, el actual hasta el cursor; los números de renglón, hasta el actual
-      float typed = row < cur.y || (row == cur.y && col < cur.x) ? 1. : 0.;
-      float gutter = step(px.x, grid.x - 4.) * lines;
-      float shown = mix(1., mix(typed, step(row, cur.y), gutter), lines);
-      float caret = lines * step(abs(row - cur.y), .5) * step(0., px.x - grid.x - cur.x * grid.z) * step(px.x - grid.x - cur.x * grid.z, 4.)
-                  * step(fract(t * 1.1), .6);
-      vec3 scr = vec3(.02) + vec3(tx.r * .6) + LIME * (tx.g * shown + caret) * .8 * m;
-      c = mix(c, scr, inScreen);
-      // Las luces de la ciudad (lo que brilla detrás de la ventana, arriba de la pantalla) titilan, cada una a su ritmo
-      float h = h21(floor(ip / 40.));
-      c *= 1. + (noise(vec2(h * 97., t * (.6 + 1.4 * h))) - .5) * .9 * smoothstep(.12, .35, lum) * (1. - step(.52, uv.y));`,
+    code: `
+      // El código del editor (columna HTML de la pantalla grande, CODE_ROWS en el script): lo que el cursor no ha
+      // escrito se tapa con el fondo del editor. cur = renglón, x del cursor (px de la foto) y si el cursor se ve
+      float row = floor((ip.y - CODE_Y) / CODE_LINE);
+      if (row >= 0. && row < CODE_N && ip.x > 982. && ip.x < 1114.) {
+        c = mix(c, vec3(.075), row > cur.x || (row == cur.x && ip.x > cur.y) ? 1. : 0.);
+        float cy = CODE_Y + cur.x * CODE_LINE;
+        float caret = step(abs(ip.x - cur.y - 1.2), 1.2) * step(cy + 1.5, ip.y) * step(ip.y, cy + 11.) * cur.z;
+        c = mix(c, LIME * 1.15, caret);
+      }
+      // Teclado RGB de la laptop (lo lima de la foto en esa franja): una ola de luz lo cruza
+      float keys = clamp((p.g - p.b) * 6., 0., 1.) * step(.8, uv.y) * step(uv.y, .88) * step(.49, uv.x) * step(uv.x, .6);
+      c *= 1. + (sin((uv.x * 1.6 - uv.y) * 60. - t * 2.4) * .5) * .5 * keys;`,
+    flame: `
+      // La llama de la vela (fundaciones): se mece despacio de un lado a otro, una onda le sube por el cuerpo (como lame
+      // el aire una llama de verdad) y se estira y se encoge; encima, un temblor pequeño. La foto se deforma de forma
+      // continua: nada en la mecha, más hacia la punta, y el desplazamiento se apaga suave alrededor de la llama (w), así
+      // la llama se mueve con su halo y no queda orilla (recortarla y pegarla movida dejaba el contorno de donde estaba).
+      // Lejos de la llama casi no se mueve: se ve como el aire caliente de la vela. Medida en la foto, en px
+      const vec2 BASE = vec2(955., 465.);
+      const float TALL = 170.;
+      float up = clamp((BASE.y - ip.y) / TALL, 0., 1.1);
+      float sway = sin(t * .9) * 14. + (noise(vec2(t * .5, 3.)) - .5) * 30. + (noise(vec2(t * 2.2, 8.)) - .5) * 8.;
+      float stretch = 1. + sin(t * 1.3 + 1.) * .05 + (noise(vec2(t * 1.7, 11.)) - .5) * .12;
+      float lick = sin(up * 7. - t * 3.2) * 5. * up;
+      float dxf = (ip.x - BASE.x) / 120.;
+      float w = exp(-dxf * dxf) * smoothstep(BASE.y + 12., BASE.y - 12., ip.y) * smoothstep(BASE.y - TALL * 1.55, BASE.y - TALL * 1.05, ip.y);
+      vec2 src = ip - vec2(sway * up * up + lick, (BASE.y - ip.y) * (1. - 1. / stretch)) * w;
+      vec3 q = texture2D(img, src / IMG).rgb;
+      c = vec3(q.b) + (q - vec3(q.b)) * m;
+      float zone = w * smoothstep(.86, .98, q.g);
+      // Un hilo de humo muy tenue que sale de la punta y se riza al subir (casi no se nota: solo sobre lo oscuro)
+      vec2 tip = vec2(BASE.x + sway, BASE.y - TALL * stretch);
+      float h = max(tip.y - ip.y, 0.);
+      float wx = ip.x - tip.x - (fbm(vec2(h / 90. - t * .35, t * .1)) - .5) * h * .5;
+      float wisp = exp(-wx * wx / (4. + h * .12)) * smoothstep(0., 40., h) * exp(-h / 160.);
+      c += vec3(.5) * wisp * .05 * (1. - smoothstep(.2, .45, lum));
+      // La luz en las manos sigue a la llama: cuando se inclina, ese lado se aclara y el otro se oscurece (las sombras se
+      // mueven con ella); cuando se estira, alumbra un poco más. Solo en lo que ya tiene luz
+      vec2 L0 = BASE - vec2(0., TALL * .45);
+      vec2 L1 = L0 + vec2(sway * 1.8, (1. - stretch) * TALL * .8);
+      float R2 = 300. * 300.;
+      float shift = pow((1. + dot(ip - L0, ip - L0) / R2) / (1. + dot(ip - L1, ip - L1) / R2), 3.);
+      float lit = smoothstep(.06, .4, lum) * (1. - zone);
+      c *= mix(1., shift * (1. + (m - .92) * .6) * (1. + (stretch - 1.) * 1.5), lit);`,
+    skyline: `
+      // La corona (la franja de luz de arriba de la torre, de A a B en px de la foto): una luz la recorre despacio de un
+      // extremo al otro, como un muro de LED
+      const vec2 A = vec2(1090., 445.), B = vec2(1415., 120.);
+      vec2 ab = B - A;
+      float k = clamp(dot(ip - A, ab) / dot(ab, ab), 0., 1.);
+      float crown = 1. - smoothstep(16., 34., length(ip - A - ab * k));
+      float lime = clamp((p.g - p.b) * 4., 0., 1.);
+      c += mix(LIME, vec3(1.), .3) * exp(-pow((k - fract(t / 9.) * 1.6 + .3) / .12, 2.)) * lime * crown * .3;
+      // Las ventanas encendidas (lo lima fuera de la corona): de vez en cuando alguien apaga o prende la luz, cada una a
+      // su ritmo y de golpe, como un apagador (~1 de cada 10 apagada a la vez)
+      float h = h21(floor(ip / 22.));
+      float on = smoothstep(.2, .23, noise(vec2(h * 91., t * .07 + h * 13.)));
+      c *= mix(1., .3 + .7 * on, lime * (1. - crown));
+      // Baliza de la azotea (en la punta de la torre): parpadea como las de aviación
+      float db = length(ip - vec2(1410., 74.));
+      float blink = smoothstep(0., .06, fract(t / 2.4)) * (1. - smoothstep(.18, .4, fract(t / 2.4)));
+      c += mix(LIME, vec3(1., .96, .88), .45) * (exp(-db * db / 10.) * .9 + exp(-db / 20.) * .1) * blink;`,
     weld: `
       // Humo de soldar en movimiento encima del humo de la foto: sale del arco (LAMP, medido en la foto) y sube a la
       // izquierda como el de la foto, con volutas que se mueven. Se suma suave: la foto pone la forma, esto el movimiento
@@ -266,10 +307,32 @@ const t = UI[getLangFromUrl(Astro.url)];
       float da = length(ip - LAMP * IMG);
       c += LIME * lum * 1.8 * smoothstep(.04, .25, lum) * exp(-da / 380.) * .85 * cyc * m;`,
   };
+  // Agencias: renglones del código en la pantalla, medidos en la foto (px de 1800: dónde empieza y acaba el texto de cada
+  // uno). El cursor los recorre a ~12 letras por segundo, se detiene al final de cada renglón y, al terminar, parpadea 6 s
+  // y empieza otra vez. Devuelve [renglón, x, cursor visible]
+  const CODE_Y = 382, CODE_LINE = 12.09;
+  const CODE_ROWS = [[988, 1103], [988, 1074], [989, 1082], [990, 1091], [990, 1095], [990, 1091], [990, 1052], [1008, 1096],
+    [1007, 1044], [1007, 1100], [1007, 1044], [1017, 1062], [1016, 1100], [1016, 1092], [1015, 1074], [1025, 1066],
+    [1025, 1066], [1034, 1079], [1033, 1104], [1033, 1075], [1024, 1040], [1034, 1079], [1033, 1104], [1033, 1066]];
+  function cursorAt(time: number) {
+    const PX = 62, PAUSE = .35, HOLD = 6;
+    const total = CODE_ROWS.reduce((sum, [a, b]) => sum + (b - a) / PX + PAUSE, 0) + HOLD;
+    let x = time % total;
+    for (let i = 0; i < CODE_ROWS.length; i++) {
+      const [a, b] = CODE_ROWS[i], d = (b - a) / PX;
+      if (x < d) return [i, a + x * PX, 1];
+      x -= d;
+      if (x < PAUSE) return [i, b + 3, 1];
+      x -= PAUSE;
+    }
+    return [CODE_ROWS.length - 1, CODE_ROWS.at(-1)![1] + 3, (time * 1.1) % 1 < .6 ? 1 : 0];
+  }
+
   // Cada cuánto pasa de gris a lima y vuelve (s): la estatua y el soldador más rápido, las demás más calmadas
   const PERIOD = FX === 'liberty' || FX === 'weld' ? 9 : 14;
   const GLOW_FRAG = FX && `${COMMON}
     const vec2 LAMP = vec2(${LAMP ? LAMP.join(', ') : '0., 0.'});
+    const float CODE_Y = ${CODE_Y.toFixed(1)}, CODE_LINE = ${CODE_LINE}, CODE_N = ${CODE_ROWS.length}.;
     void main() {
       vec2 uv = off + vec2(gl_FragCoord.x / r.x, 1. - gl_FragCoord.y / r.y) * s;
       vec2 ip = uv * IMG;
@@ -349,108 +412,6 @@ const t = UI[getLangFromUrl(Astro.url)];
       gl_FragColor = vec4(c, 1.);
     }`;
 
-  // Software: lo que se ve en la pantalla de la laptop, un escritorio de Mac con el editor abierto y el dock. El código
-  // se escribe letra por letra, como lo haría alguien programando, con un mensaje para quien lo alcance a leer
-  const EN = document.documentElement.lang.startsWith('en');
-  const CODE = EN
-    ? ["import { project } from './your-company';", "import { Aurin } from '@aurin/team';", '',
-       'const team = new Aurin({ since: 1998 });', '', 'async function launch(product) {',
-       '  const design = await team.design(product);', '  const site = await team.build(design);',
-       '  return site.publish();', '}', '', '// TODO: book a call with Aurin', 'if (!project.ready) {',
-       '  team.hire(); // ;)', '}', 'export default launch(project);']
-    : ["import { proyecto } from './tu-empresa';", "import { Aurin } from '@aurin/equipo';", '',
-       'const equipo = new Aurin({ desde: 1998 });', '', 'async function lanzar(producto) {',
-       '  const diseno = await equipo.disenar(producto);', '  const sitio = await equipo.programar(diseno);',
-       '  return sitio.publicar();', '}', '', '// TODO: agendar llamada con Aurin', 'if (!proyecto.listo) {',
-       '  equipo.contratar(); // ;)', '}', 'export default lanzar(proyecto);'];
-  const CODE_X = 110, CODE_Y = 100, LINE = 32;
-
-  // Dibuja la pantalla en una textura de 1024 (se usan 1024×768, la proporción de la pantalla). Rojo = lo gris (fondo,
-  // ventana, dock), verde = el código (en lima). Devuelve el ancho de una letra
-  function codeTexture(gl: WebGLRenderingContext, loc: WebGLUniformLocation | null) {
-    const cv = document.createElement('canvas');
-    cv.width = cv.height = 1024;
-    const ctx = cv.getContext('2d')!;
-    const gray = (v: number) => `rgb(${v},0,0)`;
-    const box = (x: number, y: number, w: number, h: number, rad: number, v: number) => {
-      ctx.fillStyle = gray(v);
-      ctx.beginPath();
-      ctx.roundRect(x, y, w, h, rad);
-      ctx.fill();
-    };
-    ctx.fillStyle = gray(16);
-    ctx.fillRect(0, 0, 1024, 768);
-    // Barra de menús
-    ctx.fillStyle = gray(34);
-    ctx.fillRect(0, 0, 1024, 24);
-    ctx.font = '500 14px system-ui, sans-serif';
-    ctx.textBaseline = 'middle';
-    ctx.fillStyle = gray(120);
-    ctx.fillText(EN ? 'Code     File     Edit     Selection     View     Terminal' : 'Code     Archivo     Editar     Selección     Ver     Terminal', 20, 12);
-    // Ventana del editor: barra de título con los tres botones y la pestaña del archivo
-    box(36, 48, 952, 592, 12, 26);
-    box(36, 48, 952, 34, 12, 44);
-    for (const x of [58, 80, 102]) box(x - 6, 59, 12, 12, 6, 90);
-    ctx.fillStyle = gray(150);
-    ctx.fillText(EN ? 'launch.ts' : 'lanzar.ts', 140, 66);
-    // Números de renglón y el código
-    ctx.font = '600 20px ui-monospace, Menlo, Consolas, monospace';
-    CODE.forEach((line, i) => {
-      const y = CODE_Y + i * LINE + LINE / 2;
-      ctx.textAlign = 'right';
-      ctx.fillStyle = gray(70);
-      ctx.fillText(String(i + 1), CODE_X - 16, y);
-      ctx.textAlign = 'left';
-      // Comentarios más tenues; la llamada y la contratación, más brillantes
-      const g = /TODO|hire\(|contratar\(/.test(line) ? 255 : line.trim().startsWith('//') ? 120 : 190;
-      // El código se suma (verde) sin borrar el gris de la ventana (rojo): así lo que falta por escribir no se ve
-      ctx.globalCompositeOperation = 'lighter';
-      ctx.fillStyle = `rgb(0,${g},0)`;
-      ctx.fillText(line, CODE_X, y);
-      ctx.globalCompositeOperation = 'source-over';
-    });
-    // Dock, del tamaño del de una Mac y centrado abajo: barra translúcida, íconos con su figura, separador antes del
-    // último y el punto del editor abierto (en lima)
-    const N = 9, ICON = 34, GAP = 6, W = N * (ICON + GAP) + 14, X = (1024 - W) / 2;
-    box(X, 714, W, 46, 14, 38);
-    for (let i = 0; i < N; i++) {
-      const x = X + 10 + i * (ICON + GAP) + (i === N - 1 ? 6 : 0);
-      box(x, 720, ICON, ICON, 9, [92, 70, 118, 140, 80, 104, 64, 126, 74][i]);
-      box(x + 9, 729, ICON - 18, ICON - 18, i % 3 ? 4 : 8, [52, 120, 66, 90, 130, 60, 110, 70, 120][i]);
-    }
-    ctx.fillStyle = gray(70);
-    ctx.fillRect(X + 10 + (N - 1) * (ICON + GAP) - 1, 722, 1, 30);
-    ctx.globalCompositeOperation = 'lighter';
-    ctx.fillStyle = 'rgb(0,255,0)';
-    ctx.beginPath();
-    ctx.arc(X + 10 + 3 * (ICON + GAP) + ICON / 2, 757, 2, 0, 7);
-    ctx.fill();
-    gl.activeTexture(gl.TEXTURE1);
-    gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, cv);
-    gl.generateMipmap(gl.TEXTURE_2D);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
-    gl.uniform1i(loc, 1);
-    gl.activeTexture(gl.TEXTURE0);
-    return ctx.measureText('M').width;
-  }
-
-  // Dónde va el cursor a los `time` s: escribe a 14 letras por segundo (la sangría sale sola, como en el editor), se
-  // detiene un momento al final de cada renglón y, al terminar, espera 5 s y empieza otra vez. [columna, renglón]
-  function cursorAt(time: number) {
-    const CPS = 14, PAUSE = .4, HOLD = 5;
-    const total = CODE.reduce((sum, l) => sum + l.trim().length / CPS + PAUSE, 0) + HOLD;
-    let x = time % total;
-    for (let i = 0; i < CODE.length; i++) {
-      const indent = CODE[i].length - CODE[i].trimStart().length, d = CODE[i].trim().length / CPS;
-      if (x < d) return [indent + Math.floor(x * CPS), i];
-      x -= d;
-      if (x < PAUSE) return [CODE[i].length, i];
-      x -= PAUSE;
-    }
-    return [0, CODE.length];
-  }
-
   async function init() {
     const section = document.querySelector<HTMLElement>('[data-photo]');
     const photo = section?.querySelector<HTMLImageElement>('[data-photo]');
@@ -458,7 +419,7 @@ const t = UI[getLangFromUrl(Astro.url)];
     const canvas = section?.querySelector('canvas');
     const gl = gpuContext(canvas);
     if (!section || !photo || !scene || !canvas || !gl) return;
-    const u = await setup(gl, FRAG, ['img', 'code', 'cur', 'grid', 'r', 's', 'off', 'texel', 't', 'tgt']);
+    const u = await setup(gl, FRAG, ['img', 'r', 's', 'off', 'texel', 't', 'tgt', 'cur']);
     if (!u) return;
 
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -469,7 +430,8 @@ const t = UI[getLangFromUrl(Astro.url)];
 
     function draw(time: number) {
       gl!.uniform1f(u!.t, reduce ? 6 : time);
-      if (FX === 'night') gl!.uniform2f(u!.cur, ...((reduce ? [0, CODE.length] : cursorAt(time)) as [number, number]));
+      // Con reduced-motion, el código completo y sin cursor
+      if (FX === 'code') gl!.uniform3f(u!.cur, ...((reduce ? [CODE_ROWS.length, 0, 0] : cursorAt(time)) as [number, number, number]));
       gl!.drawArrays(gl!.TRIANGLES, 0, 3);
     }
 
@@ -522,7 +484,6 @@ const t = UI[getLangFromUrl(Astro.url)];
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, photo);
       gl.uniform2f(u.texel, 1 / photo.naturalWidth, 1 / photo.naturalHeight);
-      if (FX === 'night') gl.uniform4f(u.grid, CODE_X, CODE_Y, codeTexture(gl, u.code), LINE);
 
       resize();
       // También el texto: cuando carga la tipografía crece y baja el botón al que apunta el haz

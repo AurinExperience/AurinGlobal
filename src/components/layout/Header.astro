@@ -22,7 +22,6 @@ import HeartPulse from 'lucide-astro/HeartPulse';
 import LayoutGrid from 'lucide-astro/LayoutGrid';
 import Music from 'lucide-astro/Music';
 import PenTool from 'lucide-astro/PenTool';
-import Scale from 'lucide-astro/Scale';
 import Ticket from 'lucide-astro/Ticket';
 import Zap from 'lucide-astro/Zap';
 import Monitor from 'lucide-astro/Monitor';
@@ -54,7 +53,7 @@ const here = Astro.url.pathname;
 const ICONS: Record<string, typeof Monitor> = {
   'web-design': Monitor, 'web-development': Code, 'ux-ui-design': MousePointerClick, branding: Gem,
   fintech: CreditCard, healthcare: HeartPulse, education: GraduationCap, tourism: Ticket, energy: Zap, culture: Music,
-  software: Code, agencies: PenTool, legal: Scale, 'real-estate': Building2, nonprofits: HandHeart, remittances: ArrowRightLeft,
+  software: Code, agencies: PenTool, 'real-estate': Building2, nonprofits: HandHeart, remittances: ArrowRightLeft,
 };
 
 type Item = { href: string; label: string; sub?: string; icon: typeof Monitor };

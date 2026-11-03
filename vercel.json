@@ -6,7 +6,9 @@
       "has": [{ "type": "host", "value": "www.aurin.consulting" }],
       "destination": "https://aurin.consulting/:path*",
       "permanent": true
-    }
+    },
+    { "source": "/diseno-web-despachos-legales/", "destination": "/industrias/", "permanent": true },
+    { "source": "/en/law-firm-web-design/", "destination": "/en/industries/", "permanent": true }
   ],
   "headers": [
     {

@@ -28,7 +28,7 @@ export const uxUiDesign: Service = {
       },
       industries: {
         heading: 'Ya diseñamos apps y plataformas para',
-        items: ['Wallets y remesas', 'Logística', 'Educación', 'Legal', 'Turismo'],
+        items: ['Wallets y remesas', 'Logística', 'Educación', 'Turismo'],
       },
       approach: {
         heading: 'Decisiones de diseño con evidencia, *no con gustos.*',
@@ -112,7 +112,7 @@ export const uxUiDesign: Service = {
       },
       industries: {
         heading: 'We’ve designed apps and platforms for',
-        items: ['Wallets and remittances', 'Logistics', 'Education', 'Legal', 'Tourism'],
+        items: ['Wallets and remittances', 'Logistics', 'Education', 'Tourism'],
       },
       approach: {
         heading: 'Design decisions based on evidence, *not taste.*',

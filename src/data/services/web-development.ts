@@ -28,7 +28,7 @@ export const webDevelopment: Service = {
       },
       industries: {
         heading: 'Ya programamos sitios y sistemas para',
-        items: ['Educación', 'Turismo', 'Legal', 'Energía', 'Cultura'],
+        items: ['Educación', 'Turismo', 'Energía', 'Cultura'],
       },
       approach: {
         heading: 'Un sitio que hace el trabajo, *no uno que te da más trabajo.*',
@@ -113,7 +113,7 @@ export const webDevelopment: Service = {
       },
       industries: {
         heading: 'We’ve built websites and systems for',
-        items: ['Education', 'Tourism', 'Legal', 'Energy', 'Culture'],
+        items: ['Education', 'Tourism', 'Energy', 'Culture'],
       },
       approach: {
         heading: 'A website that does the work, *not one that makes more work.*',

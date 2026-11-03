@@ -49,7 +49,7 @@ export type ServiceId = 'web-design' | 'web-development' | 'ux-ui-design' | 'bra
 /** Fotos del hero de las páginas de industria (public/img/<id>.avif; medidas y animación en PHOTOS de HeroState). */
 export type IndustryPhoto =
   | 'ind-fintech' | 'ind-remittances' | 'ind-healthcare' | 'ind-education' | 'ind-tourism' | 'ind-energy'
-  | 'ind-culture' | 'ind-software' | 'ind-agencies' | 'ind-legal' | 'ind-real-estate' | 'ind-nonprofits';
+  | 'ind-culture' | 'ind-software' | 'ind-agencies' | 'ind-real-estate' | 'ind-nonprofits';
 
 export interface Service {
   id: string;

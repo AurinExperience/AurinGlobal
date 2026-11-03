@@ -15,7 +15,7 @@ export const newJersey: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Nueva Jersey | Desde 1998 | Aurin',
-        description: 'Páginas web, SEO y plataformas para empresas de Nueva Jersey, de Newark a Princeton. Precio cerrado y revisión por tu equipo antes de publicar. Llamada gratis.',
+        description: 'Páginas web y plataformas para empresas de Nueva Jersey, de Newark a Princeton. Precio cerrado y revisión por tu equipo antes de publicar. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Nueva Jersey',
@@ -25,9 +25,9 @@ export const newJersey: State = {
       },
       services: {
         heading: 'Tus clientes en Nueva Jersey *también están viendo proveedores de dos ciudades enormes.*',
-        intro: 'Empieza con un servicio o con todos; el equipo es el mismo. Lleva SEO desde el inicio y la IA acelera el trabajo, con un experto que revisa cada paso.',
+        intro: 'Empieza con un servicio o con todos; el equipo es el mismo. La IA acelera el trabajo, con un experto que revisa cada paso, y el SEO básico va en el precio.',
         items: {
-          'web-design': { text: 'Estás a minutos de Manhattan y de Filadelfia, y tu competencia también. Hacemos un sitio que te ponga al nivel de cualquiera de ellas, con tus zonas y servicios claros para ganar las búsquedas de cerca.', tags: 'Sitio de empresa · Páginas por zona · SEO' },
+          'web-design': { text: 'Estás a minutos de Manhattan y de Filadelfia, y tu competencia también. Hacemos un sitio que te ponga al nivel de cualquiera de ellas, con tus zonas y servicios claros para que el cliente de cerca te elija.', tags: 'Sitio de empresa · Páginas por zona · SEO básico' },
           'web-development': { text: 'Almacenes, pedidos, proveedores y documentos que viven en correos. Construimos portales y seguimiento conectados a tus sistemas para que tus clientes dejen de llamar a preguntar.', tags: 'Portales · Seguimiento · Conexiones' },
           'ux-ui-design': { text: 'Un sistema para profesionales de salud, ciencia o finanzas tiene que evitar errores, no solo verse bien. Observamos cómo trabaja la gente y simplificamos el flujo, con cada cambio aprobado por tu equipo.', tags: 'Observación de uso · Prototipos · Sistemas' },
           branding: { text: 'Quedar entre dos marcas de ciudad grande hace fácil pasar desapercibido. Definimos por qué elegirte a ti y lo llevamos a una identidad clara para clientes, candidatos y socios.', tags: 'Estrategia · Logo e identidad · Guía de uso' },
@@ -58,7 +58,7 @@ export const newJersey: State = {
           { name: 'Newark y Elizabeth', tags: 'Puerto · Logística · Aeropuerto', need: 'Agentes de carga, transportistas y almacenes que necesitan saber rápido si tienes capacidad en su ruta.', build: 'Servicios y rutas a la vista, cotización rápida y seguimiento en línea para clientes frecuentes.' },
           { name: 'Jersey City y Hoboken', tags: 'Finanzas · Tecnología · Servicios', need: 'Empresas financieras y de tecnología al otro lado del río, comparadas directamente con proveedores de Manhattan.', build: 'Una imagen al nivel de Nueva York, pruebas claras de experiencia y seguridad, y un sitio muy rápido.' },
           { name: 'Princeton y Edison', tags: 'Farmacéutica · Ciencia · Educación', need: 'Empresas farmacéuticas y de ciencia, con equipos de revisión interna que leen cada palabra antes de aprobarla.', build: 'Contenido bien ordenado, un flujo de revisión claro y un administrador para actualizar sin programar.' },
-          { name: 'Cherry Hill y el sur', tags: 'Salud · Servicios · Distribución', need: 'Empresas de la órbita de Filadelfia, con clientes en los dos estados y mucha oferta alrededor.', build: 'Páginas por zona y servicio, sin repetir texto, para aparecer en búsquedas de los dos lados del río.' },
+          { name: 'Cherry Hill y el sur', tags: 'Salud · Servicios · Distribución', need: 'Empresas de la órbita de Filadelfia, con clientes en los dos estados y mucha oferta alrededor.', build: 'Páginas por zona y servicio, sin repetir texto, para clientes de los dos lados del río.' },
           { name: 'Atlantic City y la costa', tags: 'Turismo · Hospitalidad · Eventos', need: 'Visitantes de fin de semana y de temporada que deciden el mismo día, casi siempre desde el teléfono.', build: 'Reservas simples, horarios al día y avisos rápidos cuando cambia el clima o el calendario.' },
         ],
       },
@@ -73,7 +73,7 @@ export const newJersey: State = {
           { question: '¿Dónde está su equipo?', answer: 'En Cuernavaca, México, desde 1998. Vamos una hora atrás de Nueva Jersey en invierno y dos en verano, y agendamos dentro de tu jornada. El mismo equipo hace todo el proyecto: lo conoces más abajo en esta página.' },
           { question: '¿Mi empresa debe cumplir con la ley de privacidad de Nueva Jersey?', answer: 'Puede que sí. La New Jersey Data Privacy Act está vigente desde enero de 2025 y alcanza a quien trata datos de 100,000 consumidores del estado, o de 25,000 si gana por venderlos, sin mínimo de ingresos. Dejamos formularios sobrios, aviso de privacidad y control de cookies. Tu asesor confirma si te aplica.' },
           { question: '¿Pueden trabajar con revisiones internas largas?', answer: 'Sí. En farmacéutica, salud o finanzas, los textos pasan por varias áreas. Lo planeamos desde la propuesta: quién revisa, en qué momento y por dónde. Firmamos confidencialidad desde el inicio, y nada se publica sin tu aprobación.' },
-          { question: '¿Ofrecen SEO para salir en búsquedas locales de Nueva Jersey?', answer: 'Sí. Hacemos páginas con contenido propio por servicio y zona, cuidamos velocidad y datos estructurados, y te ayudamos con tu perfil de Google Business. Es trabajo de meses y depende de tu competencia, así que no prometemos un lugar exacto.' },
+          { question: '¿Ofrecen SEO para salir en búsquedas locales de Nueva Jersey?', answer: 'Incluimos el SEO básico: títulos, descripciones, velocidad y datos estructurados. Las páginas con contenido propio por servicio y zona y la ayuda con tu perfil de Google Business son un trabajo más especializado que se cotiza aparte. Y podemos optimizar tu sitio para aparecer en buscadores con IA como ChatGPT. No prometemos un lugar exacto.' },
           ...commonFaq('es', 'payment', 'copy'),
         ],
       },
@@ -85,7 +85,7 @@ export const newJersey: State = {
     en: {
       seo: {
         title: 'Web Design Agency in New Jersey | See It First | Aurin',
-        description: 'Websites, SEO and platforms for New Jersey companies, from Newark to Princeton. A fixed price, and your team signs off before launch. Book a free call.',
+        description: 'Websites and platforms for New Jersey companies, from Newark to Princeton. A fixed price, and your team signs off before launch. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in New Jersey',
@@ -95,9 +95,9 @@ export const newJersey: State = {
       },
       services: {
         heading: 'Your New Jersey customers *are also looking at vendors in two huge cities.*',
-        intro: 'Start with one service or all of them; the team stays the same. SEO is built in, and AI speeds up the work, with an expert reviewing every step.',
+        intro: 'Start with one service or all of them; the team stays the same. AI speeds up the work, with an expert reviewing every step, and basic SEO is part of the price.',
         items: {
-          'web-design': { text: 'You’re minutes from Manhattan and Philadelphia, and so is your competition. We build a site that puts you on their level, with your service areas spelled out to win nearby searches.', tags: 'Company websites · Service area pages · SEO' },
+          'web-design': { text: 'You’re minutes from Manhattan and Philadelphia, and so is your competition. We build a site that puts you on their level, with your service areas spelled out so nearby customers pick you.', tags: 'Company websites · Service area pages · Basic SEO' },
           'web-development': { text: 'Warehouses, orders, suppliers and documents living in email threads. We build portals and tracking tied to your systems so customers stop calling to ask.', tags: 'Portals · Tracking · Integrations' },
           'ux-ui-design': { text: 'A system for health, science or finance professionals has to prevent errors, not just look good. We watch how people work and simplify the flow, with every change approved by your team.', tags: 'Usage research · Prototypes · Systems' },
           branding: { text: 'Sitting between two big-city brands makes it easy to go unnoticed. We define why people should choose you and carry it into a clear identity for customers, recruits and partners.', tags: 'Strategy · Logo and identity · Guidelines' },
@@ -128,7 +128,7 @@ export const newJersey: State = {
           { name: 'Newark and Elizabeth', tags: 'Port · Logistics · Airport', need: 'Freight forwarders, carriers and warehouses that need to know fast whether you have capacity on their route.', build: 'Services and routes up front, quick quotes and online tracking for repeat customers.' },
           { name: 'Jersey City and Hoboken', tags: 'Finance · Technology · Services', need: 'Finance and tech firms across the river, directly compared with vendors in Manhattan.', build: 'A look on par with New York, clear proof of experience and security, and a very fast site.' },
           { name: 'Princeton and Edison', tags: 'Pharma · Science · Education', need: 'Pharma and science companies, with internal review teams that read every word before approving it.', build: 'Well-organized content, a clear review flow, and an admin area for updates without a developer.' },
-          { name: 'Cherry Hill and South Jersey', tags: 'Healthcare · Services · Distribution', need: 'Companies in Philadelphia’s orbit, with customers in both states and plenty of options around them.', build: 'Pages by area and service, with no repeated text, to show up in searches on both sides of the river.' },
+          { name: 'Cherry Hill and South Jersey', tags: 'Healthcare · Services · Distribution', need: 'Companies in Philadelphia’s orbit, with customers in both states and plenty of options around them.', build: 'Pages by area and service, with no repeated text, for customers on both sides of the river.' },
           { name: 'Atlantic City and the Shore', tags: 'Tourism · Hospitality · Events', need: 'Weekend and seasonal visitors deciding the same day, nearly always on a phone.', build: 'Simple booking, up-to-date hours and quick notices when the weather or calendar changes.' },
         ],
       },
@@ -143,7 +143,7 @@ export const newJersey: State = {
           { question: 'Where is your team?', answer: 'In Cuernavaca, Mexico, since 1998. We’re one hour behind New Jersey in winter and two in summer, and we schedule inside your workday. One team handles the whole project, and you can meet them further down this page.' },
           { question: 'Does my company need to comply with the New Jersey privacy law?', answer: 'It might. The New Jersey Data Privacy Act has been in force since January 2025 and reaches anyone processing data on 100,000 state consumers, or 25,000 if they profit from selling it, with no revenue minimum. We set up modest forms, a privacy notice and cookie controls. Your advisor confirms whether it applies.' },
           { question: 'Can you work with long internal reviews?', answer: 'Yes. In pharma, healthcare or finance, copy passes through several departments. We plan for it in the proposal: who reviews, when and how. We sign confidentiality agreements from the start, and nothing goes live without your approval.' },
-          { question: 'Do you offer SEO for local searches in New Jersey?', answer: 'Yes. We build pages with original content by service and area, take care of speed and structured data, and help with your Google Business Profile. It takes months and depends on your competition, so we don’t promise an exact position.' },
+          { question: 'Do you offer SEO for local searches in New Jersey?', answer: 'We include basic SEO: titles, descriptions, speed and structured data. Pages with original content by service and area, plus help with your Google Business Profile, are a more specialized effort quoted separately. And we can optimize your site to appear in AI search like ChatGPT. We don’t promise an exact position.' },
           ...commonFaq('en', 'payment', 'copy'),
         ],
       },

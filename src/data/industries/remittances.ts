@@ -57,7 +57,7 @@ export const remittances: Service = {
           { icon: 'Users', title: 'Destinatarios y formas de cobro', text: 'A quién envías y cómo cobra (cuenta, efectivo o wallet), sin capturar todo cada vez.' },
           { icon: 'Route', title: 'Rastreo del envío', service: 'web-development', text: 'Estados claros y avisos en cada paso, para que nadie tenga que llamar a preguntar dónde va su dinero.' },
           { icon: 'Languages', title: 'Para quien envía y quien recibe', text: 'El que envía lee en inglés o en español; el que recibe, casi siempre en español. Escribimos para los dos, sin traducir palabra por palabra.' },
-          { icon: 'Monitor', title: 'Un sitio que compite con los grandes', service: 'web-design', text: 'Tarifas por país, cobertura y cómo enviar, con páginas por destino que la gente encuentra cuando busca a dónde mandar dinero.' },
+          { icon: 'Monitor', title: 'Un sitio que compite con los grandes', service: 'web-design', text: 'Tarifas por país, cobertura y cómo enviar, con una página clara por destino.' },
         ],
       },
       process: {
@@ -128,7 +128,7 @@ export const remittances: Service = {
           { icon: 'Users', title: 'Recipients and payout methods', text: 'Who you send to and how they get paid (bank account, cash pickup or wallet), without retyping everything.' },
           { icon: 'Route', title: 'Transfer tracking', service: 'web-development', text: 'Clear statuses and notifications at every step, so nobody has to call to ask where their money is.' },
           { icon: 'Languages', title: 'For senders and recipients', text: 'Senders read in English or Spanish; recipients, almost always in Spanish. We write for both, not word for word.' },
-          { icon: 'Monitor', title: 'A website that competes with the big names', service: 'web-design', text: 'Rates by country, coverage and how to send, with destination pages people find when they search where to send money.' },
+          { icon: 'Monitor', title: 'A website that competes with the big names', service: 'web-design', text: 'Rates by country, coverage and how to send, with a clear page for each destination.' },
         ],
       },
       process: {

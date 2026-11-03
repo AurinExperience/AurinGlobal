@@ -71,7 +71,7 @@ export const STATES_INDEX = {
     slug: 'estados',
     seo: {
       title: 'Diseño de páginas web por estado en Estados Unidos | Aurin',
-      description: 'Páginas web, SEO, UX/UI y branding para empresas en cada estado de Estados Unidos. Qué le conviene a tu sitio según dónde vendes. Llamada gratis.',
+      description: 'Páginas web, UX/UI y branding para empresas en cada estado de Estados Unidos. Qué le conviene a tu sitio según dónde vendes. Llamada gratis.',
     },
     title: 'Diseño de páginas web por estado',
     intro: 'Cada estado compra distinto. Entra al tuyo para ver qué le conviene a tu sitio según tu región. Si no aparece, escríbenos: trabajamos con empresas de todo Estados Unidos.',
@@ -80,7 +80,7 @@ export const STATES_INDEX = {
     slug: 'states',
     seo: {
       title: 'Web Design by State for US Businesses | Aurin',
-      description: 'Web design, SEO, UX/UI and branding for companies in each US state. See what your site needs based on where you sell. Book a free call.',
+      description: 'Web design, UX/UI and branding for companies in each US state. See what your site needs based on where you sell. Book a free call.',
     },
     title: 'Web design by state',
     intro: 'Every state buys differently. Open yours to see what your site needs in your region. Not listed? Write to us: we work with companies across the United States.',

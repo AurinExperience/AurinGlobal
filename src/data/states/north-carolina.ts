@@ -14,7 +14,7 @@ export const northCarolina: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Carolina del Norte | Aurin',
-        description: 'Páginas web, UX/UI y SEO para empresas de Carolina del Norte, de Charlotte a Raleigh y Durham. Precio cerrado y ves el diseño antes. Llamada gratis.',
+        description: 'Páginas web, UX/UI y branding para empresas de Carolina del Norte, de Charlotte a Raleigh y Durham. Precio cerrado y ves el diseño antes. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Carolina del Norte',
@@ -24,9 +24,9 @@ export const northCarolina: State = {
       },
       services: {
         heading: 'Si lo que vendes es difícil de explicar, *tu sitio tiene que hacerlo por ti.*',
-        intro: 'Hazlo por partes o todo junto, con un solo equipo en Aurin. Incluye SEO desde el inicio. La IA acelera el trabajo y un experto responde por el resultado.',
+        intro: 'Hazlo por partes o todo junto, con un solo equipo en Aurin. La IA acelera el trabajo, un experto responde por el resultado y el SEO básico viene incluido.',
         items: {
-          'web-design': { text: 'Tu equipo técnico escribió el sitio y solo otro especialista lo entiende. Lo reescribimos y lo diseñamos para quien firma el contrato, sin perder la precisión que tus ingenieros o científicos exigen.', tags: 'Sitio de empresa · Textos claros · SEO' },
+          'web-design': { text: 'Tu equipo técnico escribió el sitio y solo otro especialista lo entiende. Lo reescribimos y lo diseñamos para quien firma el contrato, sin perder la precisión que tus ingenieros o científicos exigen.', tags: 'Sitio de empresa · Textos claros · SEO básico' },
           'web-development': { text: 'Tu cliente quiere ver avances, documentos o estados de cuenta sin llamar. Hacemos portales privados con permisos por usuario, conectados a los sistemas que ya usas.', tags: 'Portales privados · Permisos · Conexiones' },
           'ux-ui-design': { text: 'Una plataforma médica, financiera o de datos no perdona confusiones. Probamos con gente real dónde se equivoca y simplificamos esos pasos, cuidando lo que no se puede quitar.', tags: 'Pruebas con usuarios · Prototipos · Plataformas' },
           branding: { text: 'Pasar del laboratorio, del taller o de la región a un mercado nacional exige otra voz. Definimos tu lugar frente a la competencia y lo llevamos a logo, tono y materiales.', tags: 'Estrategia · Logo e identidad · Guía de uso' },
@@ -71,7 +71,7 @@ export const northCarolina: State = {
           { question: '¿Pueden explicar un producto científico o muy técnico?', answer: 'Es de lo que mejor hacemos. Hablamos con quien lo creó, traducimos el tema a lo que le importa a tu comprador y te pasamos los textos para que tu equipo revise la precisión. Nada se publica sin esa revisión.' },
           { question: '¿Firman acuerdo de confidencialidad?', answer: 'Sí, desde el inicio, si tu proyecto incluye datos o tecnología que aún no son públicos. Y la información confidencial no pasa por herramientas de IA.' },
           { question: '¿En qué horario trabajan?', answer: 'Una hora atrás de Carolina del Norte en invierno y dos en verano. Las reuniones se agendan sin problema dentro de tu jornada, y entre una y otra avanzamos con revisiones que puedes ver a tu ritmo.' },
-          { question: '¿Ofrecen SEO para empresas especializadas en Carolina del Norte?', answer: 'Sí, y en temas especializados conviene mucho: hay menos competencia y quien busca sabe lo que quiere. Armamos páginas para cada problema que resuelves, escritas como lo busca tu cliente y no como lo llama tu laboratorio.' },
+          { question: '¿Ofrecen SEO para empresas especializadas en Carolina del Norte?', answer: 'Sí, el SEO básico ya viene con el sitio: títulos, descripciones, velocidad y datos estructurados. Si quieres páginas para cada problema que resuelves, escritas como lo busca tu cliente y no como lo llama tu laboratorio, también lo hacemos, como trabajo especializado que se cotiza aparte. Podemos además optimizar el sitio para que las herramientas de IA entiendan y citen bien lo que haces.' },
           { question: '¿Hacen diseño web en Charlotte, Raleigh y Durham?', answer: 'Sí, y en Greensboro, Winston-Salem y Asheville. Trabajamos en línea con todo el estado, y es igual de sencillo para un banco del centro de Charlotte que para una empresa de ciencia en el Research Triangle.' },
           { question: '¿Hacen páginas web para pequeñas empresas en Carolina del Norte?', answer: 'Sí, también para empresas nuevas de tecnología o ciencia con poco equipo. Te ayudamos a decir con claridad qué haces, con un sitio del tamaño que hoy te conviene y un precio que conoces desde el inicio.' },
           ...commonFaq('es', 'copy', 'time'),
@@ -85,7 +85,7 @@ export const northCarolina: State = {
     en: {
       seo: {
         title: 'Web Design Agency in North Carolina | Aurin',
-        description: 'Web design, UX/UI and SEO for North Carolina companies, from Charlotte to the Research Triangle. A fixed price and the design before the build. Free call.',
+        description: 'Web design, UX/UI and branding for North Carolina companies, from Charlotte to the Research Triangle. A fixed price and the design before the build. Free call.',
       },
       hero: {
         titleLead: 'Web design agency in North Carolina',
@@ -95,9 +95,9 @@ export const northCarolina: State = {
       },
       services: {
         heading: 'If what you sell is hard to explain, *your website has to do it for you.*',
-        intro: 'Take it in pieces or all at once, with one team at Aurin. SEO is included from the start. AI speeds up the work and an expert answers for the result.',
+        intro: 'Take it in pieces or all at once, with one team at Aurin. AI speeds up the work, an expert answers for the result and basic SEO comes included.',
         items: {
-          'web-design': { text: 'Your technical team wrote the site and only another specialist understands it. We rewrite and redesign it for the person signing the contract, keeping the accuracy your engineers or scientists demand.', tags: 'Company websites · Clear copy · SEO' },
+          'web-design': { text: 'Your technical team wrote the site and only another specialist understands it. We rewrite and redesign it for the person signing the contract, keeping the accuracy your engineers or scientists demand.', tags: 'Company websites · Clear copy · Basic SEO' },
           'web-development': { text: 'Your clients want to see progress, documents or statements without calling. We build private portals with per-user permissions, connected to the systems you already use.', tags: 'Private portals · Permissions · Integrations' },
           'ux-ui-design': { text: 'A medical, financial or data platform doesn’t forgive confusion. We test with real people to see where they slip, then simplify those steps while protecting what can’t be removed.', tags: 'User testing · Prototypes · Platforms' },
           branding: { text: 'Going from the lab, the workshop or the region to a national market takes a different voice. We define your place against the competition and carry it through logo, tone and materials.', tags: 'Strategy · Logo and identity · Guidelines' },
@@ -142,7 +142,7 @@ export const northCarolina: State = {
           { question: 'Can you explain a scientific or highly technical product?', answer: 'It’s one of the things we do best. We talk with the people who created it, translate it into what matters to your buyer, and hand the copy to your team to check accuracy. Nothing goes live without that review.' },
           { question: 'Do you sign NDAs?', answer: 'Yes, from the start, if your project involves data or technology that isn’t public yet. And confidential information doesn’t go through AI tools.' },
           { question: 'What hours do you work?', answer: 'One hour behind North Carolina in winter and two in summer. Meetings fit easily into your workday, and between them we move forward with reviews you can look at on your own schedule.' },
-          { question: 'Do you offer SEO for specialized companies in North Carolina?', answer: 'Yes, and specialized fields are where it pays off: less competition, and searchers know what they want. We build pages for each problem you solve, written the way your customer searches for it rather than the way your lab names it.' },
+          { question: 'Do you offer SEO for specialized companies in North Carolina?', answer: 'Yes, basic SEO comes with the site: titles, descriptions, speed and structured data. If you want pages for each problem you solve, written the way your customer searches for it rather than the way your lab names it, we do that too, as specialized work quoted separately. We can also optimize the site so AI tools understand and cite what you do accurately.' },
           { question: 'Do you do web design in Charlotte, Raleigh and Durham?', answer: 'Yes, and in Greensboro, Winston-Salem and Asheville. We work online across the state, and it’s just as simple for a bank in Uptown Charlotte as for a science company in the Research Triangle.' },
           { question: 'Do you build websites for small businesses in North Carolina?', answer: 'Yes, including young tech or science companies with a small team. We help you say clearly what you do, on a site sized for where you are today, at a price you know from the start.' },
           ...commonFaq('en', 'copy', 'time'),

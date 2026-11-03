@@ -15,7 +15,7 @@ export const newYork: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Nueva York | Precio cerrado | Aurin',
-        description: 'Agencia de diseño web, SEO y UX/UI para empresas de Nueva York, de Manhattan a Buffalo. Trato directo con el equipo y precio cerrado. Llamada gratis.',
+        description: 'Agencia de diseño web, UX/UI y branding para empresas de Nueva York, de Manhattan a Buffalo. Trato directo con el equipo y precio cerrado. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Nueva York',
@@ -25,9 +25,9 @@ export const newYork: State = {
       },
       services: {
         heading: 'Diseño web en Nueva York para quien *no puede verse como uno más.*',
-        intro: 'Un servicio o todos, con un solo equipo y sin intermediarios. Hay SEO desde el inicio y la IA acelera el trabajo, con un experto respondiendo por cada entrega.',
+        intro: 'Un servicio o todos, con un solo equipo y sin intermediarios. La IA acelera el trabajo, con un experto respondiendo por cada entrega, y el SEO básico ya va incluido.',
         items: {
-          'web-design': { text: 'Tu cliente vio ya diez sitios esta semana, varios hechos por agencias famosas. Hacemos uno con una idea clara y un diseño propio, sin plantillas, para que te recuerde al llegar al once.', tags: 'Sitio corporativo · Diseño a la medida · SEO' },
+          'web-design': { text: 'Tu cliente vio ya diez sitios esta semana, varios hechos por agencias famosas. Hacemos uno con una idea clara y un diseño propio, sin plantillas, para que te recuerde al llegar al once.', tags: 'Sitio corporativo · Diseño a la medida · SEO básico' },
           'web-development': { text: 'Portales para clientes, cuentas con permisos, datos que no pueden fallar. Construimos lo que tu operación necesita y lo probamos a fondo antes de que nadie de fuera lo vea.', tags: 'Portales · Sistemas a la medida · Conexiones' },
           'ux-ui-design': { text: 'En finanzas, medios o salud, un usuario confundido cuesta caro y se va con un competidor en un clic. Investigamos, probamos y rediseñamos lo que frena a tu producto.', tags: 'Investigación · Prototipos · Productos digitales' },
           branding: { text: 'En una ciudad donde todos dicen ser los primeros, una marca sin postura se pierde. Definimos qué defiendes y lo llevamos a un sistema visual que aguante campañas, oficinas y sitio.', tags: 'Estrategia · Sistema visual · Guía de uso' },
@@ -57,9 +57,9 @@ export const newYork: State = {
         items: [
           { name: 'Manhattan', tags: 'Finanzas · Medios · Servicios', need: 'Compradores que ven agencias todo el tiempo, juzgan rápido y piden pruebas de que entiendes su giro.', build: 'Una idea clara en la primera pantalla, casos con nombre y un sitio impecable también por dentro: rápido y sin errores.' },
           { name: 'Brooklyn y Queens', tags: 'Marcas · Comercio · Tecnología', need: 'Marcas jóvenes, comercios y empresas de tecnología con clientes que valoran identidad y detalle.', build: 'Una marca con carácter, buenas fotos propias y compra o reserva sin fricción en el teléfono.' },
-          { name: 'Long Island y Westchester', tags: 'Salud · Servicios · Empresa familiar', need: 'Empresas de servicios y salud con clientes de toda la región, que buscan a alguien cercano y confiable.', build: 'Zonas que atiendes, reseñas y equipo a la vista, con páginas por servicio para ganar búsquedas locales.' },
+          { name: 'Long Island y Westchester', tags: 'Salud · Servicios · Empresa familiar', need: 'Empresas de servicios y salud con clientes de toda la región, que buscan a alguien cercano y confiable.', build: 'Zonas que atiendes, reseñas y equipo a la vista, con una página clara por cada servicio.' },
           { name: 'Albany y el valle del Hudson', tags: 'Gobierno · Semiconductores · Educación', need: 'Proveedores del gobierno estatal, tecnología avanzada e instituciones educativas, con compradores muy formales.', build: 'Capacidades y requisitos claros, sitio accesible y textos sobrios que un comité pueda evaluar.' },
-          { name: 'Rochester, Buffalo y Syracuse', tags: 'Óptica · Manufactura · Comercio con Canadá', need: 'Fabricantes y empresas de tecnología óptica, con clientes en otros estados y al otro lado de la frontera.', build: 'Fichas técnicas ordenadas, solicitud de cotización y SEO por producto para que te encuentren fuera de la región.' },
+          { name: 'Rochester, Buffalo y Syracuse', tags: 'Óptica · Manufactura · Comercio con Canadá', need: 'Fabricantes y empresas de tecnología óptica, con clientes en otros estados y al otro lado de la frontera.', build: 'Fichas técnicas ordenadas, solicitud de cotización y páginas de producto que un comprador de fuera pueda revisar solo.' },
         ],
       },
       process: PROCESS.es,
@@ -73,7 +73,7 @@ export const newYork: State = {
           { question: '¿Dónde está su equipo?', answer: 'En Cuernavaca, México, desde 1998. Lo decimos desde el principio: no tenemos oficina en Nueva York ni vamos a simularla. A cambio, hablas directamente con quien diseña y programa, y puedes conocerlos más abajo en esta página.' },
           { question: '¿Qué tienen frente a una agencia de Manhattan?', answer: 'Si necesitas reuniones presenciales o una marca de agencia famosa en tu presentación, ellos te convienen más. Si quieres ver el diseño antes de programar, un precio cerrado y trabajar sin capas de cuentas con la gente que hace el proyecto, compáranos.' },
           { question: '¿Trabajan en horario de Nueva York?', answer: 'Las reuniones se agendan dentro de tu jornada. Vamos una hora atrás de Nueva York en invierno y dos en verano, y solemos reunirnos entre media mañana y la tarde de tu lado.' },
-          { question: '¿Ofrecen SEO para empresas en Nueva York?', answer: 'Sí. En un mercado tan peleado no conviene atacar solo «agencia en Nueva York»: armamos páginas para búsquedas más específicas, donde quien llega ya sabe lo que quiere, y cuidamos velocidad y datos estructurados para aparecer también en respuestas de IA. Nadie serio promete el primer lugar.' },
+          { question: '¿Ofrecen SEO para empresas en Nueva York?', answer: 'Sí, en su versión básica: títulos, descripciones, velocidad y datos estructurados van incluidos. En un mercado tan peleado suele hacer falta más, como páginas para búsquedas específicas y seguimiento, y eso se cotiza aparte. También optimizamos sitios para que aparezcan en buscadores con IA. Nadie serio promete el primer lugar.' },
           { question: '¿Qué pide la ley de Nueva York sobre datos de clientes?', answer: 'La ley SHIELD pide a quien maneja datos de residentes de Nueva York protegerlos con medidas razonables. En el sitio nos toca lo nuestro: formularios que piden solo lo necesario, conexión cifrada y accesos controlados. Tu asesor confirma lo que aplique a tu empresa.' },
           ...commonFaq('es', 'redesign', 'copy'),
         ],
@@ -86,7 +86,7 @@ export const newYork: State = {
     en: {
       seo: {
         title: 'Web Design Agency in New York | Fixed Price | Aurin',
-        description: 'Web design, SEO and UX/UI for New York companies, from Manhattan to Buffalo. Work directly with the people doing the work, at a fixed price. Book a free call.',
+        description: 'Web design and UX/UI for New York companies, from Manhattan to Buffalo. Work directly with the people doing the work, at a fixed price. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in New York',
@@ -96,9 +96,9 @@ export const newYork: State = {
       },
       services: {
         heading: 'New York web design for companies *that can’t look like everyone else.*',
-        intro: 'One service or all of them, with one team and no middlemen. SEO is in from the start, and AI speeds up the work, with an expert answering for every delivery.',
+        intro: 'One service or all of them, with one team and no middlemen. AI speeds up the work, with an expert answering for every delivery, and the SEO basics are already included.',
         items: {
-          'web-design': { text: 'Your customer has seen ten sites this week, several from famous agencies. We build one with a clear idea and an original design, no templates, so they still remember you at number eleven.', tags: 'Corporate websites · Custom design · SEO' },
+          'web-design': { text: 'Your customer has seen ten sites this week, several from famous agencies. We build one with a clear idea and an original design, no templates, so they still remember you at number eleven.', tags: 'Corporate websites · Custom design · Basic SEO' },
           'web-development': { text: 'Client portals, accounts with permissions, data that can’t fail. We build what your operation needs and test it hard before anyone outside sees it.', tags: 'Portals · Custom systems · Integrations' },
           'ux-ui-design': { text: 'In finance, media or healthcare, a confused user is expensive and one click from a competitor. We research, test and redesign what’s holding your product back.', tags: 'Research · Prototypes · Digital products' },
           branding: { text: 'In a city where everyone claims to be first, a brand with no point of view disappears. We define what you stand for and turn it into a visual system that survives campaigns, offices and the site.', tags: 'Strategy · Visual system · Guidelines' },
@@ -128,9 +128,9 @@ export const newYork: State = {
         items: [
           { name: 'Manhattan', tags: 'Finance · Media · Services', need: 'Buyers who see agencies constantly, judge fast and want proof you understand their business.', build: 'A clear idea on the first screen, named case studies and a site that’s flawless under the hood too: fast and error-free.' },
           { name: 'Brooklyn and Queens', tags: 'Brands · Retail · Technology', need: 'Young brands, shops and tech companies whose customers care about identity and detail.', build: 'A brand with character, good original photos, and buying or booking with no friction on a phone.' },
-          { name: 'Long Island and Westchester', tags: 'Healthcare · Services · Family firms', need: 'Service and healthcare companies with clients across the region, who want someone close and reliable.', build: 'Service areas, reviews and team up front, with a page per service to win local searches.' },
+          { name: 'Long Island and Westchester', tags: 'Healthcare · Services · Family firms', need: 'Service and healthcare companies with clients across the region, who want someone close and reliable.', build: 'Service areas, reviews and team up front, with a clear page for each service.' },
           { name: 'Albany and the Hudson Valley', tags: 'Government · Semiconductors · Education', need: 'State government vendors, advanced technology and educational institutions, with very formal buyers.', build: 'Clear capabilities and requirements, an accessible site and sober copy a committee can evaluate.' },
-          { name: 'Rochester, Buffalo and Syracuse', tags: 'Optics · Manufacturing · Canada trade', need: 'Manufacturers and optical technology firms with customers in other states and across the border.', build: 'Organized spec sheets, quote requests and SEO by product so you’re found outside the region.' },
+          { name: 'Rochester, Buffalo and Syracuse', tags: 'Optics · Manufacturing · Canada trade', need: 'Manufacturers and optical technology firms with customers in other states and across the border.', build: 'Organized spec sheets, quote requests and product pages an out-of-region buyer can review alone.' },
         ],
       },
       process: PROCESS.en,
@@ -144,7 +144,7 @@ export const newYork: State = {
           { question: 'Where is your team?', answer: 'In Cuernavaca, Mexico, since 1998. We say so up front: we have no New York office and won’t pretend otherwise. In exchange, you talk directly to the people who design and build, and you can meet them further down this page.' },
           { question: 'What do you offer compared with a Manhattan agency?', answer: 'If you need in-person meetings or a famous agency name in your deck, they’re the better fit. If you want to see the design before the build, a fixed price and no account layers between you and the people doing the work, compare us.' },
           { question: 'Do you work New York hours?', answer: 'Meetings get scheduled within your workday. We’re one hour behind New York in winter and two in summer, and we usually meet from mid-morning through the afternoon on your side.' },
-          { question: 'Do you offer SEO for New York companies?', answer: 'Yes. In a market this crowded it doesn’t pay to chase only “agency in New York”: we build pages for more specific searches, where visitors already know what they want, and we take care of speed and structured data so you also show up in AI answers. No honest agency promises the top spot.' },
+          { question: 'Do you offer SEO for New York companies?', answer: 'Yes, at a basic level: titles, descriptions, speed and structured data are included. In a market this crowded you’ll often need more, like pages for specific searches and ongoing tracking, and that’s quoted separately. We also optimize sites to appear in AI search. No honest agency promises the top spot.' },
           { question: 'What does New York law require for customer data?', answer: 'The SHIELD Act asks anyone handling New York residents’ data to protect it with reasonable safeguards. On the site, we handle our part: forms that ask only for what’s needed, encrypted connections and controlled access. Your advisor confirms what applies to your company.' },
           ...commonFaq('en', 'redesign', 'copy'),
         ],

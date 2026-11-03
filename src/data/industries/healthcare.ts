@@ -52,7 +52,7 @@ export const healthcare: Service = {
         heading: 'Lo que hacemos para *tu clínica o empresa de salud.*',
         intro: 'Puedes empezar por el sitio, el portal de pacientes o la marca, y sumar lo demás después. La propuesta dice qué incluye, cuánto cuesta y cuándo se entrega.',
         items: [
-          { icon: 'Monitor', title: 'Un sitio que explica tus servicios', service: 'web-design', text: 'Qué atiendes, quién te atiende y cómo llegar, con páginas por servicio y por médico que los pacientes encuentran en Google.' },
+          { icon: 'Monitor', title: 'Un sitio que explica tus servicios', service: 'web-design', text: 'Qué atiendes, quién te atiende y cómo llegar, con una página clara por servicio y por médico.' },
           { icon: 'CalendarCheck', title: 'Citas en línea', service: 'ux-ui-design', text: 'Un camino corto para pedir cita, conectado con tu agenda o tu sistema, con recordatorios y confirmación.' },
           { icon: 'Users', title: 'Portal de pacientes', service: 'web-development', text: 'Resultados, recetas, pagos y mensajes en un solo lugar, fácil de usar para pacientes de todas las edades.' },
           { icon: 'Gem', title: 'Una marca que da confianza', service: 'branding', text: 'Nombre, logo e imagen para tu clínica o empresa de salud, pensados para tu sitio, tus consultorios y tus redes.' },
@@ -124,7 +124,7 @@ export const healthcare: Service = {
         heading: 'What we do for *your clinic or healthcare company.*',
         intro: 'Start with the website, the patient portal or the brand, and add the rest later. The proposal says what’s included, what it costs and when it’s delivered.',
         items: [
-          { icon: 'Monitor', title: 'A website that explains your services', service: 'web-design', text: 'What you treat, who treats it and how to get there, with pages for each service and each doctor that patients find on Google.' },
+          { icon: 'Monitor', title: 'A website that explains your services', service: 'web-design', text: 'What you treat, who treats it and how to get there, with a clear page for each service and each doctor.' },
           { icon: 'CalendarCheck', title: 'Online booking', service: 'ux-ui-design', text: 'A short path to book, connected to your calendar or your system, with reminders and confirmation.' },
           { icon: 'Users', title: 'Patient portal', service: 'web-development', text: 'Results, prescriptions, payments and messages in one place, easy to use for patients of every age.' },
           { icon: 'Gem', title: 'A brand patients trust', service: 'branding', text: 'Name, logo and visual identity for your clinic or healthcare company, made for your website, your offices and social media.' },

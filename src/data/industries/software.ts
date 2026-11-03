@@ -52,7 +52,7 @@ export const software: Service = {
         heading: 'Diseño, desarrollo, UX/UI y marca *para tu empresa de software.*',
         intro: 'Un solo equipo para el sitio, el producto y la marca: no tienes que coordinar a tres proveedores. Puedes empezar por lo que más urge; trabajamos al ritmo de tus sprints, con precio cerrado y fechas.',
         items: [
-          { icon: 'Monitor', title: 'Diseño web para empresas de software', service: 'web-design', text: 'Un sitio que explica en cinco segundos qué resuelves y para quién, con precios claros y páginas por caso de uso que tus compradores encuentran en Google.' },
+          { icon: 'Monitor', title: 'Diseño web para empresas de software', service: 'web-design', text: 'Un sitio que explica en cinco segundos qué resuelves y para quién, con precios claros y una página por caso de uso.' },
           { icon: 'Code', title: 'Desarrollo web: sitio y producto', service: 'web-development', text: 'Programamos el sitio para que tu equipo de marketing lo edite sin pedirle nada a desarrollo, y también partes del producto: paneles, portales, pagos y conexiones con tu CRM.' },
           { icon: 'LayoutDashboard', title: 'Diseño UX/UI del producto', service: 'ux-ui-design', text: 'Registro, primera sesión, tableros y flujos, probados con usuarios reales antes de que tu equipo invierta horas de desarrollo.' },
           { icon: 'Gem', title: 'Branding para software', service: 'branding', text: 'Nombre, logo e identidad para que tu producto no se vea igual a todos los demás, pensados para el sitio, el producto y tus presentaciones de venta.' },
@@ -124,7 +124,7 @@ export const software: Service = {
         heading: 'Design, development, UX/UI and branding *for your software company.*',
         intro: 'One team for the website, the product and the brand: no juggling three vendors. Start with what’s most urgent; we work to your sprint cadence, with a fixed price and dates.',
         items: [
-          { icon: 'Monitor', title: 'Website design for software companies', service: 'web-design', text: 'A website that explains in five seconds what you solve and for whom, with clear pricing and use-case pages your buyers find on Google.' },
+          { icon: 'Monitor', title: 'Website design for software companies', service: 'web-design', text: 'A website that explains in five seconds what you solve and for whom, with clear pricing and a page for each use case.' },
           { icon: 'Code', title: 'Web development: website and product', service: 'web-development', text: 'We build the website so your marketing team can edit it without asking engineering, and parts of the product too: dashboards, portals, payments and CRM connections.' },
           { icon: 'LayoutDashboard', title: 'Product UX/UI design', service: 'ux-ui-design', text: 'Sign-up, first session, dashboards and flows, tested with real users before your team spends development hours.' },
           { icon: 'Gem', title: 'Branding for software', service: 'branding', text: 'Name, logo and identity so your product doesn’t look like every other one, made for the website, the product and your sales decks.' },

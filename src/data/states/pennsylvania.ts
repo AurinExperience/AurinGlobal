@@ -14,7 +14,7 @@ export const pennsylvania: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Pensilvania | Desde 1998 | Aurin',
-        description: 'Páginas web, rediseño y SEO para empresas de Pensilvania, de Filadelfia a Pittsburgh. Moderniza tu sitio sin perder lo que ya funciona. Llamada gratis.',
+        description: 'Páginas web, rediseño y branding para empresas de Pensilvania, de Filadelfia a Pittsburgh. Moderniza tu sitio sin perder lo que ya funciona. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Pensilvania',
@@ -24,9 +24,9 @@ export const pennsylvania: State = {
       },
       services: {
         heading: 'Décadas de buen trabajo en Pensilvania *merecen un sitio que lo cuente.*',
-        intro: 'Empieza por lo más urgente; el mismo equipo sigue con lo demás. Hay SEO desde el inicio y la IA nos ayuda a ir más rápido, con un experto a cargo.',
+        intro: 'Empieza por lo más urgente; el mismo equipo sigue con lo demás. La IA nos ayuda a ir más rápido, con un experto a cargo, y dejamos listo el SEO básico.',
         items: {
-          'web-design': { text: 'Tu sitio se hizo cuando el negocio era otro y hoy los clientes jóvenes te descartan sin conocerte. Lo renovamos conservando lo que ya te trae visitas, tu historia y las páginas que Google conoce.', tags: 'Rediseño · Sitio de empresa · SEO' },
+          'web-design': { text: 'Tu sitio se hizo cuando el negocio era otro y hoy los clientes jóvenes te descartan sin conocerte. Lo renovamos conservando lo que ya te trae visitas, tu historia y las páginas que Google conoce.', tags: 'Rediseño · Sitio de empresa · SEO básico' },
           'web-development': { text: 'Un sistema a la medida de hace años que solo una persona sabe mover. Revisamos qué rescatar y lo llevamos a una plataforma actual, sin detener tu operación mientras tanto.', tags: 'Modernización · Portales · Conexiones' },
           'ux-ui-design': { text: 'Hospitales, universidades y empresas grandes acumulan pantallas que nadie diseñó completas. Las ordenamos a partir de lo que la gente intenta hacer, con pruebas antes de cambiar nada en serio.', tags: 'Pruebas con usuarios · Prototipos · Sistemas' },
           branding: { text: 'Pasar la empresa a la siguiente generación o comprar a un competidor pide renovar la marca sin que parezca otra compañía. Cuidamos lo que tus clientes reconocen y cambiamos lo que estorba.', tags: 'Estrategia · Logo e identidad · Guía de uso' },
@@ -58,7 +58,7 @@ export const pennsylvania: State = {
           { name: 'Pittsburgh', tags: 'Robótica · Salud · Energía', need: 'Empresas de robótica y tecnología nacidas de sus universidades, junto a salud y a una base industrial que se reinventó.', build: 'Productos explicados para quien no es ingeniero, con videos y demostraciones. Un portal si tus clientes ya lo piden.' },
           { name: 'Lehigh Valley', tags: 'Almacenes · Distribución · Manufactura', need: 'Operadores logísticos y fabricantes de Allentown y Bethlehem, a un día de camión de buena parte del noreste.', build: 'Cobertura, instalaciones y tiempos visibles, con cotización simple y seguimiento en línea para clientes.' },
           { name: 'Harrisburg y Lancaster', tags: 'Gobierno · Agroindustria · Empresa familiar', need: 'Proveedores del gobierno estatal y empresas familiares que dependieron por décadas de la recomendación.', build: 'Un sitio que respalde esa recomendación, con su historia y su gente, sin perder el trato cercano que los distingue.' },
-          { name: 'Erie y Scranton', tags: 'Manufactura · Salud · Servicios', need: 'Fabricantes y servicios regionales que quieren venderle a clientes fuera de su ciudad y competir con empresas más grandes.', build: 'Capacidades claras y SEO por tipo de producto o servicio, para aparecer ante quien todavía no te conoce.' },
+          { name: 'Erie y Scranton', tags: 'Manufactura · Salud · Servicios', need: 'Fabricantes y servicios regionales que quieren venderle a clientes fuera de su ciudad y competir con empresas más grandes.', build: 'Capacidades claras y una página por tipo de producto o servicio, para convencer a quien todavía no te conoce.' },
         ],
       },
       process: PROCESS.es,
@@ -71,7 +71,7 @@ export const pennsylvania: State = {
           { question: 'Mi empresa tiene décadas. ¿Se puede modernizar sin perder su historia?', answer: 'Sí, y esa historia es una ventaja que tus competidores nuevos no tienen. Identificamos lo que tus clientes reconocen y confían, lo conservamos y cambiamos lo que hoy te hace parecer anticuado.' },
           { question: 'Mi sitio viejo aún trae clientes. ¿Lo pongo en riesgo?', answer: 'Por eso medimos antes de cambiar nada: vemos qué páginas y búsquedas te traen clientes, las mantenemos en el sitio nuevo y dejamos redirecciones. Tu equipo puede probarlo todo antes de publicar.' },
           { question: '¿Cuál es su horario de reuniones?', answer: 'Dentro de tu jornada: vamos una hora atrás de Pensilvania en invierno y dos en verano, así que preferimos media mañana o tarde.' },
-          { question: '¿Ofrecen SEO para aparecer en ciudades de Pensilvania donde no tengo oficina?', answer: 'Sí, con páginas honestas sobre el servicio que das ahí, sin direcciones inventadas. Tomará tiempo y depende de tu competencia, pero es la forma correcta de llegar más allá de tu ciudad en Google.' },
+          { question: '¿Ofrecen SEO para aparecer en ciudades de Pensilvania donde no tengo oficina?', answer: 'Tu sitio incluye el SEO básico, pero llegar a otras ciudades pide un trabajo más especializado que se cotiza aparte: páginas honestas sobre el servicio que das ahí, sin direcciones inventadas. Lo mismo si quieres aparecer en buscadores con IA: también optimizamos el sitio para eso. Toma tiempo y depende de tu competencia.' },
           { question: '¿Hacen diseño web en Filadelfia y Pittsburgh?', answer: 'Sí, y en Allentown, Harrisburg, Lancaster y Erie. Trabajamos en línea, así que puedes empezar con una llamada y ver el rediseño en un prototipo, estés en el centro de Filadelfia o en una planta del oeste del estado.' },
           { question: '¿Hacen páginas web para pequeñas empresas en Pensilvania?', answer: 'Sí, y muchas ya tienen un sitio viejo y una clientela fiel. Conservamos lo que funciona, renovamos lo que ya no ayuda y te decimos el precio completo antes de empezar.' },
           ...commonFaq('es', 'payment', 'time'),
@@ -85,7 +85,7 @@ export const pennsylvania: State = {
     en: {
       seo: {
         title: 'Web Design Agency in Pennsylvania | Since 1998 | Aurin',
-        description: 'Web design, redesigns and SEO for Pennsylvania companies, from Philadelphia to Pittsburgh. Modernize your site and keep what works. Book a free call.',
+        description: 'Web design, redesigns and branding for Pennsylvania companies, from Philadelphia to Pittsburgh. Modernize your site and keep what works. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in Pennsylvania',
@@ -95,9 +95,9 @@ export const pennsylvania: State = {
       },
       services: {
         heading: 'Decades of good work in Pennsylvania *deserve a website that says so.*',
-        intro: 'Start with what’s most urgent; the same team carries on with the rest. SEO is in from the start, and AI helps us go faster, with an expert in charge.',
+        intro: 'Start with what’s most urgent; the same team carries on with the rest. AI helps us go faster, with an expert in charge, and we set up the basic SEO.',
         items: {
-          'web-design': { text: 'Your site was built for the business you used to be, and younger buyers rule you out before they know you. We renew it while keeping what brings visitors today, your history and the pages Google knows.', tags: 'Redesigns · Company websites · SEO' },
+          'web-design': { text: 'Your site was built for the business you used to be, and younger buyers rule you out before they know you. We renew it while keeping what brings visitors today, your history and the pages Google knows.', tags: 'Redesigns · Company websites · Basic SEO' },
           'web-development': { text: 'A custom system from years back that only one person knows how to run. We review what’s worth saving and move it to a current platform, without stopping your operation along the way.', tags: 'Modernization · Portals · Integrations' },
           'ux-ui-design': { text: 'Hospitals, universities and large companies pile up screens nobody ever designed as a whole. We sort them around what people are trying to do, with testing before anything serious changes.', tags: 'User testing · Prototypes · Systems' },
           branding: { text: 'Handing the company to the next generation or buying a competitor calls for a brand refresh that doesn’t look like a different company. We protect what customers recognize and change what gets in the way.', tags: 'Strategy · Logo and identity · Guidelines' },
@@ -129,7 +129,7 @@ export const pennsylvania: State = {
           { name: 'Pittsburgh', tags: 'Robotics · Healthcare · Energy', need: 'Robotics and tech firms born from its universities, alongside healthcare and an industrial base that reinvented itself.', build: 'Products explained for non-engineers, with video and demos. A portal if your customers are already asking.' },
           { name: 'Lehigh Valley', tags: 'Warehousing · Distribution · Manufacturing', need: 'Logistics operators and manufacturers in Allentown and Bethlehem, within a day’s drive of much of the Northeast.', build: 'Coverage, facilities and lead times in plain view, with a simple quote and online tracking for customers.' },
           { name: 'Harrisburg and Lancaster', tags: 'Government · Agribusiness · Family firms', need: 'State government vendors and family businesses that relied for decades on referrals.', build: 'A site that backs up the referral with your history and your people, keeping the personal touch that sets you apart.' },
-          { name: 'Erie and Scranton', tags: 'Manufacturing · Healthcare · Services', need: 'Regional manufacturers and service firms looking to sell outside their city and compete with bigger companies.', build: 'Clear capabilities and SEO by product or service type, to show up for people who don’t know you yet.' },
+          { name: 'Erie and Scranton', tags: 'Manufacturing · Healthcare · Services', need: 'Regional manufacturers and service firms looking to sell outside their city and compete with bigger companies.', build: 'Clear capabilities and a page per product or service type, to win over people who don’t know you yet.' },
         ],
       },
       process: PROCESS.en,
@@ -142,7 +142,7 @@ export const pennsylvania: State = {
           { question: 'My company is decades old. Can it modernize without losing its history?', answer: 'Yes, and that history is an edge newer competitors don’t have. We identify what customers recognize and trust, keep it, and change whatever makes you look dated today.' },
           { question: 'My old site still brings in customers. Am I putting that at risk?', answer: 'That’s why we measure before changing anything: we see which pages and searches bring customers, keep them on the new site and set up redirects. Your team can test everything before launch.' },
           { question: 'When can we meet?', answer: 'During your workday: we’re one hour behind Pennsylvania in winter and two in summer, so we prefer mid-morning or afternoon.' },
-          { question: 'Do you offer SEO to show up in Pennsylvania cities where I have no office?', answer: 'Yes, with honest pages about the service you offer there and no made-up addresses. It takes time and depends on your competition, but it’s the right way to reach beyond your city on Google.' },
+          { question: 'Do you offer SEO to show up in Pennsylvania cities where I have no office?', answer: 'Your site includes basic SEO, but reaching other cities takes a more specialized effort, quoted separately: honest pages about the service you offer there, with no made-up addresses. The same goes for AI search: we can optimize the site for that as well. It takes time and depends on your competition.' },
           { question: 'Do you do web design in Philadelphia and Pittsburgh?', answer: 'Yes, and in Allentown, Harrisburg, Lancaster and Erie. We work online, so you can start with a call and see the redesign in a prototype, whether you’re in Center City or at a plant in the western part of the state.' },
           { question: 'Do you build websites for small businesses in Pennsylvania?', answer: 'Yes, and many already have an old site and loyal customers. We keep what works, renew what no longer helps and give you the full price before we start.' },
           ...commonFaq('en', 'payment', 'time'),

@@ -13,7 +13,7 @@ export const PROCESS: Record<Lang, { heading: string; steps: Step[] }> = {
         { name: 'Nos cuentas de tu negocio', text: 'Por mensaje o en una llamada gratis: qué vendes, a quién y qué te está frenando. Si vemos que no somos lo que necesitas, te lo decimos ahí mismo.', gets: 'Una idea clara de por dónde empezar.' },
         { name: 'Te mandamos la propuesta', text: 'Qué incluye, cuánto cuesta y cuándo se entrega. La revisas con tu equipo sin presión y decides con todo a la vista.', gets: 'Precio y fechas antes de comprometerte.' },
         { name: 'Apruebas el diseño', text: 'Recorres un prototipo de las páginas clave, en videollamada o cuando te quede bien, y nos pides los cambios que hagan falta.', gets: 'Tu sitio para probarlo antes de programarlo.' },
-        { name: 'Lo programamos y lo publicamos', text: 'La IA nos ayuda a avanzar más rápido y un experto revisa cada parte, para que salga lo antes posible y bien. Lo probamos en celular y computadora, dejamos listo el SEO y lo publicamos contigo.', gets: 'Tu sitio en línea y probado.' },
+        { name: 'Lo programamos y lo publicamos', text: 'La IA nos ayuda a avanzar más rápido y un experto revisa cada parte, para que salga lo antes posible y bien. Lo probamos en celular y computadora, dejamos listo el SEO básico y lo publicamos contigo.', gets: 'Tu sitio en línea y probado.' },
       ],
   },
   en: {
@@ -22,7 +22,7 @@ export const PROCESS: Record<Lang, { heading: string; steps: Step[] }> = {
         { name: 'Tell us about your business', text: 'By message or on a free call: what you sell, who buys it and what’s getting in the way. If we’re not the right fit, we’ll say so on the spot.', gets: 'A clear idea of where to start.' },
         { name: 'Get the proposal', text: 'What’s included, what it costs and when it’s delivered. Go over it with your team, without pressure and with everything in front of you.', gets: 'Price and dates before you commit.' },
         { name: 'Approve the design', text: 'Click through a prototype of the key pages, on a video call or whenever suits you, and tell us what to change.', gets: 'Your site to try out before it’s built.' },
-        { name: 'We build it and launch it', text: 'AI helps us move faster and an expert reviews every part, so it launches as soon as possible and done right. We test it on phones and computers, finish the SEO and go live with you.', gets: 'Your site live and tested.' },
+        { name: 'We build it and launch it', text: 'AI helps us move faster and an expert reviews every part, so it launches as soon as possible and done right. We test it on phones and computers, finish the basic SEO and go live with you.', gets: 'Your site live and tested.' },
       ],
   },
 };

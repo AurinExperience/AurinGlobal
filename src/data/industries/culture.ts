@@ -52,7 +52,7 @@ export const culture: Service = {
         heading: 'Diseño, desarrollo, UX/UI y marca *para tu institución cultural.*',
         intro: 'Un solo equipo para todo: no tienes que coordinar a tres proveedores. Puedes empezar por lo que más urge, con precio cerrado y fechas para estrenar antes de anunciar la temporada.',
         items: [
-          { icon: 'Monitor', title: 'Diseño web para cultura', service: 'web-design', text: 'Un sitio con la emoción del escenario: temporada, funciones y exposiciones con fotos y video, y páginas que aparecen en Google cuando buscan qué hacer en tu ciudad.' },
+          { icon: 'Monitor', title: 'Diseño web para cultura', service: 'web-design', text: 'Un sitio con la emoción del escenario: temporada, funciones y exposiciones con fotos y video, y el SEO básico listo para Google.' },
           { icon: 'Code', title: 'Desarrollo web: taquilla en línea', service: 'web-development', text: 'Programamos tu taquilla en tu propio sitio: funciones, butacas, abonos y pagos con tus precios, o la conectamos a tu sistema de boletos actual.' },
           { icon: 'MousePointerClick', title: 'Diseño UX/UI de la compra', service: 'ux-ui-design', text: 'Elegir función, butaca y pagar en pocos pasos desde el celular. Probamos la compra con asistentes reales antes de programar, para que nadie la deje a la mitad.' },
           { icon: 'Gem', title: 'Branding para teatros, orquestas y museos', service: 'branding', text: 'Nombre, logo e imagen para tu institución o tu temporada, pensados para el sitio, los carteles, el programa de mano y las redes.' },
@@ -124,7 +124,7 @@ export const culture: Service = {
         heading: 'Design, development, UX/UI and branding *for your cultural institution.*',
         intro: 'One team for all of it: no juggling three vendors. Start with what’s most urgent, with a fixed price and dates to launch before you announce the season.',
         items: [
-          { icon: 'Monitor', title: 'Website design for the arts', service: 'web-design', text: 'A website with the excitement of the stage: season, performances and exhibitions with photos and video, and pages that show up on Google when people look for things to do in your city.' },
+          { icon: 'Monitor', title: 'Website design for the arts', service: 'web-design', text: 'A website with the excitement of the stage: season, performances and exhibitions with photos and video, and the basic SEO ready for Google.' },
           { icon: 'Code', title: 'Web development: online box office', service: 'web-development', text: 'We build your box office into your own website: performances, seats, subscriptions and payments with your prices, or connect it to the ticketing system you already use.' },
           { icon: 'MousePointerClick', title: 'UX/UI design for checkout', service: 'ux-ui-design', text: 'Pick a performance, a seat and pay in a few steps from a phone. We test checkout with real attendees before we build, so nobody gives up halfway.' },
           { icon: 'Gem', title: 'Branding for theaters, orchestras and museums', service: 'branding', text: 'Name, logo and visual identity for your institution or your season, made for the website, posters, the printed program and social media.' },

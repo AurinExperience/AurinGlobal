@@ -13,7 +13,7 @@ export const illinois: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Illinois | Precio cerrado | Aurin',
-        description: 'Páginas web, SEO y plataformas para empresas de Illinois que venden a otras empresas, de Chicago a Peoria. Ves el diseño antes de programar. Llamada gratis.',
+        description: 'Páginas web y plataformas para empresas de Illinois que venden a otras empresas, de Chicago a Peoria. Ves el diseño antes de programar. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Illinois',
@@ -23,9 +23,9 @@ export const illinois: State = {
       },
       services: {
         heading: 'Tu empresa en Illinois ya vende bien. *Tu sitio todavía no lo demuestra.*',
-        intro: 'Contrata solo lo que te falta o todo con el mismo equipo. Lleva SEO desde el inicio y usamos IA para avanzar más rápido, con un experto a cargo de cada parte.',
+        intro: 'Contrata solo lo que te falta o todo con el mismo equipo. Usamos IA para ir más rápido, con un experto a cargo de cada parte; el SEO básico va incluido.',
         items: {
-          'web-design': { text: 'Antes de pedirte una cotización, el área de compras entra a tu sitio. Si parece de hace quince años, te descarta sin decírtelo. Lo rehacemos para que muestre tamaño, experiencia y a quién le trabajas.', tags: 'Sitio corporativo · Rediseño · SEO' },
+          'web-design': { text: 'Antes de pedirte una cotización, el área de compras entra a tu sitio. Si parece de hace quince años, te descarta sin decírtelo. Lo rehacemos para que muestre tamaño, experiencia y a quién le trabajas.', tags: 'Sitio corporativo · Rediseño · SEO básico' },
           'web-development': { text: 'Pedidos por correo, inventario en Excel y clientes que llaman para saber dónde va su entrega. Construimos el portal que les responde solo y lo conectamos con el sistema que ya tienes.', tags: 'Portal de clientes · Pedidos · Conexiones' },
           'ux-ui-design': { text: 'Tu software interno o tu plataforma funciona, pero capacitar a alguien nuevo toma semanas. Observamos a la gente usándola y rediseñamos las pantallas que causan más errores y llamadas.', tags: 'Observación de uso · Prototipos · Sistemas internos' },
           branding: { text: 'Fusiones, un cambio de generación o una línea de negocio nueva dejan a la marca contando otra historia. La ordenamos para que clientes, candidatos e inversionistas entiendan quién eres hoy.', tags: 'Estrategia · Logo e identidad · Guía de uso' },
@@ -70,7 +70,7 @@ export const illinois: State = {
           { question: '¿Pueden conectar el sitio con mi ERP o mi sistema de pedidos?', answer: 'Sí, cuando tu sistema permite conectarse. Primero revisamos qué tienes y qué datos conviene mostrar, para que tus clientes vean pedidos o inventario sin que nadie los capture dos veces. Si no se puede conectar directo, te lo decimos antes de cotizar.' },
           { question: '¿Qué pasa si mi sitio usa huella digital o reconocimiento facial?', answer: 'Hay que revisarlo con cuidado: la Biometric Information Privacy Act de Illinois (BIPA) exige avisar y obtener consentimiento por escrito antes de recolectar datos biométricos. Diseñamos ese paso dentro del flujo o buscamos una alternativa sin biometría. Tu asesor confirma cómo te aplica.' },
           { question: '¿Trabajan en mi horario?', answer: 'Sí. En invierno tenemos la misma hora que Illinois y en verano vamos una hora atrás, así que las reuniones caben sin problema en tu día.' },
-          { question: '¿Ofrecen SEO para empresas que venden a otras empresas en Illinois?', answer: 'Sí, aunque distinto: pocas búsquedas, pero de mucho valor. Atacamos lo que escribe un comprador que ya sabe lo que necesita, con páginas por servicio y sector, en vez de perseguir tráfico que nunca te va a comprar.' },
+          { question: '¿Ofrecen SEO para empresas que venden a otras empresas en Illinois?', answer: 'Sí. Tu sitio incluye lo básico: títulos, descripciones, velocidad y datos estructurados. Si además quieres atacar lo que escribe un comprador que ya sabe lo que necesita, con páginas por servicio y sector, es un trabajo más especializado que se cotiza aparte. Lo mismo con los buscadores con IA: podemos optimizar el sitio para que un comprador te encuentre también en ChatGPT.' },
           { question: '¿Pueden hacer una versión en español para mi planta o mis clientes?', answer: 'Sí. Es útil en el área de Chicago, sobre todo para reclutar o atender a clientes hispanos. La escribimos aparte y configuramos el sitio para que Google muestre a cada quien su idioma.' },
           { question: '¿Hacen diseño web en Chicago y en los suburbios?', answer: 'Sí: Chicago, Naperville, Schaumburg y el resto del área metropolitana, además de Rockford y Peoria. Como todo se hace en línea y en tu horario, el proyecto avanza igual en un edificio del Loop que en una planta de las afueras.' },
           { question: '¿Hacen páginas web para pequeñas empresas en Illinois?', answer: 'Sí, incluidos talleres, distribuidores y firmas familiares que venden a otras empresas. Muchas veces alcanza con un sitio corto que explique bien qué haces y facilite pedir cotización. Te damos el precio antes de empezar.' },
@@ -85,7 +85,7 @@ export const illinois: State = {
     en: {
       seo: {
         title: 'Web Design Agency in Illinois | Fixed Price | Aurin',
-        description: 'Websites, SEO and platforms for Illinois companies that sell to other businesses, from Chicago to Peoria. See the design before we build. Book a free call.',
+        description: 'Websites and platforms for Illinois companies that sell to other businesses, from Chicago to Peoria. See the design before we build. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in Illinois',
@@ -95,9 +95,9 @@ export const illinois: State = {
       },
       services: {
         heading: 'Your Illinois company already sells well. *Your website doesn’t show it yet.*',
-        intro: 'Hire us for the piece you’re missing, or all of it with one team. SEO is built in from the start, and we use AI to move faster, with an expert in charge of every part.',
+        intro: 'Hire us for the piece you’re missing, or all of it with one team. We use AI to move faster, with an expert in charge of every part; basic SEO is included.',
         items: {
-          'web-design': { text: 'Before they ask for a quote, procurement checks your site. If it looks fifteen years old, they cross you off and never mention it. We rebuild it to show your size, your experience and who you work with.', tags: 'Corporate websites · Redesigns · SEO' },
+          'web-design': { text: 'Before they ask for a quote, procurement checks your site. If it looks fifteen years old, they cross you off and never mention it. We rebuild it to show your size, your experience and who you work with.', tags: 'Corporate websites · Redesigns · Basic SEO' },
           'web-development': { text: 'Orders by email, inventory in Excel and customers calling to track a delivery. We build the portal that answers them automatically and connect it to the system you already run.', tags: 'Customer portals · Ordering · Integrations' },
           'ux-ui-design': { text: 'Your internal software or platform works, but training a new hire takes weeks. We watch people use it and redesign the screens behind the most errors and support calls.', tags: 'Usage research · Prototypes · Internal tools' },
           branding: { text: 'A merger, a new generation in charge or a new business line can leave your brand telling an old story. We sort it out so customers, recruits and investors understand who you are today.', tags: 'Strategy · Logo and identity · Guidelines' },
@@ -142,7 +142,7 @@ export const illinois: State = {
           { question: 'Can you connect my website to my ERP or ordering system?', answer: 'Yes, when your system allows it. We first review what you have and which data is worth showing, so customers see orders or inventory without anyone typing it twice. If a direct connection isn’t possible, we tell you before we quote.' },
           { question: 'What if my site uses fingerprints or face recognition?', answer: 'That needs care: the Illinois Biometric Information Privacy Act (BIPA) requires notice and written consent before collecting biometric data. We design that step into the flow or find a route without biometrics. Your advisor confirms how it applies to you.' },
           { question: 'Do you work during my hours?', answer: 'Yes. In winter we’re on the same time as Illinois and in summer we’re one hour behind, so meetings fit easily into your day.' },
-          { question: 'Do you offer SEO for B2B companies in Illinois?', answer: 'Yes, but differently: fewer searches, each worth far more. We go after what a buyer types once they know what they need, with pages by service and sector, instead of chasing traffic that will never buy.' },
+          { question: 'Do you offer SEO for B2B companies in Illinois?', answer: 'Yes. Your site includes the basics: titles, descriptions, speed and structured data. If you also want to go after what a buyer types once they know what they need, with pages by service and sector, that’s a more specialized effort, quoted separately. Same with AI search: we can optimize the site so a buyer also finds you in ChatGPT.' },
           { question: 'Do you do web design in Chicago and the suburbs?', answer: 'Yes: Chicago, Naperville, Schaumburg and the rest of the metro area, plus Rockford and Peoria. Since everything happens online and during your hours, the project moves the same from a Loop office or a plant out in the suburbs.' },
           { question: 'Do you build websites for small businesses in Illinois?', answer: 'Yes, including machine shops, distributors and family firms selling to other businesses. Often a short site that explains what you do and makes it easy to request a quote is plenty. You get the price before we start.' },
           ...commonFaq('en', 'payment', 'support'),

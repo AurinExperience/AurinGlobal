@@ -51,7 +51,7 @@ export const tourism: Service = {
         heading: 'Diseño, desarrollo, UX/UI y marca *para tu atracción.*',
         intro: 'Un solo equipo para todo: no tienes que coordinar a tres proveedores. Puedes empezar por lo que más urge, con precio cerrado y fechas para estrenar antes de tu temporada alta.',
         items: [
-          { icon: 'Monitor', title: 'Diseño web para turismo', service: 'web-design', text: 'Un sitio que da ganas de ir: fotos y video grandes, horarios, mapa y cómo llegar a la vista, y páginas que aparecen en Google cuando buscan qué hacer en tu ciudad.' },
+          { icon: 'Monitor', title: 'Diseño web para turismo', service: 'web-design', text: 'Un sitio que da ganas de ir: fotos y video grandes, horarios, mapa y cómo llegar a la vista, y el SEO básico incluido.' },
           { icon: 'Code', title: 'Desarrollo web: boletos y reservas', service: 'web-development', text: 'Programamos tu propia aplicación web de boletos y reservas, con tus precios, horarios, cupos y pagos, o la conectamos a tu sistema actual. Venta directa desde el celular, sin comisión de plataformas.' },
           { icon: 'MousePointerClick', title: 'Diseño UX/UI de la compra', service: 'ux-ui-design', text: 'Elegir fecha, boleto y pagar en pocos pasos. Probamos la compra con visitantes reales antes de programar, para que nadie la abandone a la mitad.' },
           { icon: 'Gem', title: 'Branding para atracciones', service: 'branding', text: 'Nombre, logo e imagen que se recuerdan, pensados para tu sitio, tus boletos, tu señalización y las fotos que tus visitantes suben a redes.' },
@@ -74,7 +74,7 @@ export const tourism: Service = {
         items: [
           { question: '¿Qué servicios ofrecen para empresas de turismo?', answer: 'Diseño web, desarrollo web, diseño UX/UI y branding, con un solo equipo. Puedes empezar solo por la venta de boletos, solo por la marca o hacer todo junto.' },
           { question: '¿Con qué tipo de negocios de turismo trabajan?', answer: 'Atracciones, parques, tours y experiencias, museos, festivales y centros de entretenimiento.' },
-          { question: '¿Nos ayudan a depender menos de las plataformas de reservas?', answer: 'Sí. Las plataformas sirven para que te descubran, pero cada venta te cuesta comisión. Diseñamos tu sitio para que quien ya te encontró compre directo contigo, y para que aparezca en Google cuando buscan qué hacer en tu ciudad.' },
+          { question: '¿Nos ayudan a depender menos de las plataformas de reservas?', answer: 'Sí. Las plataformas sirven para que te descubran, pero cada venta te cuesta comisión. Diseñamos tu sitio para que quien ya te encontró compre directo contigo, con el SEO básico incluido; un trabajo más especializado para competir en Google se cotiza aparte.' },
           { question: '¿Desarrollan plataformas de boletos y reservas?', answer: 'Sí. Programamos tu aplicación web de boletos y reservas, con tus precios, horarios, cupos y pagos. Si ya tienes un sistema y te funciona, lo conectamos y diseñamos la compra para que se vea parte de tu sitio.' },
           { question: '¿El sitio aguanta las fechas de más visitas?', answer: 'Sí. Lo preparamos para picos de tráfico, como vacaciones o el lanzamiento de un evento, y lo probamos antes.' },
           { question: '¿La compra de boletos puede ser en español?', answer: 'Sí. El sitio y la compra quedan en inglés y en español, escritos por separado, para que el turista hispano pague sin traducir nada.' },
@@ -123,7 +123,7 @@ export const tourism: Service = {
         heading: 'Design, development, UX/UI and branding *for your attraction.*',
         intro: 'One team for all of it, so you never coordinate three vendors. Start with what’s most urgent, with a fixed price and dates to launch before your peak season.',
         items: [
-          { icon: 'Monitor', title: 'Tourism website design', service: 'web-design', text: 'A website that makes people want to go: big photos and video, hours, map and directions in plain sight, and pages that show up on Google when people search for things to do in your city.' },
+          { icon: 'Monitor', title: 'Tourism website design', service: 'web-design', text: 'A website that makes people want to go: big photos and video, hours, map and directions in plain sight, and basic SEO included.' },
           { icon: 'Code', title: 'Web development: ticketing and bookings', service: 'web-development', text: 'We build your own ticketing and booking web app, with your prices, hours, capacity and payments, or connect your current system. Direct sales from a phone, no platform commission.' },
           { icon: 'MousePointerClick', title: 'UX/UI design for checkout', service: 'ux-ui-design', text: 'Pick a date, a ticket and pay in a few steps. We test checkout with real visitors before any code, so nobody drops off halfway.' },
           { icon: 'Gem', title: 'Branding for attractions', service: 'branding', text: 'Name, logo and visual identity people remember, made for your website, tickets, signage and the photos visitors post on social media.' },
@@ -145,7 +145,7 @@ export const tourism: Service = {
         items: [
           { question: 'What services do you offer tourism businesses?', answer: 'Web design, web development, UX/UI design and branding, from one team. You can start with just ticketing, just the brand, or do it all together.' },
           { question: 'What kinds of tourism businesses do you work with?', answer: 'Attractions, parks, tours and experiences, museums, festivals and entertainment centers.' },
-          { question: 'Can you help us rely less on booking platforms?', answer: 'Yes. Platforms help people discover you, but every sale costs you a commission. We design your website so people who already found you buy direct, and so it shows up on Google when they search for things to do in your city.' },
+          { question: 'Can you help us rely less on booking platforms?', answer: 'Yes. Platforms help people discover you, but every sale costs you a commission. We design your website so people who already found you buy direct, with basic SEO included; a more specialized effort to compete on Google is quoted separately.' },
           { question: 'Do you build ticketing and booking platforms?', answer: 'Yes. We build your ticketing and booking web app, with your prices, hours, capacity and payments. If you already have a system that works, we connect it and design checkout so it feels like part of your site.' },
           { question: 'Will the website hold up on peak days?', answer: 'Yes. We prepare it for traffic spikes, like holidays or an event launch, and test it beforehand.' },
         ],

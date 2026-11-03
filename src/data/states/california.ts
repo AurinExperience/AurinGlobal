@@ -17,7 +17,7 @@ export const california: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en California | Desde 1998 | Aurin',
-        description: 'Agencia de diseño web, UX/UI y SEO para empresas de California, de Los Ángeles a San Francisco. Producto, marca y privacidad bien resueltos. Llamada gratis.',
+        description: 'Agencia de diseño web, UX/UI y branding para empresas de California, de Los Ángeles a San Francisco. Producto, marca y privacidad resueltos. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en California',
@@ -27,9 +27,9 @@ export const california: State = {
       },
       services: {
         heading: 'Diseño web y UX/UI en California, *donde tus usuarios ya esperan nivel mundial.*',
-        intro: 'Elige por dónde empezar; un solo equipo hace el resto. Hay SEO desde el principio y usamos IA para acelerar, con un experto al frente de cada decisión.',
+        intro: 'Elige por dónde empezar; un solo equipo hace el resto. Usamos IA para acelerar, con un experto al frente de cada decisión, y el sitio sale con su SEO básico.',
         items: {
-          'web-design': { text: 'Tu cliente usa a diario los mejores productos del mundo y compara tu sitio con ellos sin darse cuenta. Hacemos uno rápido y claro, que diga en una frase para quién es y qué le resuelve.', tags: 'Sitio de empresa · Sitio para startups · SEO' },
+          'web-design': { text: 'Tu cliente usa a diario los mejores productos del mundo y compara tu sitio con ellos sin darse cuenta. Hacemos uno rápido y claro, que diga en una frase para quién es y qué le resuelve.', tags: 'Sitio de empresa · Sitio para startups · SEO básico' },
           'web-development': { text: 'Paneles para clientes, integraciones con tu CRM, cuentas y pagos. Desarrollamos lo que tu equipo interno no alcanza a priorizar, con código que después le pueden entregar a ellos.', tags: 'Paneles · Integraciones · Pagos' },
           'ux-ui-design': { text: 'Tus métricas caen entre el registro y el primer uso, y nadie sabe por qué. Investigamos con usuarios, proponemos cambios y los probamos en un prototipo antes de gastar en desarrollo.', tags: 'Investigación · Activación · Prototipos' },
           branding: { text: 'Pasar de una ronda de inversión a clientes grandes, o de una región a todo el país, cambia a quién le hablas. Ponemos en orden tu posición, tu nombre de producto y tu sistema visual.', tags: 'Estrategia · Logo e identidad · Guía de uso' },
@@ -61,7 +61,7 @@ export const california: State = {
           { name: 'San Francisco y Silicon Valley', tags: 'Software · Fintech · Biotecnología', need: 'Equipos de producto y fundadores de San Francisco, San José y Oakland, que evalúan tu sitio como si fuera software.', build: 'Mensaje preciso, velocidad muy alta, demo o prueba a un clic, y diseño de producto con investigación detrás.' },
           { name: 'San Diego', tags: 'Biotecnología · Defensa · Turismo', need: 'Ciencias de la vida y proveedores de defensa con compradores técnicos, junto a un turismo muy activo.', build: 'Ciencia explicada para quien decide, credenciales ordenadas y páginas distintas para cada público.' },
           { name: 'Orange County', tags: 'Servicios · Salud · Bienes raíces', need: 'Empresas de servicios profesionales, salud y bienes raíces con clientes que comparan varias opciones cerca de casa.', build: 'Páginas por servicio y zona, reseñas reales y un camino corto para agendar.' },
-          { name: 'Sacramento y Valle Central', tags: 'Gobierno · Agroindustria · Logística', need: 'Proveedores del estado y agroindustria de Sacramento y Fresno, que venden lejos de donde los conocen.', build: 'Capacidades claras, requisitos para comprar, y SEO por producto para aparecer ante distribuidores de otros estados.' },
+          { name: 'Sacramento y Valle Central', tags: 'Gobierno · Agroindustria · Logística', need: 'Proveedores del estado y agroindustria de Sacramento y Fresno, que venden lejos de donde los conocen.', build: 'Capacidades claras, requisitos para comprar y una página por producto que un distribuidor de otro estado entienda sin llamarte.' },
         ],
       },
       process: PROCESS.es,
@@ -75,7 +75,7 @@ export const california: State = {
           { question: '¿Mi sitio tiene que cumplir con la CCPA?', answer: 'Depende de tu tamaño. La ley de privacidad de California alcanza, entre otros, a empresas con ingresos de unos 26.6 millones de dólares al año o que compran, venden o comparten datos de 100,000 consumidores. Si te aplica, preparamos aviso de privacidad, opciones para no compartir datos y control de cookies. Tu asesor lo confirma.' },
           { question: '¿Dónde está su equipo y cómo trabajan con la hora del Pacífico?', answer: 'En Cuernavaca, México, desde 1998. Vamos dos horas adelante de California en invierno y una en verano, así que tus mañanas caben muy bien en nuestra jornada. El equipo aparece más abajo en esta página.' },
           { question: '¿Pueden trabajar junto a mi equipo interno de producto?', answer: 'Sí, y es común. Podemos encargarnos de investigación y diseño y entregarle a tu equipo prototipos y especificaciones, o programar una parte y dejarles el código y sus accesos para que sigan.' },
-          { question: '¿Ofrecen SEO para aparecer en Google y en las respuestas de IA?', answer: 'Sí. Cuidamos velocidad, estructura y datos estructurados, y escribimos páginas que responden preguntas concretas, que es lo que Google y herramientas como ChatGPT o Perplexity suelen citar. Toma tiempo y nadie puede garantizar la posición.' },
+          { question: '¿Ofrecen SEO para aparecer en Google y en las respuestas de IA?', answer: 'Sí. El sitio sale con lo básico: estructura clara, títulos, velocidad y datos estructurados, que también ayudan a herramientas como ChatGPT o Perplexity a entenderlo. Un trabajo más especializado, con contenidos y seguimiento, se cotiza aparte, y también podemos optimizar el sitio para que aparezca en esos buscadores con IA. Nadie puede garantizar la posición.' },
           { question: '¿Pueden hacer el sitio en inglés y en español?', answer: 'Sí, y en California suele pagar: solo en el área de Los Ángeles, unos 4.2 millones de personas hablan español en casa (ACS 2019–2023). Cada versión lleva textos propios y queda configurada para que Google muestre la correcta.' },
           ...commonFaq('es', 'support', 'time'),
         ],
@@ -88,7 +88,7 @@ export const california: State = {
     en: {
       seo: {
         title: 'Web Design Agency in California | Since 1998 | Aurin',
-        description: 'Web design, UX/UI and SEO for California companies, from Los Angeles to San Francisco. Product, brand and privacy handled properly. Book a free call.',
+        description: 'Web design, UX/UI and branding for California companies, from Los Angeles to San Francisco. Product, brand and privacy handled properly. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in California',
@@ -98,9 +98,9 @@ export const california: State = {
       },
       services: {
         heading: 'Web design and UX/UI in California, *where users expect world-class.*',
-        intro: 'Choose where to start; one team handles the rest. SEO is in from the beginning, and we use AI to speed things up, with an expert leading every decision.',
+        intro: 'Choose where to start; one team handles the rest. We use AI to speed things up, with an expert leading every decision, and the site launches with its basic SEO.',
         items: {
-          'web-design': { text: 'Your customers use the world’s top products every day and compare your site to them without realizing it. We build one that’s fast and clear, and says in one sentence who it’s for and what it solves.', tags: 'Company websites · Startup websites · SEO' },
+          'web-design': { text: 'Your customers use the world’s top products every day and compare your site to them without realizing it. We build one that’s fast and clear, and says in one sentence who it’s for and what it solves.', tags: 'Company websites · Startup websites · Basic SEO' },
           'web-development': { text: 'Customer dashboards, CRM integrations, accounts and payments. We build what your in-house team can’t get to, with code they can take over afterward.', tags: 'Dashboards · Integrations · Payments' },
           'ux-ui-design': { text: 'Your numbers drop between signup and first use, and nobody knows why. We research with users, propose changes and test them in a prototype before you spend on development.', tags: 'Research · Activation · Prototypes' },
           branding: { text: 'Going from a funding round to enterprise customers, or from a region to the whole country, changes who you’re talking to. We put your positioning, product naming and visual system in order.', tags: 'Strategy · Logo and identity · Guidelines' },
@@ -132,7 +132,7 @@ export const california: State = {
           { name: 'San Francisco and Silicon Valley', tags: 'Software · Fintech · Biotech', need: 'Product teams and founders in San Francisco, San Jose and Oakland, who evaluate your website as if it were software.', build: 'A precise message, top speed, a demo or trial one click away, and product design with research behind it.' },
           { name: 'San Diego', tags: 'Biotech · Defense · Tourism', need: 'Life sciences and defense suppliers with technical buyers, next to a very active tourism trade.', build: 'Science explained for decision-makers, organized credentials and separate pages for each audience.' },
           { name: 'Orange County', tags: 'Services · Healthcare · Real estate', need: 'Professional services, healthcare and real estate firms whose clients compare several options close to home.', build: 'Pages by service and area, real reviews and a short path to booking.' },
-          { name: 'Sacramento and the Central Valley', tags: 'Government · Agribusiness · Logistics', need: 'State vendors and agribusiness in Sacramento and Fresno, selling far from where people know them.', build: 'Clear capabilities, purchasing requirements, and SEO by product to reach distributors in other states.' },
+          { name: 'Sacramento and the Central Valley', tags: 'Government · Agribusiness · Logistics', need: 'State vendors and agribusiness in Sacramento and Fresno, selling far from where people know them.', build: 'Clear capabilities, purchasing requirements and a page per product that a distributor in another state can follow without calling.' },
         ],
       },
       process: PROCESS.en,
@@ -146,7 +146,7 @@ export const california: State = {
           { question: 'Does my website need to comply with the CCPA?', answer: 'It depends on your size. California’s privacy law reaches, among others, companies with about $26.6 million in annual revenue or that buy, sell or share data on 100,000 consumers. If it applies, we set up a privacy notice, opt-out options and cookie controls. Your advisor confirms the rest.' },
           { question: 'Where is your team, and how do you handle Pacific Time?', answer: 'In Cuernavaca, Mexico, since 1998. We’re two hours ahead of California in winter and one in summer, so your mornings fit well within our workday. You can see the team further down this page.' },
           { question: 'Can you work alongside my in-house product team?', answer: 'Yes, and it’s common. We can take on research and design and hand your team prototypes and specs, or build a piece and leave them the code and logins to carry on.' },
-          { question: 'Do you offer SEO to show up on Google and in AI answers?', answer: 'Yes. We handle speed, structure and structured data, and write pages that answer specific questions, which is what Google and tools like ChatGPT or Perplexity tend to cite. It takes time and nobody can guarantee a position.' },
+          { question: 'Do you offer SEO to show up on Google and in AI answers?', answer: 'Yes. The site launches with the basics: clear structure, titles, speed and structured data, which also help tools like ChatGPT or Perplexity understand it. A more specialized effort, with content and ongoing tracking, is quoted separately, and we can also optimize the site to show up in those AI search tools. Nobody can guarantee a position.' },
           { question: 'Can you build a Spanish version of the site?', answer: 'Yes, and in California it often pays off: in the Los Angeles area alone, about 4.2 million people speak Spanish at home (ACS 2019–2023). It gets its own copy and is set up so Google shows the right version.' },
           ...commonFaq('en', 'support', 'time'),
         ],

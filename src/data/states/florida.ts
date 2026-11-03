@@ -13,7 +13,7 @@ export const florida: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Florida | Sitios bilingües | Aurin',
-        description: 'Páginas web, SEO y branding para empresas de Florida, de Miami a Jacksonville. En inglés y en español, con precio cerrado. Llamada gratis.',
+        description: 'Páginas web, UX/UI y branding para empresas de Florida, de Miami a Jacksonville. En inglés y en español, con precio cerrado. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Florida',
@@ -22,10 +22,10 @@ export const florida: State = {
         ctaSecondary: 'Ver servicios',
       },
       services: {
-        heading: 'Para empresas en Florida que compiten por *la misma búsqueda cada temporada.*',
-        intro: 'Elige lo que te urge o contrátalo junto, con el mismo equipo. Todo lleva SEO desde el inicio y usamos IA para avanzar más rápido, con un experto al frente.',
+        heading: 'Para empresas en Florida que compiten por *el mismo cliente cada temporada.*',
+        intro: 'Elige lo que te urge o contrátalo junto, con el mismo equipo. La IA nos ayuda a avanzar más rápido, con un experto al frente, y el sitio incluye el SEO básico.',
         items: {
-          'web-design': { text: 'Quien te visita viene de otro estado o de otro país y te compara desde el celular, a veces desde el hotel. Hacemos un sitio que resuelve en una pantalla qué ofreces, dónde estás y cómo reservar o escribirte.', tags: 'Sitio de empresa · Sitio bilingüe · SEO' },
+          'web-design': { text: 'Quien te visita viene de otro estado o de otro país y te compara desde el celular, a veces desde el hotel. Hacemos un sitio que resuelve en una pantalla qué ofreces, dónde estás y cómo reservar o escribirte.', tags: 'Sitio de empresa · Sitio bilingüe · SEO básico' },
           'web-development': { text: 'Reservas por teléfono, disponibilidad en una hoja de cálculo, cobros que se confirman a mano: en temporada alta eso se desborda. Lo pasamos a reservas, pagos y un panel para tu equipo.', tags: 'Reservas · Pagos · Paneles internos' },
           'ux-ui-design': { text: 'Si tu app o tu plataforma atiende a viajeros, compradores o clientes en América Latina, cada idioma y cada país trae dudas distintas. Vemos dónde se traba cada grupo y lo arreglamos antes de sumar funciones.', tags: 'Investigación · Prototipos · Varios idiomas' },
           branding: { text: 'En Florida hay cientos de negocios con sol y palmeras en el logo. Te ayudamos a encontrar lo que solo tú puedes decir y a volverlo una marca que se recuerda después de volver a casa.', tags: 'Estrategia · Logo e identidad · Guía de uso' },
@@ -71,7 +71,7 @@ export const florida: State = {
           { question: '¿Puedo avisar rápido en mi sitio si viene un huracán?', answer: 'Sí, y conviene dejarlo previsto desde el diseño: un aviso que se activa en minutos, sin programador, para cambios de horario, cierres o reservas. Así tus clientes no tienen que llamar justo cuando estás ocupado protegiendo el negocio.' },
           { question: '¿Me aplica la ley de privacidad de Florida?', answer: 'A la mayoría de las empresas no: la Florida Digital Bill of Rights, vigente desde julio de 2024, apunta sobre todo a compañías de más de mil millones de dólares de ingresos. Aun así, si vendes a otros estados te pueden aplicar sus leyes, así que dejamos formularios sobrios, aviso de privacidad y control de cookies. Lo confirma tu asesor.' },
           { question: '¿En qué horario nos reunimos?', answer: 'Dentro de tu jornada. Vamos una hora atrás de Miami en invierno y dos en verano, y coincidimos con el Panhandle en invierno, porque esa zona usa la hora del centro.' },
-          { question: '¿Ofrecen SEO para salir en Google en cada ciudad de Florida?', answer: 'Sí. Si atiendes varias zonas, hacemos páginas con contenido real de cada una, no el mismo texto con otro nombre, y te ayudamos con tu perfil de Google Business. Nadie serio te promete el primer lugar: depende de tu competencia y toma tiempo.' },
+          { question: '¿Ofrecen SEO para salir en Google en cada ciudad de Florida?', answer: 'El SEO básico va incluido en tu sitio: títulos, descripciones, velocidad y datos estructurados. Las páginas con contenido propio para cada ciudad son un trabajo más especializado y se cotizan aparte; si las quieres, te decimos cuáles valen la pena. Y si te interesa salir en ChatGPT o Perplexity, también optimizamos el sitio para esos buscadores. Nadie serio te promete el primer lugar.' },
           { question: '¿Hacen diseño web en Miami, Orlando y Tampa?', answer: 'Sí, y también en Fort Lauderdale y Jacksonville. Trabajamos en línea, con videollamadas y prototipos que abres desde cualquier dispositivo, así que atendemos igual a una empresa de Brickell que a una del norte del estado.' },
           { question: '¿Hacen páginas web para pequeñas empresas en Florida?', answer: 'Sí, sobre todo negocios de servicios, turismo y salud que dependen de que los encuentren en el teléfono. Empezamos con lo que más clientes puede traerte y lo dejamos listo para crecer, con el precio claro desde el principio.' },
           ...commonFaq('es', 'time', 'support'),
@@ -85,7 +85,7 @@ export const florida: State = {
     en: {
       seo: {
         title: 'Web Design Agency in Florida | Since 1998 | Aurin',
-        description: 'Web design, SEO and branding for Florida companies, from Miami to Jacksonville. One senior team, a fixed price and the design before the build. Free call.',
+        description: 'Web design, UX/UI and branding for Florida companies, from Miami to Jacksonville. One senior team, a fixed price and the design before the build. Free call.',
       },
       hero: {
         titleLead: 'Web design agency in Florida',
@@ -94,10 +94,10 @@ export const florida: State = {
         ctaSecondary: 'See services',
       },
       services: {
-        heading: 'For Florida companies chasing *the same search every season.*',
-        intro: 'Pick what’s urgent or hire us for it all, with one team. Everything comes with SEO from the start, and we use AI to move faster, with an expert in charge.',
+        heading: 'For Florida companies chasing *the same customer every season.*',
+        intro: 'Pick what’s urgent or hire us for it all, with one team. AI helps us move faster, with an expert in charge, and your site includes basic SEO.',
         items: {
-          'web-design': { text: 'Your visitors come from out of state or abroad and size you up on a phone, sometimes from a hotel room. We build a site that answers what you offer, where you are and how to book or reach you on a single screen.', tags: 'Company websites · Booking pages · SEO' },
+          'web-design': { text: 'Your visitors come from out of state or abroad and size you up on a phone, sometimes from a hotel room. We build a site that answers what you offer, where you are and how to book or reach you on a single screen.', tags: 'Company websites · Booking pages · Basic SEO' },
           'web-development': { text: 'Phone reservations, availability in a spreadsheet, payments confirmed by hand: peak season breaks all of that. We move it to online booking, payments and a dashboard your staff can run.', tags: 'Bookings · Payments · Staff dashboards' },
           'ux-ui-design': { text: 'If your app serves travelers, buyers or clients across Latin America, every market brings different questions. We find where each group stalls and fix it before you fund more features.', tags: 'Research · Prototypes · Multi-market' },
           branding: { text: 'Florida has no shortage of logos with suns and palm trees. We help you find what only you can say and turn it into a brand people still remember once they’re back home.', tags: 'Strategy · Logo and identity · Guidelines' },
@@ -142,7 +142,7 @@ export const florida: State = {
           { question: 'Can I post a quick notice on my site when a hurricane is coming?', answer: 'Yes, and it’s worth planning from the design stage: a notice you can switch on in minutes, with no developer, for closures, new hours or booking changes. Customers get answers without calling while you’re busy protecting the business.' },
           { question: 'Does the Florida privacy law apply to me?', answer: 'For most companies, no: the Florida Digital Bill of Rights, in force since July 2024, mainly targets companies with over a billion dollars in revenue. If you sell into other states their laws may still apply, so we set up modest forms, a privacy notice and cookie controls. Your advisor confirms the rest.' },
           { question: 'What hours can we meet?', answer: 'During your workday. We’re one hour behind Miami in winter and two in summer, and we match the Panhandle in winter, since that area runs on Central Time.' },
-          { question: 'Do you offer SEO to rank in different Florida cities?', answer: 'Yes. If you serve several areas, we build pages with real content for each one, not the same text with a new name, and help with your Google Business Profile. No honest agency promises the top spot: it depends on your competition and takes time.' },
+          { question: 'Do you offer SEO to rank in different Florida cities?', answer: 'Basic SEO comes with your site: titles, descriptions, speed and structured data. Pages with original content for each city are a more specialized effort and are quoted separately; if you want them, we’ll tell you which are worth it. And if you want to show up in ChatGPT or Perplexity, we can optimize the site for those too. No honest agency promises the top spot.' },
           { question: 'Should my Florida site have a Spanish version?', answer: 'Often, yes, if your customers would use it: in the Miami area alone, about 2.5 million people speak Spanish at home (ACS 2019–2023). We write it as its own copy and set it up so Google shows each visitor the right version.' },
           { question: 'Do you do web design in Miami, Orlando and Tampa?', answer: 'Yes, and in Fort Lauderdale and Jacksonville too. We work online, with video calls and prototypes you can open on any device, so a company in Brickell and one in North Florida get the same service.' },
           { question: 'Do you build websites for small businesses in Florida?', answer: 'Yes, especially service, tourism and healthcare businesses that depend on being found by phone. We start with what can bring in the most customers and leave it ready to grow, with a clear price from the beginning.' },

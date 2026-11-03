@@ -184,7 +184,7 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
 - Agregar un estado: copiar `src/data/states/ohio.ts`, reescribir TODO el copy en ES y EN (texto único: si no,
   son doorway pages; solo el proceso y lo que va por escrito salen de `common.ts`, son promesas de la empresa) y sumarlo a `ALL_STATES`.
   Rutas, índice, sitemap, llms.txt, OG, footer y enlaces entre estados salen solos. FAQ: `commonFaq(lang, a, b)` (IA + una combinación no usada; las 6 en todos serían texto repetido)
-  y long tails con intención de compra: costo + estado, «¿Hacen diseño web en [ciudades]?» (nunca ciudades de aurin.mx), «¿Hacen páginas web para pequeñas empresas en X?» y «¿Ofrecen SEO…?», con la respuesta en la primera frase para que Google y la IA la citen.
+  y long tails con intención de compra: costo + estado, «¿Hacen diseño web en [ciudades]?» (nunca ciudades de aurin.mx), «¿Hacen páginas web para pequeñas empresas en X?» y «¿Ofrecen SEO…?» (básico incluido, lo demás se cotiza aparte), con la respuesta en la primera frase para que Google y la IA la citen.
 - `status: 'draft'` lo oculta en producción. `publishAt` programa la publicación, pero el sitio es estático:
   se publica en el primer build después de la fecha. `.github/workflows/daily-publish.yml` (7:00 de México) llama al Deploy Hook (secreto `VERCEL_DEPLOY_HOOK`) y luego manda el sitemap a IndexNow.
 - Ritmo decidido por Leonel (noviembre 2026; reemplaza «de a uno, con semanas de por medio»): 6 el 3 de noviembre, 4 el 4 de noviembre, los siguientes de 4 en 4 al día con `publishAt`. El ritmo no protege de una penalización: lo que protege es que cada página tenga texto y datos propios. Vigilar en Search Console si quedan como «Rastreada, sin indexar».
@@ -288,6 +288,7 @@ Orden de trabajo en aurin.consulting:
 
 ## Tono
 
+- SEO (decidido en noviembre 2026): lo principal es el servicio y el SEO es secundario. Incluimos solo el básico (títulos, descripciones, velocidad, datos estructurados); algo más especializado también lo hacemos (contenidos, páginas por ciudad o producto, seguimiento) y se cotiza aparte. También ofrecemos optimizar el sitio para buscadores con IA (ChatGPT, Perplexity): decirlo en el FAQ de SEO. Nunca en title ni description de una página, ni como primer mensaje; no prometer «aparecer en Google» como resultado. En el FAQ: «básico incluido, lo demás aparte».
 - Lenguaje simple para clientes que no son del medio: nada de "itemizada", "por etapas", "entregables" en textos de venta.
   Decir "qué incluye, cuánto cuesta y cuándo se entrega".
 

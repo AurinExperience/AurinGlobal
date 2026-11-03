@@ -13,7 +13,7 @@ export const realEstate: Service = {
   copy: {
     es: {
       seo: {
-        title: 'Diseño web para bienes raíces en Estados Unidos | Aurin',
+        title: 'Páginas web para inmobiliarias en Estados Unidos | Aurin',
         description:
           'Sitios y portales para desarrollos, inmobiliarias y administradoras de propiedades en EE. UU.: propiedades fáciles de buscar y citas en línea. Llamada gratis.',
       },

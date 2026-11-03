@@ -45,7 +45,8 @@ nada en estas páginas necesita isla. `@astrojs/vercel` está instalado solo por
   GA4 y Clarity solo en el build, no en `npm run dev`), no en variables de Vercel: así no se pierden. Con los dos vacíos (`ANALYTICS_ON`) no hay
   script, ni aviso, ni botón de preferencias en el pie. IDs propios de aurin.consulting, NUNCA los de aurin.mx.
 - Conversiones: `window.aurinTrack('generate_lead')` (formulario) y `'whatsapp_lead'`. Marcarlas como evento clave en GA4.
-- `/privacidad/` ↔ `/en/privacy/`: en el registro de páginas como `legal` (sitemap con prioridad 0.3, fuera de llms.txt).
+- `/privacidad/` ↔ `/en/privacy/`: en el registro de páginas como `legal`, con `noindex` y fuera del sitemap (el texto legal se
+  parece al de aurin.mx; decidido en noviembre 2026).
   Enlazado desde el pie de todas las páginas (también las minimal). Si cambia un proveedor o una cookie, actualizar
   `data/privacy.ts` y su fecha. Conviene que lo revise un abogado.
 

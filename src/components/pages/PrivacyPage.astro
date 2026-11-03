@@ -16,7 +16,8 @@ const email = SITE.contactEmail;
 const paragraphs = (texts: string[] = []) => texts.map((text) => text.split(email));
 ---
 
-<Layout title={copy.seo.title} description={copy.seo.description}>
+{/* noindex: el texto legal se parece al de aurin.mx y no tiene por qué salir en búsquedas */}
+<Layout title={copy.seo.title} description={copy.seo.description} noindex>
   <Header cta={`${lang === 'en' ? '/en/' : '/'}#contacto`} />
   <main id="main-content" class:list={['wrap', styles.main]}>
     <h1 class="h2">{copy.title}</h1>

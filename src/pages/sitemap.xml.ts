@@ -11,7 +11,8 @@ import { indexablePages } from '@/lib/pages';
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
 export const GET: APIRoute = () => {
-  const pages = indexablePages();
+  // Los avisos de privacidad van con noindex (texto legal parecido al de aurin.mx): fuera del sitemap
+  const pages = indexablePages().filter((p) => p.kind !== 'legal');
   const urls = pages.map((page) => {
     const siblings = pages.filter((p) => p.key === page.key);
     const en = siblings.find((p) => p.lang === 'en');
@@ -22,8 +23,8 @@ export const GET: APIRoute = () => {
     return `  <url>
     <loc>${SITE.url}${page.path}</loc>
     <lastmod>${BUILD_DATE}</lastmod>
-    <changefreq>${page.kind === 'home' ? 'weekly' : page.kind === 'legal' ? 'yearly' : 'monthly'}</changefreq>
-    <priority>${page.kind === 'home' ? '1.0' : page.kind === 'legal' ? '0.3' : '0.9'}</priority>
+    <changefreq>${page.kind === 'home' ? 'weekly' : 'monthly'}</changefreq>
+    <priority>${page.kind === 'home' ? '1.0' : '0.9'}</priority>
     ${links.join('\n    ')}
   </url>`;
   });

@@ -176,7 +176,7 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
   en vez del carrusel de logos: etiquetas en una sola línea que se deslizan solas (CSS, lista duplicada con la copia
   `aria-hidden`; con reduced-motion quedan quietas en varias líneas). Secciones: hero (foto propia de la industria) → franja → Contrast (blanca) → qué incluye (negra) → proceso (lima) →
   Team compact → FAQ → cierre.
-- Nichos sin tarjeta en la home, uno al día con `publishAt` en el `Service` (5–8 nov. 2026): manufactura, logística, ciberseguridad, biotecnología. Sin `photo` usan el hero del arco; falta elegirles foto propia. `INDUSTRY_PAGES` filtra con `isPublished`: menú, rutas y sitemap salen solos en esa fecha.
+- Nichos sin tarjeta en la home, uno al día con `publishAt` en el `Service` (5–8 nov. 2026): manufactura, logística, ciberseguridad, biotecnología. Sin `photo` usan el hero del arco; falta elegirles foto propia. `INDUSTRY_PAGES` filtra con `isPublished`: menú, rutas, sitemap y su tarjeta en /industrias/ (al final, sin «Clientes», con `name` y `summary`; también remesas) salen solos en esa fecha.
 - aurin.mx tiene fintech, salud, healthtech, banca… sin país: aquí el terreno es "para empresas en Estados Unidos" y
   sitio + app + marca. Vigilar en Search Console si alternan con las de allá.
 

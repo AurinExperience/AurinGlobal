@@ -29,8 +29,9 @@ const rowWidth = (names: string[]) => names.reduce((sum, name) => sum + (logo(na
       {/* Con página propia, el título enlaza (el enlace cubre la tarjeta: .link::after) */}
       <h3 class="h3">{pageHref(item.page) ? <a class={styles.link} href={pageHref(item.page)}>{item.name}</a> : item.name}</h3>
       <p class:list={['muted', styles.text]}>{item.text}</p>
-      <p class={styles.label}>{t.industries.clients}</p>
-      {(() => {
+      {/* Los nichos de /industrias/ no llevan clientes: no se pinta la etiqueta */}
+      {item.clients && <p class={styles.label}>{t.industries.clients}</p>}
+      {item.clients && (() => {
         const names = item.clients.split(' · ');
         const slide = rowWidth(names) > 300;
         // Para deslizar sin salto, la lista va dos veces y avanza la mitad (la copia, oculta a lectores de pantalla)

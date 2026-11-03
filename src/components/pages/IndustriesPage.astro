@@ -9,7 +9,7 @@ import Footer from '@/components/layout/Footer.astro';
 import CtaBanner from '@/components/layout/CtaBanner.astro';
 import IndustryCards from '@/blocks/shared/IndustryCards/IndustryCards.astro';
 import { HOME } from '@/data/home';
-import { INDUSTRIES_INDEX, industriesPath } from '@/data/industries';
+import { INDUSTRIES_INDEX, INDUSTRY_PAGES, industriesPath } from '@/data/industries';
 import { SITE } from '@/config/site';
 import { UI, getLangFromUrl } from '@/i18n';
 import Search from 'lucide-astro/Search';
@@ -19,7 +19,14 @@ const lang = getLangFromUrl(Astro.url);
 const copy = INDUSTRIES_INDEX[lang];
 const home = lang === 'en' ? '/en/' : '/';
 const url = `${SITE.url}${industriesPath(lang)}`;
-const items = HOME[lang].industries.items;
+const general = HOME[lang].industries.items;
+// Después de las generales, los nichos sin tarjeta en la home. Salen de INDUSTRY_PAGES: solo los ya publicados, sin clientes.
+const niches = INDUSTRY_PAGES.filter((page) => !general.some((item) => item.page === page.id)).map((page) => ({
+  name: page.copy[lang].name,
+  text: page.copy[lang].summary,
+  page: page.id,
+}));
+const items = [...general, ...niches];
 
 // CollectionPage con la lista de industrias (nombre + texto) y su ruta de migas
 const schema = {

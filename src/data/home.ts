@@ -7,7 +7,7 @@ export interface Client { name: string; logo: string; w: number; h: number; tone
 
 /** Industria con clientes reales (los mismos del carrusel y de aurin.mx/projects). */
 /** `page`: id de su página en src/data/industries (si existe, la tarjeta de /industrias/ enlaza ahí). */
-export interface Industry { name: string; text: string; clients: string; page?: string }
+export interface Industry { name: string; text: string; clients?: string; page?: string }
 
 export interface HomeCopy {
   seo: { title: string; description: string };

@@ -1,6 +1,6 @@
 import { LANGS, UI, type Lang } from '@/i18n';
 import { HOME } from '@/data/home';
-import { publishedStates, statePath } from '@/data/states';
+import { publishedStates, statePath, STATES_INDEX, statesPath } from '@/data/states';
 import { SERVICES, servicePath } from '@/data/services';
 import { INDUSTRY_PAGES, INDUSTRIES_INDEX, industriesPath } from '@/data/industries';
 import { PRIVACY, privacyPath } from '@/data/privacy';
@@ -60,6 +60,15 @@ export function indexablePages(): PageEntry[] {
       description: INDUSTRIES_INDEX[lang].seo.description,
       label: INDUSTRIES_INDEX[lang].title,
       kind: 'industry' as const,
+    },
+    {
+      path: statesPath(lang),
+      lang,
+      key: 'states',
+      title: STATES_INDEX[lang].seo.title,
+      description: STATES_INDEX[lang].seo.description,
+      label: STATES_INDEX[lang].title,
+      kind: 'state' as const,
     },
     ...publishedStates().map((state) => ({
       path: statePath(state, lang),

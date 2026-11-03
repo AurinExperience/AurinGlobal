@@ -58,14 +58,14 @@ nada en estas páginas necesita isla. `@astrojs/vercel` está instalado solo por
 
 ```
 src/
-├── pages/                index, en/index, [servicio] (ES), en/[service] (EN), [estado] (ES), en/[state] (EN), privacidad ↔ en/privacy,
+├── pages/                index, en/index, [servicio] (ES), en/[service] (EN), [estado] (ES), en/[state] (EN), estados ↔ en/states (índice), privacidad ↔ en/privacy,
 │                         industrias ↔ en/industries (índice con buscador), 404,
 │                         sitemap.xml, llms.txt, robots.txt (endpoints: salen con charset utf-8), og/[...path].png (OG por página, en build)
 ├── components/
 │   ├── ui/               ButtonIsland (de aurin.mx), MainButton, SecondaryButton, Grain, PhoneInput, WhatsAppButton,
 │   │                     Analytics (GA4 + Clarity con consentimiento), CookieConsent
 │   ├── layout/           Header, Footer (marca, servicios, 6 industrias + "Todas", hasta 6 estados, contacto; sin franja de CTA: todas las páginas ya cierran con una; minimal en landings; NAP de SITE.address), CtaBanner
-│   └── pages/            HomePage, ServicePage, StatePage (plantilla de estado; sin nombres de estados), PrivacyPage, IndustriesPage
+│   └── pages/            HomePage, ServicePage, StatePage (plantilla de estado; sin nombres de estados), StatesPage (índice), PrivacyPage, IndustriesPage
 ├── blocks/
 │   ├── home/             secciones exclusivas de la home (HeroHome = faro)
 │   ├── landing-state/    HeroState (h1 + argumentos + botón al formulario del cierre; foto con shader), LeadForm, Industries, ServicesIncluded, FaqSection
@@ -78,7 +78,7 @@ src/
 │   ├── industries/       páginas de industria (misma plantilla ServicePage; hoy: fintech y apps de remesas)
 │   ├── privacy.ts        aviso de privacidad y cookies ES/EN (`#cookies` = destino del aviso)
 │   ├── cases.ts          casos de estudio (proyectos PUBLICADOS en el CMS de aurin.mx, con su URL real)
-│   └── states/           un archivo por estado + index.ts (lista CERRADA)
+│   └── states/           un archivo por estado + index.ts (lista CERRADA) + common.ts (proceso, promesas y FAQ comunes)
 ├── i18n/index.ts         idiomas, rutas y textos de interfaz compartidos
 ├── lib/                  pages.ts (registro de páginas indexables), seo.ts (faqSchema), mail.ts (Resend), phone.ts
 ├── config/site.ts        NAP y entidad (idéntico a aurin.mx)
@@ -96,7 +96,7 @@ src/
   hero se ve (`data-hero-cta` + IntersectionObserver en Header; entra con transición propia, no atada al scroll).
 - Menú: el MISMO en todas las páginas y armado con los datos (Header.astro): Servicios ▾ (`SERVICES`),
   Industrias ▾ ("Todas las industrias" → /industrias/ + `INDUSTRY_PAGES`), Casos y Nosotros (anclas de la home).
-  Estados NO va en el menú (decidido en octubre 2026). En el pie sí (noviembre 2026; sin ellos la página quedaría huérfana): columna con los primeros 6 publicados, en orden de publicación; sin ninguno publicado no se pinta. Al publicar el 7.º, crear el índice `/estados/` ↔ `/en/states/` con su enlace "Todos los estados" (como Industrias) y limitar también los enlaces entre estados: 30 en el pie o en cada página parecen una red de doorway pages. Se enlazan entre ellas.
+  Estados NO va en el menú (decidido en octubre 2026). En el pie sí (noviembre 2026; sin ellos la página quedaría huérfana): columna con los primeros 6 publicados, en orden de la lista; sin ninguno publicado no se pinta. Desde el 7.º sale "Todos los estados" → índice `/estados/` ↔ `/en/states/`. Cada estado enlaza solo a los 6 siguientes de la lista (`siblingStates`, da la vuelta: ninguno queda sin enlaces) más el índice: 30 en el pie o en cada página parecerían una red de doorway pages.
   Una página nueva en esas listas sale sola en el menú de todo el sitio (enlazado interno); un grupo vacío no se pinta.
   Los grupos abren con hover o foco (Tab), sin JS; la página actual va con `aria-current` y su grupo en lima.
   Enlaces sin subrayado, en Clarity City 500 (variable: no carga otro archivo).
@@ -181,12 +181,13 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
 
 ## Landings por estado
 
-- Agregar un estado: copiar `src/data/states/texas.ts`, reescribir TODO el copy en ES y EN (texto único: si no,
-  son doorway pages) y sumarlo a `ALL_STATES`. Rutas, sitemap, llms.txt, OG, footer y enlaces entre estados salen solos.
+- Agregar un estado: copiar `src/data/states/ohio.ts`, reescribir TODO el copy en ES y EN (texto único: si no,
+  son doorway pages; solo el proceso y lo que va por escrito salen de `common.ts`, son promesas de la empresa) y sumarlo a `ALL_STATES`.
+  Rutas, índice, sitemap, llms.txt, OG, footer y enlaces entre estados salen solos. FAQ: `commonFaq(lang, a, b)` (IA + una combinación no usada; las 6 en todos serían texto repetido)
+  y long tails con intención de compra: costo + estado, «¿Hacen diseño web en [ciudades]?» (nunca ciudades de aurin.mx), «¿Hacen páginas web para pequeñas empresas en X?» y «¿Ofrecen SEO…?», con la respuesta en la primera frase para que Google y la IA la citen.
 - `status: 'draft'` lo oculta en producción. `publishAt` programa la publicación, pero el sitio es estático:
-  se publica en el primer build después de la fecha → configurar un Deploy Hook de Vercel llamado a diario.
-- Publicar de a uno, con semanas de por medio (misma estrategia que aurin.mx). Texas es el piloto (publicado en noviembre 2026): no sumar otro estado
-  hasta ver impresiones en Search Console.
+  se publica en el primer build después de la fecha. `.github/workflows/daily-publish.yml` (7:00 de México) llama al Deploy Hook (secreto `VERCEL_DEPLOY_HOOK`) y luego manda el sitemap a IndexNow.
+- Ritmo decidido por Leonel (noviembre 2026; reemplaza «de a uno, con semanas de por medio»): 6 el 3 de noviembre, 4 el 4 de noviembre, los siguientes de 4 en 4 al día con `publishAt`. El ritmo no protege de una penalización: lo que protege es que cada página tenga texto y datos propios. Vigilar en Search Console si quedan como «Rastreada, sin indexar».
 - Texas es la BASE de diseño y SEO de todos los estados (noviembre 2026). Orden propio, distinto de las landings de aurin.mx (hero →
   logos → qué incluye → proceso → prueba → FAQ → formulario), sin más de dos negras seguidas: hero → clientes → servicios (blanca; el
   nombre y el enlace salen del servicio, `text`/`tags` del estado: la situación del comprador) → industrias con clientes reales
@@ -220,8 +221,7 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
   Inland Empire: ver «Canibalización»). Las ciudades van en `cities`, el FAQ y `areas` (schema), nunca en title ni h1.
 - Ciudades: sin página propia por ahora. Una ciudad se gana su página (`/<estado>/<ciudad>/`) cuando Search Console muestre
   búsquedas de "diseño web + ciudad" cayendo en el estado, y nunca las que ya tiene aurin.mx.
-- Orden de estados decidido (noviembre 2026, por economía, quién paga, horario y competencia; el que más paga busca por
-  industria, no por estado): Texas → Illinois o Florida → Georgia o Carolina del Norte → California y Nueva York al final.
+- Orden (noviembre 2026, por economía y demanda): Texas, Florida, Illinois, Georgia, Carolina del Norte, Pensilvania → Nueva York, California, Nueva Jersey, Ohio. Siguientes candidatos: Massachusetts, Virginia, Washington, Michigan; luego Colorado, Arizona (sin Phoenix), Tennessee, Minnesota.
 - Inglés para estadounidenses: lo que se vende es "inglés fluido"; lo bilingüe es un extra, no el argumento principal (ver «Público de las páginas en inglés»).
 
 ## Canibalización (una búsqueda principal por página)
@@ -275,7 +275,7 @@ Orden de trabajo en aurin.consulting:
 1. Antes de publicar: `RESEND_API_KEY` en Vercel (el formulario ya está conectado), Search Console, IDs de GA4/Clarity.
 2. Perfiles en directorios de agencias de EE. UU. (Clutch, DesignRush, GoodFirms) apuntando a aurin.consulting: autoridad
    para el dominio nuevo.
-3. Esperar 8–12 semanas con home, 4 servicios, industrias y Texas; con los datos, decidir el siguiente estado o nicho.
+3. Con home, 4 servicios, industrias y estados publicados, revisar Search Console a las 8–12 semanas; con los datos, decidir qué estados reforzar y el siguiente nicho.
 
 ## Código
 
@@ -383,6 +383,8 @@ Orden de trabajo en aurin.consulting:
 
 ## Pendientes
 
+- Deploy Hook de Vercel en el secreto `VERCEL_DEPLOY_HOOK` de GitHub (sin él, los estados programados no salen solos).
+- Caso Galicia (`industry: 'Legal'`, «firmas de abogados») sigue en la home y en diseño web, contra la regla de no mencionar legal: decidir si se quita.
 - `RESEND_API_KEY` en Vercel (sin ella los leads dan error). El botón "Agenda una llamada" del CtaBanner de la home no tiene destino (`#`).
 - Testimonios: se quitaron por no tener citas reales. Si se consiguen, sección nueva en la home (sin schema Review: Google no muestra estrellas de reseñas propias).
 - Search Console (propiedad de dominio, por DNS) y Bing Webmaster (puede importar de Search Console): verificar aurin.consulting

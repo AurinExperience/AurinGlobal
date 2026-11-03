@@ -1,0 +1,18 @@
+# El sitio es estático: un estado con `publishAt` sale en el primer build después de esa fecha. Esto lanza ese build
+# cada mañana y luego avisa a IndexNow. Necesita el secreto VERCEL_DEPLOY_HOOK (Deploy Hook de Vercel, rama main).
+name: Publicación diaria
+on:
+  schedule:
+    - cron: '0 13 * * *' # 7:00 en Cuernavaca
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
+      - run: sleep 300
+      - run: node scripts/indexnow.mjs

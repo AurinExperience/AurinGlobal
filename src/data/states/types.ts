@@ -92,6 +92,8 @@ export interface State {
   slug: string;
   /** Nombre del estado para el schema `areaServed`. */
   name: string;
+  /** Nombre en español, solo si cambia (Nueva York). Se lee con `stateName`. */
+  nameEs?: string;
   /** Centro geográfico del estado. */
   geo: { latitude: number; longitude: number };
   /** Ciudades principales dentro del área de servicio (schema `areaServed`). */

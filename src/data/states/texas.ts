@@ -1,9 +1,9 @@
 import type { State } from './types';
+import { COMMITMENTS, COMMON_FAQ, PROCESS } from './common';
 
 /**
- * Texas — plantilla de las landings por estado (diseño exportado de Claude
- * Design, ver diseno-original/texas). Para un estado nuevo: copiar este archivo,
- * reescribir TODO el copy (no solo cambiar el nombre) y agregarlo en index.ts.
+ * Texas — plantilla de las landings por estado. Para un estado nuevo: copiar este archivo, reescribir TODO el copy (no
+ * solo cambiar el nombre) y agregarlo en index.ts. Lo único compartido son las promesas de la empresa (common.ts).
  */
 export const texas: State = {
   id: 'texas',
@@ -56,7 +56,7 @@ export const texas: State = {
       },
       cities: {
         heading: 'Qué necesita tu sitio *según la región de Texas.*',
-        intro: 'Texas es el estado con más sedes de empresas Fortune 500 (57 en la lista de 2026), pero no se le vende igual a un corporativo que a un distribuidor en la frontera. Esto cambia según dónde estén tus clientes.',
+        intro: 'Texas está entre los tres estados con más sedes de empresas Fortune 500, pero no se le vende igual a un corporativo que a un distribuidor en la frontera. Esto cambia según dónde estén tus clientes.',
         needLabel: 'Quién te busca',
         buildLabel: 'Qué le conviene a tu sitio',
         items: [
@@ -68,27 +68,8 @@ export const texas: State = {
           { name: 'Valle del Río Grande', tags: 'Salud · Educación · Comercio', need: 'McAllen, Edinburg y Brownsville: hospitales, universidades y comercio con México, con familias que buscan en los dos idiomas.', build: 'Textos propios en inglés y en español, nada de traducción automática, y la configuración para que Google le muestre a cada quien su versión.' },
         ],
       },
-      process: {
-        heading: 'Así avanza tu proyecto, *del primer mensaje al sitio publicado.*',
-        steps: [
-          { name: 'Nos cuentas de tu negocio', text: 'Por mensaje o en una llamada gratis: qué vendes, a quién y qué te está frenando. Si vemos que no somos lo que necesitas, te lo decimos ahí mismo.', gets: 'Una idea clara de por dónde empezar.' },
-          { name: 'Te mandamos la propuesta', text: 'Qué incluye, cuánto cuesta y cuándo se entrega. La revisas con tu equipo sin presión y decides con todo a la vista.', gets: 'Precio y fechas antes de comprometerte.' },
-          { name: 'Apruebas el diseño', text: 'Recorres un prototipo de las páginas clave, en videollamada o cuando te quede bien, y nos pides los cambios que hagan falta.', gets: 'Tu sitio para probarlo antes de programarlo.' },
-          { name: 'Lo programamos y lo publicamos', text: 'La IA nos ayuda a avanzar más rápido y un experto revisa cada parte, para que salga lo antes posible y bien. Lo probamos en celular y computadora, dejamos listo el SEO y lo publicamos contigo.', gets: 'Tu sitio en línea y probado.' },
-        ],
-      },
-      commitments: {
-        heading: 'Contratar a distancia da menos miedo *cuando todo va por escrito.*',
-        intro: 'Antes de que pagues nada, tu propuesta trae estos cuatro puntos. También te sirven para comparar con cualquier otra agencia.',
-        sheet: 'Tu propuesta incluye',
-        you: 'Tu empresa',
-        items: [
-          { title: 'Ves el diseño antes de programar', text: 'Apruebas tus páginas en un prototipo que puedes recorrer, no una idea en una presentación. Hasta que dices que sí, no se programa nada.' },
-          { title: 'Un precio cerrado', text: 'El de la propuesta es el que pagas. Si a medio camino quieres algo nuevo, primero te decimos cuánto cuesta y tú decides.' },
-          { title: 'Tu sitio es tuyo', text: 'Hosting y dominio pueden estar en tu cuenta o en la nuestra, y la propuesta dice dónde queda cada cosa. Si un día quieres seguir con otro equipo, te entregamos código, dominio y accesos.' },
-          { title: 'Fechas y soporte acordados', text: 'Cuándo se entrega cada parte y cómo te atendemos después de publicar. Así nadie depende de la memoria de nadie.' },
-        ],
-      },
+      process: PROCESS.es,
+      commitments: COMMITMENTS.es,
       faq: {
         heading: 'Lo que preguntan las empresas de Texas *antes de contratarnos.*',
         items: [
@@ -97,14 +78,10 @@ export const texas: State = {
           { question: '¿Por qué no contratar una agencia local en Texas?', answer: 'Si para ti es clave sentarte en la misma mesa, una agencia local te conviene más: todas nuestras sesiones son en línea. Si te importa más quién hace el trabajo y saber qué vas a recibir, compáranos. Aun con una agencia en tu ciudad, casi todo pasa en videollamadas y prototipos compartidos, y con nosotros ves el diseño antes de programar y el precio queda cerrado.' },
           { question: '¿En qué horario trabajan?', answer: 'En la hora del centro de México, que no cambia en el año. En invierno es la misma de casi todo Texas y en verano vamos una hora atrás. En El Paso es al revés: en invierno vamos una hora adelante y en verano coincidimos. Las reuniones se agendan dentro de tu jornada.' },
           { question: '¿Pueden hacer mi sitio en inglés y en español?', answer: 'Sí, y en Texas suele valer la pena: más de 8 millones de personas, casi 3 de cada 10, hablan español en casa (Censo de EE. UU., ACS 2024). Escribimos los textos para cada idioma en vez de traducirlos palabra por palabra y configuramos el sitio para que Google muestre a cada visitante su versión.' },
-          { question: '¿Hacen SEO? ¿Mi sitio va a salir en Google en Texas?', answer: 'Sí, hacemos SEO y lo dejamos listo para competir: cada página responde una búsqueda real, carga rápido y lleva sus datos estructurados. Nadie serio puede prometerte el primer lugar, porque depende de tu competencia y toma tiempo. Si atiendes clientes en una dirección física, también ayuda tener al día tu perfil de Google Business.' },
-          { question: '¿Pierdo mi lugar en Google si rediseñan mi sitio?', answer: 'No tiene por qué. Antes de tocar nada revisamos qué páginas ya te traen visitas para conservarlas, y si cambia alguna dirección dejamos redirecciones. Un rediseño hecho sin ese cuidado es de lo que más tráfico hace perder.' },
+          { question: '¿Ofrecen SEO en Texas para salir en Google?', answer: 'Sí, hacemos SEO y lo dejamos listo para competir: cada página responde una búsqueda real, carga rápido y lleva sus datos estructurados. Nadie serio puede prometerte el primer lugar, porque depende de tu competencia y toma tiempo. Si atiendes clientes en una dirección física, también ayuda tener al día tu perfil de Google Business.' },
           { question: '¿Mi sitio tiene que cumplir con la ley de privacidad de Texas?', answer: 'Puede que sí. La Texas Data Privacy and Security Act está vigente desde el 1 de julio de 2024 y alcanza a quien hace negocio en Texas o vende a sus residentes y trata datos personales; las pequeñas empresas, según la definición de la SBA, quedan casi fuera. Dejamos el sitio preparado, con formularios que piden solo lo necesario, tu aviso de privacidad y el control de cookies. Si te aplica o no lo confirma tu asesor.' },
-          { question: '¿Cómo se paga el proyecto?', answer: 'La forma de pago y su calendario se acuerdan contigo y quedan en la propuesta antes de empezar. No se cobra nada fuera de lo que aprobaste: si pides algo extra, te decimos cuánto cuesta antes de hacerlo.' },
-          { question: '¿Quién escribe los textos y pone las fotos?', answer: 'Definimos contigo las páginas y los textos clave a partir de lo que nos cuentas de tu negocio; tú los revisas y los apruebas. Para las fotos, lo mejor son las reales de tu empresa. Si te faltan, te decimos cuáles conviene conseguir.' },
-          { question: '¿Quién se encarga del sitio después de publicarlo?', answer: 'Podemos alojarlo nosotros y darte soporte: si algo falla o tienes una duda, te responde el mismo equipo que lo hizo. Si prefieres manejarlo por tu cuenta, te entregamos el código y los accesos.' },
-          { question: '¿Cuánto tarda un proyecto?', answer: 'Buscamos que salga lo antes posible, pero depende de lo que incluya y de qué tan rápido apruebes cada paso: una landing page sale antes que una plataforma o una marca completa. Las fechas de cada parte vienen en la propuesta.' },
-          { question: '¿Usan inteligencia artificial?', answer: 'Sí, para acelerar el diseño y la programación, y por eso tu proyecto avanza más rápido. Siempre va de la mano de un experto: una persona del equipo decide y revisa todo lo que se publica. La información confidencial de tu empresa y de tus clientes no pasa por esas herramientas.' },
+          { question: '¿Hacen páginas web para pequeñas empresas en Texas?', answer: 'Sí. Si tu negocio ya vende y su sitio no lo refleja, puede bastar con pocas páginas bien hechas y buen SEO local. Te decimos qué necesitas ahora, qué puede esperar y cuánto cuesta antes de que decidas.' },
+          ...COMMON_FAQ.es,
         ],
       },
       cta: {
@@ -156,7 +133,7 @@ export const texas: State = {
       },
       cities: {
         heading: 'What your website needs, *region by region in Texas.*',
-        intro: 'Texas has more Fortune 500 headquarters than any other state (57 on the 2026 list), yet selling to a corporate buyer is nothing like selling to a border distributor. Here’s what changes by region.',
+        intro: 'Texas is among the top three states for Fortune 500 headquarters, yet selling to a corporate buyer is nothing like selling to a border distributor. Here’s what changes by region.',
         needLabel: 'Who’s looking for you',
         buildLabel: 'What your site should do',
         items: [
@@ -168,27 +145,8 @@ export const texas: State = {
           { name: 'Rio Grande Valley', tags: 'Healthcare · Education · Trade', need: 'McAllen, Edinburg and Brownsville: hospitals, universities and cross-border commerce, with growing companies that have outgrown their first website.', build: 'A site as solid as the operation behind it, with locations, services and hiring easy to find, and pages that load fast on a phone.' },
         ],
       },
-      process: {
-        heading: 'How your project moves, *from first message to live site.*',
-        steps: [
-          { name: 'Tell us about your business', text: 'By message or on a free call: what you sell, who buys it and what’s getting in the way. If we’re not the right fit, we’ll say so on the spot.', gets: 'A clear idea of where to start.' },
-          { name: 'Get the proposal', text: 'What’s included, what it costs and when it’s delivered. Go over it with your team, without pressure and with everything in front of you.', gets: 'Price and dates before you commit.' },
-          { name: 'Approve the design', text: 'Click through a prototype of the key pages, on a video call or whenever suits you, and tell us what to change.', gets: 'Your site to try out before it’s built.' },
-          { name: 'We build it and launch it', text: 'AI helps us move faster and an expert reviews every part, so it launches as soon as possible and done right. We test it on phones and computers, finish the SEO and go live with you.', gets: 'Your site live and tested.' },
-        ],
-      },
-      commitments: {
-        heading: 'Hiring a remote agency feels safer *when it’s all in writing.*',
-        intro: 'Before you pay a dollar, your proposal spells out these four things. Use them to compare us with any other agency.',
-        sheet: 'Your proposal includes',
-        you: 'Your company',
-        items: [
-          { title: 'You see the design before we build', text: 'You approve your pages in a prototype you can click through, not a concept in a slide deck. Nothing gets built until you say yes.' },
-          { title: 'A fixed price', text: 'The number on the proposal is the number you pay. If you want something new along the way, we tell you what it costs first and you decide.' },
-          { title: 'Your site is yours', text: 'Hosting and domain can sit in your account or ours, and the proposal says where each one lives. If you ever want to move to another team, we hand over the code, domain and logins.' },
-          { title: 'Dates and support agreed up front', text: 'When each part is delivered and how we look after you once it’s live, so nothing relies on anyone’s memory.' },
-        ],
-      },
+      process: PROCESS.en,
+      commitments: COMMITMENTS.en,
       faq: {
         heading: 'What Texas companies ask us *before they hire us.*',
         items: [
@@ -197,15 +155,11 @@ export const texas: State = {
           { question: 'Do you work in English?', answer: 'Yes. Calls, emails, proposals and website copy are all in English, from the first conversation through launch.' },
           { question: 'Why not hire a local Texas agency?', answer: 'If sitting at the same table matters most to you, a local agency is the better fit: all our sessions are online. If you care more about who does the work and knowing what you’ll get, compare us. Even with an agency across town, most of the job happens on video calls and shared prototypes, and with us you see the design before we build and the price is locked.' },
           { question: 'What hours do you work?', answer: 'We’re on central Mexico time, which doesn’t change during the year. In winter that matches most of Texas, and in summer we’re one hour behind. El Paso flips it: one hour ahead in winter and the same time in summer. Meetings get scheduled inside your workday.' },
-          { question: 'Do you do SEO? Will my site show up on Google in Texas?', answer: 'Yes, we do SEO and get your site ready to compete: each page answers a real search, loads fast and carries structured data. Nobody honest can promise you the top spot, since that depends on your competition and takes time. If customers come to a physical address, an up-to-date Google Business Profile helps too.' },
-          { question: 'Will a redesign cost me my Google rankings?', answer: 'It shouldn’t. Before we touch anything, we check which pages already bring in visitors so we can keep them, and if an address changes we set up redirects. Redesigns done without that care are one of the most common ways to lose traffic.' },
+          { question: 'Do you offer SEO in Texas to show up on Google?', answer: 'Yes, we do SEO and get your site ready to compete: each page answers a real search, loads fast and carries structured data. Nobody honest can promise you the top spot, since that depends on your competition and takes time. If customers come to a physical address, an up-to-date Google Business Profile helps too.' },
           { question: 'Does my website need to comply with the Texas privacy law?', answer: 'It might. The Texas Data Privacy and Security Act has been in force since July 1, 2024 and reaches anyone doing business in Texas or selling to its residents who processes personal data; small businesses, as the SBA defines them, are mostly left out. We set the site up for it, with forms that ask only for what’s needed, your privacy notice and cookie controls. Your advisor confirms whether it applies to you.' },
-          { question: 'How do payments work?', answer: 'The payment terms and schedule are agreed with you and written into the proposal before we start. You’re never billed for anything you didn’t approve: if you ask for something extra, you hear what it costs first.' },
-          { question: 'Who writes the copy and handles the photos?', answer: 'We work out the pages and key copy with you, based on what you tell us about your business, and you review and approve them. For photos, real ones of your company work best. If you’re missing some, we’ll tell you which are worth getting.' },
-          { question: 'Who takes care of the site after launch?', answer: 'We can host it and support you: if something breaks or you have a question, the team that built it answers. If you’d rather run it yourself, we hand over the code and logins.' },
-          { question: 'How long does a project take?', answer: 'We aim to launch as soon as possible, but it depends on what’s included and how quickly you approve each step: a landing page goes live sooner than a platform or a full brand. The dates for each part are in the proposal.' },
-          { question: 'Do you use AI?', answer: 'Yes, to speed up design and development, which is why your project moves faster. It’s always guided by an expert: a person on our team makes the calls and reviews everything that goes live. Confidential information about your company and customers never goes through those tools.' },
           { question: 'Can you also build a Spanish version?', answer: 'Yes, if some of your customers would use it: over 8 million Texans, nearly 3 in 10, speak Spanish at home (US Census ACS 2024). We write it as its own copy and set it up so Google shows each visitor the right version.' },
+          { question: 'Do you build websites for small businesses in Texas?', answer: 'Yes. If your business is already selling and its site doesn’t show it, a few well-made pages with solid local SEO may be all it takes. We tell you what you need now, what can wait and what it costs before you decide.' },
+          ...COMMON_FAQ.en,
         ],
       },
       cta: {

@@ -11,6 +11,7 @@
  */
 import { SERVICES } from '@/data/services';
 import { INDUSTRY_PAGES, INDUSTRIES_INDEX } from '@/data/industries';
+import { STATES_INDEX } from '@/data/states';
 import { PRIVACY } from '@/data/privacy';
 
 export type Lang = 'es' | 'en';
@@ -34,6 +35,7 @@ export function localizedPath(pathname: string, lang: Lang): string {
   if (service) base = `/${service.slug[lang]}/`;
   if (LANGS.some((l) => base === `/${PRIVACY[l].slug}/`)) base = `/${PRIVACY[lang].slug}/`;
   if (LANGS.some((l) => base === `/${INDUSTRIES_INDEX[l].slug}/`)) base = `/${INDUSTRIES_INDEX[lang].slug}/`;
+  if (LANGS.some((l) => base === `/${STATES_INDEX[l].slug}/`)) base = `/${STATES_INDEX[lang].slug}/`;
   return lang === 'en' ? `/en${base}` : base;
 }
 
@@ -160,6 +162,7 @@ export const UI = {
       site: 'Sitio',
       industries: 'Industrias',
       allIndustries: 'Todas las industrias',
+      allStates: 'Todos los estados',
       languages: 'Te atendemos en inglés y en español',
       follow: 'Síguenos',
       backTop: 'Volver arriba',
@@ -308,6 +311,7 @@ export const UI = {
       site: 'Site',
       industries: 'Industries',
       allIndustries: 'All industries',
+      allStates: 'All states',
       languages: 'Working on US Central Time',
       follow: 'Follow us',
       backTop: 'Back to top',

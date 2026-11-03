@@ -1,0 +1,61 @@
+---
+/** /estados/ ↔ /en/states/: todos los estados publicados, en filas, para que ninguno dependa del tope del pie. */
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import CtaBanner from '@/components/layout/CtaBanner.astro';
+import { HOME } from '@/data/home';
+import { publishedStates, statePath, stateName, STATES_INDEX, statesPath } from '@/data/states';
+import { SITE } from '@/config/site';
+import { UI, getLangFromUrl } from '@/i18n';
+import styles from './StatesPage.module.css';
+
+const lang = getLangFromUrl(Astro.url);
+const copy = STATES_INDEX[lang];
+const home = lang === 'en' ? '/en/' : '/';
+const url = `${SITE.url}${statesPath(lang)}`;
+const states = publishedStates();
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: copy.title,
+  description: copy.seo.description,
+  url,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: states.length,
+    itemListElement: states.map((state, i) => ({ '@type': 'ListItem', position: i + 1, name: state.copy[lang].linkLabel, url: `${SITE.url}${statePath(state, lang)}` })),
+  },
+};
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: UI[lang].home, item: `${SITE.url}${home}` },
+    { '@type': 'ListItem', position: 2, name: copy.title, item: url },
+  ],
+};
+---
+
+<Layout title={copy.seo.title} description={copy.seo.description} structuredData={[schema, breadcrumb]}>
+  <Header cta={`${home}#contacto`} />
+  <main id="main-content">
+    <section class:list={['sky', 'sky-stars', styles.section]} aria-labelledby="title-states">
+      <div class="wrap">
+        <h1 id="title-states" class:list={['h1', styles.title]}>{copy.title}</h1>
+        <p class:list={['muted', styles.intro]}>{copy.intro}</p>
+        <ul class={styles.grid}>
+          {states.map((state) => (
+            <li class={styles.card}>
+              <h2 class="h3"><a href={statePath(state, lang)}>{stateName(state, lang)}</a></h2>
+              <p class="muted">{state.copy[lang].hero.description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+    <CtaBanner {...HOME[lang].cta} href={`${home}#contacto`} />
+  </main>
+  <Footer />
+</Layout>

@@ -12,7 +12,7 @@
  */
 import type { State } from '@/data/states';
 import type { ServiceId } from '@/data/services/types';
-import { statePath, siblingStates } from '@/data/states';
+import { statePath, stateName, statesPath, siblingStates } from '@/data/states';
 import { SERVICES, servicePath } from '@/data/services';
 import { INDUSTRY_PAGES } from '@/data/industries';
 import { caseCards } from '@/data/cases';
@@ -88,14 +88,15 @@ const breadcrumb = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: t.home, item: home },
-    { '@type': 'ListItem', position: 2, name: state.name, item: url },
+    { '@type': 'ListItem', position: 2, name: stateName(state, lang), item: url },
   ],
 };
 
-// Al final: los otros estados y las industrias, en etiquetas (los servicios ya van arriba, con su descripción). Con un
+// Al final: otros 6 estados + el índice, y las industrias, en etiquetas (los servicios ya van arriba, con su descripción). Con un
 // solo estado publicado el grupo de estados no se pinta y quedan las industrias: la página nunca se queda sin enlaces
+const siblings = siblingStates(state).map((item) => ({ href: statePath(item, lang), label: item.copy[lang].linkLabel }));
 const related = [
-  { label: t.nav.states, items: siblingStates(state).map((item) => ({ href: statePath(item, lang), label: item.copy[lang].linkLabel })) },
+  { label: t.nav.states, items: siblings.length ? [...siblings, { href: statesPath(lang), label: t.footer.allStates }] : [] },
   { label: t.nav.industries, items: INDUSTRY_PAGES.map((item) => ({ href: servicePath(item, lang), label: item.copy[lang].name })) },
 ];
 ---

@@ -15,7 +15,7 @@ export const newJersey: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Nueva Jersey | Desde 1998 | Aurin',
-        description: 'Páginas web y plataformas para empresas de Nueva Jersey, de Newark a Princeton. Precio cerrado y revisión por tu equipo antes de publicar. Llamada gratis.',
+        description: 'Páginas web y plataformas para empresas de Nueva Jersey, de Newark a Princeton, con SEO básico o avanzado. Tu equipo aprueba antes de publicar. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Nueva Jersey',
@@ -73,7 +73,7 @@ export const newJersey: State = {
           { question: '¿Dónde está su equipo?', answer: 'En Cuernavaca, México, desde 1998. Vamos una hora atrás de Nueva Jersey en invierno y dos en verano, y agendamos dentro de tu jornada. El mismo equipo hace todo el proyecto: lo conoces más abajo en esta página.' },
           { question: '¿Mi empresa debe cumplir con la ley de privacidad de Nueva Jersey?', answer: 'Puede que sí. La New Jersey Data Privacy Act está vigente desde enero de 2025 y alcanza a quien trata datos de 100,000 consumidores del estado, o de 25,000 si gana por venderlos, sin mínimo de ingresos. Dejamos formularios sobrios, aviso de privacidad y control de cookies. Tu asesor confirma si te aplica.' },
           { question: '¿Pueden trabajar con revisiones internas largas?', answer: 'Sí. En farmacéutica, salud o finanzas, los textos pasan por varias áreas. Lo planeamos desde la propuesta: quién revisa, en qué momento y por dónde. Firmamos confidencialidad desde el inicio, y nada se publica sin tu aprobación.' },
-          { question: '¿Ofrecen SEO para salir en búsquedas locales de Nueva Jersey?', answer: 'Incluimos el SEO básico: títulos, descripciones, velocidad y datos estructurados. Las páginas con contenido propio por servicio y zona y la ayuda con tu perfil de Google Business son un trabajo más especializado que se cotiza aparte. Y podemos optimizar tu sitio para aparecer en buscadores con IA como ChatGPT. No prometemos un lugar exacto.' },
+          { question: '¿Ofrecen SEO para salir en búsquedas locales de Nueva Jersey?', answer: 'Incluimos el SEO básico: títulos, descripciones, velocidad y datos estructurados. Las páginas con contenido propio por servicio y zona y la ayuda con tu perfil de Google Business son SEO avanzado, que se cotiza aparte. Igual que optimizar tu sitio para buscadores con IA como ChatGPT. No prometemos un lugar exacto.' },
           ...commonFaq('es', 'payment', 'copy'),
         ],
       },
@@ -85,7 +85,7 @@ export const newJersey: State = {
     en: {
       seo: {
         title: 'Web Design Agency in New Jersey | See It First | Aurin',
-        description: 'Websites and platforms for New Jersey companies, from Newark to Princeton. A fixed price, and your team signs off before launch. Book a free call.',
+        description: 'Websites and platforms for New Jersey companies, from Newark to Princeton, with basic or advanced SEO. Your team signs off before launch. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in New Jersey',
@@ -143,7 +143,7 @@ export const newJersey: State = {
           { question: 'Where is your team?', answer: 'In Cuernavaca, Mexico, since 1998. We’re one hour behind New Jersey in winter and two in summer, and we schedule inside your workday. One team handles the whole project, and you can meet them further down this page.' },
           { question: 'Does my company need to comply with the New Jersey privacy law?', answer: 'It might. The New Jersey Data Privacy Act has been in force since January 2025 and reaches anyone processing data on 100,000 state consumers, or 25,000 if they profit from selling it, with no revenue minimum. We set up modest forms, a privacy notice and cookie controls. Your advisor confirms whether it applies.' },
           { question: 'Can you work with long internal reviews?', answer: 'Yes. In pharma, healthcare or finance, copy passes through several departments. We plan for it in the proposal: who reviews, when and how. We sign confidentiality agreements from the start, and nothing goes live without your approval.' },
-          { question: 'Do you offer SEO for local searches in New Jersey?', answer: 'We include basic SEO: titles, descriptions, speed and structured data. Pages with original content by service and area, plus help with your Google Business Profile, are a more specialized effort quoted separately. And we can optimize your site to appear in AI search like ChatGPT. We don’t promise an exact position.' },
+          { question: 'Do you offer SEO for local searches in New Jersey?', answer: 'We include basic SEO: titles, descriptions, speed and structured data. Pages with original content by service and area, plus help with your Google Business Profile, are advanced SEO, quoted separately. So is optimizing your site for AI search like ChatGPT. We don’t promise an exact position.' },
           ...commonFaq('en', 'payment', 'copy'),
         ],
       },

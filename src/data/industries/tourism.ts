@@ -74,7 +74,7 @@ export const tourism: Service = {
         items: [
           { question: '¿Qué servicios ofrecen para empresas de turismo?', answer: 'Diseño web, desarrollo web, diseño UX/UI y branding, con un solo equipo. Puedes empezar solo por la venta de boletos, solo por la marca o hacer todo junto.' },
           { question: '¿Con qué tipo de negocios de turismo trabajan?', answer: 'Atracciones, parques, tours y experiencias, museos, festivales y centros de entretenimiento.' },
-          { question: '¿Nos ayudan a depender menos de las plataformas de reservas?', answer: 'Sí. Las plataformas sirven para que te descubran, pero cada venta te cuesta comisión. Diseñamos tu sitio para que quien ya te encontró compre directo contigo, con el SEO básico incluido; un trabajo más especializado para competir en Google se cotiza aparte.' },
+          { question: '¿Nos ayudan a depender menos de las plataformas de reservas?', answer: 'Sí. Las plataformas sirven para que te descubran, pero cada venta te cuesta comisión. Diseñamos tu sitio para que quien ya te encontró compre directo contigo, con el SEO básico incluido; el SEO avanzado para competir en Google se cotiza aparte.' },
           { question: '¿Desarrollan plataformas de boletos y reservas?', answer: 'Sí. Programamos tu aplicación web de boletos y reservas, con tus precios, horarios, cupos y pagos. Si ya tienes un sistema y te funciona, lo conectamos y diseñamos la compra para que se vea parte de tu sitio.' },
           { question: '¿El sitio aguanta las fechas de más visitas?', answer: 'Sí. Lo preparamos para picos de tráfico, como vacaciones o el lanzamiento de un evento, y lo probamos antes.' },
           { question: '¿La compra de boletos puede ser en español?', answer: 'Sí. El sitio y la compra quedan en inglés y en español, escritos por separado, para que el turista hispano pague sin traducir nada.' },
@@ -145,7 +145,7 @@ export const tourism: Service = {
         items: [
           { question: 'What services do you offer tourism businesses?', answer: 'Web design, web development, UX/UI design and branding, from one team. You can start with just ticketing, just the brand, or do it all together.' },
           { question: 'What kinds of tourism businesses do you work with?', answer: 'Attractions, parks, tours and experiences, museums, festivals and entertainment centers.' },
-          { question: 'Can you help us rely less on booking platforms?', answer: 'Yes. Platforms help people discover you, but every sale costs you a commission. We design your website so people who already found you buy direct, with basic SEO included; a more specialized effort to compete on Google is quoted separately.' },
+          { question: 'Can you help us rely less on booking platforms?', answer: 'Yes. Platforms help people discover you, but every sale costs you a commission. We design your website so people who already found you buy direct, with basic SEO included; advanced SEO to compete on Google is quoted separately.' },
           { question: 'Do you build ticketing and booking platforms?', answer: 'Yes. We build your ticketing and booking web app, with your prices, hours, capacity and payments. If you already have a system that works, we connect it and design checkout so it feels like part of your site.' },
           { question: 'Will the website hold up on peak days?', answer: 'Yes. We prepare it for traffic spikes, like holidays or an event launch, and test it beforehand.' },
         ],

@@ -17,7 +17,7 @@ export const california: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en California | Desde 1998 | Aurin',
-        description: 'Agencia de diseño web, UX/UI y branding para empresas de California, de Los Ángeles a San Francisco. Producto, marca y privacidad resueltos. Llamada gratis.',
+        description: 'Agencia de diseño web y UX/UI para empresas de California, de Los Ángeles a San Francisco, con SEO básico o avanzado y privacidad resuelta. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en California',
@@ -75,7 +75,7 @@ export const california: State = {
           { question: '¿Mi sitio tiene que cumplir con la CCPA?', answer: 'Depende de tu tamaño. La ley de privacidad de California alcanza, entre otros, a empresas con ingresos de unos 26.6 millones de dólares al año o que compran, venden o comparten datos de 100,000 consumidores. Si te aplica, preparamos aviso de privacidad, opciones para no compartir datos y control de cookies. Tu asesor lo confirma.' },
           { question: '¿Dónde está su equipo y cómo trabajan con la hora del Pacífico?', answer: 'En Cuernavaca, México, desde 1998. Vamos dos horas adelante de California en invierno y una en verano, así que tus mañanas caben muy bien en nuestra jornada. El equipo aparece más abajo en esta página.' },
           { question: '¿Pueden trabajar junto a mi equipo interno de producto?', answer: 'Sí, y es común. Podemos encargarnos de investigación y diseño y entregarle a tu equipo prototipos y especificaciones, o programar una parte y dejarles el código y sus accesos para que sigan.' },
-          { question: '¿Ofrecen SEO para aparecer en Google y en las respuestas de IA?', answer: 'Sí. El sitio sale con lo básico: estructura clara, títulos, velocidad y datos estructurados, que también ayudan a herramientas como ChatGPT o Perplexity a entenderlo. Un trabajo más especializado, con contenidos y seguimiento, se cotiza aparte, y también podemos optimizar el sitio para que aparezca en esos buscadores con IA. Nadie puede garantizar la posición.' },
+          { question: '¿Ofrecen SEO para aparecer en Google y en las respuestas de IA?', answer: 'Sí. El sitio sale con lo básico: estructura clara, títulos, velocidad y datos estructurados, que también ayudan a herramientas como ChatGPT o Perplexity a entenderlo. El SEO avanzado, con contenidos, seguimiento y optimización para esos buscadores con IA, se cotiza aparte. Nadie puede garantizar la posición.' },
           { question: '¿Pueden hacer el sitio en inglés y en español?', answer: 'Sí, y en California suele pagar: solo en el área de Los Ángeles, unos 4.2 millones de personas hablan español en casa (ACS 2019–2023). Cada versión lleva textos propios y queda configurada para que Google muestre la correcta.' },
           ...commonFaq('es', 'support', 'time'),
         ],
@@ -88,7 +88,7 @@ export const california: State = {
     en: {
       seo: {
         title: 'Web Design Agency in California | Since 1998 | Aurin',
-        description: 'Web design, UX/UI and branding for California companies, from Los Angeles to San Francisco. Product, brand and privacy handled properly. Book a free call.',
+        description: 'Web design and UX/UI for California companies, from Los Angeles to San Francisco, with basic or advanced SEO and privacy handled properly. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in California',
@@ -146,7 +146,7 @@ export const california: State = {
           { question: 'Does my website need to comply with the CCPA?', answer: 'It depends on your size. California’s privacy law reaches, among others, companies with about $26.6 million in annual revenue or that buy, sell or share data on 100,000 consumers. If it applies, we set up a privacy notice, opt-out options and cookie controls. Your advisor confirms the rest.' },
           { question: 'Where is your team, and how do you handle Pacific Time?', answer: 'In Cuernavaca, Mexico, since 1998. We’re two hours ahead of California in winter and one in summer, so your mornings fit well within our workday. You can see the team further down this page.' },
           { question: 'Can you work alongside my in-house product team?', answer: 'Yes, and it’s common. We can take on research and design and hand your team prototypes and specs, or build a piece and leave them the code and logins to carry on.' },
-          { question: 'Do you offer SEO to show up on Google and in AI answers?', answer: 'Yes. The site launches with the basics: clear structure, titles, speed and structured data, which also help tools like ChatGPT or Perplexity understand it. A more specialized effort, with content and ongoing tracking, is quoted separately, and we can also optimize the site to show up in those AI search tools. Nobody can guarantee a position.' },
+          { question: 'Do you offer SEO to show up on Google and in AI answers?', answer: 'Yes. The site launches with the basics: clear structure, titles, speed and structured data, which also help tools like ChatGPT or Perplexity understand it. Advanced SEO, with content, ongoing tracking and optimization for those AI search tools, is quoted separately. Nobody can guarantee a position.' },
           { question: 'Can you build a Spanish version of the site?', answer: 'Yes, and in California it often pays off: in the Los Angeles area alone, about 4.2 million people speak Spanish at home (ACS 2019–2023). It gets its own copy and is set up so Google shows the right version.' },
           ...commonFaq('en', 'support', 'time'),
         ],

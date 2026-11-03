@@ -14,7 +14,7 @@ export const pennsylvania: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Pensilvania | Desde 1998 | Aurin',
-        description: 'Páginas web, rediseño y branding para empresas de Pensilvania, de Filadelfia a Pittsburgh. Moderniza tu sitio sin perder lo que ya funciona. Llamada gratis.',
+        description: 'Rediseño y páginas web para empresas de Pensilvania, de Filadelfia a Pittsburgh, con SEO básico o avanzado, sin perder lo que ya funciona. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Pensilvania',
@@ -71,7 +71,7 @@ export const pennsylvania: State = {
           { question: 'Mi empresa tiene décadas. ¿Se puede modernizar sin perder su historia?', answer: 'Sí, y esa historia es una ventaja que tus competidores nuevos no tienen. Identificamos lo que tus clientes reconocen y confían, lo conservamos y cambiamos lo que hoy te hace parecer anticuado.' },
           { question: 'Mi sitio viejo aún trae clientes. ¿Lo pongo en riesgo?', answer: 'Por eso medimos antes de cambiar nada: vemos qué páginas y búsquedas te traen clientes, las mantenemos en el sitio nuevo y dejamos redirecciones. Tu equipo puede probarlo todo antes de publicar.' },
           { question: '¿Cuál es su horario de reuniones?', answer: 'Dentro de tu jornada: vamos una hora atrás de Pensilvania en invierno y dos en verano, así que preferimos media mañana o tarde.' },
-          { question: '¿Ofrecen SEO para aparecer en ciudades de Pensilvania donde no tengo oficina?', answer: 'Tu sitio incluye el SEO básico, pero llegar a otras ciudades pide un trabajo más especializado que se cotiza aparte: páginas honestas sobre el servicio que das ahí, sin direcciones inventadas. Lo mismo si quieres aparecer en buscadores con IA: también optimizamos el sitio para eso. Toma tiempo y depende de tu competencia.' },
+          { question: '¿Ofrecen SEO para aparecer en ciudades de Pensilvania donde no tengo oficina?', answer: 'Tu sitio incluye el SEO básico, pero llegar a otras ciudades pide SEO avanzado, que se cotiza aparte: páginas honestas sobre el servicio que das ahí, sin direcciones inventadas. Lo mismo si quieres aparecer en buscadores con IA: esa optimización también es SEO avanzado. Toma tiempo y depende de tu competencia.' },
           { question: '¿Hacen diseño web en Filadelfia y Pittsburgh?', answer: 'Sí, y en Allentown, Harrisburg, Lancaster y Erie. Trabajamos en línea, así que puedes empezar con una llamada y ver el rediseño en un prototipo, estés en el centro de Filadelfia o en una planta del oeste del estado.' },
           { question: '¿Hacen páginas web para pequeñas empresas en Pensilvania?', answer: 'Sí, y muchas ya tienen un sitio viejo y una clientela fiel. Conservamos lo que funciona, renovamos lo que ya no ayuda y te decimos el precio completo antes de empezar.' },
           ...commonFaq('es', 'payment', 'time'),
@@ -85,7 +85,7 @@ export const pennsylvania: State = {
     en: {
       seo: {
         title: 'Web Design Agency in Pennsylvania | Since 1998 | Aurin',
-        description: 'Web design, redesigns and branding for Pennsylvania companies, from Philadelphia to Pittsburgh. Modernize your site and keep what works. Book a free call.',
+        description: 'Web design and redesigns for Pennsylvania companies, from Philadelphia to Pittsburgh, with basic or advanced SEO. Keep what already works. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in Pennsylvania',
@@ -142,7 +142,7 @@ export const pennsylvania: State = {
           { question: 'My company is decades old. Can it modernize without losing its history?', answer: 'Yes, and that history is an edge newer competitors don’t have. We identify what customers recognize and trust, keep it, and change whatever makes you look dated today.' },
           { question: 'My old site still brings in customers. Am I putting that at risk?', answer: 'That’s why we measure before changing anything: we see which pages and searches bring customers, keep them on the new site and set up redirects. Your team can test everything before launch.' },
           { question: 'When can we meet?', answer: 'During your workday: we’re one hour behind Pennsylvania in winter and two in summer, so we prefer mid-morning or afternoon.' },
-          { question: 'Do you offer SEO to show up in Pennsylvania cities where I have no office?', answer: 'Your site includes basic SEO, but reaching other cities takes a more specialized effort, quoted separately: honest pages about the service you offer there, with no made-up addresses. The same goes for AI search: we can optimize the site for that as well. It takes time and depends on your competition.' },
+          { question: 'Do you offer SEO to show up in Pennsylvania cities where I have no office?', answer: 'Your site includes basic SEO, but reaching other cities takes advanced SEO, quoted separately: honest pages about the service you offer there, with no made-up addresses. The same goes for AI search: that optimization is also advanced SEO. It takes time and depends on your competition.' },
           { question: 'Do you do web design in Philadelphia and Pittsburgh?', answer: 'Yes, and in Allentown, Harrisburg, Lancaster and Erie. We work online, so you can start with a call and see the redesign in a prototype, whether you’re in Center City or at a plant in the western part of the state.' },
           { question: 'Do you build websites for small businesses in Pennsylvania?', answer: 'Yes, and many already have an old site and loyal customers. We keep what works, renew what no longer helps and give you the full price before we start.' },
           ...commonFaq('en', 'payment', 'time'),

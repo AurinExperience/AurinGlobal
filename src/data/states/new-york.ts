@@ -15,7 +15,7 @@ export const newYork: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Nueva York | Precio cerrado | Aurin',
-        description: 'Agencia de diseño web, UX/UI y branding para empresas de Nueva York, de Manhattan a Buffalo. Trato directo con el equipo y precio cerrado. Llamada gratis.',
+        description: 'Agencia de diseño web y UX/UI para empresas de Nueva York, de Manhattan a Buffalo, con SEO básico o avanzado. Trato directo y precio cerrado. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Nueva York',
@@ -73,7 +73,7 @@ export const newYork: State = {
           { question: '¿Dónde está su equipo?', answer: 'En Cuernavaca, México, desde 1998. Lo decimos desde el principio: no tenemos oficina en Nueva York ni vamos a simularla. A cambio, hablas directamente con quien diseña y programa, y puedes conocerlos más abajo en esta página.' },
           { question: '¿Qué tienen frente a una agencia de Manhattan?', answer: 'Si necesitas reuniones presenciales o una marca de agencia famosa en tu presentación, ellos te convienen más. Si quieres ver el diseño antes de programar, un precio cerrado y trabajar sin capas de cuentas con la gente que hace el proyecto, compáranos.' },
           { question: '¿Trabajan en horario de Nueva York?', answer: 'Las reuniones se agendan dentro de tu jornada. Vamos una hora atrás de Nueva York en invierno y dos en verano, y solemos reunirnos entre media mañana y la tarde de tu lado.' },
-          { question: '¿Ofrecen SEO para empresas en Nueva York?', answer: 'Sí, en su versión básica: títulos, descripciones, velocidad y datos estructurados van incluidos. En un mercado tan peleado suele hacer falta más, como páginas para búsquedas específicas y seguimiento, y eso se cotiza aparte. También optimizamos sitios para que aparezcan en buscadores con IA. Nadie serio promete el primer lugar.' },
+          { question: '¿Ofrecen SEO para empresas en Nueva York?', answer: 'Sí, en su versión básica: títulos, descripciones, velocidad y datos estructurados van incluidos. En un mercado tan peleado suele hacer falta SEO avanzado, como páginas para búsquedas específicas y seguimiento, que se cotiza aparte. Optimizar el sitio para buscadores con IA también entra ahí. Nadie serio promete el primer lugar.' },
           { question: '¿Qué pide la ley de Nueva York sobre datos de clientes?', answer: 'La ley SHIELD pide a quien maneja datos de residentes de Nueva York protegerlos con medidas razonables. En el sitio nos toca lo nuestro: formularios que piden solo lo necesario, conexión cifrada y accesos controlados. Tu asesor confirma lo que aplique a tu empresa.' },
           ...commonFaq('es', 'redesign', 'copy'),
         ],
@@ -86,7 +86,7 @@ export const newYork: State = {
     en: {
       seo: {
         title: 'Web Design Agency in New York | Fixed Price | Aurin',
-        description: 'Web design and UX/UI for New York companies, from Manhattan to Buffalo. Work directly with the people doing the work, at a fixed price. Book a free call.',
+        description: 'Web design and UX/UI for New York companies, from Manhattan to Buffalo, with basic or advanced SEO. Work directly with the team, at a fixed price. Free call.',
       },
       hero: {
         titleLead: 'Web design agency in New York',
@@ -144,7 +144,7 @@ export const newYork: State = {
           { question: 'Where is your team?', answer: 'In Cuernavaca, Mexico, since 1998. We say so up front: we have no New York office and won’t pretend otherwise. In exchange, you talk directly to the people who design and build, and you can meet them further down this page.' },
           { question: 'What do you offer compared with a Manhattan agency?', answer: 'If you need in-person meetings or a famous agency name in your deck, they’re the better fit. If you want to see the design before the build, a fixed price and no account layers between you and the people doing the work, compare us.' },
           { question: 'Do you work New York hours?', answer: 'Meetings get scheduled within your workday. We’re one hour behind New York in winter and two in summer, and we usually meet from mid-morning through the afternoon on your side.' },
-          { question: 'Do you offer SEO for New York companies?', answer: 'Yes, at a basic level: titles, descriptions, speed and structured data are included. In a market this crowded you’ll often need more, like pages for specific searches and ongoing tracking, and that’s quoted separately. We also optimize sites to appear in AI search. No honest agency promises the top spot.' },
+          { question: 'Do you offer SEO for New York companies?', answer: 'Yes, at a basic level: titles, descriptions, speed and structured data are included. In a market this crowded you’ll often need advanced SEO, like pages for specific searches and ongoing tracking, quoted separately. Optimizing the site for AI search falls under that too. No honest agency promises the top spot.' },
           { question: 'What does New York law require for customer data?', answer: 'The SHIELD Act asks anyone handling New York residents’ data to protect it with reasonable safeguards. On the site, we handle our part: forms that ask only for what’s needed, encrypted connections and controlled access. Your advisor confirms what applies to your company.' },
           ...commonFaq('en', 'redesign', 'copy'),
         ],

@@ -13,7 +13,7 @@ export const georgia: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Georgia | Desde 1998 | Aurin',
-        description: 'Páginas web y UX/UI para empresas de Georgia, de Atlanta a Savannah. Un solo equipo con precio cerrado, y ves el diseño antes de programar. Llamada gratis.',
+        description: 'Páginas web y UX/UI para empresas de Georgia, de Atlanta a Savannah, con SEO básico o avanzado. Precio cerrado y ves el diseño antes. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Georgia',
@@ -69,7 +69,7 @@ export const georgia: State = {
           { question: '¿Dónde está su oficina?', answer: 'En Cuernavaca, México; ahí trabaja el equipo desde 1998. Atendemos en línea a empresas de Atlanta, Alpharetta, Savannah, Augusta y el resto de Georgia. Más abajo ves al equipo y a los fundadores: con ellos hablas durante todo el proyecto.' },
           { question: '¿Mi sitio puede cobrar con tarjeta de forma segura?', answer: 'Sí. Lo conectamos con un proveedor de pagos reconocido, de modo que los datos de la tarjeta se capturen ahí y no pasen por tu servidor. Eso reduce riesgos y trabajo de seguridad para tu empresa. Te ayudamos a elegir el que te convenga.' },
           { question: '¿En qué horario nos podemos reunir?', answer: 'En tu jornada. Vamos una hora atrás de Georgia en invierno y dos en verano, y por eso solemos agendar entre media mañana y la tarde de tu lado.' },
-          { question: '¿Ofrecen SEO para salir en Google en Atlanta y en Georgia?', answer: 'Sí, el básico: cada sitio sale con títulos, descripciones, carga rápida y datos estructurados, sin costo extra. También hacemos un plan especializado, con páginas por servicio y sector para competir en Atlanta, que se cotiza aparte, y podemos optimizar tu sitio para buscadores con IA. Es más lento que pagar anuncios, pero el tráfico se queda.' },
+          { question: '¿Ofrecen SEO para salir en Google en Atlanta y en Georgia?', answer: 'Sí, el básico: cada sitio sale con títulos, descripciones, carga rápida y datos estructurados, sin costo extra. También hacemos SEO avanzado, con páginas por servicio y sector para competir en Atlanta y optimización para buscadores con IA, que se cotiza aparte. Es más lento que pagar anuncios, pero el tráfico se queda.' },
           { question: '¿Me sirve una versión en español?', answer: 'Depende de a quién le vendes. Tiene sentido en salud, educación y servicios a familias en el área de Atlanta o en el norte de Georgia. Si no aporta, te lo decimos y no la incluimos: no cobramos por algo que no vayas a usar.' },
           { question: '¿Hacen diseño web en Atlanta, Alpharetta y Savannah?', answer: 'Sí, y en Augusta y el resto de Georgia. Coordinamos todo por videollamada y con prototipos compartidos, de modo que trabajar desde Midtown, el norte de Atlanta o la costa no cambia ni el proceso ni el precio.' },
           { question: '¿Hacen páginas web para pequeñas empresas en Georgia?', answer: 'Sí. Para muchos negocios el primer paso es un sitio claro que reciba citas o pagos sin vueltas, y el resto llega después. Lo definimos juntos en la llamada gratis y lo ponemos por escrito.' },
@@ -84,7 +84,7 @@ export const georgia: State = {
     en: {
       seo: {
         title: 'Web Design Agency in Georgia | See It First | Aurin',
-        description: 'Web design, UX/UI and branding for Georgia companies, from Atlanta to Savannah. One team, a fixed price and the design before the build. Book a free call.',
+        description: 'Web design and UX/UI for Georgia companies, from Atlanta to Savannah, with basic or advanced SEO. A fixed price and the design before the build. Free call.',
       },
       hero: {
         titleLead: 'Web design agency in Georgia',
@@ -140,7 +140,7 @@ export const georgia: State = {
           { question: 'Where is your office?', answer: 'In Cuernavaca, Mexico, where the team has worked since 1998. We serve companies in Atlanta, Alpharetta, Savannah, Augusta and across Georgia online. You can see the team and founders further down: they’re who you talk to throughout the project.' },
           { question: 'Can my site take card payments securely?', answer: 'Yes. We connect it to an established payment provider, so card details are captured there and never pass through your server. That cuts risk and security work for your company. We’ll help you pick the one that suits you.' },
           { question: 'What hours can we meet?', answer: 'During your workday. We’re one hour behind Georgia in winter and two in summer, so we usually book from mid-morning through the afternoon on your side.' },
-          { question: 'Do you offer SEO to show up on Google in Atlanta and Georgia?', answer: 'Yes, the basics: every site launches with titles, descriptions, fast loading and structured data, at no extra cost. We also do specialized plans, with pages by service and sector to compete in Atlanta, quoted separately, and we can optimize your site for AI search engines. It’s slower than paying for ads, but the traffic stays.' },
+          { question: 'Do you offer SEO to show up on Google in Atlanta and Georgia?', answer: 'Yes, the basics: every site launches with titles, descriptions, fast loading and structured data, at no extra cost. We also do advanced SEO, with pages by service and sector to compete in Atlanta and optimization for AI search engines, quoted separately. It’s slower than paying for ads, but the traffic stays.' },
           { question: 'Do you do web design in Atlanta, Alpharetta and Savannah?', answer: 'Yes, and in Augusta and the rest of Georgia. We coordinate by video call and shared prototypes, so working from Midtown, North Atlanta or the coast changes neither the process nor the price.' },
           { question: 'Do you build websites for small businesses in Georgia?', answer: 'Yes. For many businesses the first step is a clear site that takes appointments or payments without fuss, and the rest comes later. We define it together on the free call and put it in writing.' },
           ...commonFaq('en', 'redesign', 'payment'),

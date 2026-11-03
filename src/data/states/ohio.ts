@@ -14,7 +14,7 @@ export const ohio: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Ohio | Precio cerrado | Aurin',
-        description: 'Páginas web y catálogos en línea para empresas de Ohio, de Columbus a Cleveland. Precio cerrado y el diseño a la vista antes de programar. Llamada gratis.',
+        description: 'Páginas web y catálogos en línea para empresas de Ohio, de Columbus a Cleveland, con SEO básico o avanzado. Precio cerrado y diseño a la vista. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Ohio',
@@ -72,7 +72,7 @@ export const ohio: State = {
           { question: '¿Dónde está su equipo?', answer: 'En Cuernavaca, México, desde 1998. Vamos una hora atrás de Ohio en invierno y dos en verano, y nos reunimos en tu horario de trabajo. Son las mismas personas de principio a fin, y puedes verlas más abajo en esta página.' },
           { question: '¿Puedo poner mi catálogo en línea aunque no venda por internet?', answer: 'Sí, y en industria es lo más común: el cliente revisa productos, descarga fichas y te pide cotización, sin carrito de compra. Y cada producto queda con su propia página, fácil de compartir con un comprador.' },
           { question: '¿Mi sitio me puede ayudar a contratar gente?', answer: 'Sí. Una buena sección de empleo con fotos reales, qué hace tu gente y cómo postularse desde el teléfono ayuda mucho cuando compites por técnicos y operarios. Lo incluimos en la propuesta si lo necesitas.' },
-          { question: '¿Ofrecen SEO para empresas industriales en Ohio?', answer: 'Sí, el básico viene incluido: títulos, descripciones, velocidad y datos estructurados. Un comprador técnico busca por proceso, material o certificación; si quieres páginas para esas búsquedas, es un trabajo más especializado que cotizamos aparte y te decimos qué esperar. Igual podemos optimizarlo para buscadores con IA, donde también preguntan los compradores.' },
+          { question: '¿Ofrecen SEO para empresas industriales en Ohio?', answer: 'Sí, el básico viene incluido: títulos, descripciones, velocidad y datos estructurados. Un comprador técnico busca por proceso, material o certificación; si quieres páginas para esas búsquedas, es SEO avanzado, que cotizamos aparte y te decimos qué esperar. Optimizarlo para buscadores con IA, donde también preguntan los compradores, es parte del mismo servicio.' },
           ...commonFaq('es', 'copy', 'support'),
         ],
       },
@@ -84,7 +84,7 @@ export const ohio: State = {
     en: {
       seo: {
         title: 'Web Design Agency in Ohio | Fixed Price | Aurin',
-        description: 'Websites and online catalogs for Ohio companies, from Columbus to Cleveland. A fixed price, and you see the design before we build. Book a free call.',
+        description: 'Websites and online catalogs for Ohio companies, from Columbus to Cleveland, with basic or advanced SEO. A fixed price and the design first. Free call.',
       },
       hero: {
         titleLead: 'Web design agency in Ohio',
@@ -142,7 +142,7 @@ export const ohio: State = {
           { question: 'Where is your team?', answer: 'In Cuernavaca, Mexico, since 1998. We’re one hour behind Ohio in winter and two in summer, and we meet during your working hours. It’s the same people from start to finish, and you can see them further down this page.' },
           { question: 'Can I put my catalog online even if I don’t sell online?', answer: 'Yes, and in industry that’s the norm: customers browse products, download spec sheets and request a quote, with no shopping cart. And each product gets its own page, easy to share with a buyer.' },
           { question: 'Can my website help me hire people?', answer: 'Yes. A good careers section with real photos, what your people do and how to apply by phone helps a lot when you’re competing for technicians and operators. We include it in the proposal if you need it.' },
-          { question: 'Do you offer SEO for industrial companies in Ohio?', answer: 'Yes, the basics are included: titles, descriptions, speed and structured data. A technical buyer searches by process, material or certification; if you want pages for those searches, that’s a more specialized effort we quote separately, and we tell you what to expect. We can also optimize it for AI search, where buyers ask questions too.' },
+          { question: 'Do you offer SEO for industrial companies in Ohio?', answer: 'Yes, the basics are included: titles, descriptions, speed and structured data. A technical buyer searches by process, material or certification; if you want pages for those searches, that’s advanced SEO, which we quote separately, and we tell you what to expect. Optimizing it for AI search, where buyers ask questions too, is part of the same service.' },
           ...commonFaq('en', 'copy', 'support'),
         ],
       },

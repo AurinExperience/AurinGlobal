@@ -14,7 +14,7 @@ export const northCarolina: State = {
     es: {
       seo: {
         title: 'Diseño de páginas web en Carolina del Norte | Aurin',
-        description: 'Páginas web, UX/UI y branding para empresas de Carolina del Norte, de Charlotte a Raleigh y Durham. Precio cerrado y ves el diseño antes. Llamada gratis.',
+        description: 'Páginas web y UX/UI para empresas de Carolina del Norte, de Charlotte a Raleigh y Durham, con SEO básico o avanzado y precio cerrado. Llamada gratis.',
       },
       hero: {
         titleLead: 'Diseño de páginas web en Carolina del Norte',
@@ -71,7 +71,7 @@ export const northCarolina: State = {
           { question: '¿Pueden explicar un producto científico o muy técnico?', answer: 'Es de lo que mejor hacemos. Hablamos con quien lo creó, traducimos el tema a lo que le importa a tu comprador y te pasamos los textos para que tu equipo revise la precisión. Nada se publica sin esa revisión.' },
           { question: '¿Firman acuerdo de confidencialidad?', answer: 'Sí, desde el inicio, si tu proyecto incluye datos o tecnología que aún no son públicos. Y la información confidencial no pasa por herramientas de IA.' },
           { question: '¿En qué horario trabajan?', answer: 'Una hora atrás de Carolina del Norte en invierno y dos en verano. Las reuniones se agendan sin problema dentro de tu jornada, y entre una y otra avanzamos con revisiones que puedes ver a tu ritmo.' },
-          { question: '¿Ofrecen SEO para empresas especializadas en Carolina del Norte?', answer: 'Sí, el SEO básico ya viene con el sitio: títulos, descripciones, velocidad y datos estructurados. Si quieres páginas para cada problema que resuelves, escritas como lo busca tu cliente y no como lo llama tu laboratorio, también lo hacemos, como trabajo especializado que se cotiza aparte. Podemos además optimizar el sitio para que las herramientas de IA entiendan y citen bien lo que haces.' },
+          { question: '¿Ofrecen SEO para empresas especializadas en Carolina del Norte?', answer: 'Sí, el SEO básico ya viene con el sitio: títulos, descripciones, velocidad y datos estructurados. Si quieres páginas para cada problema que resuelves, escritas como lo busca tu cliente y no como lo llama tu laboratorio, también lo hacemos, como SEO avanzado, que se cotiza aparte. El SEO avanzado también incluye optimizar el sitio para que las herramientas de IA entiendan bien lo que haces.' },
           { question: '¿Hacen diseño web en Charlotte, Raleigh y Durham?', answer: 'Sí, y en Greensboro, Winston-Salem y Asheville. Trabajamos en línea con todo el estado, y es igual de sencillo para un banco del centro de Charlotte que para una empresa de ciencia en el Research Triangle.' },
           { question: '¿Hacen páginas web para pequeñas empresas en Carolina del Norte?', answer: 'Sí, también para empresas nuevas de tecnología o ciencia con poco equipo. Te ayudamos a decir con claridad qué haces, con un sitio del tamaño que hoy te conviene y un precio que conoces desde el inicio.' },
           ...commonFaq('es', 'copy', 'time'),
@@ -85,7 +85,7 @@ export const northCarolina: State = {
     en: {
       seo: {
         title: 'Web Design Agency in North Carolina | Aurin',
-        description: 'Web design, UX/UI and branding for North Carolina companies, from Charlotte to the Research Triangle. A fixed price and the design before the build. Free call.',
+        description: 'Web design and UX/UI for North Carolina companies, from Charlotte to the Research Triangle, with basic or advanced SEO and a fixed price. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in North Carolina',
@@ -142,7 +142,7 @@ export const northCarolina: State = {
           { question: 'Can you explain a scientific or highly technical product?', answer: 'It’s one of the things we do best. We talk with the people who created it, translate it into what matters to your buyer, and hand the copy to your team to check accuracy. Nothing goes live without that review.' },
           { question: 'Do you sign NDAs?', answer: 'Yes, from the start, if your project involves data or technology that isn’t public yet. And confidential information doesn’t go through AI tools.' },
           { question: 'What hours do you work?', answer: 'One hour behind North Carolina in winter and two in summer. Meetings fit easily into your workday, and between them we move forward with reviews you can look at on your own schedule.' },
-          { question: 'Do you offer SEO for specialized companies in North Carolina?', answer: 'Yes, basic SEO comes with the site: titles, descriptions, speed and structured data. If you want pages for each problem you solve, written the way your customer searches for it rather than the way your lab names it, we do that too, as specialized work quoted separately. We can also optimize the site so AI tools understand and cite what you do accurately.' },
+          { question: 'Do you offer SEO for specialized companies in North Carolina?', answer: 'Yes, basic SEO comes with the site: titles, descriptions, speed and structured data. If you want pages for each problem you solve, written the way your customer searches for it rather than the way your lab names it, we do that too, as advanced SEO, quoted separately. Advanced SEO also covers optimizing the site so AI tools understand what you do accurately.' },
           { question: 'Do you do web design in Charlotte, Raleigh and Durham?', answer: 'Yes, and in Greensboro, Winston-Salem and Asheville. We work online across the state, and it’s just as simple for a bank in Uptown Charlotte as for a science company in the Research Triangle.' },
           { question: 'Do you build websites for small businesses in North Carolina?', answer: 'Yes, including young tech or science companies with a small team. We help you say clearly what you do, on a site sized for where you are today, at a price you know from the start.' },
           ...commonFaq('en', 'copy', 'time'),

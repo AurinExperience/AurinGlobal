@@ -15,13 +15,16 @@
 import type { StateCopy } from '@/data/states';
 import type { IndustryPhoto } from '@/data/services/types';
 import { UI, getLangFromUrl } from '@/i18n';
+import Check from 'lucide-astro/Check';
 import MainButton from '@/components/ui/MainButton.astro';
 import SecondaryButton from '@/components/ui/SecondaryButton.astro';
 import styles from './HeroState.module.css';
 
 interface Props {
   hero: StateCopy['hero'];
-  photo?: 'arch' | IndustryPhoto;
+  photo?: 'arch' | IndustryPhoto | 'st-beacon';
+  /** Bajo los botones, lo que va por escrito (estados; su foto es el faro, st-beacon, igual para todos). */
+  trust?: boolean;
 }
 
 // Medidas en la foto (fracciones desde arriba a la izquierda; si cambias una foto, vuelve a medirlas).
@@ -53,11 +56,14 @@ const PHOTOS = {
   'ind-agencies': { img: [1800, 1500], fx: 'code' },
   // Torres a la hora azul (Jerry Wei, Unsplash, Nz1zE8JEg2k), en espejo, sin el letrero ni los cables: la corona y las
   // ventanas encendidas en lima. Una luz recorre la corona, algunas ventanas se apagan y se prenden, la baliza parpadea
+  // Estados (el mismo para todos, el motivo de marca): un faro bajo la Vía Láctea (Unsplash VsPsf4F5Pi0), sin sus haces
+  // fijos: el shader dibuja uno que gira, como el de la home
+  'st-beacon': { img: [1920, 1280], fx: 'beacon', lamp: [0.49875, 0.564] },
   'ind-real-estate': { img: [1920, 1524], fx: 'skyline' },
   'ind-nonprofits': { img: [1920, 1077], fx: 'flame' },
 } satisfies Record<'arch' | IndustryPhoto, { img: number[]; lamp?: number[]; beam?: number[]; fx?: string }>;
 
-const { hero, photo = 'arch' } = Astro.props;
+const { hero, photo = 'arch', trust } = Astro.props;
 const t = UI[getLangFromUrl(Astro.url)];
 ---
 
@@ -79,12 +85,18 @@ const t = UI[getLangFromUrl(Astro.url)];
         <MainButton href="#contacto" text={t.bookCallLong} />
         <SecondaryButton href="#servicios" text={hero.ctaSecondary} />
       </div>
+      {trust && (
+        <ul class:list={['rise rise-3', styles.trust]}>
+          {t.heroTrust.map((item) => <li><Check aria-hidden="true" />{item}</li>)}
+        </ul>
+      )}
     </div>
   </div>
 </section>
 
 <script>
   import { gpuContext, setup } from '@/lib/webgl';
+
 
   // Las medidas de la foto (PHOTOS en el frontmatter); el hero está en toda página que carga este script.
   const { img: IMG, lamp: LAMP, beam: BEAM, fx: FX } = JSON.parse(
@@ -133,6 +145,8 @@ const t = UI[getLangFromUrl(Astro.url)];
     liberty: 'float m = .9 + .18 * noise(vec2(t * 1.3, 2.));',
     // La luz de detrás del monitor respira como breath (el código y el teclado van en AFTER)
     code: 'float m = .9 + .15 * noise(vec2(t * .5, 1.));',
+    // El faro: la luz respira apenas
+    beacon: 'float m = .94 + .08 * noise(vec2(t * .6, 3.));',
     // La corona de la torre respira despacio
     skyline: 'float m = .9 + .12 * noise(vec2(t * .4, 4.));',
     // El reflector: casi fijo
@@ -140,6 +154,10 @@ const t = UI[getLangFromUrl(Astro.url)];
     // El arco de soldar chisporrotea: su luz en el humo sube y baja a saltos, irregular
     weld: 'float m = .86 + .2 * noise(vec2(t * 13., 4.)) + .08 * noise(vec2(t * 37., 9.));',
   };
+  // Faro: contorno del cerro y del terreno (px de la foto, cada 1/48 del ancho), medido en la foto. Si cambias la foto, recalcúlalo
+  const HILL = [1200, 1200, 1195, 1195, 1195, 1187, 1186, 1173, 1172, 1141, 1131, 1120, 1113, 1112, 1108, 1103, 1104, 1109, 1108, 1112,
+    1115, 1119, 1140, 1148, 1169, 1173, 1177, 1183, 1186, 1182, 1175, 1170, 1158, 1153, 1125, 1153, 1149, 1152, 1151, 1148, 1142, 1141,
+    1139, 1138, 1144, 1160, 1180, 1195, 1200];
   // Lo que se suma encima de la foto, por fx
   const AFTER = {
     dusk: `
@@ -266,6 +284,121 @@ const t = UI[getLangFromUrl(Astro.url)];
       float shift = pow((1. + dot(ip - L0, ip - L0) / R2) / (1. + dot(ip - L1, ip - L1) / R2), 3.);
       float lit = smoothstep(.06, .4, lum) * (1. - zone);
       c *= mix(1., shift * (1. + (m - .92) * .6) * (1. + (stretch - 1.) * 1.5), lit);`,
+    beacon: `
+      // Las estrellas titilan: puntos más claros que lo que tienen alrededor
+      // (solo en los píxeles claros: el resto del cielo no lee la foto otra vez)
+      if (lum > .12) {
+        float around = (texture2D(img, (ip + vec2(4., 0.)) / IMG).b + texture2D(img, (ip - vec2(4., 0.)) / IMG).b
+                      + texture2D(img, (ip + vec2(0., 4.)) / IMG).b + texture2D(img, (ip - vec2(0., 4.)) / IMG).b) * .25;
+        c *= 1. + smoothstep(.06, .2, lum - around) * (noise(ip / 7. + t * 1.6) - .5) * 1.3;
+      }
+      // Un solo haz en 3D, como el de la home (mismos F, G, DIP y la misma mezcla de luz), en cono: nace casi en un punto en
+      // la lámpara (W0) y se abre al alejarse; con un W0 grande salía tan grueso como la linterna y se veía cortado. Cámara en el origen a la altura del horizonte (HZ), teleobjetivo, lámpara a distancia 1 y el
+      // haz inclinado hacia abajo (DIP, mayor que la altura de la lámpara: de frente baja, nunca sube al cielo). Una vuelta cada
+      // 30 s a velocidad constante: izquierda → de frente (destello) → derecha → por detrás de la torre, sin saltos.
+      // Siempre blanco (sin el ciclo gris ↔ lima: el color lo ponen las luciérnagas)
+      cyc = 1.;
+      const float F = 3.5, HZ = .93, W0 = .0015, SPREAD = .05, DIP = .18, G = .15, CAMH = .012;
+      const vec3 LIGHT = vec3(1., .97, .9);
+      float th = 3.875 - t * .20944; // t = 6 (reduced-motion): hacia la izquierda, un poco hacia la cámara
+      vec3 bd = normalize(vec3(cos(th), -DIP, sin(th)));
+      vec2 lp = LAMP * IMG, lv = ip - lp;
+      vec3 L = vec3((lp.x - IMG.x * .5) / IMG.y, (HZ * IMG.y - lp.y) / IMG.y, 0.) / F - vec3(0., 0., 1.);
+      vec3 v = normalize(vec3((ip.x - IMG.x * .5) / IMG.y, (HZ * IMG.y - ip.y) / IMG.y, -F));
+      float toward = -dot(bd, L) / length(L); // 1 = la lente mira a la cámara
+      // Punto del haz más cercano al rayo de vista de este píxel
+      float bv = dot(v, bd), den = max(1. - bv * bv, 1e-4);
+      float sb = max((bv * dot(v, L) - dot(bd, L)) / den, 0.);
+      vec3 bp = L + bd * sb;
+      // Al alejarse la perspectiva lo angosta de más: se abre un poco en ese tramo, de forma gradual
+      float rr = length(v * max(dot(bp, v), 0.) - bp), wd = W0 + sb * SPREAD * (1. + .9 * smoothstep(.1, .9, -toward));
+      // La neblina dispersa un poco más hacia adelante (Henyey-Greenstein). Se apaga con la distancia y antes de llegar a
+      // la cámara (si no, de frente crece hasta llenar la pantalla), pero sigue hasta tocar el cerro: apagarla antes dejaba un
+      // hueco entre el haz y el piso
+      float beamL = exp(-rr * rr / (wd * wd)) / max(sqrt(den), .7)
+        * pow(1. + G * G - 2. * G * dot(bd, -v), -1.5) * pow(1. + G * G, 1.5)
+        * (.65 + .35 * noise(vec2(sb * 7. - t * .4, rr / wd * 2.)))
+        * exp(-sb / .5) * 1.3 * (W0 + .03) / (wd + .03) * smoothstep(.3, .6, -bp.z) * smoothstep(-CAMH - .02, -CAMH, bp.y);
+      // Lo sólido: de espaldas, la torre tapa el haz; el cerro, siempre (HILL = su contorno medido en la foto)
+      vec2 tp = vec2(abs(ip.x - 957.), ip.y);
+      float hw = tp.y < 755. ? 37. : tp.y < 796. ? 55. : 46. + (tp.y - 816.) * .0322;
+      float solid = (1. - smoothstep(hw - 1.5, hw + 1.5, tp.x)) * smoothstep(664., 668., tp.y);
+      // (la linterna va abierta: de espaldas el haz se ve a través de ella)
+      float glass = (1. - smoothstep(35., 38., tp.x)) * smoothstep(686., 689., tp.y) * (1. - smoothstep(750., 754., tp.y));
+      beamL *= 1. - solid * (1. - glass) * smoothstep(1., 1.02, -bp.z);
+      float hillY = 1200., hillF = clamp(uv.x, 0., 1.) * ${HILL.length - 1}.;
+      if (ip.y > 1080.) { ${HILL.slice(1).map((v, i) => `hillY = mix(hillY, ${v}., clamp(hillF - ${i}., 0., 1.));`).join(' ')} }
+      float land = smoothstep(hillY - 3., hillY + 3., ip.y);
+      beamL *= 1. - land;
+      // Nubes bajas que cruzan despacio, detrás de la torre y del cerro. Se ven aunque el haz no las toque: las alumbra la luz
+      // de la noche (cloudLit, con claros y oscuros para que tengan volumen), tapan estrellas y el haz las aviva al pasar.
+      // Arriba el cielo queda libre (la Vía Láctea es de foto). fbm solo en su franja: es lo que más cuesta
+      float cloud = smoothstep(520., 780., ip.y) * (1. - smoothstep(1060., 1150., ip.y)), cloudLit = 0.;
+      if (cloud > 0.) {
+        vec2 cp = vec2(ip.x / 620. - t * .025, ip.y / 170.);
+        float warp = fbm(cp * .8 + vec2(t * .006, 3.));
+        float cn = fbm(cp + vec2(warp * .9, warp * .25));
+        cloud *= smoothstep(.38, .66, cn) * (1. - land) * (1. - solid * (1. - glass));
+        cloudLit = .05 + .17 * smoothstep(.4, .75, cn) * (.55 + .9 * warp);
+      }
+      beamL *= 1. + cloud; // Hay más que dispersar: dentro de la nube el haz se ve más
+      float rdn = length(lv) / IMG.y, face = pow(max(toward, 0.), 3.), fa = pow(.5 + .5 * toward, 2.), flare = pow(max(toward, 0.), 30.);
+      float air = 1. - exp(-beamL * .9);
+      float light = exp(-rdn * 70.) * (.02 + .28 * fa);
+      // El destello de frente: breve y chico
+      light += flare * (exp(-rdn * 7.) * .2 + exp(-abs(lv.y) / IMG.y * 110.) * exp(-abs(lv.x) / IMG.y * 3.) * .12);
+      // La linterna, abierta como si no tuviera cristal: se ve el cielo a través y la lámpara adentro. La luz sale entre los
+      // barrotes; techo y balcón la tapan, salvo cuando la lente mira a la cámara. La parte caliente de la lente se corre hacia
+      // donde apunta el haz
+      float housing = solid * (1. - glass) * (1. - smoothstep(796., 800., tp.y));
+      float lr = length(lv - vec2(bd.x * 14., 0.));
+      // (el haz no se tapa aquí: de frente ya salió de la linterna y pasa delante del balcón; de espaldas lo tapa \`solid\`)
+      light = air * (1. - glass * (.45 - .3 * face)) + light * (1. - housing * (.95 - .5 * face))
+        + (exp(-lr / 3.5) + exp(-lr / 12.) * .45) * (.02 + .8 * fa + 1.2 * face) * (1. - housing)
+        + glass * (.015 + .05 * fa + .1 * face); // Un poco de luz en el aire de adentro
+      // Donde el haz toca el cerro la luz se posa: multiplica la foto (saca su textura) y no pinta nada encima
+      float wide = wd * 2.6;
+      float lit = land * exp(-rr * rr / (wide * wide)) * exp(-sb / .6) * smoothstep(.3, .6, -bp.z) * 7.;
+      // La nube tapa las estrellas; la alumbran el haz (más ancho que en el aire) y un poco la linterna
+      c = mix(c, vec3(cloudLit) * vec3(.97, .98, 1.), cloud * .88);
+      c += LIGHT * cloud * (exp(-rr * rr / (wide * wide)) * exp(-sb / .5) * smoothstep(.3, .6, -bp.z) * .35 + exp(-rdn * 6.) * (.03 + .1 * fa));
+      // Barrotes de un cilindro visto desde abajo: más delgados y más juntos hacia las orillas, aros curvos (el frente del
+      // círculo se ve más alto) y los de atrás tenues, para que se sienta el volumen. Se oscurecen ANTES de sumar la luz: cerca
+      // de la lámpara la luz se los come, como en una foto; negros encima se veían como una jaula pegada
+      float cyl = sqrt(max(1. - tp.x * tp.x / 1444., 0.));
+      float front = min(min(abs(tp.x - 14.) / 1.2, abs(tp.x - 29.) / .9), abs(tp.x - 35.5) / .6);
+      float bar = 1. - smoothstep(.5, 1.7, front);
+      float ring = min(abs(ip.y - 692. + 5. * cyl), abs(ip.y - 754. + 5. * cyl));
+      bar = max(bar, 1. - smoothstep(.8, 2., ring));
+      float back = (1. - smoothstep(.4, 1.5, min(abs(tp.x - 4.), abs(tp.x - 22.)))) * .3;
+      float stand = (1. - smoothstep(1.5, 3.5 + (ip.y - 736.) * .12, tp.x)) * smoothstep(732., 738., ip.y) * .7;
+      float frame = max(max(bar, back), stand) * glass;
+      c = mix(c, vec3(.035), frame * .9);
+      light *= 1. - frame * .5;
+      // Lo que toca la luz se aclara; luego se suma en pantalla (no satura ni tapa las estrellas)
+      c *= 1. + light * .8 + LIGHT * lit * 1.2;
+      c = 1. - (1. - c) * (1. - clamp(LIGHT * light * 1.2, 0., 1.));
+      // Luciérnagas, como las de la home: cada una da un destello corto cada 5–11 s (se enciende rápido, se apaga despacio
+      // y sube un poco) en otro lugar y el resto del tiempo está a oscuras: dos o tres a la vez. Vuelan bajo, sobre el cerro.
+      // Luz fría verde-amarilla (~560 nm), el único color de la escena; como vuela mientras brilla, deja un trazo corto
+      vec2 fq = vec2(ip.x, IMG.y - ip.y) / IMG.y;
+      float ff = 0.;
+      for (int i = 0; i < 14; i++) {
+        float k = float(i), period = 5. + h21(vec2(k, 3.7)) * 6.;
+        float ct = t / period + h21(vec2(k, 9.2)), lt = fract(ct) * period, fc = floor(ct);
+        if (lt > 2.2) continue;
+        vec2 seed = vec2(h21(vec2(k, fc + .5)), h21(vec2(fc, k + 4.1)));
+        // Solo del lado de la foto que se ve (a la izquierda queda el texto) y a la altura del cerro y la base de la torre
+        vec2 home = vec2((.2 + seed.x * .8) * IMG.x / IMG.y, .04 + seed.y * .3);
+        vec2 fa1 = home + vec2(sin(lt * 1.3 + k) * .005 + lt * .006 * (seed.x - .5), lt * .007);
+        float lt0 = max(lt - .12, 0.);
+        vec2 fa0 = home + vec2(sin(lt0 * 1.3 + k) * .005 + lt0 * .006 * (seed.x - .5), lt0 * .007), ab = fa1 - fa0;
+        float near = mix(.8, .35, seed.y); // Más abajo = más cerca = más grande
+        float fd = length(fq - fa0 - ab * clamp(dot(fq - fa0, ab) / max(dot(ab, ab), 1e-8), 0., 1.)) / near;
+        ff += smoothstep(0., .25, lt) * exp(-max(lt - .25, 0.) * 2.6) * (exp(-fd * fd / 1.6e-5) + exp(-fd / .01) * .35 + exp(-fd / .03) * .05);
+      }
+      c += vec3(.78, 1., .28) * ff;
+`,
     skyline: `
       // La corona (la franja de luz de arriba de la torre, de A a B en px de la foto): una luz la recorre despacio de un
       // extremo al otro, como un muro de LED

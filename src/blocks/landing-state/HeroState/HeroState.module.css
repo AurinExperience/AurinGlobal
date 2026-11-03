@@ -259,3 +259,36 @@
   .ind-culture .scene { top: auto; bottom: 0; height: 480px; mask-image: linear-gradient(to bottom, transparent, #000 20%); }
   .ind-culture .photo { object-position: 95% 50%; }
 }
+
+
+/* Estados, bajo los botones: lo que va por escrito y con quién hablas (para que el primer clic sea la llamada) */
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: var(--spacing-8) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--color-white);
+}
+
+.trust li { display: inline-flex; align-items: center; gap: 8px; }
+.trust svg { width: 16px; height: 16px; color: var(--color-yellow); stroke-width: 3; }
+
+
+@media (max-width: 900px) {
+  .trust { gap: 8px 18px; margin-top: var(--spacing-6); font-size: 13px; }
+}
+
+/* Estados: el faro a la derecha; el haz que gira llega hasta el texto (+Lejos). En celular, la torre
+   debajo de los botones */
+.st-beacon .photo { object-position: 50% 60%; }
+@media (min-width: 901px) {
+  .st-beacon .scene { left: 30%; mask-image: linear-gradient(90deg, transparent, #000 45%); }
+}
+@media (max-width: 900px) {
+  .st-beacon { padding-bottom: 380px; }
+  .st-beacon .scene { top: auto; bottom: 0; height: 620px; mask-image: linear-gradient(to bottom, transparent, #000 25%); }
+  .st-beacon .photo { object-position: 50% 70%; }
+}

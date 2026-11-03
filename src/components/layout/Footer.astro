@@ -2,7 +2,7 @@
 /**
  * Pie del sitio. `minimal` en las landings (sin navegación, igual que en aurin.mx): solo marca,
  * dirección y correo. El completo abre con una franja que invita a escribir y enlaza a los servicios
- * y a las industrias (enlazado interno). Los estados no van por ahora (aún no se publican). La dirección es la misma de
+ * y a las industrias (enlazado interno). Los estados salen solos al publicarse; sin ninguno publicado, la columna no se pinta. La dirección es la misma de
  * Google Business Profile (SITE.address): el NAP visible e idéntico cuenta para el SEO local.
  */
 import ArrowUp from 'lucide-astro/ArrowUp';
@@ -14,6 +14,7 @@ import { ANALYTICS_ON, SITE } from '@/config/site';
 import { privacyPath } from '@/data/privacy';
 import { INDUSTRY_PAGES, industriesPath } from '@/data/industries';
 import { SERVICES, servicePath } from '@/data/services';
+import { publishedStates, statePath } from '@/data/states';
 import styles from './Footer.module.css';
 
 interface Props {
@@ -25,6 +26,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = UI[lang];
 const home = lang === 'en' ? '/en/' : '/';
 const year = new Date().getFullYear();
+// ponytail: tope de 6, en orden de publicación. Del 7.º en adelante se llega por los enlaces entre estados; al publicar el 7.º, crear el índice /estados/ y sumar "Todos los estados" (como Industrias)
+const states = publishedStates().slice(0, 6);
 const profile = (domain: string) => SITE.sameAs.find((url) => url.includes(domain))!;
 const social = [
   { href: profile('instagram.com'), label: 'Instagram', Icon: Instagram },
@@ -35,7 +38,7 @@ const social = [
 
 <footer class:list={['sky', 'sky-stars', styles.footer, minimal && styles.minimal]}>
   <div class:list={['wrap', styles.inner]}>
-    <div class={styles.grid}>
+    <div class:list={[styles.grid, !minimal && states.length > 0 && styles.withStates]}>
       <div class={styles.brand}>
         <img src="/img/aurin.svg" alt="Aurin" width="134" height="40" loading="lazy" />
         <p>{t.footer.tagline}</p>
@@ -70,6 +73,15 @@ const social = [
             {INDUSTRY_PAGES.slice(0, 6).map((s) => <li><a class={styles.link} href={servicePath(s, lang)}>{s.copy[lang].name}</a></li>)}
           </ul>
           <a class={styles.all} href={industriesPath(lang)}>{t.footer.allIndustries} →</a>
+        </nav>
+      )}
+
+      {!minimal && states.length > 0 && (
+        <nav class={styles.col} aria-label={t.nav.states}>
+          <p class="eyebrow">{t.nav.states}</p>
+          <ul>
+            {states.map((s) => <li><a class={styles.link} href={statePath(s, lang)}>{s.name}</a></li>)}
+          </ul>
         </nav>
       )}
 

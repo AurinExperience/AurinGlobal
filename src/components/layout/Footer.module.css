@@ -27,6 +27,12 @@
 
 .minimal .grid { grid-template-columns: minmax(240px, 1.4fr) minmax(200px, 1fr); }
 
+/* Con la columna de estados: cinco columnas, más juntas para que quepan */
+.withStates {
+  grid-template-columns: minmax(220px, 1.4fr) repeat(4, minmax(140px, 1fr));
+  column-gap: 40px;
+}
+
 .brand .status {
   max-width: none;
   display: inline-flex;

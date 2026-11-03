@@ -11,6 +11,10 @@ import { software } from './software';
 import { agencies } from './agencies';
 import { realEstate } from './real-estate';
 import { nonprofits } from './nonprofits';
+import { manufacturing } from './manufacturing';
+import { logistics } from './logistics';
+import { cybersecurity } from './cybersecurity';
+import { lifeSciences } from './life-sciences';
 import { isPublished } from '@/data/states';
 
 /**
@@ -53,6 +57,6 @@ export const industriesPath = (lang: Lang) => `${lang === 'en' ? '/en' : ''}/${I
  * Sin nombres de clientes. Una nueva: su archivo aquí + sumarla a esta lista. Con `publishAt` sale sola en esa fecha
  * (menú, rutas, sitemap y enlaces leen de aquí): el sitio es estático, sale en el primer build después de la fecha.
  */
-const ALL_INDUSTRIES: Service[] = [fintech, healthcare, education, tourism, energy, culture, software, agencies, realEstate, nonprofits, remittances];
+const ALL_INDUSTRIES: Service[] = [fintech, healthcare, education, tourism, energy, culture, software, agencies, realEstate, nonprofits, remittances, manufacturing, logistics, cybersecurity, lifeSciences];
 
 export const INDUSTRY_PAGES = ALL_INDUSTRIES.filter((page) => isPublished({ status: 'live', publishAt: page.publishAt }));

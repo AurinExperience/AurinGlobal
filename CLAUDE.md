@@ -176,6 +176,7 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
   en vez del carrusel de logos: etiquetas en una sola línea que se deslizan solas (CSS, lista duplicada con la copia
   `aria-hidden`; con reduced-motion quedan quietas en varias líneas). Secciones: hero (foto propia de la industria) → franja → Contrast (blanca) → qué incluye (negra) → proceso (lima) →
   Team compact → FAQ → cierre.
+- Nichos sin tarjeta en la home, uno al día con `publishAt` en el `Service` (5–8 nov. 2026): manufactura, logística, ciberseguridad, biotecnología. Sin `photo` usan el hero del arco; falta elegirles foto propia. `INDUSTRY_PAGES` filtra con `isPublished`: menú, rutas y sitemap salen solos en esa fecha.
 - aurin.mx tiene fintech, salud, healthtech, banca… sin país: aquí el terreno es "para empresas en Estados Unidos" y
   sitio + app + marca. Vigilar en Search Console si alternan con las de allá.
 
@@ -221,7 +222,7 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
   Inland Empire: ver «Canibalización»). Las ciudades van en `cities`, el FAQ y `areas` (schema), nunca en title ni h1.
 - Ciudades: sin página propia por ahora. Una ciudad se gana su página (`/<estado>/<ciudad>/`) cuando Search Console muestre
   búsquedas de "diseño web + ciudad" cayendo en el estado, y nunca las que ya tiene aurin.mx.
-- Orden (noviembre 2026, por economía y demanda): Texas, Florida, Illinois, Georgia, Carolina del Norte, Pensilvania → Nueva York, California, Nueva Jersey, Ohio. Siguientes candidatos: Massachusetts, Virginia, Washington, Michigan; luego Colorado, Arizona (sin Phoenix), Tennessee, Minnesota.
+- Orden (noviembre 2026, por economía y demanda): 3 nov. Texas, Florida, Illinois, Georgia, Carolina del Norte, Pensilvania → 4 nov. Nueva York, California, Nueva Jersey, Ohio → 5 nov. Washington, Massachusetts, Virginia, Michigan → 6 nov. Colorado, Minnesota, Maryland, Tennessee → 7 nov. Missouri, Indiana, Connecticut, Utah. Siguientes candidatos: Wisconsin, Oregon, Carolina del Sur; Arizona al final (sin Phoenix).
 - Inglés para estadounidenses: lo que se vende es "inglés fluido"; lo bilingüe es un extra, no el argumento principal (ver «Público de las páginas en inglés»).
 
 ## Canibalización (una búsqueda principal por página)

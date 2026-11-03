@@ -77,7 +77,7 @@ const FAQ_KEYS = ['redesign', 'payment', 'copy', 'support', 'time', 'ai'] as con
 
 /**
  * La de IA y dos más, elegidas por estado: las 6 en las 10 páginas serían el mismo texto repetido (doorway pages).
- * Texas, el piloto, las lleva todas. Al sumar un estado, una combinación que no se haya usado.
+ * Texas, el piloto, las lleva todas. Con más de 20 estados las combinaciones se repiten: al sumar uno, la menos usada.
  */
 export const commonFaq = (lang: Lang, a: (typeof FAQ_KEYS)[number], b: (typeof FAQ_KEYS)[number]): FaqItem[] =>
   [a, b, 'ai' as const].map((key) => COMMON_FAQ[lang][FAQ_KEYS.indexOf(key)]);

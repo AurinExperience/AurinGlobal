@@ -10,6 +10,18 @@ import { newYork } from './new-york';
 import { california } from './california';
 import { newJersey } from './new-jersey';
 import { ohio } from './ohio';
+import { washington } from './washington';
+import { massachusetts } from './massachusetts';
+import { virginia } from './virginia';
+import { michigan } from './michigan';
+import { colorado } from './colorado';
+import { minnesota } from './minnesota';
+import { maryland } from './maryland';
+import { tennessee } from './tennessee';
+import { missouri } from './missouri';
+import { indiana } from './indiana';
+import { connecticut } from './connecticut';
+import { utah } from './utah';
 
 export type { State, StateCopy } from './types';
 
@@ -30,6 +42,18 @@ export const ALL_STATES: State[] = [
   california,
   newJersey,
   ohio,
+  washington,
+  massachusetts,
+  virginia,
+  michigan,
+  colorado,
+  minnesota,
+  maryland,
+  tennessee,
+  missouri,
+  indiana,
+  connecticut,
+  utah,
 ];
 
 /**

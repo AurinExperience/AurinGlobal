@@ -11,6 +11,7 @@ import { software } from './software';
 import { agencies } from './agencies';
 import { realEstate } from './real-estate';
 import { nonprofits } from './nonprofits';
+import { isPublished } from '@/data/states';
 
 /**
  * Página índice /industrias/ ↔ /en/industries/: todas las industrias de la home (HOME[lang].industries.items)
@@ -49,6 +50,9 @@ export const industriesPath = (lang: Lang) => `${lang === 'en' ? '/en' : ''}/${I
  * Páginas de industria: usan la plantilla de servicio (ServicePage) pero no salen en la lista de
  * servicios de la home. Dos tipos: las industrias generales de HOME.industries (fintech, salud…;
  * su tarjeta en /industrias/ enlaza aquí con `page`) y nichos que aurin.mx no toca (remesas).
- * Sin nombres de clientes. Una nueva: su archivo aquí + sumarla a esta lista.
+ * Sin nombres de clientes. Una nueva: su archivo aquí + sumarla a esta lista. Con `publishAt` sale sola en esa fecha
+ * (menú, rutas, sitemap y enlaces leen de aquí): el sitio es estático, sale en el primer build después de la fecha.
  */
-export const INDUSTRY_PAGES: Service[] = [fintech, healthcare, education, tourism, energy, culture, software, agencies, realEstate, nonprofits, remittances];
+const ALL_INDUSTRIES: Service[] = [fintech, healthcare, education, tourism, energy, culture, software, agencies, realEstate, nonprofits, remittances];
+
+export const INDUSTRY_PAGES = ALL_INDUSTRIES.filter((page) => isPublished({ status: 'live', publishAt: page.publishAt }));

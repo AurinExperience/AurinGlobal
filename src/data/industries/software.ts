@@ -15,16 +15,16 @@ export const software: Service = {
       seo: {
         title: 'Diseño web y UX/UI para empresas de software | Aurin',
         description:
-          'Diseño y desarrollo web, UX/UI y branding para empresas de software en EE. UU.: más demos y más pruebas que terminan en clientes. Desde 1998. Llamada gratis.',
+          'Diseño y desarrollo web, UX/UI y branding para empresas de software en EE. UU., pensados para conseguir demos y clientes. Desde 1998. Llamada gratis.',
       },
       name: 'Desarrollo de software',
       summary: 'Diseño y desarrollo web, UX/UI y branding para empresas de software en EE. UU.',
       tags: 'Software · Plataformas · SaaS · Herramientas para empresas',
       hero: {
         titleLead: 'Diseño web, UX/UI y desarrollo para empresas de software',
-        titleAccent: 'que convierte visitas en clientes que pagan.',
+        titleAccent: 'pensado para convertir visitas en clientes que pagan.',
         description:
-          'El sitio que vende tu producto y el producto que lo cumple, para empresas de software en EE. UU.: se entiende en segundos.',
+          'El sitio que vende tu producto y el producto que lo cumple, para empresas de software en EE. UU.: claro desde la primera visita.',
         ctaSecondary: 'Qué hacemos',
       },
       industries: {
@@ -33,7 +33,7 @@ export const software: Service = {
       },
       approach: {
         heading: 'Tu producto es bueno: *el problema es que no se entiende rápido.*',
-        text: 'El comprador visita tu sitio entre juntas y en segundos decide si vale la pena pedir una demo. Después abre el producto y, si en la primera sesión no ve para qué sirve, no vuelve. Ahí se pierden la mayoría de los clientes de una empresa de software: no por el precio ni por la competencia, sino porque nadie les explicó rápido. Diseñamos y programamos esos dos momentos con el mismo cuidado: un sitio que vende y un producto que se usa sin manual.',
+        text: 'El comprador visita tu sitio entre juntas y en segundos decide si vale la pena pedir una demo. Después abre el producto y, si en la primera sesión no ve para qué sirve, no vuelve. Ahí se pierden muchos clientes de una empresa de software: no por el precio ni por la competencia, sino porque nadie les explicó rápido. Diseñamos y programamos esos dos momentos con el mismo cuidado: un sitio pensado para vender y un producto pensado para usarse sin manual.',
         layers: ['Sitio', 'Primera sesión', 'Producto'],
         contrast: {
           bad: {
@@ -81,22 +81,22 @@ export const software: Service = {
           { question: '¿Cuidan nuestro código y nuestros datos?', answer: 'Sí. Firmamos acuerdos de confidencialidad y la información de tu producto no pasa por herramientas de IA.' },
         ],
       },
-      cta: { titleLead: 'Hagamos un producto', titleAccent: 'que se venda solo.' },
+      cta: { titleLead: 'Hagamos un producto', titleAccent: 'que se entienda solo.' },
     },
     en: {
       seo: {
         title: 'Web Design & UX/UI for Software Companies in the US | Aurin',
         description:
-          'Web design and development, UX/UI and branding for US software companies: more demos, and more trials that turn into customers. Since 1998. Free call.',
+          'Web design and development, UX/UI and branding for US software companies, built to win demos and customers. Since 1998. Free call.',
       },
       name: 'Software development',
       summary: 'Web design and development, UX/UI and branding for US software companies.',
       tags: 'Software · Platforms · SaaS · Business tools',
       hero: {
         titleLead: 'Web design, UX/UI and development for software companies',
-        titleAccent: 'that turns visitors into paying customers.',
+        titleAccent: 'built to turn visitors into paying customers.',
         description:
-          'The website that sells your product and the product that delivers on it, for US software companies: understood in seconds.',
+          'The website that sells your product and the product that delivers on it, for US software companies: clear from the first visit.',
         ctaSecondary: 'What we do',
       },
       industries: {
@@ -105,7 +105,7 @@ export const software: Service = {
       },
       approach: {
         heading: 'Your product is good: *the problem is it doesn’t click fast enough.*',
-        text: 'Buyers visit your website between meetings and decide in seconds whether a demo is worth it. Then they open the product and, if the first session doesn’t show them what it’s for, they don’t come back. That’s where most software companies lose customers: not on price or to a competitor, but because nobody explained it fast. We design and build both moments with the same care: a website that sells and a product that works without a manual.',
+        text: 'Buyers visit your website between meetings and decide in seconds whether a demo is worth it. Then they open the product and, if the first session doesn’t show them what it’s for, they don’t come back. That’s where many software companies lose customers: not on price or to a competitor, but because nobody explained it fast. We design and build both moments with the same care: a website built to sell and a product built to work without a manual.',
         layers: ['Website', 'First session', 'Product'],
         contrast: {
           bad: {
@@ -153,7 +153,7 @@ export const software: Service = {
           { question: 'Do you protect our code and data?', answer: 'Yes. We sign NDAs, and your product information never goes through AI tools.' },
         ],
       },
-      cta: { titleLead: 'Let’s build a product', titleAccent: 'that sells itself.' },
+      cta: { titleLead: 'Let’s build a product', titleAccent: 'that explains itself.' },
     },
   },
 };

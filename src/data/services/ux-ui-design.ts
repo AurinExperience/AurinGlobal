@@ -20,8 +20,8 @@ export const uxUiDesign: Service = {
       summary: 'Apps y plataformas que la gente entiende desde el primer uso: investigación con usuarios, prototipos probados y un sistema de diseño para tu equipo.',
       tags: 'Apps móviles · Plataformas web · Sistemas de diseño',
       hero: {
-        titleLead: 'Diseño UX/UI que convierte usuarios',
-        titleAccent: 'en clientes que se quedan.',
+        titleLead: 'Diseño UX/UI para apps y plataformas',
+        titleAccent: 'que tus usuarios entienden.',
         description:
           'Para empresas en EE. UU. con app o plataforma: encontramos dónde se atoran tus usuarios y diseñamos pantallas que se entienden.',
         ctaSecondary: 'Qué incluye',
@@ -43,7 +43,7 @@ export const uxUiDesign: Service = {
           good: {
             label: 'Con Aurin',
             title: 'Un producto que la gente usa',
-            items: ['Decisiones tomadas con usuarios reales', 'Cada tarea en menos pasos', 'Menos dudas y menos llamadas a soporte', 'Prototipo probado antes de programar', 'Un sistema de diseño que tu equipo sigue'],
+            items: ['Decisiones tomadas con usuarios reales', 'Cada tarea en menos pasos', 'Pantallas pensadas para resolver las dudas antes de llamar a soporte', 'Prototipo probado antes de programar', 'Un sistema de diseño que tu equipo sigue'],
           },
         },
       },
@@ -70,12 +70,12 @@ export const uxUiDesign: Service = {
       },
       cases: { heading: 'Apps y plataformas que *diseñamos.*' },
       guarantees: {
-        heading: 'Sin riesgo *para ti.*',
+        heading: 'Lo que va *por escrito.*',
         intro: 'Rediseñar un producto no debería ser una apuesta. Todo esto va por escrito en tu propuesta.',
         items: [
           { title: 'Probado antes de programar', text: 'Probamos el prototipo con usuarios reales. Tu equipo programa algo que ya funciona.' },
           { title: 'Precio cerrado, sin cobros sorpresa', text: 'El precio de la propuesta es el que pagas. Si quieres agregar pantallas, te decimos cuánto cuesta antes y tú decides.' },
-          { title: 'Todos los archivos son tuyos', text: 'Diseños, prototipos y sistema de diseño quedan en tu cuenta, editables, para siempre.' },
+          { title: 'Todos los archivos son tuyos', text: 'Te entregamos diseños, prototipos y sistema de diseño, editables.' },
           { title: 'Fechas y acompañamiento por escrito', text: 'Cada etapa tiene su fecha, y acompañamos a tu equipo de desarrollo hasta que lo construye.' },
         ],
       },
@@ -88,11 +88,11 @@ export const uxUiDesign: Service = {
           { question: '¿Diseñan apps móviles?', answer: 'Sí. Diseñamos apps para iPhone y Android y plataformas web: wallets, remesas, logística, educación y sistemas de gestión, entre otras.' },
           { question: '¿Pueden mejorar una app que ya existe?', answer: 'Sí. Empezamos por ver dónde se atoran tus usuarios hoy y mejoramos primero lo que más impacto tiene, sin rehacer lo que ya funciona.' },
           { question: '¿Pueden trabajar con nuestro equipo de desarrollo?', answer: 'Sí. Entregamos prototipos, sistema de diseño y especificaciones, y acompañamos a tu equipo mientras programa. También podemos programarlo nosotros.' },
-          { question: '¿Qué recibo al terminar?', answer: 'Las pantallas finales en Figma, el prototipo navegable, el sistema de diseño y la documentación para desarrollo. Todo queda en tu cuenta.' },
+          { question: '¿Qué recibo al terminar?', answer: 'Las pantallas finales en Figma, el prototipo navegable, el sistema de diseño y la documentación para desarrollo. Te lo entregamos todo.' },
           { question: '¿Tienen experiencia en fintech?', answer: 'Sí. Diseñamos flujos para wallets, remesas, criptomonedas, factoraje y banca empresarial.' },
         ],
       },
-      cta: { titleLead: '¿Tus usuarios se atoran en tu app?', titleAccent: 'Lo resolvemos.' },
+      cta: { titleLead: '¿Tus usuarios se atoran en tu app?', titleAccent: 'Vemos dónde y lo rediseñamos.' },
     },
     en: {
       seo: {
@@ -104,8 +104,8 @@ export const uxUiDesign: Service = {
       summary: 'Apps and platforms people understand from the first use: user research, tested prototypes and a design system for your team.',
       tags: 'Mobile apps · Web platforms · Design systems',
       hero: {
-        titleLead: 'UX/UI design that turns users',
-        titleAccent: 'into customers who stay.',
+        titleLead: 'UX/UI design for apps and platforms',
+        titleAccent: 'your users understand.',
         description:
           'For companies with an app or platform: we find where your users get stuck and design screens they understand right away.',
         ctaSecondary: 'What’s included',
@@ -127,7 +127,7 @@ export const uxUiDesign: Service = {
           good: {
             label: 'With Aurin',
             title: 'A product people actually use',
-            items: ['Decisions made with real users', 'Every task in fewer steps', 'Fewer questions and support calls', 'Prototype tested before any code', 'A design system your team follows'],
+            items: ['Decisions made with real users', 'Every task in fewer steps', 'Screens designed to answer questions before anyone calls support', 'Prototype tested before any code', 'A design system your team follows'],
           },
         },
       },
@@ -154,12 +154,12 @@ export const uxUiDesign: Service = {
       },
       cases: { heading: 'Apps and platforms *we designed.*' },
       guarantees: {
-        heading: 'Zero risk *for you.*',
+        heading: 'What goes *in writing.*',
         intro: 'Redesigning a product shouldn’t be a gamble. All of this goes in writing in your proposal.',
         items: [
           { title: 'Tested before any code', text: 'We test the prototype with real users. Your team builds something that already works.' },
           { title: 'Fixed price, no surprise charges', text: 'The price in the proposal is what you pay. Want more screens? We tell you the cost first, and you decide.' },
-          { title: 'All the files are yours', text: 'Designs, prototypes and the design system stay in your account, editable, forever.' },
+          { title: 'All the files are yours', text: 'You get the designs, prototypes and design system, all editable.' },
           { title: 'Dates and support in writing', text: 'Every stage has its date, and we support your developers until it’s built.' },
         ],
       },
@@ -172,11 +172,11 @@ export const uxUiDesign: Service = {
           { question: 'Do you design mobile apps?', answer: 'Yes. We design iPhone and Android apps and web platforms: wallets, remittances, logistics, education and management systems, among others.' },
           { question: 'Can you improve an app that already exists?', answer: 'Yes. We start by seeing where your users get stuck today and fix what has the most impact first, without redoing what already works.' },
           { question: 'Can you work with our development team?', answer: 'Yes. We deliver prototypes, a design system and specs, and support your team while they build. We can also build it ourselves.' },
-          { question: 'What do I get at the end?', answer: 'The final screens in Figma, the clickable prototype, the design system and the documentation for development. Everything stays in your account.' },
+          { question: 'What do I get at the end?', answer: 'The final screens in Figma, the clickable prototype, the design system and the documentation for development. We hand all of it over.' },
           { question: 'Do you have fintech experience?', answer: 'Yes. We have designed flows for wallets, remittances, crypto, factoring and business banking.' },
         ],
       },
-      cta: { titleLead: 'Are your users getting stuck in your app?', titleAccent: 'We’ll fix it.' },
+      cta: { titleLead: 'Are your users getting stuck in your app?', titleAccent: 'We find where and redesign it.' },
     },
   },
 };

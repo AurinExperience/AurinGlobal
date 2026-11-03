@@ -24,6 +24,10 @@ import Music from 'lucide-astro/Music';
 import PenTool from 'lucide-astro/PenTool';
 import Ticket from 'lucide-astro/Ticket';
 import Zap from 'lucide-astro/Zap';
+import Factory from 'lucide-astro/Factory';
+import Truck from 'lucide-astro/Truck';
+import ShieldCheck from 'lucide-astro/ShieldCheck';
+import FlaskConical from 'lucide-astro/FlaskConical';
 import Monitor from 'lucide-astro/Monitor';
 import MousePointerClick from 'lucide-astro/MousePointerClick';
 import Globe from 'lucide-astro/Globe';
@@ -53,7 +57,7 @@ const here = Astro.url.pathname;
 const ICONS: Record<string, typeof Monitor> = {
   'web-design': Monitor, 'web-development': Code, 'ux-ui-design': MousePointerClick, branding: Gem,
   fintech: CreditCard, healthcare: HeartPulse, education: GraduationCap, tourism: Ticket, energy: Zap, culture: Music,
-  software: Code, agencies: PenTool, 'real-estate': Building2, nonprofits: HandHeart, remittances: ArrowRightLeft,
+  software: Code, agencies: PenTool, 'real-estate': Building2, nonprofits: HandHeart, manufacturing: Factory, logistics: Truck, cybersecurity: ShieldCheck, 'life-sciences': FlaskConical, remittances: ArrowRightLeft,
 };
 
 type Item = { href: string; label: string; sub?: string; icon: typeof Monitor };

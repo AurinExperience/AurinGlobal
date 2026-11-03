@@ -18,7 +18,7 @@ export const ohio: State = {
       },
       hero: {
         titleLead: 'Diseño de páginas web en Ohio',
-        titleAccent: 'que te traen cotizaciones y buenos candidatos.',
+        titleAccent: 'pensado para conseguir cotizaciones y buenos candidatos.',
         description: 'Sitios y catálogos en línea para fabricantes, proveedores y empresas de servicios de Ohio, con precio cerrado y sin vueltas.',
         ctaSecondary: 'Ver servicios',
       },
@@ -28,7 +28,7 @@ export const ohio: State = {
         items: {
           'web-design': { text: 'Tu sitio dice «calidad y compromiso», igual que el de tus competidores. Lo cambiamos por lo que el comprador quiere ver: qué fabricas, para quién, con qué certificaciones y cómo pedir una cotización.', tags: 'Sitio industrial · Catálogo · SEO básico' },
           'web-development': { text: 'Cotizaciones que viajan entre correos y listas de precios en PDF desactualizados. Hacemos catálogos en línea, solicitudes de cotización y portales para distribuidores, conectados a tu sistema.', tags: 'Catálogos · Cotizaciones · Portal de distribuidores' },
-          'ux-ui-design': { text: 'Las aseguradoras, los bancos y las cadenas de Ohio operan con sistemas que sus clientes apenas entienden. Vemos dónde se confunden y rediseñamos esos pasos para bajar llamadas y errores.', tags: 'Observación de uso · Prototipos · Portales' },
+          'ux-ui-design': { text: 'Las aseguradoras, los bancos y las cadenas de Ohio operan con sistemas que sus clientes apenas entienden. Vemos dónde se confunden y rediseñamos esos pasos pensando en bajar llamadas y errores.', tags: 'Observación de uso · Prototipos · Portales' },
           branding: { text: 'Una empresa que lleva décadas haciendo bien su trabajo a veces se ve vieja junto a una recién llegada. Actualizamos la marca sin perder lo que tus clientes ya confían, y ayudamos también a atraer gente joven.', tags: 'Estrategia · Logo e identidad · Guía de uso' },
         },
       },
@@ -69,7 +69,7 @@ export const ohio: State = {
           { question: '¿Cuánto cuesta una página web en Ohio?', answer: 'Un sitio de pocas páginas cuesta menos que uno con catálogo y cotizaciones conectadas, así que primero vemos qué te conviene. Después de la llamada gratis recibes por escrito un precio cerrado, lo que incluye y las fechas. Si pides algo extra, te decimos cuánto antes de hacerlo.' },
           { question: '¿Hacen diseño web en Columbus, Cleveland y Cincinnati?', answer: 'Sí, y en Dayton, Toledo, Akron y Youngstown. Trabajamos en línea con todo Ohio, y eso incluye a empresas industriales que nunca antes contrataron a una agencia: te explicamos cada paso sin tecnicismos.' },
           { question: '¿Hacen páginas web para pequeñas empresas en Ohio?', answer: 'Sí, como talleres, proveedores y negocios familiares que quieren dejar de depender solo de la recomendación. Puede bastar un sitio pequeño y claro que diga qué haces y en qué zona trabajas.' },
-          { question: '¿Dónde está su equipo?', answer: 'En Cuernavaca, México, desde 1998. Vamos una hora atrás de Ohio en invierno y dos en verano, y nos reunimos en tu horario de trabajo. Son las mismas personas de principio a fin, y puedes verlas más abajo en esta página.' },
+          { question: '¿Dónde está su equipo?', answer: 'En Cuernavaca, México, desde 1998. Vamos una hora atrás de Ohio en invierno y dos en verano, y nos reunimos en tu horario de trabajo. Trabajas con el mismo equipo de principio a fin, y puedes verlo más abajo en esta página.' },
           { question: '¿Puedo poner mi catálogo en línea aunque no venda por internet?', answer: 'Sí, y en industria es lo más común: el cliente revisa productos, descarga fichas y te pide cotización, sin carrito de compra. Y cada producto queda con su propia página, fácil de compartir con un comprador.' },
           { question: '¿Mi sitio me puede ayudar a contratar gente?', answer: 'Sí. Una buena sección de empleo con fotos reales, qué hace tu gente y cómo postularse desde el teléfono ayuda mucho cuando compites por técnicos y operarios. Lo incluimos en la propuesta si lo necesitas.' },
           { question: '¿Ofrecen SEO para empresas industriales en Ohio?', answer: 'Sí, el básico viene incluido: títulos, descripciones, velocidad y datos estructurados. Un comprador técnico busca por proceso, material o certificación; si quieres páginas para esas búsquedas, es SEO avanzado, que cotizamos aparte y te decimos qué esperar. Optimizarlo para buscadores con IA, donde también preguntan los compradores, es parte del mismo servicio.' },
@@ -88,7 +88,7 @@ export const ohio: State = {
       },
       hero: {
         titleLead: 'Web design agency in Ohio',
-        titleAccent: 'for websites that bring in quotes and good hires.',
+        titleAccent: 'for websites built to win quotes and good hires.',
         description: 'Websites and online catalogs for Ohio manufacturers, suppliers and service companies, at a fixed price and with no runaround.',
         ctaSecondary: 'See services',
       },
@@ -98,7 +98,7 @@ export const ohio: State = {
         items: {
           'web-design': { text: 'Your site says “quality and commitment,” same as your competitors’. We replace that with what buyers want to see: what you make, who for, which certifications and how to request a quote.', tags: 'Industrial websites · Catalogs · Basic SEO' },
           'web-development': { text: 'Quotes bouncing between emails and outdated PDF price lists. We build online catalogs, quote requests and distributor portals connected to your system.', tags: 'Catalogs · Quote requests · Distributor portals' },
-          'ux-ui-design': { text: 'Ohio’s insurers, banks and retail chains run on systems their customers barely understand. We see where people get confused and redesign those steps to cut calls and errors.', tags: 'Usage research · Prototypes · Portals' },
+          'ux-ui-design': { text: 'Ohio’s insurers, banks and retail chains run on systems their customers barely understand. We see where people get confused and redesign those steps with fewer calls and errors in mind.', tags: 'Usage research · Prototypes · Portals' },
           branding: { text: 'A company that’s done good work for decades can look old next to a newcomer. We update the brand without losing what customers trust, and help you appeal to younger talent too.', tags: 'Strategy · Logo and identity · Guidelines' },
         },
       },
@@ -139,7 +139,7 @@ export const ohio: State = {
           { question: 'How much does a website cost in Ohio?', answer: 'A site with a few pages costs less than one with a catalog and connected quotes, so we first figure out what suits you. After a free call you get a fixed price in writing, what’s included and the dates. If you ask for something extra, we tell you the cost before doing it.' },
           { question: 'Do you do web design in Columbus, Cleveland and Cincinnati?', answer: 'Yes, and in Dayton, Toledo, Akron and Youngstown. We work online across Ohio, including with industrial companies that have never hired an agency: we explain each step without the technical talk.' },
           { question: 'Do you build websites for small businesses in Ohio?', answer: 'Yes, such as machine shops, suppliers and family businesses that want to stop relying on referrals alone. A small, clear site that says what you do and where you work may be enough.' },
-          { question: 'Where is your team?', answer: 'In Cuernavaca, Mexico, since 1998. We’re one hour behind Ohio in winter and two in summer, and we meet during your working hours. It’s the same people from start to finish, and you can see them further down this page.' },
+          { question: 'Where is your team?', answer: 'In Cuernavaca, Mexico, since 1998. We’re one hour behind Ohio in winter and two in summer, and we meet during your working hours. You work with the same team from start to finish, and you can see them further down this page.' },
           { question: 'Can I put my catalog online even if I don’t sell online?', answer: 'Yes, and in industry that’s the norm: customers browse products, download spec sheets and request a quote, with no shopping cart. And each product gets its own page, easy to share with a buyer.' },
           { question: 'Can my website help me hire people?', answer: 'Yes. A good careers section with real photos, what your people do and how to apply by phone helps a lot when you’re competing for technicians and operators. We include it in the proposal if you need it.' },
           { question: 'Do you offer SEO for industrial companies in Ohio?', answer: 'Yes, the basics are included: titles, descriptions, speed and structured data. A technical buyer searches by process, material or certification; if you want pages for those searches, that’s advanced SEO, which we quote separately, and we tell you what to expect. Optimizing it for AI search, where buyers ask questions too, is part of the same service.' },

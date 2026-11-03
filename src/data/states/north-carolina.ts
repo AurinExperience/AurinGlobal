@@ -24,7 +24,7 @@ export const northCarolina: State = {
       },
       services: {
         heading: 'Si lo que vendes es difícil de explicar, *tu sitio tiene que hacerlo por ti.*',
-        intro: 'Hazlo por partes o todo junto, con un solo equipo en Aurin. La IA acelera el trabajo, un experto responde por el resultado y el SEO básico viene incluido.',
+        intro: 'Hazlo por partes o todo junto, con un solo equipo en Aurin. La IA acelera el trabajo, un experto revisa cada parte y el SEO básico viene incluido.',
         items: {
           'web-design': { text: 'Tu equipo técnico escribió el sitio y solo otro especialista lo entiende. Lo reescribimos y lo diseñamos para quien firma el contrato, sin perder la precisión que tus ingenieros o científicos exigen.', tags: 'Sitio de empresa · Textos claros · SEO básico' },
           'web-development': { text: 'Tu cliente quiere ver avances, documentos o estados de cuenta sin llamar. Hacemos portales privados con permisos por usuario, conectados a los sistemas que ya usas.', tags: 'Portales privados · Permisos · Conexiones' },
@@ -68,7 +68,7 @@ export const northCarolina: State = {
         items: [
           { question: '¿Cuánto cuesta una página web en Carolina del Norte?', answer: 'Hacer entendible un producto técnico requiere más trabajo de textos que una página simple, y un portal más que un sitio informativo. Por eso cotizamos después de conocerte: en la llamada gratis vemos qué necesitas y recibes un precio cerrado, con alcance y fechas, por escrito.' },
           { question: '¿Dónde está su equipo?', answer: 'En Cuernavaca, México, desde 1998. Atendemos en línea a empresas de Charlotte, Raleigh, Durham, Greensboro, Wilmington y el resto del estado. El mismo equipo investiga, escribe, diseña y programa, y lo conoces más abajo en esta página.' },
-          { question: '¿Pueden explicar un producto científico o muy técnico?', answer: 'Es de lo que mejor hacemos. Hablamos con quien lo creó, traducimos el tema a lo que le importa a tu comprador y te pasamos los textos para que tu equipo revise la precisión. Nada se publica sin esa revisión.' },
+          { question: '¿Pueden explicar un producto científico o muy técnico?', answer: 'Sí. Hablamos con quien lo creó, traducimos el tema a lo que le importa a tu comprador y te pasamos los textos para que tu equipo revise la precisión. Nada se publica sin esa revisión.' },
           { question: '¿Firman acuerdo de confidencialidad?', answer: 'Sí, desde el inicio, si tu proyecto incluye datos o tecnología que aún no son públicos. Y la información confidencial no pasa por herramientas de IA.' },
           { question: '¿En qué horario trabajan?', answer: 'Una hora atrás de Carolina del Norte en invierno y dos en verano. Las reuniones se agendan sin problema dentro de tu jornada, y entre una y otra avanzamos con revisiones que puedes ver a tu ritmo.' },
           { question: '¿Ofrecen SEO para empresas especializadas en Carolina del Norte?', answer: 'Sí, el SEO básico ya viene con el sitio: títulos, descripciones, velocidad y datos estructurados. Si quieres páginas para cada problema que resuelves, escritas como lo busca tu cliente y no como lo llama tu laboratorio, también lo hacemos, como SEO avanzado, que se cotiza aparte. El SEO avanzado también incluye optimizar el sitio para que las herramientas de IA entiendan bien lo que haces.' },
@@ -95,7 +95,7 @@ export const northCarolina: State = {
       },
       services: {
         heading: 'If what you sell is hard to explain, *your website has to do it for you.*',
-        intro: 'Take it in pieces or all at once, with one team at Aurin. AI speeds up the work, an expert answers for the result and basic SEO comes included.',
+        intro: 'Take it in pieces or all at once, with one team at Aurin. AI speeds up the work, an expert reviews every part and basic SEO comes included.',
         items: {
           'web-design': { text: 'Your technical team wrote the site and only another specialist understands it. We rewrite and redesign it for the person signing the contract, keeping the accuracy your engineers or scientists demand.', tags: 'Company websites · Clear copy · Basic SEO' },
           'web-development': { text: 'Your clients want to see progress, documents or statements without calling. We build private portals with per-user permissions, connected to the systems you already use.', tags: 'Private portals · Permissions · Integrations' },
@@ -139,7 +139,7 @@ export const northCarolina: State = {
         items: [
           { question: 'How much does a website cost in North Carolina?', answer: 'Making a technical product understandable takes more copy work than a simple page, and a portal takes more than an informational site. So we quote after we know you: on the free call we work out what you need, then you get a fixed price, scope and dates in writing.' },
           { question: 'Where is your team?', answer: 'In Cuernavaca, Mexico, since 1998. We work online with companies in Charlotte, Raleigh, Durham, Greensboro, Wilmington and the rest of the state. One team researches, writes, designs and builds, and you can meet them further down this page.' },
-          { question: 'Can you explain a scientific or highly technical product?', answer: 'It’s one of the things we do best. We talk with the people who created it, translate it into what matters to your buyer, and hand the copy to your team to check accuracy. Nothing goes live without that review.' },
+          { question: 'Can you explain a scientific or highly technical product?', answer: 'Yes. We talk with the people who created it, translate it into what matters to your buyer, and hand the copy to your team to check accuracy. Nothing goes live without that review.' },
           { question: 'Do you sign NDAs?', answer: 'Yes, from the start, if your project involves data or technology that isn’t public yet. And confidential information doesn’t go through AI tools.' },
           { question: 'What hours do you work?', answer: 'One hour behind North Carolina in winter and two in summer. Meetings fit easily into your workday, and between them we move forward with reviews you can look at on your own schedule.' },
           { question: 'Do you offer SEO for specialized companies in North Carolina?', answer: 'Yes, basic SEO comes with the site: titles, descriptions, speed and structured data. If you want pages for each problem you solve, written the way your customer searches for it rather than the way your lab names it, we do that too, as advanced SEO, quoted separately. Advanced SEO also covers optimizing the site so AI tools understand what you do accurately.' },

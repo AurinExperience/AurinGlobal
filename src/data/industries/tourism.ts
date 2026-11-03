@@ -14,14 +14,14 @@ export const tourism: Service = {
       seo: {
         title: 'Diseño web para turismo en Estados Unidos | Bilingüe | Aurin',
         description:
-          'Diseño y desarrollo web, UX/UI y branding para atracciones, tours y eventos en EE. UU.: boletos directo, sin comisión. Bilingüe, desde 1998. Llamada gratis.',
+          'Diseño y desarrollo web, UX/UI y branding para atracciones, tours y eventos en EE. UU.: boletos directo, sin plataformas. Bilingüe, desde 1998. Llamada gratis.',
       },
       name: 'Turismo y entretenimiento',
       summary: 'Diseño y desarrollo web, UX/UI y branding para atracciones, tours y eventos en EE. UU.',
       tags: 'Atracciones · Tours · Parques · Eventos',
       hero: {
         titleLead: 'Diseño y desarrollo web para turismo y entretenimiento',
-        titleAccent: 'que convierte curiosos en visitantes.',
+        titleAccent: 'pensado para convertir curiosos en visitantes.',
         description:
           'Sitios, plataformas de boletos y marca para atracciones, tours y eventos en EE. UU.: el visitante siente la experiencia y compra directo desde el celular.',
         ctaSecondary: 'Qué hacemos',
@@ -32,7 +32,7 @@ export const tourism: Service = {
       },
       approach: {
         heading: 'La visita empieza en tu sitio: *si no emociona, eligen otro plan.*',
-        text: 'Antes de llegar a tu puerta, el visitante ya decidió en su celular, comparando dos o tres planes en minutos. Elige al que le deja ver lo que va a vivir, le dice cuánto cuesta y le vende el boleto ahí mismo. Si tu sitio no emociona o lo manda a comprar a otra página, la venta se va, o se la queda una plataforma de reservas que te cobra comisión. Diseñamos y programamos para que te elijan a ti y te compren directo.',
+        text: 'Antes de llegar a tu puerta, el visitante ya decidió en su celular, comparando dos o tres planes en minutos. Elige al que le deja ver lo que va a vivir, le dice cuánto cuesta y le vende el boleto ahí mismo. Si tu sitio no emociona o lo manda a comprar a otra página, la venta se va, o se la queda una plataforma de reservas que te cobra comisión. Diseñamos y programamos para que te puedan comprar directo.',
         layers: ['Experiencias', 'Boletos', 'Visita'],
         contrast: {
           bad: {
@@ -42,8 +42,8 @@ export const tourism: Service = {
           },
           good: {
             label: 'Con Aurin',
-            title: 'Un sitio que vende la experiencia',
-            items: ['Fotos y video grandes que dan ganas de ir', 'Boletos en pocos pasos, sin salir de tu sitio', 'Más ventas directas, sin comisión de por medio', 'Horarios, precios y disponibilidad a la vista', 'La misma compra fácil, también en español'],
+            title: 'Un sitio para vender la experiencia',
+            items: ['Fotos y video grandes que dan ganas de ir', 'Boletos en pocos pasos, sin salir de tu sitio', 'Venta directa, sin comisión de plataformas', 'Horarios, precios y disponibilidad a la vista', 'La misma compra fácil, también en español'],
           },
         },
       },
@@ -55,7 +55,7 @@ export const tourism: Service = {
           { icon: 'Code', title: 'Desarrollo web: boletos y reservas', service: 'web-development', text: 'Programamos tu propia aplicación web de boletos y reservas, con tus precios, horarios, cupos y pagos, o la conectamos a tu sistema actual. Venta directa desde el celular, sin comisión de plataformas.' },
           { icon: 'MousePointerClick', title: 'Diseño UX/UI de la compra', service: 'ux-ui-design', text: 'Elegir fecha, boleto y pagar en pocos pasos. Probamos la compra con visitantes reales antes de programar, para que nadie la abandone a la mitad.' },
           { icon: 'Gem', title: 'Branding para atracciones', service: 'branding', text: 'Nombre, logo e imagen que se recuerdan, pensados para tu sitio, tus boletos, tu señalización y las fotos que tus visitantes suben a redes.' },
-          { icon: 'Layers', title: 'Combos, pases y grupos', text: 'Paquetes, pases anuales, tarjetas de regalo y reservas para escuelas, empresas y cumpleaños, que suben lo que gasta cada visitante.' },
+          { icon: 'Layers', title: 'Combos, pases y grupos', text: 'Paquetes, pases anuales, tarjetas de regalo y reservas para escuelas, empresas y cumpleaños, para que cada visitante tenga más opciones de compra.' },
           { icon: 'Languages', title: 'Sitio y compra en español', text: 'Horarios, precios y compra escritos en español para el turista hispano, con la misma compra rápida que en inglés.' },
         ],
       },
@@ -93,7 +93,7 @@ export const tourism: Service = {
       tags: 'Attractions · Tours · Parks · Events',
       hero: {
         titleLead: 'Web design and development for tourism and entertainment',
-        titleAccent: 'that turns browsers into visitors.',
+        titleAccent: 'built to turn browsers into visitors.',
         description:
           'Websites, ticketing platforms and brands for US attractions, tours and events: visitors feel the experience and buy direct from their phone.',
         ctaSecondary: 'What we do',
@@ -104,7 +104,7 @@ export const tourism: Service = {
       },
       approach: {
         heading: 'The visit starts on your website: *if it doesn’t excite, they pick another plan.*',
-        text: 'Before anyone reaches your gate, they’ve already decided on their phone, comparing two or three plans in minutes. They choose the one that shows what they’ll experience, tells them what it costs and sells the ticket right there. If your site falls flat or sends them to buy somewhere else, the sale is gone, or a booking platform keeps a commission on it. We design and build so people choose you and buy direct.',
+        text: 'Before anyone reaches your gate, they’ve already decided on their phone, comparing two or three plans in minutes. They choose the one that shows what they’ll experience, tells them what it costs and sells the ticket right there. If your site falls flat or sends them to buy somewhere else, the sale is gone, or a booking platform keeps a commission on it. We design and build so people can buy from you direct.',
         layers: ['Experiences', 'Tickets', 'The visit'],
         contrast: {
           bad: {
@@ -114,8 +114,8 @@ export const tourism: Service = {
           },
           good: {
             label: 'With Aurin',
-            title: 'A website that sells the experience',
-            items: ['Big photos and video that make people want to go', 'Tickets in a few steps, without leaving your site', 'More direct sales, no commission in between', 'Hours, prices and availability in plain sight'],
+            title: 'A website to sell the experience',
+            items: ['Big photos and video that make people want to go', 'Tickets in a few steps, without leaving your site', 'Direct sales, no platform commission', 'Hours, prices and availability in plain sight'],
           },
         },
       },
@@ -127,7 +127,7 @@ export const tourism: Service = {
           { icon: 'Code', title: 'Web development: ticketing and bookings', service: 'web-development', text: 'We build your own ticketing and booking web app, with your prices, hours, capacity and payments, or connect your current system. Direct sales from a phone, no platform commission.' },
           { icon: 'MousePointerClick', title: 'UX/UI design for checkout', service: 'ux-ui-design', text: 'Pick a date, a ticket and pay in a few steps. We test checkout with real visitors before any code, so nobody drops off halfway.' },
           { icon: 'Gem', title: 'Branding for attractions', service: 'branding', text: 'Name, logo and visual identity people remember, made for your website, tickets, signage and the photos visitors post on social media.' },
-          { icon: 'Layers', title: 'Bundles, passes and groups', text: 'Packages, annual passes, gift cards and bookings for schools, companies and birthday parties that raise what each visitor spends.' },
+          { icon: 'Layers', title: 'Bundles, passes and groups', text: 'Packages, annual passes, gift cards and bookings for schools, companies and birthday parties, so each visitor has more ways to buy.' },
         ],
       },
       process: {

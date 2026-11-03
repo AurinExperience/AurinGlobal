@@ -20,8 +20,8 @@ export const branding: Service = {
       summary: 'Estrategia, logo, identidad visual y guía de marca, para que tu marca se vea igual de bien en el sitio, en redes y en todo lo demás.',
       tags: 'Estrategia de marca · Logo e identidad · Guía de marca',
       hero: {
-        titleLead: 'Branding que te hace',
-        titleAccent: 'la opción obvia.',
+        titleLead: 'Branding que te distingue',
+        titleAccent: 'de tu competencia.',
         description:
           'Para empresas en EE. UU. que empiezan o ya no se distinguen: estrategia, logo, identidad y guía de marca, listos para tu sitio.',
         ctaSecondary: 'Qué incluye',
@@ -43,7 +43,7 @@ export const branding: Service = {
           good: {
             label: 'Con Aurin',
             title: 'Una marca completa',
-            items: ['Distinta a la de tu competencia', 'Clara en por qué elegirte a ti', 'Diseñada para pantallas desde el inicio', 'Una guía para usarla igual en todos lados', 'Te eligen antes de comparar precios'],
+            items: ['Distinta a la de tu competencia', 'Clara en por qué elegirte a ti', 'Diseñada para pantallas desde el inicio', 'Una guía para usarla igual en todos lados', 'Una razón para elegirte que no es el precio'],
           },
         },
       },
@@ -70,7 +70,7 @@ export const branding: Service = {
       },
       cases: { heading: 'Marcas que *diseñamos.*' },
       guarantees: {
-        heading: 'Sin riesgo *para ti.*',
+        heading: 'Lo que va *por escrito.*',
         intro: 'Tu marca es lo primero que ve tu cliente. Todo esto va por escrito en tu propuesta.',
         items: [
           { title: 'Ves las propuestas antes de decidir', text: 'Eliges entre varias direcciones y la ajustamos contigo hasta que la apruebes.' },
@@ -92,7 +92,7 @@ export const branding: Service = {
           { question: '¿También hacen el sitio web con la nueva marca?', answer: 'Sí. Branding, diseño web y desarrollo están en el mismo equipo, así la marca llega al sitio tal como se diseñó.' },
         ],
       },
-      cta: { titleLead: 'Que te elijan', titleAccent: 'antes de comparar precios.' },
+      cta: { titleLead: 'Una marca que te distinga', titleAccent: 'antes de comparar precios.' },
     },
     en: {
       seo: {
@@ -104,8 +104,8 @@ export const branding: Service = {
       summary: 'Strategy, logo, visual identity and brand guidelines, so your brand looks just as good on your website, on social media and everywhere else.',
       tags: 'Brand strategy · Logo & identity · Brand guidelines',
       hero: {
-        titleLead: 'Branding that makes you',
-        titleAccent: 'the obvious choice.',
+        titleLead: 'Branding that sets you apart',
+        titleAccent: 'from your competitors.',
         description:
           'For businesses just starting or blending in with competitors: strategy, logo, visual identity and brand guidelines, ready for your website.',
         ctaSecondary: 'What’s included',
@@ -127,7 +127,7 @@ export const branding: Service = {
           good: {
             label: 'With Aurin',
             title: 'A complete brand',
-            items: ['Stands apart from your competitors', 'Clear on why to choose you', 'Designed for screens from the start', 'Guidelines to use it the same way everywhere', 'People choose you before comparing prices'],
+            items: ['Stands apart from your competitors', 'Clear on why to choose you', 'Designed for screens from the start', 'Guidelines to use it the same way everywhere', 'A reason to choose you other than price'],
           },
         },
       },
@@ -154,7 +154,7 @@ export const branding: Service = {
       },
       cases: { heading: 'Brands *we designed.*' },
       guarantees: {
-        heading: 'Zero risk *for you.*',
+        heading: 'What goes *in writing.*',
         intro: 'Your brand is the first thing customers see. All of this goes in writing in your proposal.',
         items: [
           { title: 'See the options before you decide', text: 'You choose between several directions, and we refine it with you until you approve it.' },
@@ -176,7 +176,7 @@ export const branding: Service = {
           { question: 'Do you also build the website with the new brand?', answer: 'Yes. Branding, web design and development are in the same team, so the brand reaches the website exactly as designed.' },
         ],
       },
-      cta: { titleLead: 'Get chosen', titleAccent: 'before they compare prices.' },
+      cta: { titleLead: 'A brand that stands out', titleAccent: 'before anyone compares prices.' },
     },
   },
 };

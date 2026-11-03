@@ -14,8 +14,7 @@ export type CaseId =
   | 'mineria'
   | 'grupo-estrella'
   | 'mexico-pacific'
-  | 'ciencia'
-  | 'galicia';
+  | 'ciencia';
 
 interface CaseCopy {
   name: string;
@@ -56,14 +55,6 @@ export const CASES: Record<CaseId, Case> = {
     copy: {
       es: { name: 'Inglés Individual', industry: 'Educación', text: 'Sitio institucional y sistema para gestionar alumnos, clases, pagos y sucursales.', project: 'Sitio web y sistema de alumnos y pagos para una escuela de inglés' },
       en: { name: 'Inglés Individual', industry: 'Education', text: 'Institutional website and a system to manage students, classes, payments and branches.', project: 'Website and student and payments system for an English school' },
-    },
-  },
-  galicia: {
-    slug: 'Galicia',
-    services: ['web-design', 'ux-ui-design', 'web-development'],
-    copy: {
-      es: { name: 'Galicia', industry: 'Legal', text: 'Diseño UX/UI y desarrollo del sitio web, con integraciones, para una de las firmas de abogados líderes de México y Latinoamérica.', project: 'Sitio web para una de las firmas de abogados líderes de Latinoamérica' },
-      en: { name: 'Galicia', industry: 'Legal', text: 'UX/UI design and website development, with integrations, for one of the leading law firms in Mexico and Latin America.', project: 'Website for one of Latin America’s leading law firms' },
     },
   },
   ancient: {

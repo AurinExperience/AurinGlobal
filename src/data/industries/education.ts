@@ -11,16 +11,16 @@ export const education: Service = {
       seo: {
         title: 'Diseño web para escuelas en Estados Unidos | Aurin',
         description:
-          'Sitios para escuelas, academias y cursos en línea en EE. UU. que llenan grupos: recorridos agendados en línea y solicitudes completas. Llamada gratis.',
+          'Sitios para escuelas, academias y cursos en línea en EE. UU.: recorridos agendados en línea y solicitudes completas. Llamada gratis.',
       },
       name: 'Educación',
       summary: 'Sitios y plataformas para escuelas y academias en EE. UU. que quieren llenar sus grupos.',
       tags: 'Escuelas · Universidades · Academias · Cursos en línea',
       hero: {
         titleLead: 'Diseño web para escuelas y academias',
-        titleAccent: 'que llena tus grupos.',
+        titleAccent: 'pensado para llenar tus grupos.',
         description:
-          'Sitios para escuelas en EE. UU. que convierten la visita de una familia en un recorrido agendado y una solicitud.',
+          'Sitios para escuelas en EE. UU., pensados para que la visita de una familia termine en un recorrido agendado y una solicitud.',
         ctaSecondary: 'Qué diseñamos',
       },
       industries: {
@@ -48,7 +48,7 @@ export const education: Service = {
         heading: 'De la primera visita a la inscripción: *lo que hacemos para tu escuela.*',
         intro: 'Puedes empezar por el sitio, la solicitud en línea o la plataforma de clases. La propuesta dice qué incluye, cuánto cuesta y cuándo se entrega, para tenerlo listo antes de que abran inscripciones.',
         items: [
-          { icon: 'Monitor', title: 'Un sitio que vende tus programas', service: 'web-design', text: 'Cada programa con qué aprende el alumno, cómo es un día, costos y requisitos, en páginas claras para las familias.' },
+          { icon: 'Monitor', title: 'Un sitio para vender tus programas', service: 'web-design', text: 'Cada programa con qué aprende el alumno, cómo es un día, costos y requisitos, en páginas claras para las familias.' },
           { icon: 'CalendarCheck', title: 'Recorridos agendados en línea', text: 'La familia elige día y hora para conocer la escuela y recibe un recordatorio; tu equipo ve cada visita en su calendario.' },
           { icon: 'Route', title: 'Solicitud en línea', service: 'ux-ui-design', text: 'Por pasos, guarda el avance, pide documentos y le avisa a tu equipo en cuanto llega una solicitud.' },
           { icon: 'BookOpen', title: 'Plataforma de clases', service: 'web-development', text: 'Cursos, tareas, calificaciones y mensajes en una plataforma que alumnos y maestros entienden sin manual.' },
@@ -57,7 +57,7 @@ export const education: Service = {
         ],
       },
       process: {
-        heading: 'Cómo llegamos a *más familias inscritas.*',
+        heading: 'Cómo trabajamos tu sitio, *paso a paso.*',
         steps: [
           { name: 'Primera llamada', text: 'Nos cuentas qué programas quieres llenar, cómo se inscriben hoy y qué dudas repiten las familias.', gets: 'Una propuesta con alcance, costo y calendario.' },
           { name: 'Hablamos con papás y alumnos', text: 'Revisamos tu sitio y tus datos de inscripción, y entrevistamos a familias y alumnos actuales.', gets: 'Las razones reales por las que una inscripción se queda a medias.' },
@@ -73,26 +73,26 @@ export const education: Service = {
           { question: '¿Trabajan solo con escuelas privadas?', answer: 'No. También con universidades, academias de idiomas, empresas de cursos en línea y áreas de capacitación de empresas.' },
           { question: '¿Pueden conectar el sitio con nuestro sistema escolar?', answer: 'Sí, si el sistema tiene cómo conectarse. Si no, diseñamos la inscripción para que la información llegue ordenada a tu equipo.' },
           { question: '¿Diseñan plataformas de cursos en línea?', answer: 'Sí. Diseñamos plataformas propias o mejoramos la que ya usas, para que alumnos y maestros la entiendan sin capacitación.' },
-          { question: '¿Cuidan los datos de los alumnos?', answer: 'Pedimos solo lo necesario y decimos para qué es cada dato. Las reglas de privacidad de alumnos (como FERPA o COPPA) las revisa tu equipo legal; nosotros diseñamos para cumplirlas.' },
+          { question: '¿Cuidan los datos de los alumnos?', answer: 'Pedimos solo lo necesario y decimos para qué es cada dato. Las reglas de privacidad de alumnos (como FERPA o COPPA) las define tu equipo legal, y diseñamos con lo que te indique.' },
           { question: '¿Pueden explicar la inscripción a familias que hablan español?', answer: 'Sí. Escribimos requisitos, costos y pasos de inscripción en español aparte, con el mismo detalle que en inglés, para que los papás no tengan que pedir ayuda.' },
         ],
       },
-      cta: { titleLead: 'Llenemos tus grupos', titleAccent: 'desde la primera visita a tu sitio.' },
+      cta: { titleLead: 'Hablemos de cómo llenar tus grupos', titleAccent: 'desde tu sitio.' },
     },
     en: {
       seo: {
         title: 'School Website Design Agency in the US | Aurin',
         description:
-          'Websites for US private schools, academies and online courses that fill seats: tours booked online and applications families finish. Free call.',
+          'Websites for US private schools, academies and online courses: tours booked online and applications families finish. Free call.',
       },
       name: 'Education',
       summary: 'Websites and platforms for US schools and academies that want to fill their seats.',
       tags: 'Schools · Universities · Academies · Online courses',
       hero: {
         titleLead: 'Website design for schools and academies',
-        titleAccent: 'that fills your seats.',
+        titleAccent: 'built to fill your seats.',
         description:
-          'Websites for US schools and academies that turn a parent’s first visit into a booked tour and a finished application.',
+          'Websites for US schools and academies, built so a parent’s first visit leads to a booked tour and a finished application.',
         ctaSecondary: 'What we design',
       },
       industries: {
@@ -120,7 +120,7 @@ export const education: Service = {
         heading: 'From first visit to enrollment: *what we do for your school.*',
         intro: 'You can start with the website, the online application or the class platform. The proposal says what’s included, what it costs and when it’s delivered, so it’s ready before enrollment opens.',
         items: [
-          { icon: 'Monitor', title: 'A website that sells your programs', service: 'web-design', text: 'Each program with what students learn, what a day looks like, tuition and requirements, on clear pages for parents.' },
+          { icon: 'Monitor', title: 'A website to sell your programs', service: 'web-design', text: 'Each program with what students learn, what a day looks like, tuition and requirements, on clear pages for parents.' },
           { icon: 'CalendarCheck', title: 'Tours booked online', text: 'Parents pick a day and time to visit and get a reminder; your team sees every tour on its calendar.' },
           { icon: 'Route', title: 'Online application', service: 'ux-ui-design', text: 'Step by step, it saves progress, collects documents and alerts your team the moment an application comes in.' },
           { icon: 'BookOpen', title: 'Class platform', service: 'web-development', text: 'Courses, homework, grades and messages on a platform students and teachers understand without a manual.' },
@@ -129,7 +129,7 @@ export const education: Service = {
         ],
       },
       process: {
-        heading: 'How we get you *more enrolled families.*',
+        heading: 'How we work on your website, *step by step.*',
         steps: [
           { name: 'First call', text: 'You tell us which programs you want to fill, how people enroll today and which questions families keep asking.', gets: 'A proposal with scope, cost and schedule.' },
           { name: 'Talking to parents and students', text: 'We review your website and enrollment data, and interview current families and students.', gets: 'The real reasons applications stall halfway.' },
@@ -145,10 +145,10 @@ export const education: Service = {
           { question: 'Do you only work with private schools?', answer: 'No. Also universities, language academies, online course companies and corporate training teams.' },
           { question: 'Can you connect the website to our student system?', answer: 'Yes, if the system allows it. If not, we design enrollment so the information reaches your team in order.' },
           { question: 'Do you design online course platforms?', answer: 'Yes. We design custom platforms or improve the one you already use, so students and teachers understand it without training.' },
-          { question: 'Do you protect student data?', answer: 'We ask only for what’s needed and say why. Student privacy rules (such as FERPA or COPPA) are reviewed by your legal team; we design to meet them.' },
+          { question: 'Do you protect student data?', answer: 'We ask only for what’s needed and say why. Student privacy rules (such as FERPA or COPPA) are set by your legal team, and we design to what they tell you.' },
         ],
       },
-      cta: { titleLead: 'Let’s fill your seats,', titleAccent: 'starting with the first visit to your website.' },
+      cta: { titleLead: 'Let’s talk about filling your seats', titleAccent: 'from your website.' },
     },
   },
 };

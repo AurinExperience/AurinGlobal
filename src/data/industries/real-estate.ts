@@ -22,7 +22,7 @@ export const realEstate: Service = {
       tags: 'Desarrollos · Inmobiliarias · Rentas · Administración',
       hero: {
         titleLead: 'Diseño web para bienes raíces',
-        titleAccent: 'que convierte visitas en citas.',
+        titleAccent: 'pensado para convertir visitas en citas.',
         description:
           'Sitios y portales para desarrollos e inmobiliarias en EE. UU.: el comprador encuentra su propiedad y agenda la visita desde el celular.',
         ctaSecondary: 'Qué diseñamos',
@@ -52,7 +52,7 @@ export const realEstate: Service = {
         heading: 'Lo que diseñamos para *tu desarrollo o inmobiliaria.*',
         intro: 'Hay quien empieza por el sitio de un desarrollo en preventa y quien empieza por el buscador o el portal de inquilinos. La propuesta trae alcance, precio y fechas para llegar a tu lanzamiento.',
         items: [
-          { icon: 'Monitor', title: 'Sitio de desarrollo', service: 'web-design', text: 'Ubicación, amenidades, planos y avance de obra en un sitio que vende antes de terminar de construir.' },
+          { icon: 'Monitor', title: 'Sitio de desarrollo', service: 'web-design', text: 'Ubicación, amenidades, planos y avance de obra en un sitio para empezar a vender antes de terminar de construir.' },
           { icon: 'Search', title: 'Buscador de propiedades', service: 'ux-ui-design', text: 'Filtros por zona, precio y tamaño, conectados con tu inventario o tu MLS.' },
           { icon: 'CalendarCheck', title: 'Visitas en línea', text: 'Agendar una visita o una videollamada en pocos pasos, con aviso a tu equipo.' },
           { icon: 'Users', title: 'Portal de inquilinos', service: 'web-development', text: 'Pagos de renta, solicitudes de mantenimiento y documentos en un solo lugar.' },
@@ -80,7 +80,7 @@ export const realEstate: Service = {
           { question: '¿Las fichas de propiedades pueden estar en español?', answer: 'Sí. Las fichas, los filtros y la solicitud de visita quedan en español, para que el comprador hispano compare y agende sin depender de nadie.' },
         ],
       },
-      cta: { titleLead: 'Hagamos que tus propiedades', titleAccent: 'se visiten más.' },
+      cta: { titleLead: 'Hagamos que tus propiedades', titleAccent: 'sean fáciles de encontrar y visitar.' },
     },
     en: {
       seo: {
@@ -93,7 +93,7 @@ export const realEstate: Service = {
       tags: 'Developments · Brokerages · Rentals · Property management',
       hero: {
         titleLead: 'Website design for real estate',
-        titleAccent: 'that turns visits into showings.',
+        titleAccent: 'built to turn visits into showings.',
         description:
           'Websites and portals for US developments and brokerages: buyers find the right property and book a showing from their phone.',
         ctaSecondary: 'What we design',
@@ -123,7 +123,7 @@ export const realEstate: Service = {
         heading: 'What we design for *your development or brokerage.*',
         intro: 'Some start with a pre-sale development website, others with the property search or the tenant portal. The proposal includes scope, price and dates timed to your launch.',
         items: [
-          { icon: 'Monitor', title: 'Development website', service: 'web-design', text: 'Location, amenities, floor plans and construction progress on a website that sells before it’s finished.' },
+          { icon: 'Monitor', title: 'Development website', service: 'web-design', text: 'Location, amenities, floor plans and construction progress on a website built to start selling before construction ends.' },
           { icon: 'Search', title: 'Property search', service: 'ux-ui-design', text: 'Filters by area, price and size, connected to your inventory or your MLS.' },
           { icon: 'CalendarCheck', title: 'Online showings', text: 'Book a showing or a video call in a few steps, with an alert to your team.' },
           { icon: 'Users', title: 'Tenant portal', service: 'web-development', text: 'Rent payments, maintenance requests and documents in one place.' },
@@ -150,7 +150,7 @@ export const realEstate: Service = {
           { question: 'Can you connect showings to our CRM?', answer: 'Yes. Every showing or lead reaches your CRM with the property they were interested in.' },
         ],
       },
-      cta: { titleLead: 'Let’s get your properties', titleAccent: 'more showings.' },
+      cta: { titleLead: 'Let’s make your properties', titleAccent: 'easy to find and visit.' },
     },
   },
 };

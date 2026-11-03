@@ -23,7 +23,7 @@ export const agencies: Service = {
         titleLead: 'Desarrollo web para agencias',
         titleAccent: 'fiel a cada detalle de tu diseño.',
         description:
-          'Programamos los sitios que diseña tu agencia, con tu marca e invisibles para tu cliente: idénticos al diseño y a tiempo.',
+          'Programamos los sitios que diseña tu agencia, con tu marca e invisibles para tu cliente: fieles al diseño y en las fechas acordadas.',
         ctaSecondary: 'Cómo trabajamos',
       },
       industries: {
@@ -94,7 +94,7 @@ export const agencies: Service = {
         titleLead: 'Web development for agencies',
         titleAccent: 'true to every detail of your design.',
         description:
-          'We build the websites your agency designs, under your brand and invisible to your client: true to the design and on time.',
+          'We build the websites your agency designs, under your brand and invisible to your client: true to the design and on the agreed dates.',
         ctaSecondary: 'How we work',
       },
       industries: {

@@ -288,6 +288,7 @@ Orden de trabajo en aurin.consulting:
 
 ## Tono
 
+- Solo lo que podemos cumplir (decidido en noviembre 2026; una promesa rota cuesta el cliente). Nada de resultados garantizados: «pensado para vender» / «built to sell», no «que vende» ni «te trae clientes»; sin «agota funciones», «sin perder posiciones», «sin errores», «riesgo cero» ni «para siempre». Nada de experiencia local inventada: el equipo está en Cuernavaca, los clientes son de varios países (`clientsNote` en las industrias de cada estado) y no se conoce «la región». Sin visitas presenciales ni adaptarse a turnos o reglas internas del cliente. Las pruebas con usuarios se prometen solo en UX/UI, no en todo sitio. Hablas «con el equipo», no «con quien programa» ni «sin intermediarios»; un experto «revisa», no «responde por». Leyes y accesibilidad: integramos lo que defina el asesor del cliente y decimos qué revisamos; el cumplimiento formal lo confirman su asesor o un tercero. Sin promesas de velocidad extrema ni cifras sin fuente.
 - SEO (decidido en noviembre 2026): lo principal es el servicio y el SEO es secundario. Incluimos solo el básico (títulos, descripciones, velocidad, datos estructurados); el SEO avanzado también lo hacemos (contenidos, páginas por ciudad o producto, seguimiento) y se cotiza aparte. Optimizar para buscadores con IA (ChatGPT, Perplexity) es parte del SEO avanzado: nunca presentarlo como incluido. Nunca en el title ni como primer mensaje; en la description de estados e índice va «SEO básico o avanzado», después de los servicios; no prometer «aparecer en Google» como resultado. En el FAQ: «básico incluido, avanzado aparte».
 - Lenguaje simple para clientes que no son del medio: nada de "itemizada", "por etapas", "entregables" en textos de venta.
   Decir "qué incluye, cuánto cuesta y cuándo se entrega".
@@ -385,7 +386,6 @@ Orden de trabajo en aurin.consulting:
 ## Pendientes
 
 - Deploy Hook de Vercel en el secreto `VERCEL_DEPLOY_HOOK` de GitHub (sin él, los estados programados no salen solos).
-- Caso Galicia (`industry: 'Legal'`, «firmas de abogados») sigue en la home y en diseño web, contra la regla de no mencionar legal: decidir si se quita.
 - `RESEND_API_KEY` en Vercel (sin ella los leads dan error). El botón "Agenda una llamada" del CtaBanner de la home no tiene destino (`#`).
 - Testimonios: se quitaron por no tener citas reales. Si se consiguen, sección nueva en la home (sin schema Review: Google no muestra estrellas de reseñas propias).
 - Search Console (propiedad de dominio, por DNS) y Bing Webmaster (puede importar de Search Console): verificar aurin.consulting

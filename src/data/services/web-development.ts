@@ -21,7 +21,7 @@ export const webDevelopment: Service = {
       tags: 'Pagos y reservas · Portales y sistemas · Integraciones',
       hero: {
         titleLead: 'Desarrollo web a la medida:',
-        titleAccent: 'tu sitio cobra, agenda y trabaja solo.',
+        titleAccent: 'tu sitio cobra, agenda y se conecta con tus sistemas.',
         description:
           'Para empresas en EE. UU. que necesitan más que páginas: pagos, reservas, portales y sistemas conectados con lo que ya usas.',
         ctaSecondary: 'Qué incluye',
@@ -43,7 +43,7 @@ export const webDevelopment: Service = {
           good: {
             label: 'Con Aurin',
             title: 'Un sitio hecho a la medida',
-            items: ['Código propio, sin plugins que se rompan', 'Carga rápido, también en el celular', 'Tu equipo lo edita sin programar', 'Conectado con tus pagos, tu CRM y tus herramientas', 'Cobra, agenda y responde aunque no estés'],
+            items: ['Código propio, sin plugins que se rompan', 'Carga rápido, también en el celular', 'Tu equipo lo edita sin programar', 'Conectado con tus pagos, tu CRM y tus herramientas', 'Cobra y agenda aunque no estés'],
           },
         },
       },
@@ -56,7 +56,7 @@ export const webDevelopment: Service = {
           { icon: 'LayoutDashboard', title: 'Portales y sistemas internos', text: 'Cuentas para tus clientes y paneles para que tu equipo administre pedidos, alumnos o sucursales.' },
           { icon: 'Plug', title: 'Conectado con tus herramientas', text: 'Tu CRM, tu correo, tu facturación y tu analítica reciben los datos solos, sin copiar y pegar.' },
           { icon: 'PenTool', title: 'Un administrador fácil de usar', text: 'Tu equipo cambia textos, fotos y páginas sin tocar código ni esperar a nadie.' },
-          { icon: 'ArrowRightLeft', title: 'Cambio de sitio sin perder Google', text: 'Si ya tienes un sitio, pasamos tu contenido y conservamos las páginas que hoy te traen visitas.' },
+          { icon: 'ArrowRightLeft', title: 'Cambio de sitio cuidando tu Google', text: 'Si ya tienes un sitio, pasamos tu contenido y conservamos las páginas que hoy te traen visitas.' },
         ],
       },
       process: {
@@ -70,7 +70,7 @@ export const webDevelopment: Service = {
       },
       cases: { heading: 'Sitios, plataformas y sistemas que *programamos.*' },
       guarantees: {
-        heading: 'Sin riesgo *para ti.*',
+        heading: 'Lo que va *por escrito.*',
         intro: 'Un desarrollo no debería ser una caja negra. Todo esto va por escrito en tu propuesta.',
         items: [
           { title: 'Lo pruebas antes de publicar', text: 'Revisas cada función en un sitio de prueba. Se publica cuando tú lo apruebas.' },
@@ -84,10 +84,10 @@ export const webDevelopment: Service = {
         items: [
           { question: '¿Cuánto cuesta el desarrollo web a la medida?', answer: 'Depende de lo que tiene que hacer tu sitio: pagos, reservas, cuentas de usuario o conexiones con otros sistemas. Antes de empezar recibes una propuesta con el precio cerrado, lo que incluye y las fechas.', pending: 'Agregar un rango real (desde $X USD): una cifra responde mejor la búsqueda.' },
           { question: '¿Cuánto tarda?', answer: 'Depende de cuántas funciones lleva. Las fechas de cada etapa vienen en la propuesta y revisas avances durante el desarrollo.' },
-          { question: '¿Me conviene WordPress o un sitio a la medida?', answer: 'Si solo necesitas publicar páginas, algo sencillo puede bastar y te lo decimos. Cuando hay pagos, reservas, usuarios o sistemas, a la medida es más rápido, más seguro y no depende de plugins de terceros.' },
+          { question: '¿Me conviene WordPress o un sitio a la medida?', answer: 'Si solo necesitas publicar páginas, algo sencillo puede bastar y te lo decimos. Cuando hay pagos, reservas, usuarios o sistemas, a la medida suele ser más rápido y más seguro, y no depende de plugins de terceros.' },
           { question: '¿Pueden conectar pagos, reservas o mi CRM?', answer: 'Sí. Conectamos pagos con tarjeta, calendarios de reservas, CRM, correo, facturación y analítica, para que los datos lleguen solos a donde los necesitas.' },
           { question: '¿Mi equipo podrá actualizar el sitio?', answer: 'Sí. Incluimos un administrador para cambiar textos, imágenes y páginas sin programar.' },
-          { question: '¿Pueden rehacer mi sitio sin perder posiciones en Google?', answer: 'Sí. Revisamos qué páginas te traen visitas hoy, las conservamos o las redirigimos y pasamos el contenido.' },
+          { question: '¿Pueden rehacer mi sitio sin perder posiciones en Google?', answer: 'Lo cuidamos desde el principio: revisamos qué páginas te traen visitas hoy, las conservamos o las redirigimos y pasamos el contenido. Nadie puede garantizar posiciones, pero así evitas lo que más las hace caer.' },
           { question: '¿El código es mío?', answer: 'Sí. El código es tuyo aunque el hosting o el dominio estén en nuestra cuenta, y te entregamos todo con sus accesos cuando lo pidas.' },
           { question: '¿Mi sitio aparecerá en ChatGPT o Perplexity?', answer: 'Se puede optimizar para eso con SEO avanzado, que se cotiza aparte: contenido claro que responde preguntas, datos estructurados y acceso permitido a los buscadores con IA. Nadie puede garantizar que te citen, pero así les das lo que necesitan.' },
           { question: '¿Dan mantenimiento después del lanzamiento?', answer: 'Sí. Te acompañamos después del lanzamiento para medir, corregir y mejorar.' },
@@ -106,7 +106,7 @@ export const webDevelopment: Service = {
       tags: 'Payments & bookings · Portals & systems · Integrations',
       hero: {
         titleLead: 'Custom web development:',
-        titleAccent: 'your website sells, books and works on its own.',
+        titleAccent: 'your website takes payments, books and connects to your systems.',
         description:
           'For businesses that need more than pages: payments, bookings, customer portals and internal systems, connected to your tools.',
         ctaSecondary: 'What’s included',
@@ -128,7 +128,7 @@ export const webDevelopment: Service = {
           good: {
             label: 'With Aurin',
             title: 'A website built for your business',
-            items: ['Custom-built, with no plugins to break', 'Loads fast, on phones too', 'Your team edits it without code', 'Connected to your payments, CRM and tools', 'Sells, books and replies even when you’re away'],
+            items: ['Custom-built, with no plugins to break', 'Loads fast, on phones too', 'Your team edits it without code', 'Connected to your payments, CRM and tools', 'Takes payments and bookings even when you’re away'],
           },
         },
       },
@@ -141,7 +141,7 @@ export const webDevelopment: Service = {
           { icon: 'LayoutDashboard', title: 'Portals and internal systems', text: 'Accounts for your customers and dashboards for your team to manage orders, students or locations.' },
           { icon: 'Plug', title: 'Connected to your tools', text: 'Your CRM, email, invoicing and analytics get the data automatically, no copy and paste.' },
           { icon: 'PenTool', title: 'An easy content manager', text: 'Your team changes copy, photos and pages without touching code or waiting on anyone.' },
-          { icon: 'ArrowRightLeft', title: 'Switch sites without losing Google', text: 'If you already have a website, we move your content and keep the pages that bring you traffic today.' },
+          { icon: 'ArrowRightLeft', title: 'Switch sites and look after your Google rankings', text: 'If you already have a website, we move your content and keep the pages that bring you traffic today.' },
         ],
       },
       process: {
@@ -155,7 +155,7 @@ export const webDevelopment: Service = {
       },
       cases: { heading: 'Websites, platforms and systems *we built.*' },
       guarantees: {
-        heading: 'Zero risk *for you.*',
+        heading: 'What goes *in writing.*',
         intro: 'Development shouldn’t be a black box. All of this goes in writing in your proposal.',
         items: [
           { title: 'Test it before it goes live', text: 'You review every feature on a test site. It goes live when you approve it.' },
@@ -172,7 +172,7 @@ export const webDevelopment: Service = {
           { question: 'Should I use WordPress or a custom website?', answer: 'If you only need to publish pages, something simple may be enough, and we’ll tell you. When there are payments, bookings, users or systems, custom is faster, safer and doesn’t depend on third-party plugins.' },
           { question: 'Can you connect payments, bookings or my CRM?', answer: 'Yes. We connect card payments, booking calendars, CRM, email, invoicing and analytics, so the data reaches the right place automatically.' },
           { question: 'Will my team be able to update the website?', answer: 'Yes. We include a content manager to change copy, images and pages without code.' },
-          { question: 'Can you rebuild my website without losing Google rankings?', answer: 'Yes. We check which pages bring you traffic today, keep or redirect them and move the content.' },
+          { question: 'Can you rebuild my website without losing Google rankings?', answer: 'We look after them from the start: we check which pages bring you traffic today, keep or redirect them and move the content. No one can guarantee rankings, but this avoids what most often makes them drop.' },
           { question: 'Do I own the code?', answer: 'Yes. The code is yours even if the hosting or domain sit in our account, and we hand everything over, with the logins, whenever you ask.' },
           { question: 'Will my website show up in ChatGPT or Perplexity?', answer: 'It can be optimized for that with advanced SEO, quoted separately: clear content that answers questions, structured data and access for AI search engines. No one can guarantee you’ll be cited, but this gives them what they need.' },
           { question: 'Do you offer maintenance after launch?', answer: 'Yes. We stay with you after launch to measure, fix and improve.' },

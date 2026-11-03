@@ -3,7 +3,7 @@ import type { Service } from './types';
 export const webDesign: Service = {
   id: 'web-design',
   slug: { es: 'diseno-web', en: 'web-design' },
-  cases: ['galicia', 'mineria', 'fruit-academy', 'ingles-individual'],
+  cases: ['el-rollo', 'mineria', 'fruit-academy', 'ingles-individual'],
   copy: {
     es: {
       seo: {
@@ -15,7 +15,7 @@ export const webDesign: Service = {
       summary: 'Sitios web a la medida de tu marca y de tu cliente: arquitectura de contenidos, diseño responsive y prototipos que apruebas antes de programar.',
       tags: 'Sitios corporativos · Landing pages · Diseño responsive',
       hero: {
-        titleLead: 'Diseño web que vende',
+        titleLead: 'Diseño web pensado para vender',
         titleAccent: 'mientras tú atiendes tu negocio.',
         description:
           'Sitios y landing pages para empresas en EE. UU., pensados para lo que tu cliente busca. Apruebas el diseño antes de programar.',
@@ -44,7 +44,7 @@ export const webDesign: Service = {
           },
           good: {
             label: 'Con Aurin',
-            title: 'Un sitio que te trae clientes',
+            title: 'Un sitio pensado para conseguir clientes',
             items: ['Se diseña para lo que tu cliente busca y pregunta', 'Encuentra lo que necesita en segundos', 'Lista para salir en Google desde el diseño', 'Llamada, WhatsApp y formulario en cada página', 'Recorres el prototipo y lo apruebas antes de programar'],
           },
         },
@@ -67,7 +67,7 @@ export const webDesign: Service = {
         items: [
           { icon: 'Rocket', title: 'Landing page', text: 'Una sola página para un servicio o una campaña: tu cliente llega desde Google o un anuncio y en segundos sabe qué ofreces y cómo contactarte.' },
           { icon: 'Monitor', title: 'Página web para tu empresa', text: 'Tu sitio completo: quiénes son, qué servicios das, con quién has trabajado y cómo contactarte. Para que quien te busca en Google confíe en ti antes de llamarte.' },
-          { icon: 'RefreshCw', title: 'Rediseño de tu página web', text: 'Si tu sitio se ve viejo, no se ve bien en el celular o no te trae clientes, lo rehacemos sin perder lo que ya te funciona en Google.' },
+          { icon: 'RefreshCw', title: 'Rediseño de tu página web', text: 'Si tu sitio se ve viejo, no se ve bien en el celular o no te trae clientes, lo rehacemos cuidando lo que ya te funciona en Google.' },
         ],
       },
       process: {
@@ -76,7 +76,7 @@ export const webDesign: Service = {
           { name: 'Llamada gratis y propuesta', text: 'Nos cuentas de tu negocio y de tu cliente. Revisamos tu sitio actual y a tu competencia.', gets: 'Una propuesta con precio, qué incluye y fechas.' },
           { name: 'Estructura', text: 'Definimos las páginas, los textos clave y el camino que lleva a tu cliente a contactarte.', gets: 'El mapa de tu sitio y sus textos principales.' },
           { name: 'Diseño y prototipo', text: 'Diseñamos cada página para celular y computadora. La recorres, nos pides cambios y la apruebas.', gets: 'Un prototipo que pruebas antes de programar.' },
-          { name: 'Lanzamiento', text: 'La programamos, la dejamos lista para Google y la publicamos en internet.', gets: 'Tu página web en línea y lista para recibir clientes.' },
+          { name: 'Lanzamiento', text: 'La programamos, la dejamos lista para Google y la publicamos en internet.', gets: 'Tu página web en línea y probada.' },
         ],
       },
       support: {
@@ -104,19 +104,19 @@ export const webDesign: Service = {
           { question: '¿Pueden hacer solo el diseño si ya tengo programador?', answer: 'Sí. Diseñamos tu sitio y se lo entregamos a tu programador con todo lo que necesita para construirlo igual al diseño que aprobaste.' },
         ],
       },
-      cta: { titleLead: '¿Listo para una página web', titleAccent: 'que te traiga clientes?', light: true },
+      cta: { titleLead: '¿Listo para una página web', titleAccent: 'pensada para conseguir clientes?', light: true },
     },
     en: {
       seo: {
         title: 'Web Design Agency for US & Canadian Businesses | Aurin',
         description:
-          'Websites for US and Canadian businesses that turn visitors into customers. You approve the design before we build and know the price from day one. Free call.',
+          'Websites for US and Canadian businesses, built to win customers. You approve the design before we build and know the price from day one. Free call.',
       },
       name: 'Web design',
       summary: 'Websites built around your brand and your customer: content architecture, responsive design and prototypes you approve before any code is written.',
       tags: 'Corporate websites · Landing pages · Responsive design',
       hero: {
-        titleLead: 'Web design that sells',
+        titleLead: 'Web design built to sell',
         titleAccent: 'while you run your business.',
         description:
           'Corporate websites and landing pages built around what your customer looks for. You approve the design before any code.',
@@ -145,7 +145,7 @@ export const webDesign: Service = {
           },
           good: {
             label: 'With Aurin',
-            title: 'A website that wins customers',
+            title: 'A website built to win customers',
             items: ['Designed around what your customer searches for and asks', 'They find what they need in seconds', 'Ready for Google from the design stage', 'Call, WhatsApp and a form on every page', 'You click through the prototype and approve it before any code'],
           },
         },
@@ -168,7 +168,7 @@ export const webDesign: Service = {
         items: [
           { icon: 'Rocket', title: 'Landing page', text: 'A single page for one service or campaign: customers arrive from Google or an ad and know in seconds what you offer and how to reach you.' },
           { icon: 'Monitor', title: 'Business website', text: 'Your full site: who you are, what you offer, who you’ve worked with and how to reach you. So people who find you on Google trust you before they call.' },
-          { icon: 'RefreshCw', title: 'Website redesign', text: 'If your site looks dated, breaks on mobile or doesn’t bring in customers, we rebuild it without losing what already works for you on Google.' },
+          { icon: 'RefreshCw', title: 'Website redesign', text: 'If your site looks dated, breaks on mobile or doesn’t bring in customers, we rebuild it and look after what already works for you on Google.' },
         ],
       },
       process: {
@@ -177,7 +177,7 @@ export const webDesign: Service = {
           { name: 'Free call and proposal', text: 'You tell us about your business and your customer. We review your current site and your competitors.', gets: 'A proposal with price, what’s included and dates.' },
           { name: 'Structure', text: 'We define the pages, the key copy and the path that leads your customer to contact you.', gets: 'Your sitemap and its main copy.' },
           { name: 'Design and prototype', text: 'We design every page for mobile and desktop. You click through it, ask for changes and approve it.', gets: 'A prototype you test before any code.' },
-          { name: 'Launch', text: 'We build it, get it ready for Google and put it online.', gets: 'Your website live and ready to bring in customers.' },
+          { name: 'Launch', text: 'We build it, get it ready for Google and put it online.', gets: 'Your website live and tested.' },
         ],
       },
       support: {
@@ -205,7 +205,7 @@ export const webDesign: Service = {
           { question: 'Can you do just the design if I already have a developer?', answer: 'Yes. We design your website and hand it to your developer with everything they need to build it exactly like the design you approved.' },
         ],
       },
-      cta: { titleLead: 'Ready for a website', titleAccent: 'that brings in customers?', light: true },
+      cta: { titleLead: 'Ready for a website', titleAccent: 'built to win customers?', light: true },
     },
   },
 };

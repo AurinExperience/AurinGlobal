@@ -22,9 +22,9 @@ export const culture: Service = {
       tags: 'Teatros · Orquestas · Museos · Ciencia',
       hero: {
         titleLead: 'Diseño y desarrollo web para cultura y ciencia',
-        titleAccent: 'que agota funciones.',
+        titleAccent: 'pensado para vender más boletos.',
         description:
-          'Sitios, taquilla en línea y marca para teatros, orquestas y museos en EE. UU.: el público compra en tu sitio y vuelve cada temporada.',
+          'Sitios, taquilla en línea y marca para teatros, orquestas y museos en EE. UU.: el público compra en tu propio sitio.',
         ctaSecondary: 'Qué hacemos',
       },
       industries: {
@@ -94,9 +94,9 @@ export const culture: Service = {
       tags: 'Theaters · Orchestras · Museums · Science',
       hero: {
         titleLead: 'Web design and development for arts, culture and science',
-        titleAccent: 'that sells out shows.',
+        titleAccent: 'built to sell more tickets.',
         description:
-          'Websites, online box office and branding for US theaters, orchestras and museums: audiences buy on your site and come back every season.',
+          'Websites, online box office and branding for US theaters, orchestras and museums: audiences buy on your own site.',
         ctaSecondary: 'What we do',
       },
       industries: {

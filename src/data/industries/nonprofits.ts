@@ -18,7 +18,7 @@ export const nonprofits: Service = {
       tags: 'Fundaciones · ONG · Asociaciones · Voluntariado',
       hero: {
         titleLead: 'Diseño web para fundaciones y ONG',
-        titleAccent: 'que convierte visitas en donantes.',
+        titleAccent: 'pensado para convertir visitas en donantes.',
         description:
           'Sitios para fundaciones y organizaciones sin fines de lucro en EE. UU.: quien llega entiende tu causa y dona en un minuto.',
         ctaSecondary: 'Qué diseñamos',
@@ -89,7 +89,7 @@ export const nonprofits: Service = {
       tags: 'Foundations · Nonprofits · Associations · Volunteering',
       hero: {
         titleLead: 'Website design for nonprofits',
-        titleAccent: 'that turns visitors into donors.',
+        titleAccent: 'built to turn visitors into donors.',
         description:
           'Websites for US foundations and nonprofits: visitors understand your cause, see their impact and give in a minute.',
         ctaSecondary: 'What we design',

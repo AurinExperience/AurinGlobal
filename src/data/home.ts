@@ -44,7 +44,6 @@ export interface HomeCopy {
  *  'color' es de colores claros (solo se pasa a gris y se aclara). */
 export const CLIENTS: Client[] = [
   { name: 'Antojos Sabores', logo: '/logos/antojos-sabores.webp', w: 92, h: 47 },
-  { name: 'Galicia', logo: '/logos/galicia.svg', w: 144, h: 34 },
   { name: 'Inglés Individual', logo: '/logos/ingles-individual.webp', w: 200, h: 25 },
   { name: 'Latiz', logo: '/logos/latiz.svg', w: 56, h: 66 },
   { name: 'Mexico Pacific', logo: '/logos/mexico-pacific.webp', w: 69, h: 57 },
@@ -93,7 +92,7 @@ export const HOME: Record<Lang, HomeCopy> = {
     },
     services: {
       heading: 'Diseño web, desarrollo, UX/UI y branding, *de la mano.*',
-      intro: 'Cuatro disciplinas, un solo equipo. Marca, experiencia y código se deciden juntos desde la primera llamada, así tu sitio o producto sale coherente, rápido y listo para convertir.',
+      intro: 'Cuatro disciplinas, un solo equipo. Marca, experiencia y código se deciden juntos desde la primera llamada, así tu sitio o producto sale coherente, rápido y pensado para convertir.',
     },
     industries: {
       heading: 'Diseño web y UX/UI para industrias donde *la confianza importa.*',
@@ -113,14 +112,14 @@ export const HOME: Record<Lang, HomeCopy> = {
     },
     research: {
       heading: 'Construido sobre lo que tus usuarios *realmente hacen.*',
-      text: 'Cada proyecto empieza con entrevistas, mapas de usuario y pruebas de usabilidad reales. Las decisiones se sostienen en evidencia, no en suposiciones, así el trabajo convierte desde el primer día.',
+      text: 'Empezamos por entender a quien va a usar tu sitio o tu app, con entrevistas, mapas de usuario y pruebas de usabilidad según lo que pida el proyecto. Así las decisiones se sostienen en evidencia, no en suposiciones.',
       layers: ['Investigación de usuarios', 'Estructura y flujos', 'Pruebas de usabilidad'],
     },
     ai: {
       heading: 'Usamos IA para *llegar más lejos*, con criterio humano en cada decisión.',
-      text: 'La inteligencia artificial está en nuestro proceso, no en lugar de nuestro equipo. Nos ayuda a hacer en días lo que antes tomaba semanas, y ese tiempo lo invertimos en lo que una máquina no puede decidir por ti: estrategia, criterio y detalle.',
+      text: 'La inteligencia artificial está en nuestro proceso, no en lugar de nuestro equipo. Nos ayuda a avanzar más rápido, y ese tiempo lo invertimos en lo que una máquina no puede decidir por ti: estrategia, criterio y detalle.',
       items: [
-        { title: 'Del boceto al prototipo, más rápido', text: 'Generamos variantes de pantallas, textos de prueba y componentes en horas, así llegas antes a un prototipo que puedes navegar y aprobar.' },
+        { title: 'Del boceto al prototipo, más rápido', text: 'Generamos variantes de pantallas, textos de prueba y componentes más rápido, así llegas antes a un prototipo que puedes navegar y aprobar.' },
         { title: 'Más opciones para elegir', text: 'Exploramos más rutas de diseño y de texto en la misma etapa, sin alargar el calendario.' },
         { title: 'Desarrollo más rápido y probado', text: 'Asistentes de código y pruebas automáticas aceleran la programación y atrapan errores antes del lanzamiento.' },
         { title: 'Optimización para buscadores con IA', text: 'Con SEO avanzado, que se cotiza aparte: estructura, datos estructurados y llms.txt para que ChatGPT, Perplexity y las respuestas de Google entiendan tu sitio.' },
@@ -139,7 +138,7 @@ export const HOME: Record<Lang, HomeCopy> = {
     cases: {
       heading: 'Marcas, sitios y productos que *diseñamos y desarrollamos.*',
       link: 'Ver caso',
-      ids: ['fruit-academy', 'el-rollo', 'ingles-individual', 'ancient', 'galicia', 'mineria', 'mexico-pacific'],
+      ids: ['fruit-academy', 'el-rollo', 'ingles-individual', 'ancient', 'mineria', 'mexico-pacific'],
     },
     about: {
       heading: 'Agencia de diseño web y branding *desde 1998.*',
@@ -165,7 +164,7 @@ export const HOME: Record<Lang, HomeCopy> = {
     seo: {
       title: 'Aurin | UX/UI, Web Design & Branding Agency Since 1998',
       description:
-        'Web design, development, UX/UI and branding from one senior team, since 1998. For US and Canadian businesses, on Central Time. Book a free call.',
+        'Web design, development, UX/UI and branding from one team, since 1998. For US and Canadian businesses, on Central Time. Book a free call.',
     },
     hero: {
       titleLead: 'UX/UI design agency',
@@ -178,7 +177,7 @@ export const HOME: Record<Lang, HomeCopy> = {
     },
     services: {
       heading: 'Web design, development, UX/UI and branding, *hand in hand.*',
-      intro: 'Four disciplines, one team. Brand, experience and code are decided together from the first call, so your website or product launches consistent, fast and ready to convert.',
+      intro: 'Four disciplines, one team. Brand, experience and code are decided together from the first call, so your website or product launches consistent, fast and built to convert.',
     },
     industries: {
       heading: 'Web design and UX/UI for industries where *trust matters.*',
@@ -198,14 +197,14 @@ export const HOME: Record<Lang, HomeCopy> = {
     },
     research: {
       heading: 'Built on what your users *actually do.*',
-      text: 'Every project starts with interviews, user journey maps and real usability tests. Decisions rest on evidence, not assumptions, so the work converts from day one.',
+      text: 'We start by understanding who will use your website or app, with interviews, user journey maps and usability tests as the project calls for them. That way decisions rest on evidence, not assumptions.',
       layers: ['User research', 'Structure and flows', 'Usability testing'],
     },
     ai: {
       heading: 'We use AI to *go further*, with human judgment in every decision.',
-      text: 'Artificial intelligence is part of our process, not a replacement for our team. It helps us do in days what used to take weeks, and we put that time into what a machine can’t decide for you: strategy, judgment and detail.',
+      text: 'Artificial intelligence is part of our process, not a replacement for our team. It helps us move faster, and we put that time into what a machine can’t decide for you: strategy, judgment and detail.',
       items: [
-        { title: 'From sketch to prototype, faster', text: 'We generate screen variations, placeholder copy and components in hours, so you get to a prototype you can click through and approve sooner.' },
+        { title: 'From sketch to prototype, faster', text: 'We generate screen variations, placeholder copy and components faster, so you get to a prototype you can click through and approve sooner.' },
         { title: 'More options to choose from', text: 'We explore more design and copy directions in the same phase, without stretching the schedule.' },
         { title: 'Faster, better-tested development', text: 'Coding assistants and automated tests speed up development and catch bugs before launch.' },
         { title: 'AI search optimization', text: 'With advanced SEO, quoted separately: structure, structured data and llms.txt so ChatGPT, Perplexity and Google’s AI answers can understand your site.' },
@@ -224,7 +223,7 @@ export const HOME: Record<Lang, HomeCopy> = {
     cases: {
       heading: 'Brands, websites and products we *designed and built.*',
       link: 'View case',
-      ids: ['fruit-academy', 'el-rollo', 'ingles-individual', 'ancient', 'galicia', 'mineria', 'mexico-pacific'],
+      ids: ['fruit-academy', 'el-rollo', 'ingles-individual', 'ancient', 'mineria', 'mexico-pacific'],
     },
     about: {
       heading: 'A web design and branding agency *since 1998.*',

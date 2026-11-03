@@ -59,5 +59,7 @@ export interface Service {
   cases: CaseId[];
   /** Páginas de industria: la foto de su hero (cada industria la suya; ver PHOTOS en HeroState). */
   photo?: IndustryPhoto;
+  /** Solo industrias: se publica en el primer build después de esta fecha, como los estados. */
+  publishAt?: string;
   copy: Record<Lang, ServiceCopy>;
 }

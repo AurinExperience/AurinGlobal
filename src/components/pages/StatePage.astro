@@ -110,7 +110,7 @@ const related = [
     <HeroState hero={copy.hero} photo="st-beacon" trust />
     <Clients clients={HOME[lang].clients} />
     <ServicesList services={{ ...copy.services, items: serviceRows }} />
-    <IndustriesGrid industries={copy.sectors} />
+    <IndustriesGrid industries={{ ...copy.sectors, intro: `${copy.sectors.intro} ${t.clientsNote}` }} />
     <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(copy.cases.ids, lang) }} />
     <Cities cities={copy.cities} />
     <Journey {...copy.process} />

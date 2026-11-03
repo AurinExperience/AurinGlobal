@@ -75,7 +75,7 @@ export const healthcare: Service = {
         items: [
           { question: '¿Con qué tipo de empresas de salud trabajan?', answer: 'Clínicas, consultorios, cuidado en casa, dentistas, laboratorios y empresas de healthtech: desde un consultorio con un solo médico hasta redes con varias sedes.' },
           { question: '¿Pueden conectar las citas con nuestro sistema?', answer: 'Sí. Conectamos el sitio con tu agenda o tu sistema de citas si tiene cómo hacerlo, o te ayudamos a elegir uno que sí lo permita.' },
-          { question: '¿El sitio cumple con HIPAA?', answer: 'Diseñamos para pedir solo los datos necesarios y para que el paciente sepa para qué son. El cumplimiento de HIPAA depende también de tus sistemas y proveedores; lo revisa tu equipo legal y te ayudamos a elegir herramientas que lo cumplan.' },
+          { question: '¿El sitio cumple con HIPAA?', answer: 'Diseñamos para pedir solo los datos necesarios y para que el paciente sepa para qué son. El cumplimiento de HIPAA depende también de tus sistemas y proveedores; lo revisa tu equipo legal, y trabajamos con las herramientas que apruebe.' },
           { question: '¿Van a ver datos de nuestros pacientes?', answer: 'Solo lo que tu equipo decida compartir para el proyecto, y casi siempre trabajamos con datos de ejemplo. Esa información no pasa por herramientas de IA.' },
           { question: '¿Cómo atienden a pacientes que solo hablan español?', answer: 'Escribimos el sitio, los formularios y los avisos en español desde cero, con palabras de consulta y no de hospital, para que el paciente agende igual que en inglés.' },
           { question: '¿Pueden mejorar el sitio de nuestra clínica sin empezar de cero?', answer: 'Sí. Revisamos dónde se pierden los pacientes, qué preguntan por teléfono y qué buscan en Google, y empezamos por ahí.' },
@@ -147,7 +147,7 @@ export const healthcare: Service = {
         items: [
           { question: 'What kinds of healthcare companies do you work with?', answer: 'Clinics, private practices, home care, dentists, labs and healthtech companies: from a single-doctor practice to networks with several locations.' },
           { question: 'Can you connect booking to our system?', answer: 'Yes. We connect the website to your calendar or booking system if it allows it, or help you choose one that does.' },
-          { question: 'Will the website be HIPAA compliant?', answer: 'We design to collect only the data you need and to tell patients why. HIPAA compliance also depends on your systems and vendors; your legal team reviews it, and we help you choose tools that meet it.' },
+          { question: 'Will the website be HIPAA compliant?', answer: 'We design to collect only the data you need and to tell patients why. HIPAA compliance also depends on your systems and vendors; your legal team reviews it, and we work with the tools they approve.' },
           { question: 'Will you see our patients’ data?', answer: 'Only what your team decides to share for the project, and we almost always work with sample data. That information never goes through AI tools.' },
           { question: 'Can you improve our clinic’s website without starting over?', answer: 'Yes. We look at where patients drop off, what they ask on the phone and what they search on Google, and start there.' },
         ],

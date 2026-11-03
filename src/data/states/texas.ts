@@ -23,7 +23,7 @@ export const texas: State = {
       },
       hero: {
         titleLead: 'Diseño de páginas web en Texas',
-        titleAccent: 'que venden en inglés y en español.',
+        titleAccent: 'pensado para vender en inglés y en español.',
         description:
           'Sitios, productos y marcas para empresas de todo Texas, con un equipo bilingüe en tu horario y precio claro desde el inicio.',
         ctaSecondary: 'Ver servicios',
@@ -35,7 +35,7 @@ export const texas: State = {
           'web-design': { text: 'Tu sitio ya no está al nivel de tu empresa y pierdes contra competidores más chicos que se ven mejor. Lo rehacemos para que en segundos se entienda qué haces, por qué confiar en ti y cómo contactarte, también desde el celular.', tags: 'Sitio de empresa · Rediseño · SEO básico' },
           'web-development': { text: 'Tu equipo sigue capturando pedidos a mano, cotizando por correo o pasando datos entre sistemas que no se hablan. Construimos lo que falta: portales para clientes, pagos, reservas y conexiones con lo que ya usas.', tags: 'Portales · Pagos y reservas · Conexiones' },
           'ux-ui-design': { text: 'Tienes una app o una plataforma y la gente se atora, llama a soporte o la abandona a medio camino. Vemos dónde se pierde y rediseñamos esas pantallas antes de que programes otra función.', tags: 'Investigación · Prototipos · Apps y plataformas' },
-          branding: { text: 'Creciste, compraste otra empresa o cambiaste de giro, y tu marca sigue contando la historia de hace diez años. Definimos qué te hace distinto y lo volvemos logo, tono y guía para que te elijan antes de comparar precios.', tags: 'Estrategia · Logo e identidad · Guía de uso' },
+          branding: { text: 'Creciste, compraste otra empresa o cambiaste de giro, y tu marca sigue contando la historia de hace diez años. Definimos qué te hace distinto y lo volvemos logo, tono y guía para que te distingan antes de comparar precios.', tags: 'Estrategia · Logo e identidad · Guía de uso' },
         },
       },
       sectors: {
@@ -79,7 +79,7 @@ export const texas: State = {
           { question: '¿En qué horario trabajan?', answer: 'En la hora del centro de México, que no cambia en el año. En invierno es la misma de casi todo Texas y en verano vamos una hora atrás. En El Paso es al revés: en invierno vamos una hora adelante y en verano coincidimos. Las reuniones se agendan dentro de tu jornada.' },
           { question: '¿Pueden hacer mi sitio en inglés y en español?', answer: 'Sí, y en Texas suele valer la pena: más de 8 millones de personas, casi 3 de cada 10, hablan español en casa (Censo de EE. UU., ACS 2024). Escribimos los textos para cada idioma en vez de traducirlos palabra por palabra y configuramos el sitio para que Google muestre a cada visitante su versión.' },
           { question: '¿Ofrecen SEO en Texas para salir en Google?', answer: 'Sí, tu sitio sale con el SEO básico incluido: cada página con su título y descripción, carga rápida y datos estructurados. Si quieres SEO avanzado, con contenidos, seguimiento y optimización para buscadores con IA como ChatGPT y Perplexity, también lo hacemos y se cotiza aparte. Nadie serio puede prometerte el primer lugar, porque depende de tu competencia y toma tiempo.' },
-          { question: '¿Mi sitio tiene que cumplir con la ley de privacidad de Texas?', answer: 'Puede que sí. La Texas Data Privacy and Security Act está vigente desde el 1 de julio de 2024 y alcanza a quien hace negocio en Texas o vende a sus residentes y trata datos personales; las pequeñas empresas, según la definición de la SBA, quedan casi fuera. Dejamos el sitio preparado, con formularios que piden solo lo necesario, tu aviso de privacidad y el control de cookies. Si te aplica o no lo confirma tu asesor.' },
+          { question: '¿Mi sitio tiene que cumplir con la ley de privacidad de Texas?', answer: 'Puede que sí. La Texas Data Privacy and Security Act está vigente desde el 1 de julio de 2024 y alcanza a quien hace negocio en Texas o vende a sus residentes y trata datos personales; las pequeñas empresas, según la definición de la SBA, quedan casi fuera. Diseñamos formularios que piden solo lo necesario e integramos el aviso de privacidad que defina tu asesor y el control de cookies. Si te aplica o no lo confirma tu asesor.' },
           { question: '¿Hacen páginas web para pequeñas empresas en Texas?', answer: 'Sí. Si tu negocio ya vende y su sitio no lo refleja, puede bastar con pocas páginas bien hechas. Te decimos qué necesitas ahora, qué puede esperar y cuánto cuesta antes de que decidas.' },
           ...COMMON_FAQ.es,
         ],
@@ -96,13 +96,13 @@ export const texas: State = {
       seo: {
         title: 'Web Design Agency in Texas | Since 1998 | Aurin',
         description:
-          'Web design and UX/UI for businesses across Texas, with basic or advanced SEO. One senior team since 1998: you see the design before we build. Book a free call.',
+          'Web design and UX/UI for businesses across Texas, with basic or advanced SEO. One team since 1998: you see the design before we build. Book a free call.',
       },
       hero: {
         titleLead: 'Web design agency in Texas',
-        titleAccent: 'for websites that bring in customers.',
+        titleAccent: 'for websites built to win customers.',
         description:
-          'Websites, products and brands for businesses across Texas, built by one senior team during your workday, with a clear price from day one.',
+          'Websites, products and brands for businesses across Texas, built by one team during your workday, with a clear price from day one.',
         ctaSecondary: 'See services',
       },
       services: {
@@ -112,7 +112,7 @@ export const texas: State = {
           'web-design': { text: 'Your company has outgrown its website, and smaller competitors with better sites are winning the first impression. We rebuild it so people grasp what you do, why to trust you and how to reach you within seconds, on any phone.', tags: 'Company websites · Redesigns · Basic SEO' },
           'web-development': { text: 'Your staff still keys in orders by hand, sends quotes by email or copies data between systems that don’t talk. We build the missing piece: customer portals, payments, bookings and connections to the tools you already run.', tags: 'Portals · Payments and bookings · Integrations' },
           'ux-ui-design': { text: 'You have an app or platform, and people get stuck, call support or quit halfway through. We find where they drop off and redesign those screens before you pay to build another feature.', tags: 'Research · Prototypes · Apps and platforms' },
-          branding: { text: 'You grew, bought another company or changed direction, and your brand still tells the story from ten years ago. We pin down what sets you apart and turn it into a logo, a voice and guidelines, so buyers pick you before they compare prices.', tags: 'Strategy · Logo and identity · Guidelines' },
+          branding: { text: 'You grew, bought another company or changed direction, and your brand still tells the story from ten years ago. We pin down what sets you apart and turn it into a logo, a voice and guidelines, so you stand out before buyers compare prices.', tags: 'Strategy · Logo and identity · Guidelines' },
         },
       },
       sectors: {
@@ -156,7 +156,7 @@ export const texas: State = {
           { question: 'Why not hire a local Texas agency?', answer: 'If sitting at the same table matters most to you, a local agency is the better fit: all our sessions are online. If you care more about who does the work and knowing what you’ll get, compare us. Even with an agency across town, most of the job happens on video calls and shared prototypes, and with us you see the design before we build and the price is locked.' },
           { question: 'What hours do you work?', answer: 'We’re on central Mexico time, which doesn’t change during the year. In winter that matches most of Texas, and in summer we’re one hour behind. El Paso flips it: one hour ahead in winter and the same time in summer. Meetings get scheduled inside your workday.' },
           { question: 'Do you offer SEO in Texas to show up on Google?', answer: 'Yes, your site launches with basic SEO included: each page gets its title and description, fast loading and structured data. If you want advanced SEO, with content, ongoing tracking and optimization for AI search tools like ChatGPT and Perplexity, we do that too and quote it separately. Nobody honest can promise you the top spot, since that depends on your competition and takes time.' },
-          { question: 'Does my website need to comply with the Texas privacy law?', answer: 'It might. The Texas Data Privacy and Security Act has been in force since July 1, 2024 and reaches anyone doing business in Texas or selling to its residents who processes personal data; small businesses, as the SBA defines them, are mostly left out. We set the site up for it, with forms that ask only for what’s needed, your privacy notice and cookie controls. Your advisor confirms whether it applies to you.' },
+          { question: 'Does my website need to comply with the Texas privacy law?', answer: 'It might. The Texas Data Privacy and Security Act has been in force since July 1, 2024 and reaches anyone doing business in Texas or selling to its residents who processes personal data; small businesses, as the SBA defines them, are mostly left out. We design forms that ask only for what’s needed and add the privacy notice your advisor defines, plus cookie controls. Your advisor confirms whether it applies to you.' },
           { question: 'Can you also build a Spanish version?', answer: 'Yes, if some of your customers would use it: over 8 million Texans, nearly 3 in 10, speak Spanish at home (US Census ACS 2024). We write it as its own copy and set it up so Google shows each visitor the right version.' },
           { question: 'Do you build websites for small businesses in Texas?', answer: 'Yes. If your business is already selling and its site doesn’t show it, a few well-made pages may be all it takes. We tell you what you need now, what can wait and what it costs before you decide.' },
           ...COMMON_FAQ.en,

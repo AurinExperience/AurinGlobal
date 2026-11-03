@@ -63,6 +63,8 @@ export const UI = {
     heroBadge: ['Desde 1998', 'Sitios en inglés y español'],
     // Hero de los estados: lo que va por escrito (las garantías reales)
     heroTrust: ['Ves el diseño antes de programar', 'Precio cerrado por escrito', 'El sitio es tuyo'],
+    /** Bajo las industrias de cada estado: que los logos no se lean como clientes de ese estado */
+    clientsNote: 'Son clientes de varios países, no necesariamente de este estado.',
     industryPage: {
       fixesNote: '¿Tu sitio se parece a «Lo de siempre»? Cuéntanos cómo es hoy y te decimos qué cambiaríamos primero.',
       write: 'Mándanos un mensaje',
@@ -215,7 +217,8 @@ export const UI = {
     bookCall: 'Book a call',
     bookCallLong: 'Book a free call',
     heroBadge: ['Since 1998', 'You see the design before we build'],
-    heroTrust: ['Fixed price, in writing', 'Launch dates, in writing', 'You own everything'],
+    heroTrust: ['Fixed price, in writing', 'Launch dates, in writing', 'The site is yours'],
+    clientsNote: 'They’re clients from several countries, not necessarily this state.',
     industryPage: {
       fixesNote: 'Does your website look like “The usual”? Tell us how it works today and we’ll tell you what we’d change first.',
       write: 'Send us a message',

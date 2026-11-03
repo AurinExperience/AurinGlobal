@@ -404,3 +404,76 @@ select.input option {
     animation: none;
   }
 }
+
+/* ---------- Contacto rápido: WhatsApp o correo ---------- */
+
+/* Los dos canales como un interruptor de dos botones (radios nativos) */
+.channels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.channels legend { grid-column: 1 / -1; margin: 0 0 var(--spacing-2); padding: 0; }
+
+.channels label {
+  display: flex;
+  justify-content: center;
+  padding: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.channels input { position: absolute; opacity: 0; pointer-events: none; }
+.channels label:has(:checked) { border-color: var(--color-white); background: rgba(255, 255, 255, 0.08); color: var(--color-white); }
+.channels label:has(:focus-visible) { outline: 2px solid var(--color-yellow); outline-offset: 2px; }
+
+.field { display: flex; flex-direction: column; gap: var(--spacing-2); }
+.field[hidden], .error[hidden], .success [hidden] { display: none; }
+
+.error { margin: 0; font-size: var(--font-size-sm); color: #ff8a8a; }
+
+/* Por correo, el botón de enviar y el foco van en lima (WhatsApp sigue en verde) */
+.form[data-channel='email'] .submit { background: var(--color-yellow); }
+.form[data-channel='email'] .input:focus { border-color: var(--color-yellow); }
+.submit:disabled { opacity: .6; cursor: wait; }
+
+/* En inglés el círculo es de la marca (lima, globo de mensaje), no el verde de WhatsApp */
+.mail .circle { background: var(--color-yellow); color: var(--color-black); }
+.mail .icon { fill: none; }
+
+/* Con dos canales el formulario es más largo: el panel nunca pasa del alto de la pantalla. El título y la ✕ quedan fijos
+   y lo que hace scroll es el formulario. Más compacto que el de aurin.mx para que en una laptop quepa sin scroll */
+.panel {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 64px - 2 * var(--spacing-6) - var(--spacing-4));
+  box-sizing: border-box;
+}
+
+.panel[hidden] { display: none; }
+.header { flex: 0 0 auto; margin-bottom: var(--spacing-3); }
+.form, .success { min-height: 0; overflow-y: auto; overscroll-behavior: contain; margin: 0 -4px; padding: 0 4px 2px; }
+.form { gap: 6px; }
+.form .label { margin-top: 6px; }
+.channels label { padding: 7px; }
+.textarea { min-height: 64px; }
+
+@media (max-width: 768px) {
+  .panel { max-height: calc(100dvh - 56px - var(--spacing-3) - 3 * var(--spacing-4)); overflow: hidden; }
+}
+
+/* Pantallas bajas (iPhone SE, laptops chicas): sin subtítulo y sin la pregunta visible (los lectores de pantalla sí la
+   leen), para que el botón de enviar quede a la vista sin scroll */
+@media (max-height: 720px) {
+  .subtitle { display: none; }
+  .channels legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .header { margin-bottom: var(--spacing-2); }
+  .form .label { margin-top: 2px; }
+}

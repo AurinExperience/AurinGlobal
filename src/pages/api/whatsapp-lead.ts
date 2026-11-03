@@ -17,12 +17,39 @@ export const POST: APIRoute = async ({ request }) => {
   if (!data) return json({ error: 'JSON inválido' }, 400);
 
   const nombre = String(data.nombre ?? '').trim().slice(0, 100);
+  const byEmail = data.canal === 'email';
+  const correo = String(data.correo ?? '').trim().slice(0, 200);
   const telefono = String(data.telefono ?? '').trim().slice(0, 30);
   const mensaje = String(data.mensaje ?? '').trim().slice(0, 1000);
 
   // Honeypot: campo invisible que solo llenan los bots. Se responde 200 para no darles pista.
   if (data.empresa) return json({ success: true }, 200);
   if (!nombre || !mensaje) return json({ error: 'Nombre y mensaje requeridos' }, 400);
+  const origin: [string, string][] = [
+    ['Página', String(data.origen ?? '').slice(0, 500)],
+    ['Procedencia', String(data.referrer ?? 'Directo').slice(0, 500)],
+  ];
+
+  // Contacto rápido por correo: el teléfono es opcional; se le contesta respondiendo este correo (reply_to)
+  if (byEmail) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) return json({ error: 'Correo inválido' }, 400);
+    if (telefono && !isValidPhone(telefono)) return json({ error: 'Teléfono inválido' }, 400);
+    const ok = await sendLead({
+      title: 'Nuevo mensaje (contacto rápido por correo)',
+      name: nombre,
+      rows: [
+        ['Nombre', nombre],
+        ['Correo', correo],
+        ['Teléfono', telefono],
+        ['Contactar por', 'Correo'],
+      ],
+      message: mensaje,
+      origin,
+      replyTo: correo,
+    });
+    return ok ? json({ success: true }, 200) : json({ error: 'No se pudo enviar' }, 500);
+  }
+
   if (!isValidPhone(telefono)) return json({ error: 'Teléfono inválido' }, 400);
 
   const ok = await sendLead({
@@ -34,10 +61,7 @@ export const POST: APIRoute = async ({ request }) => {
       ['Contactar por', 'WhatsApp (se abrió el chat con este mensaje)'],
     ],
     message: mensaje,
-    origin: [
-      ['Página', String(data.origen ?? '').slice(0, 500)],
-      ['Procedencia', String(data.referrer ?? 'Directo').slice(0, 500)],
-    ],
+    origin,
   });
   return ok ? json({ success: true }, 200) : json({ error: 'No se pudo enviar' }, 500);
 };

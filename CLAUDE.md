@@ -185,8 +185,8 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
   son doorway pages) y sumarlo a `ALL_STATES`. Rutas, sitemap, llms.txt, OG, footer y enlaces entre estados salen solos.
 - `status: 'draft'` lo oculta en producción. `publishAt` programa la publicación, pero el sitio es estático:
   se publica en el primer build después de la fecha → configurar un Deploy Hook de Vercel llamado a diario.
-- Publicar de a uno, con semanas de por medio (misma estrategia que aurin.mx). Texas es el piloto (en `draft` desde octubre 2026: los estados
-  aún no se publican): no sumar otro estado hasta ver impresiones en Search Console.
+- Publicar de a uno, con semanas de por medio (misma estrategia que aurin.mx). Texas es el piloto (publicado en noviembre 2026): no sumar otro estado
+  hasta ver impresiones en Search Console.
 - Texas es la BASE de diseño y SEO de todos los estados (noviembre 2026). Orden propio, distinto de las landings de aurin.mx (hero →
   logos → qué incluye → proceso → prueba → FAQ → formulario), sin más de dos negras seguidas: hero → clientes → servicios (blanca; el
   nombre y el enlace salen del servicio, `text`/`tags` del estado: la situación del comprador) → industrias con clientes reales
@@ -275,7 +275,7 @@ Orden de trabajo en aurin.consulting:
 1. Antes de publicar: `RESEND_API_KEY` en Vercel (el formulario ya está conectado), Search Console, IDs de GA4/Clarity.
 2. Perfiles en directorios de agencias de EE. UU. (Clutch, DesignRush, GoodFirms) apuntando a aurin.consulting: autoridad
    para el dominio nuevo.
-3. Esperar 8–12 semanas con home, 4 servicios e industrias (Texas en borrador); con los datos, decidir el siguiente estado o nicho.
+3. Esperar 8–12 semanas con home, 4 servicios, industrias y Texas; con los datos, decidir el siguiente estado o nicho.
 
 ## Código
 

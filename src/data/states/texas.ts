@@ -7,7 +7,7 @@ import type { State } from './types';
  */
 export const texas: State = {
   id: 'texas',
-  status: 'draft',
+  status: 'live',
   slug: 'texas',
   name: 'Texas',
   geo: { latitude: 31.9686, longitude: -99.9018 },

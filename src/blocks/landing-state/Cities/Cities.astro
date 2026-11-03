@@ -1,0 +1,43 @@
+---
+/**
+ * Regiones del estado (landings por estado), blanca: una fila por área metropolitana con quién compra ahí y qué le conviene
+ * a su sitio. Texto propio de cada región, no el nombre cambiado: así la página cubre las búsquedas locales sin ser doorway.
+ * Sin enlaces: las ciudades que ya tiene aurin.mx (Houston, Dallas, San Antonio…) son de allá y aquí no tienen página (CLAUDE.md).
+ */
+import type { StateCopy } from '@/data/states/types';
+import Accent from '@/components/ui/Accent.astro';
+import styles from './Cities.module.css';
+
+interface Props {
+  cities: StateCopy['cities'];
+}
+
+const { cities } = Astro.props;
+---
+
+<section class={styles.section} aria-labelledby="title-cities">
+  <div class="wrap">
+    <div class={styles.head}>
+      <h2 id="title-cities" class:list={['h2', styles.heading]}><Accent text={cities.heading} /></h2>
+      <p class={styles.intro}>{cities.intro}</p>
+    </div>
+    <ul class={styles.rows}>
+      {cities.items.map((city) => (
+        <li class:list={['reveal', styles.row]}>
+          <div>
+            <h3 class:list={['h3', styles.name]}>{city.name}</h3>
+            <p class={styles.tags}>{city.tags}</p>
+          </div>
+          <div>
+            <p class={styles.label}>{cities.needLabel}</p>
+            <p class={styles.text}>{city.need}</p>
+          </div>
+          <div>
+            <p class={styles.label}>{cities.buildLabel}</p>
+            <p class={styles.text}>{city.build}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

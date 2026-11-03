@@ -3,4 +3,6 @@ export { default as HeroState } from './HeroState/HeroState.astro';
 export { default as Industries } from './Industries/Industries.astro';
 export { default as Contrast } from './Contrast/Contrast.astro';
 export { default as ServicesIncluded } from './ServicesIncluded/ServicesIncluded.astro';
+export { default as Cities } from './Cities/Cities.astro';
+export { default as Commitments } from './Commitments/Commitments.astro';
 export { default as FaqSection } from './FaqSection/FaqSection.astro';

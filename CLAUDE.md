@@ -31,6 +31,10 @@ nada en estas páginas necesita isla. `@astrojs/vercel` está instalado solo por
 - Los dos tienen honeypot (`website` / `empresa`) y validan el teléfono con `src/lib/phone.ts` (libphonenumber).
 - `PhoneInput` (copia de aurin.mx): lada por país, EE. UU. por omisión (aurin.mx usa México) y la región del
   idioma del navegador si coincide. Manda `phone` + `phoneLada`.
+- Contacto rápido (el globo, `WhatsAppButton`): dos canales, WhatsApp o correo. En español sale elegido WhatsApp (círculo verde);
+  en inglés, correo (círculo lima con globo de mensaje: el estadounidense que no es hispano casi no usa WhatsApp con empresas).
+  Por correo: teléfono opcional, mensaje vacío con pista (el texto ya escrito es para WhatsApp), `/api/whatsapp-lead/` con
+  `canal: 'email'` y `reply_to` = su correo, cuenta como `generate_lead`.
 - `WhatsAppButton` (copia de aurin.mx, en Layout): burbuja 👋 → mini-formulario → abre wa.me ANTES de
   cualquier await (si no, es popup bloqueado) y en paralelo manda el respaldo por correo con `keepalive`.
   Sin el halo `waRing` de allá (animaba box-shadow) ni las métricas de allá (aquí manda `whatsapp_lead` con `aurinTrack`).
@@ -60,7 +64,7 @@ src/
 ├── components/
 │   ├── ui/               ButtonIsland (de aurin.mx), MainButton, SecondaryButton, Grain, PhoneInput, WhatsAppButton,
 │   │                     Analytics (GA4 + Clarity con consentimiento), CookieConsent
-│   ├── layout/           Header, Footer (marca, servicios, 6 industrias + "Todas", contacto; sin franja de CTA: todas las páginas ya cierran con una; minimal en landings; NAP de SITE.address), CtaBanner
+│   ├── layout/           Header, Footer (marca, servicios, 6 industrias + "Todas", hasta 6 estados, contacto; sin franja de CTA: todas las páginas ya cierran con una; minimal en landings; NAP de SITE.address), CtaBanner
 │   └── pages/            HomePage, ServicePage, StatePage (plantilla de estado; sin nombres de estados), PrivacyPage, IndustriesPage
 ├── blocks/
 │   ├── home/             secciones exclusivas de la home (HeroHome = faro)
@@ -92,7 +96,7 @@ src/
   hero se ve (`data-hero-cta` + IntersectionObserver en Header; entra con transición propia, no atada al scroll).
 - Menú: el MISMO en todas las páginas y armado con los datos (Header.astro): Servicios ▾ (`SERVICES`),
   Industrias ▾ ("Todas las industrias" → /industrias/ + `INDUSTRY_PAGES`), Casos y Nosotros (anclas de la home).
-  Estados NO va en el menú (decidido en octubre 2026): por ahora tampoco van en el pie (aún no se publican; volver a sumar la columna cuando salgan). Se enlazan entre ellas.
+  Estados NO va en el menú (decidido en octubre 2026). En el pie sí (noviembre 2026; sin ellos la página quedaría huérfana): columna con los primeros 6 publicados, en orden de publicación; sin ninguno publicado no se pinta. Al publicar el 7.º, crear el índice `/estados/` ↔ `/en/states/` con su enlace "Todos los estados" (como Industrias) y limitar también los enlaces entre estados: 30 en el pie o en cada página parecen una red de doorway pages. Se enlazan entre ellas.
   Una página nueva en esas listas sale sola en el menú de todo el sitio (enlazado interno); un grupo vacío no se pinta.
   Los grupos abren con hover o foco (Tab), sin JS; la página actual va con `aria-current` y su grupo en lima.
   Enlaces sin subrayado, en Clarity City 500 (variable: no carga otro archivo).
@@ -143,7 +147,7 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
   En los 4 servicios (los que llevan `contrast`) bajo el hero va el carrusel de logos (`Clients`) en vez de la franja de industrias.
   Con `types` (hoy solo diseño web: landing page, sitio de empresa, rediseño) van tipos de sitio (blanca) → casos (negra) →
   proceso (lima) → `support` (hosting y soporte, negra); sin `types`, los servicios con `contrast` no muestran casos.
-  Sin rangos de precio ni de tiempo en ningún texto (decidido en octubre 2026). Sí ofrecemos hosting y soporte. Con `guarantees` (hoy desarrollo web, UX/UI y branding; se quitó de diseño web) va `Guarantees`: franja lima con lo que va por escrito
+  Sin rangos de precio ni de tiempo en ningún texto (decidido en octubre 2026). Sí ofrecemos hosting y soporte. A veces el hosting y el dominio quedan en la cuenta de Aurin: no prometer «a tu nombre» sino que el sitio es del cliente y se le entrega con sus accesos cuando lo pida. Con `guarantees` (hoy desarrollo web, UX/UI y branding; se quitó de diseño web) va `Guarantees`: franja lima con lo que va por escrito
   (ves el diseño antes de programar, precio cerrado, el sitio es tuyo, fechas) y botón a la llamada. Se probaron y descartaron: muestras/demos interactivas
   de sitios inventados (se veían sencillas y no vendían).
 - Casos: solo proyectos publicados en aurin.mx (uno en borrador allá daría 404). Sin cifras de resultados: no hay datos medidos.
@@ -183,9 +187,41 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
   se publica en el primer build después de la fecha → configurar un Deploy Hook de Vercel llamado a diario.
 - Publicar de a uno, con semanas de por medio (misma estrategia que aurin.mx). Texas es el piloto (en `draft` desde octubre 2026: los estados
   aún no se publican): no sumar otro estado hasta ver impresiones en Search Console.
-- Secciones: hero + formulario, clientes, por qué Aurin en el estado (`why`: zona horaria, idioma, cercanía, datos
-  verificables como el Censo), servicios (enlazan a sus páginas), industrias con clientes reales (`sectors`), proceso,
-  casos, FAQ, CTA, estados hermanos. Medido en build: FCP ~0.2 s, LCP ~0.33 s, ~108 KB, ~1,000 palabras.
+- Texas es la BASE de diseño y SEO de todos los estados (noviembre 2026). Orden propio, distinto de las landings de aurin.mx (hero →
+  logos → qué incluye → proceso → prueba → FAQ → formulario), sin más de dos negras seguidas: hero → clientes → servicios (blanca; el
+  nombre y el enlace salen del servicio, `text`/`tags` del estado: la situación del comprador) → industrias con clientes reales
+  (`sectors`, con `page` enlaza a su industria) → casos → regiones (`cities`, blanca, bloque `Cities`: una fila por área metropolitana con quién
+  te busca ahí y qué le conviene a tu sitio; texto propio de cada una) → proceso (`Journey`, lima, con «Recibes») → lo que va por escrito
+  (`commitments`, negra, bloque `Commitments`: la propuesta como hoja blanca con firmas) → `Team compact` (blanca) → FAQ (el costo primero;
+  incluye dónde está el equipo, sin esconderlo, y la ley de privacidad del estado) → cierre con formulario → "Sigue explorando" (otros estados
+  + industrias: con un solo estado quedan las industrias, nunca vacío). Enfoque: empresas de todo el estado, nada de negocios latinos,
+  contratistas, restaurantes, impuestos ni «bilingual web design + ciudad» (terreno de aurin.mx). Cada estado lleva datos locales
+  verificables (Fortune 500, Censo, su ley) para no ser doorway: no basta con cambiar el nombre. SEO e IA se dicen en la intro de servicios, el paso 4 del
+  proceso y el FAQ: la IA acelera y siempre va de la mano de un experto; lo confidencial no pasa por ahí.
+- Hero de los estados: el MISMO para todos, el motivo de marca (noviembre 2026; se probaron y descartaron el Capitolio de Texas
+  con el nombre gigante detrás de la cúpula, el mapa del estado en puntos de luz y una ciudad de noche hecha en el shader: «no se
+  adapta a la identidad»). Foto `st-beacon`: un faro bajo la Vía Láctea (Unsplash VsPsf4F5Pi0) al que se le borraron sus haces fijos
+  (`lh/clean.mjs` del scratchpad: separa cielo suave y estrellas, rellena el cielo desde lo limpio —Laplace— con la torre
+  enmascarada, así las estrellas quedan; restar el resplandor directo dejaba una cruz oscura y una caja alrededor de la torre).
+  fx `beacon` = un solo haz en 3D con los mismos `F`, `G`, `DIP` y la misma mezcla de luz que el de la home, en cono: nace casi en un
+  punto en la lámpara (`W0`) y se abre (`SPREAD`, un poco más al alejarse: la perspectiva lo angostaba de más). Vuelta cada 30 s a velocidad
+  constante; `DIP` mayor que la altura de la lámpara para que de frente baje y no apunte al cielo. De frente pasa delante del balcón y la
+  torre y sigue hasta tocar el cerro (`HILL`, su contorno medido en la foto), que lo tapa y al que solo le multiplica la foto; de espaldas lo
+  tapa la torre. Linterna abierta (sin cristal: cielo con estrellas en la foto, `clean.mjs`) con barrotes en el shader: de un cilindro
+  (más delgados y juntos hacia las orillas, aros curvos, los de atrás tenues) y oscurecidos ANTES de sumar la luz. Siempre blanco, sin el
+  ciclo gris ↔ lima de las industrias; el color lo ponen las luciérnagas (las de la home, más chicas, sobre el cerro) + las estrellas
+  titilan + nubes bajas que cruzan despacio (se ven aunque el haz no las toque, por la luz de la noche; tapan estrellas, el haz las aviva y se ve
+  más al atravesarlas; arriba el cielo queda libre: la Vía Láctea es de foto). `mask-image` de la escena hasta 45% para que el haz se desvanezca largo hacia el texto. Descartado: dos haces opuestos (saltaban
+  al cruzar el centro), la perspectiva real del gran angular (de frente subía al cielo), resplandor grande de frente (no parecía faro),
+  luz en el piso por altura (pintaba una franja en el cielo), apagar el haz antes del piso o tapar con el balcón (dejaba un hueco),
+  linterna gris (opaca) y barrotes negros encima de la luz (jaula pegada). Bajo los botones, lo que va por escrito (`trust` en HeroState, `heroTrust` en i18n; en inglés sin
+  repetir la pastilla). Sin línea de fundadores ni hora en vivo (se quitaron).
+- Title: [búsqueda] + estado | diferenciador | Aurin, SIN ciudades que ya tenga aurin.mx (Houston, Dallas, San Antonio, Phoenix,
+  Inland Empire: ver «Canibalización»). Las ciudades van en `cities`, el FAQ y `areas` (schema), nunca en title ni h1.
+- Ciudades: sin página propia por ahora. Una ciudad se gana su página (`/<estado>/<ciudad>/`) cuando Search Console muestre
+  búsquedas de "diseño web + ciudad" cayendo en el estado, y nunca las que ya tiene aurin.mx.
+- Orden de estados decidido (noviembre 2026, por economía, quién paga, horario y competencia; el que más paga busca por
+  industria, no por estado): Texas → Illinois o Florida → Georgia o Carolina del Norte → California y Nueva York al final.
 - Inglés para estadounidenses: lo que se vende es "inglés fluido"; lo bilingüe es un extra, no el argumento principal (ver «Público de las páginas en inglés»).
 
 ## Canibalización (una búsqueda principal por página)
@@ -222,7 +258,8 @@ deben poder salir en EE. UU.: SIN hreflang entre dominios (haría que Google mos
 | Guías informativas (costos, elegir agencia, sitio bilingüe…)     | aurin.mx  | Ya existen (`../AurinWebsite/src/data/guides`)   |
 | Portafolio y casos completos                                     | aurin.mx  | Ahí viven los proyectos (CMS)                   |
 | Agencia + servicio + EE. UU.                                     | aurin.consulting   | Razón de ser del sitio                          |
-| Estados de EE. UU. (Texas y los que sigan)                       | aurin.consulting   | aurin.mx solo tiene estados de México           |
+| Estados de EE. UU. (Texas y los que sigan)                       | aurin.consulting   | aurin.mx no tiene estados de EE. UU.            |
+| Ciudades de EE. UU. que ya tiene aurin.mx (Houston, Dallas–Fort Worth, San Antonio, Phoenix, Inland Empire: `../AurinWebsite/src/data/landings`) | aurin.mx | Publicadas, ES y EN, para negocios latinos |
 | Nichos que aurin.mx no toca (remesas, …)                         | aurin.consulting   | Terreno libre                                   |
 | Agencia + servicio + Canadá                                      | aurin.consulting   | aurin.mx solo ve a Canadá como comprador de empresas mexicanas |
 
@@ -335,7 +372,7 @@ Orden de trabajo en aurin.consulting:
   antes del FAQ (corta la fila de negras casos → FAQ → cierre). Entre negras seguidas, hairline arriba (`--color-gray-b`).
 - Cielo de fondo (`body::before/::after` en base.css): estrellas y franja tipo Vía Láctea generadas con `node scripts/sky.mjs`
   (`public/img/sky*.avif`, versión `-m` en celular; ~118 KB / ~63 KB, AVIF calidad 36 / 40: más bajo se pierden las estrellas tenues). Utilidad `.sky` por sección: cada una elige qué parte
-  se ve (`--sky-x/-y`, `--sky-size`, `--sky-flip`) para que no se sienta repetido. Intensidad: `--sky-opacity`. Con franja: UsTeam, Industrias, CTA;
+  se ve (`--sky-x/-y`, `--sky-size`, `--sky-flip`) para que no se sienta repetido. Intensidad: `--sky-opacity`. Con franja: Industrias, CTA;
   `.sky-stars` (solo estrellas sueltas): Investigación, Casos, pie. Dos secciones seguidas nunca con el mismo cielo (se ve cortado).
   Sin cielo: heros (en las landings se volvía el LCP), logos (negro liso), Equipo, FAQ y relacionados. La luz que sigue al cursor es `.spotlight` (utilities.css + script en Layout).
 - Revelado al scroll con la clase global `.reveal` (`animation-timeline: view()`, sin JS).

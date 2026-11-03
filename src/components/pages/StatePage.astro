@@ -11,8 +11,10 @@
  * "agencia + estado" y le pasa autoridad a cada servicio.
  */
 import type { State } from '@/data/states';
+import type { ServiceId } from '@/data/services/types';
 import { statePath, siblingStates } from '@/data/states';
 import { SERVICES, servicePath } from '@/data/services';
+import { INDUSTRY_PAGES } from '@/data/industries';
 import { caseCards } from '@/data/cases';
 import { HOME } from '@/data/home';
 import { SITE, ORG_ID } from '@/config/site';
@@ -24,10 +26,10 @@ import Footer from '@/components/layout/Footer.astro';
 import Team from '@/blocks/shared/Team/Team.astro';
 import CtaBanner from '@/components/layout/CtaBanner.astro';
 import LeadForm from '@/blocks/landing-state/LeadForm/LeadForm.astro';
-import ProcessSteps from '@/blocks/shared/ProcessSteps/ProcessSteps.astro';
 import RelatedLinks from '@/blocks/shared/RelatedLinks/RelatedLinks.astro';
-import { Clients, UsTeam, ServicesList, IndustriesGrid, Cases } from '@/blocks/home';
-import { HeroState, FaqSection } from '@/blocks/landing-state';
+import { Clients, ServicesList, IndustriesGrid, Cases } from '@/blocks/home';
+import { HeroState, Cities, Commitments, FaqSection } from '@/blocks/landing-state';
+import { Journey } from '@/blocks/industry';
 
 interface Props {
   state: State;
@@ -40,10 +42,10 @@ const t = UI[lang];
 const url = `${SITE.url}${statePath(state, lang)}`;
 const home = `${SITE.url}${lang === 'en' ? '/en/' : '/'}`;
 
+// El nombre y el enlace son los del servicio; el texto, el de este estado (único: nada de resúmenes compartidos)
 const serviceRows = SERVICES.map((item) => ({
   title: item.copy[lang].name,
-  text: item.copy[lang].summary,
-  tags: item.copy[lang].tags,
+  ...copy.services.items[item.id as ServiceId],
   href: servicePath(item, lang),
 }));
 
@@ -90,26 +92,32 @@ const breadcrumb = {
   ],
 };
 
+// Al final: los otros estados y las industrias, en etiquetas (los servicios ya van arriba, con su descripción). Con un
+// solo estado publicado el grupo de estados no se pinta y quedan las industrias: la página nunca se queda sin enlaces
+const related = [
+  { label: t.nav.states, items: siblingStates(state).map((item) => ({ href: statePath(item, lang), label: item.copy[lang].linkLabel })) },
+  { label: t.nav.industries, items: INDUSTRY_PAGES.map((item) => ({ href: servicePath(item, lang), label: item.copy[lang].name })) },
+];
 ---
 
 <Layout title={copy.seo.title} description={copy.seo.description} structuredData={[service, howTo, breadcrumb, faqSchema(copy.faq.items)]}>
   <Header overlay />
   <main id="main-content">
-    <HeroState hero={copy.hero} />
+    {/* Orden propio, distinto de las landings de aurin.mx. Ritmo: nunca más de dos negras seguidas. Hero y logos (negras) →
+        servicios (blanca) → industrias y casos (negras) → regiones (blanca) → proceso (lima) → por escrito (negra) →
+        equipo (blanca) → FAQ y cierre (negras) */}
+    <HeroState hero={copy.hero} photo="st-beacon" trust />
     <Clients clients={HOME[lang].clients} />
-    <UsTeam us={copy.why} />
     <ServicesList services={{ ...copy.services, items: serviceRows }} />
-    {/* Después de la sección blanca: no se juntan negras seguidas */}
-    <Team />
     <IndustriesGrid industries={copy.sectors} />
-    <ProcessSteps {...copy.process} />
     <Cases cases={{ ...copy.cases, link: t.caseLink, items: caseCards(copy.cases.ids, lang) }} />
+    <Cities cities={copy.cities} />
+    <Journey {...copy.process} />
+    <Commitments commitments={copy.commitments} />
+    <Team compact />
     <FaqSection faq={copy.faq} />
     <CtaBanner {...copy.cta}><LeadForm source={`landing-${state.id}`} intro={false} /></CtaBanner>
-    <RelatedLinks
-      {...copy.nearby}
-      items={siblingStates(state).map((item) => ({ href: statePath(item, lang), label: item.copy[lang].linkLabel }))}
-    />
+    <RelatedLinks {...t.related} groups={related} />
   </main>
   <Footer minimal />
 </Layout>

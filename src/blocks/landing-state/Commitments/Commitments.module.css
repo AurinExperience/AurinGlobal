@@ -1,0 +1,96 @@
+.section {
+  background: var(--color-black);
+  padding: 140px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.aside {
+  position: sticky;
+  top: 112px;
+}
+
+.intro { margin: var(--spacing-6) 0 var(--spacing-8); }
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.note {
+  margin: 0;
+  font-size: 14px;
+}
+
+.sheet {
+  padding: 44px 48px;
+  border-radius: 4px;
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.sheetTitle {
+  margin: 0;
+  padding-bottom: var(--spacing-5);
+  border-bottom: 1px solid var(--color-black);
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--spacing-4);
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-gray-a);
+}
+
+.num {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+}
+
+.title { margin: 0 0 var(--spacing-2); }
+
+.text {
+  margin: 0;
+  color: var(--color-text-dark);
+  text-wrap: pretty;
+}
+
+/* Líneas de firma: la hoja se lee como el documento, no como otra lista de tarjetas */
+.signs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-8);
+  margin-top: 56px;
+  font-size: 13px;
+  color: var(--color-text-dark);
+}
+
+.signs span {
+  padding-top: var(--spacing-2);
+  border-top: 1px solid var(--color-black);
+}
+
+@media (max-width: 900px) {
+  .section { padding: 96px 0; }
+  .grid { grid-template-columns: 1fr; gap: 48px; }
+  .aside { position: static; }
+  .sheet { padding: 28px 22px; }
+  .signs { margin-top: 40px; }
+}

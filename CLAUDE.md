@@ -161,7 +161,7 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
 
 - Una por cada industria general de `HOME.industries` (las 10 ya tienen página: fintech, salud, educación, turismo,
   energía, cultura, software, agencias, bienes raíces, ONG). SIN legal ni despachos de abogados en ningún texto (decidido en
-  noviembre 2026: compromiso con un cliente; la página se quitó y redirige con 301 a /industrias/ en vercel.json). Más los nichos que aurin.mx no toca (remesas: sitio y plataforma web para empresas de remesas, `/diseno-web-remesas/`; sin apps).
+  noviembre 2026: compromiso con un cliente; la página se quitó y redirige con 301 a /industrias/ en vercel.json). El logo de Galicia sí va en el carrusel (`CLIENTS`), sin caso ni texto. Más los nichos que aurin.mx no toca (remesas: sitio y plataforma web para empresas de remesas, `/diseno-web-remesas/`; sin apps).
   Donde aurin.mx ya tiene un nicho para EE. UU. (lujo inmobiliario, galerías, hoteles boutique, startups de IA, med spas…)
   la de aquí es la industria en general y no entra a ese nicho (lo dice el comentario de cada archivo).
 - Agregar una: copiar `src/data/industries/fintech.ts`, reescribir TODO el copy en ES y EN (texto único), sumarla a

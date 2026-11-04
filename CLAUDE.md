@@ -301,7 +301,7 @@ Orden de trabajo en aurin.consulting:
 - `GlobalSchema` en todas: ProfessionalService + WebSite (misma entidad y NAP que aurin.mx, `sameAs` a aurin.mx).
 - Home: Service ×4 (salen de `data/services`, `url` = la página de cada servicio) + FAQPage. Servicio: Service + OfferCatalog, BreadcrumbList, FAQPage. Estado: Service (areaServed State + ciudades), HowTo, BreadcrumbList, FAQPage.
 - El FAQ visible y el FAQPage salen de los mismos items (`faqSchema`). El texto `pending` se ve en lima y no entra al JSON-LD.
-- `robots.txt`: misma política de bots de IA que aurin.mx. 404 real, nunca redirigir al home.
+- `robots.txt`: igual que aurin.mx, todos los bots permitidos, también los de IA y los de entrenamiento (decidido en noviembre 2026: conviene más que la IA conozca a Aurin que proteger los textos); solo se excluye `/api/`. 404 real, nunca redirigir al home.
 - IndexNow (Bing, Yandex…; Google no lo usa): clave en `public/<clave>.txt`. Después de publicar páginas nuevas,
   `node scripts/indexnow.mjs` manda todas las URLs del sitemap publicado.
 

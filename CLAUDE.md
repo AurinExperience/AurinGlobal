@@ -167,7 +167,7 @@ hreflang `es-US` / `es-CA` / `en-US` / `en-CA` (misma URL por idioma para los do
 - Agregar una: copiar `src/data/industries/fintech.ts`, reescribir TODO el copy en ES y EN (texto único), sumarla a
   `INDUSTRY_PAGES` y poner `page: '<id>'` en su tarjeta de `HOME[lang].industries.items` (ES y EN): la tarjeta de
   /industrias/ y de la home enlaza sola. Menú, sitemap, llms.txt, OG y enlaces relacionados salen solos.
-  Su foto: `photo: 'ind-<id>'` (sumarla a `IndustryPhoto` en data/services/types.ts y a `PHOTOS` en HeroState).
+  Su foto: `photo: 'ind-<id>'` (sumarla a `IndustryPhoto` en data/services/types.ts y a `PHOTOS` y `PHOTO_ALT` en HeroState).
 - Diseño propio, distinto de los servicios (`src/blocks/industry`, mismo contenido de datos): `Fixes` (blanca: filas
   "hoy → con Aurin", los `contrast.bad/good` van en pares, y franja negra con botón), `Offer` (negra: título y botón fijos a
   la izquierda, lista con íconos a la derecha; `id="servicios"`; el ítem con `service: '<ServiceId>'` enlaza a esa página de servicio y lleva su `url` en el OfferCatalog: uno por servicio, en el ítem que mejor lo representa) y `Journey` (lima: pasos en tarjetas negras). Los botones

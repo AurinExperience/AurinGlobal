@@ -63,8 +63,65 @@ const PHOTOS = {
   'ind-nonprofits': { img: [1920, 1077], fx: 'flame' },
 } satisfies Record<'arch' | IndustryPhoto, { img: number[]; lamp?: number[]; beam?: number[]; fx?: string }>;
 
+// Aparte de PHOTOS: esa va entera al HTML en data-photo para el shader. Describe lo que se ve, sin palabras clave.
+const PHOTO_ALT: Record<'arch' | IndustryPhoto | 'st-beacon', { es: string; en: string }> = {
+  arch: {
+    es: 'Persona de pie sobre un arco de roca apunta una linterna al cielo estrellado, con la Vía Láctea de fondo',
+    en: 'A person standing on a rock arch points a flashlight at the starry sky, with the Milky Way behind',
+  },
+  'st-beacon': {
+    es: 'Faro bajo un cielo lleno de estrellas y la Vía Láctea',
+    en: 'Lighthouse beneath a star-filled sky and the Milky Way',
+  },
+  'ind-fintech': {
+    es: 'Tarjetas bancarias negras apiladas, con el chip de la de arriba iluminado',
+    en: 'Stacked black bank cards, with the chip on the top card lit up',
+  },
+  'ind-remittances': {
+    es: 'Estelas de luz de autos en un puente carretero junto a la costa, al anochecer',
+    en: 'Car light trails on a coastal highway bridge at dusk',
+  },
+  'ind-healthcare': {
+    es: 'Cirujano con cubrebocas y lámpara frontal encendida en el quirófano',
+    en: 'Surgeon wearing a mask and a lit headlamp in the operating room',
+  },
+  'ind-education': {
+    es: 'Graduados en silueta lanzan sus birretes al aire al atardecer',
+    en: 'Silhouetted graduates throwing their caps in the air at sunset',
+  },
+  'ind-tourism': {
+    es: 'Estatua de la Libertad iluminada de noche, con su reflejo en el agua',
+    en: 'Statue of Liberty lit at night, reflected in the water',
+  },
+  'ind-energy': {
+    es: 'Soldador con careta trabaja en una tubería a oscuras, con humo iluminado por el arco',
+    en: 'Welder in a mask working on a pipe in the dark, with smoke lit by the arc',
+  },
+  'ind-culture': {
+    es: 'Bailarina en silueta bajo el haz de un reflector con neblina',
+    en: 'Silhouette of a dancer in a spotlight beam with haze',
+  },
+  'ind-software': {
+    es: 'Monitor con código en un escritorio oscuro, junto a una taza con el símbolo </> y una planta',
+    en: 'Monitor showing code on a dark desk, next to a mug with a </> symbol and a plant',
+  },
+  'ind-agencies': {
+    es: 'Programador de espaldas frente a un monitor y una laptop llenos de código',
+    en: 'Developer seen from behind, facing a monitor and a laptop full of code',
+  },
+  'ind-real-estate': {
+    es: 'Torres de departamentos de noche, con la corona y algunas ventanas iluminadas',
+    en: 'Apartment towers at night, with the crown and some windows lit',
+  },
+  'ind-nonprofits': {
+    es: 'Vela encendida entre unas manos abiertas',
+    en: 'Lit candle held in open hands',
+  },
+};
+
 const { hero, photo = 'arch', trust } = Astro.props;
-const t = UI[getLangFromUrl(Astro.url)];
+const lang = getLangFromUrl(Astro.url);
+const t = UI[lang];
 ---
 
 <section class:list={[styles.section, photo !== 'arch' && styles.industry, styles[photo]]} aria-labelledby="title-hero" data-photo={JSON.stringify(PHOTOS[photo])}>
@@ -72,7 +129,7 @@ const t = UI[getLangFromUrl(Astro.url)];
     <picture>
       <source srcset={`/img/${photo}-m.avif`} media="(max-width: 900px)" type="image/avif" />
       <source srcset={`/img/${photo}.avif`} type="image/avif" />
-      <img class={styles.photo} src={`/img/${photo}.webp`} alt="" width={PHOTOS[photo].img[0]} height={PHOTOS[photo].img[1]} fetchpriority="high" data-photo />
+      <img class={styles.photo} src={`/img/${photo}.webp`} alt={PHOTO_ALT[photo][lang]} width={PHOTOS[photo].img[0]} height={PHOTOS[photo].img[1]} fetchpriority="high" data-photo />
     </picture>
     <canvas class={styles.fx} aria-hidden="true"></canvas>
   </div>

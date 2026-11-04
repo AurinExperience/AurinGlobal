@@ -44,6 +44,7 @@ export interface HomeCopy {
  *  'color' es de colores claros (solo se pasa a gris y se aclara). */
 export const CLIENTS: Client[] = [
   { name: 'Antojos Sabores', logo: '/logos/antojos-sabores.webp', w: 92, h: 47 },
+  { name: 'Galicia', logo: '/logos/galicia.svg', w: 144, h: 34 },
   { name: 'Inglés Individual', logo: '/logos/ingles-individual.webp', w: 200, h: 25 },
   { name: 'Latiz', logo: '/logos/latiz.svg', w: 56, h: 66 },
   { name: 'Mexico Pacific', logo: '/logos/mexico-pacific.webp', w: 69, h: 57 },
